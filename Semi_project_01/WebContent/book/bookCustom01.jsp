@@ -509,12 +509,11 @@ input.cstinfo{
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-<<<<<<< HEAD
+
 	<script src="./js/bootstrap.min.js"></script>
-=======
+
 			<%String member = String.valueOf(session.getAttribute("member"));%>
 	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
@@ -620,13 +619,8 @@ function goO(bbb){
 			
 		}
 		})
-<<<<<<< HEAD
 	};
-=======
-	}; 
-
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
-	
+	 
 function saveAs(uri, filename) {
 	var link = document.createElement('a');
 	if (typeof link.download === 'string') {
