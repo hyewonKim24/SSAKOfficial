@@ -493,7 +493,7 @@ input.cstinfo{
 							장바구니 <i class="icon-briefcase icon-white"></i>
 						</button>
 						<button type="button" class="btn btn-large btn-block btn-success"
-							name="addToTheBag" id="addToTheBag" onclick=goOrder()>
+							name="gototheorder" id="gototheorder" onclick=goOrder()>
 							결제하기 <i class="icon-briefcase icon-white"></i>
 						</button>
 					</div>
@@ -509,7 +509,12 @@ input.cstinfo{
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+<<<<<<< HEAD
 	<script src="./js/bootstrap.min.js"></script>
+=======
+			<%String member = String.valueOf(session.getAttribute("member"));%>
+	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+>>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
@@ -603,16 +608,24 @@ function goOrder(){
 	goO(bbb);
 };
 function goO(bbb){
+	var bookamount= $("#cutsom_bookamount").val();
+	var bisbn = $("#cutsom_bisbn").val();
 		$.ajax({
 			url : "cstUploadtoOrder",
 			type : "post",
 			data : {customURL : bbb},
 		success : function(res){
-				confirm(res);
-			 	/* location.href="결제하기 페이지"; */
+			if(res>0)
+				location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
+			
 		}
 		})
+<<<<<<< HEAD
 	};
+=======
+	}; 
+
+>>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 	
 function saveAs(uri, filename) {
 	var link = document.createElement('a');

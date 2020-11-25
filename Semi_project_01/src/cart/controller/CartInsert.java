@@ -127,6 +127,9 @@ public class CartInsert extends HttpServlet {
 			PrintWriter out = response.getWriter();
 			try {
 				BookVO bvo = bsv.selectBook(bisbn);
+				if(bookamount==null||bookamount.equals("")) {
+					bookamount="1";
+				}
 				vo.setOamount(Integer.parseInt(bookamount));
 				int rs= bcsv.bookCoverInsert(customURL, vo);
 				System.out.println("bookcover insert "+rs+"행");

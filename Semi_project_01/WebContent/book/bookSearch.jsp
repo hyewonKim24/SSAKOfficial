@@ -150,7 +150,9 @@
 }
 </style>
 </head>
-
+<%
+	String member = String.valueOf(session.getAttribute("member"));
+%>
 <body>
 	<script>
 		$(document).ready(function() {
@@ -166,6 +168,11 @@
 				});
 			
 			$('.cartIn').click(function () {
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
 				//mid ok, bisbn, oamount ok
 				var $t = $(this).parents('div.bes_list2');
 				
@@ -179,9 +186,15 @@
 				} else{
 					location.href = "CartInsert?bisbn=" + bisbn + "&oamount=" + stat;	
 				}
+				}
 			});
 			
 			$('.orderIn').click(function () {
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
 				//mid ok, bisbn, oamount ok
 				var $t = $(this).parents('div.bes_list2');
 				
@@ -195,10 +208,16 @@
 				} else{
 					location.href = "OrderDirect?bisbn=" + bisbn + "&oamount=" + stat;	
 				}
+				}
 			});
 			
 			
 			$('#cartIns').click(function(){
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
 				var checkbox = $("input[name=check]:checked");
 				var checkboxVal = $("input[name=check]:checked").val();
 				//console.log(checkbox);
@@ -219,9 +238,30 @@
 				} else{
 					location.href = "CartInserts?bisbn=" + bisbn + "&oamount=" + stat;				
 				}
+				}
 			});
 			
-			
+			//북커버로 이동
+			$('.bookcoverIn').click(function () {
+				
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
+				//mid ok, bisbn, oamount ok
+				var $t = $(this).parents('div.bes_list2');
+				
+				var stat = $t.find('input.num').val(); //oamount
+				var bisbn = $t.find('input.bisbn').val();
+				if(stat<1){
+					alert("주문은 한 개 이상부터 가능합니다.")
+					$t.find('input.num').val(1);
+				} else{
+					location.href = "./bookCustom.do?bisbn=" + bisbn + "&bookamount=" + stat;	
+				}
+				}
+			});	
 			
 			
 		});
@@ -231,6 +271,7 @@
 				
 			})
 		)} */
+
 	</script>
 
 	<div class="bestseller">
@@ -283,7 +324,7 @@
 								</br>
 								<button type="button" class="orderIn">구매하기</button>
 								</br>
-								<button type="button" onclick="location.href='#'">북커버
+								<button type="button" class="bookcoverIn">북커버
 									커스텀</button>
 							</div>
 						</div>

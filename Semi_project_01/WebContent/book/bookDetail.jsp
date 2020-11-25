@@ -4,7 +4,7 @@
 <%@ include file="../main/recentSide.jsp"%>
 <%
 	String bisbn = request.getParameter("bisbn");
-	System.out.println(bisbn);
+System.out.println(bisbn);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -247,13 +247,13 @@ section.detail_buttons {
 	line-height: 20px;
 }
 
-
-#bst_title{
+#bst_title {
 	width: 150px;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
 }
+
 .detail_bestseller {
 	margin-left: 9px;
 	display: inline-block;
@@ -350,24 +350,17 @@ section.detail_buttons {
 				</table>
 
 				<form name="detail_frm" id="detail_amount">
-				<hr id="detail_hr" width="570" color="gray" height="1px">
-					<span>수량 </span> <input type="number" placeholder="1" min="1" max="50" width="10px" margin-right="20px" name="bookamount" id="bookamount"> 
+					<hr id="detail_hr" width="570" color="gray" height="1px">
+					<span>수량 </span> <input type="number" value="1" min="1" max="50"
+						width="10px" margin-right="20px" name="bookamount" id="bookamount">
 					<span id="detail_order">
-						<button type="button" class="detail_order_btn">
-							<svg width="20px" height="15px" viewBox="0 0 16 16"
-								class="bi bi-cart-fill" fill="currentColor"
-								xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-									d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
-                  </svg>
-						</button>
-						<button type="button" class="detail_order_btn">구매하기</button>
-						<button type="button" class="detail_order_btn"
-							onclick="goBookcustom();">북커버커스텀</button>
+						<button type="button" class="detail_order_btn cartIn">장바구니</button>
+						<button type="button" class="detail_order_btn orderIn">구매하기</button>
+						<button type="button" class="detail_order_btn bookcoverIn">북커버커스텀</button>
 					</span>
 					<p></p>
 				</form>
-					</div>
+			</div>
 		</article>
 
 		<div class="detail_book_more">
@@ -419,15 +412,20 @@ section.detail_buttons {
 					<h3 class="detail_font_large">이 분야의 베스트셀러</h3>
 					<hr id="detail_hr" width="820px" color="black" height="1px">
 					<br>
-					
+
 					<c:if test="${not empty bestseller }">
-					<c:forEach items="${bestseller }" var="bst">
-					<div class="detail_bestseller">
-						<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${bst.BISBN}"> <img
-							src="${bst.bcover }" width="140px"></a>
-						<p id="bst_title"><a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${bst.BISBN}">${bst.btitle }</a></p>
-					</div>
-					</c:forEach>
+						<c:forEach items="${bestseller }" var="bst">
+							<div class="detail_bestseller">
+								<a
+									href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${bst.BISBN}">
+									<img src="${bst.bcover }" width="140px">
+								</a>
+								<p id="bst_title">
+									<a
+										href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${bst.BISBN}">${bst.btitle }</a>
+								</p>
+							</div>
+						</c:forEach>
 					</c:if>
 					<br> <br> <br>
 				</div>
@@ -522,23 +520,55 @@ section.detail_buttons {
 
 		})
 		
-		<%
-			String member = String.valueOf(session.getAttribute("member"));
+		<%String member = String.valueOf(session.getAttribute("member"));%>
+		$(document).ready(function () {
 			
-		%>
-		function goBookcustom(){
-			var member="<%=member%>";
+			$('.cartIn').click(function () {
+				
+				var member="<%=member%>";
+					if(member==null || member=="" ||member=="null"){
+						console.log(member);
+						alert('로그인 후 이용해주세요');
+					}else{
+				//mid ok, bisbn, oamount ok
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+				location.href = "CartInsert?bisbn=" + <%=bisbn%> + "&oamount=" + stat;	
+			}
+			});
+			
+			$('.orderIn').click(function () {
+				
+				var member="<%=member%>";
 				if(member==null || member=="" ||member=="null"){
 					console.log(member);
 					alert('로그인 후 이용해주세요');
 				}else{
-					var frm =document.detail_frm;
-					frm.action ="./bookCustom.do?bisbn=<%=bisbn%>";
-					frm.method="post";
-					frm.submit();
+				//mid ok, bisbn, oamount ok
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+				
+				location.href = "OrderDirect?bisbn=" + <%=bisbn%> + "&oamount=" + stat;	
 				}
-			}
+			});
+			
+			//북커버로 이동
+			$('.bookcoverIn').click(function () {
+				
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
+				//mid ok, bisbn, oamount ok
+				
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+					location.href = "./bookCustom.do?bisbn='" + <%=bisbn%> + "'&bookamount=" + stat;	
+				}
+			});			
 
+});
 	</script>
 
 </body>

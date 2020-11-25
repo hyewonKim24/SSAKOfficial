@@ -1,6 +1,7 @@
 package order.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cart.model.CartListVO;
 import member.model.memberVO;
+import service.bookcover.bookCoverService;
 import service.cart.CartService;
 import service.member.memberService;
 import service.order.orderService;
@@ -36,11 +38,16 @@ public class OrderDirect extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		orderService service = new orderService();
+		bookCoverService bcsv=new bookCoverService();
 		CartListVO vo = new CartListVO();
 		memberService msv = new memberService();
 		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
+		String customURL = request.getParameter("customURL");
+		String bookamount = request.getParameter("bookamount");
+		String bisbn = request.getParameter("bisbn");
+		PrintWriter out = response.getWriter();
 		
-		
+		if(customURL==null||customURL.equals("")) {
 		//북커버 null오류 처리
 		int dnoConf = 0;
 		if (request.getParameter("dno") != null) {
@@ -51,7 +58,6 @@ public class OrderDirect extends HttpServlet {
 		}
 
 		int oamount = Integer.parseInt(request.getParameter("oamount"));
-		String bisbn = request.getParameter("bisbn");
 		System.out.println("추가한애:"+oamount+" "+bisbn+" "+dnoConf);
 
 		try {
@@ -59,12 +65,24 @@ public class OrderDirect extends HttpServlet {
 				request.setAttribute("list2", result);				
 				request.setAttribute("dioamount", oamount);
 				
-				RequestDispatcher ds = request.getRequestDispatcher("./order/directOrder.jsp");
-				ds.forward(request, response);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		}else {
+			//북커버 주문 insert
+			try {
+				int dno = bcsv.SelectDno(customURL);
+				out.print(dno);
+				out.flush();
+				out.close();
 				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		}
+		System.out.println("directorder.jsp로 이동.");
+		RequestDispatcher ds = request.getRequestDispatcher("./order/directOrder.jsp");
+		ds.forward(request, response);
 	}
 
 	/**

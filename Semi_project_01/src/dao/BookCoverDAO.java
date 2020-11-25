@@ -44,12 +44,30 @@ public class BookCoverDAO {
 		System.out.println("bookcover INSERT 시작");
 		int result =0;
 		String sql= "insert into bookcover values(cst_seq.nextval, ?, ?, ?)";
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "북커버입니다");
 			pstmt.setString(2, customURL);
 			pstmt.setInt(3, 0);
 			result=pstmt.executeUpdate();
+			
+		} finally {
+			close();
+		}
+		return result;
+	}
+	
+	public int selectDno(Connection conn) throws SQLException{
+		System.out.println("bookcover dno 찾기");
+		int result =0;
+		String sql= "select max(dno) from bookcover";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result=rs.getInt(1);
+			}
 			
 		} finally {
 			close();

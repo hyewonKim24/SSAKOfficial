@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css" />
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
+=======
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css"/>
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+>>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -24,6 +30,7 @@
 </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<%@ include file="../main/header.jsp"%>
 	<div class="oManage">
 		<div class="oManage_aside">
@@ -41,6 +48,20 @@
 				<br> 1:1 문의하기
 			</a>
 		</div>
+=======
+<%@ include file="../main/header.jsp"%>
+<div class="oManage">
+        <div class="oManage_aside">
+            <div id="oManage_asidetlt">관리자페이지</div>
+            <div class="oManage_asidenav">
+                <ul>
+                    <li><a href="memberList">회원정보조회 및 수정</a></li>
+                    <li><a href="AdminOrderList">주문내역조회</a></li>
+                    <li><a href="wreqList">탈퇴요청관리</a></li>
+                </ul>
+            </div>
+        </div>
+>>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 
 		<div class="oManage_cont">
 			<div class="oManage_cont_title">주문내역 조회</div>
