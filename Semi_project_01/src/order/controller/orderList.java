@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cart.model.CartListVO;
 import member.model.memberVO;
+import order.model.orderVO;
 import service.cart.CartService;
 import service.member.memberService;
 import service.order.orderService;
@@ -46,29 +47,69 @@ public class orderList extends HttpServlet {
 	}
 	
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		orderService order = new orderService();
-		memberService msv = new memberService();
-		String mid = (String) request.getSession().getAttribute("mid");
-		System.out.println("아이디는"+mid);
-		String cno2 = request.getParameter("cno"); 
-		System.out.println(cno2);
-		String[] cno = cno2.split(",");
-		
+		orderService osv = new orderService();
+		// 페이징
+		int pageSize = 10; // 페이지 당 글 수
+		int pageBlock = 10; // 페이지 링크 수
 		try {
-			int[] chks = new int[cno.length];
-			for(int i=0; i<cno.length; i++) 
-				chks[i] = Integer.parseInt(cno[i]);
-			
-			List<CartListVO> orderList = order.orderList(chks);
-			request.setAttribute("list", orderList);
-			
-			memberVO mdetail = msv.memberDetail(mid);
-			request.setAttribute("mdetail", mdetail);
-			System.out.println("member : " + mdetail);
+			// 총 글 개수
+			int nCount = osv.getBoardCount();/* 변경 : 메소드 */
+			System.out.println(nCount);
 
-			RequestDispatcher ds = request.getRequestDispatcher("./order/order.jsp");
-			ds.forward(request, response);	
+			// 페이지 수 초기화
+			String pageNum = request.getParameter("pageNum");
+			if (pageNum == null) {
+				pageNum = "1";
+			} else if (pageNum.equals("")) {
+				pageNum = "1";
+			}
+			// startPage , endPage 구하는 식
+			int currentPage = 1;
+			try {
+				currentPage = Integer.parseInt(pageNum);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
+			int pageCount = (nCount / pageSize) + (nCount % pageSize == 0 ? 0 : 1);
+			int startPage = 1;
+			int endPage = 1;
+			if (currentPage % pageBlock == 0) {
+				startPage = ((currentPage / pageBlock) - 1) * pageBlock + 1;
+			} else {
+				startPage = ((currentPage / pageBlock)) * pageBlock + 1;
+			}
+			endPage = startPage + pageBlock - 1;
+			if (endPage > pageCount)
+				endPage = pageCount;
+
+			// 페이징 rownum 구하기
+			int startRnum = ((currentPage - 1) * pageSize) + 1; // 거의 공식
+			int endRnum = startRnum + pageSize - 1; // currentPage*pageSize
+			System.out.println(startRnum + " - " + endRnum);
+
+			// 이전 다음 기능
+			int prev = 1;
+			int next = 1;
+			prev = startPage - 1;
+			next = endPage + 1;
+
+			System.out.println(prev + "이전 - 다음" + next);
+			List<orderVO> olist = osv.getBoardPage(startRnum, endRnum); /* 변경 : 메소드 */
+
+			// 보내주기
+		
+			request.setAttribute("startPage", startPage);
+			request.setAttribute("endPage", endPage);
+			request.setAttribute("PageNum", currentPage);
+			request.setAttribute("pageCount", pageCount);
+			request.setAttribute("prev", prev);
+			request.setAttribute("next", next);
+
+			request.setAttribute("olist", olist); /* 변경 : el태그 - jsp이랑 맞추기 */
+			System.out.println(olist.size() + ", " + startPage + ", " + endPage);
+			RequestDispatcher disp1 = request.getRequestDispatcher("./manage/oManage1.jsp"); /* 변경 : 경로 */
+			disp1.forward(request, response);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

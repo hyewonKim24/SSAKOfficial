@@ -143,7 +143,7 @@ function startUpdate(){
             </div>
         </div>
 
-        <div class="mManage_cont">
+ <div class="mManage_cont">
             <div class="mManage_cont_title">
                 회원정보 조회 및 수정
             </div>

@@ -10,51 +10,72 @@
 	crossorigin="anonymous"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+#quick {
+   position: absolute;
+   top: 300px;
+   left: 50%;
+   width: 70px;
+   z-index: 1;
+}
+#quick.fixed {
+	position : fixed;
+	top : 100px;
+}
+
 .recent_book_wrap {
-	position: absolute;
-	left: 50%;
-	width: 150px;
-	text-align: center;
-	border: 1px solid black;
-	margin-left: 570px;
-	margin-top: 20px;
-	padding: 5px;
+   margin-left: 570px;
+   padding: 10px;
+   padding-bottom: 20px;
+   text-align: center;
+   border: 1px solid #dcdcdc;
 }
 
 #recent_title {
-	width: 140px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	line-height: 30px;
+	   font-size: 12px;
+   line-height: 16px;
+   width: 120px;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   overflow: hidden;
+   line-height: 30px;
+   
 }
-
 .recent_book_wrap legend {
-	text-align: center;
-	font-weight: bold;
-	line-height: 20px;
+  text-align: center;
+   font-weight: bold;
+   color: #425c5a;
+   line-height: 20px;
 }
 
 .recent_img {
-	width: 100px;
-	height: 150px;
-	padding: 3px;
+	 width: 70px;
+   padding: 10px 0 5px 0;
 }
 
 #recent_empty {
-	font-size: 12px;
-	line-height: 30px;
+	width: 70px;
+   font-size: 12px;
+   line-height: 20px;
+   padding: 20px;
+   font-size: 12px;
 }
 </style>
 <script>
-$(window).scroll(function(){
-    var position = $(document).scrollTop();
-    $(".quick").css('top',  position );     
+$(document).ready(function() {
+    var Mnav = $("#quick").offset().top ;
+	$(window).scroll(function() {
+		var window = $(this).scrollTop();
+		if (Mnav < window ) {
+			$("#quick").addClass("fixed");
+		} else {
+			$("#quick").removeClass("fixed");
+		}
+	});
 });
 </script>
 </head>
 <body>
-	<div class="quick">
+	<div id="quick">
 		<fieldset class="recent_book_wrap">
 			<legend>최근 본 상품</legend>
 			<c:if test="${not empty RecentBook1}">
@@ -62,7 +83,7 @@ $(window).scroll(function(){
 					href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${RecentBook1.BISBN}">
 					<img src="${RecentBook1.bcover}" alt="book" class="recent_img">
 				</a>
-				<p id="recent_title">
+				<p id="recent_title" class="recent">
 					<a
 						href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${RecentBook1.BISBN}">${RecentBook1.btitle}</a>
 				</p>

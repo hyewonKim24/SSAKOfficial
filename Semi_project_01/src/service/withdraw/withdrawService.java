@@ -42,68 +42,122 @@ public class withdrawService {
 		}
 	}
 	
-	public int getBoardCount() throws SQLException {
+	private void commit() {
 		try {
-			Connection conn = ds.getConnection();
-			int cnt = 0;
-			cnt = new withdrawDAO().getBoardCount(conn);
-			return cnt;
-		}finally {
-			close();
+			if (conn != null) {
+				conn.commit();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
-	
-	public List<WithdrawVO> getBoardPage (int start, int end) throws SQLException{
+
+	private void rollback() {
 		try {
+			if (conn != null) {
+				conn.rollback();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public List<WithdrawVO> wreqSearch(String wtype, String wsearchbar, int start, int end)  throws SQLException {
+		Connection conn = ds.getConnection();
+		List<WithdrawVO> wlist = null;
+		try {
+			wlist = new withdrawDAO().wreqSearch(conn, wtype, wsearchbar, start, end);
+		} finally {
+			close();
+		}
+		return wlist;
+
+	}
+	
+	public int wreqSearchCount(String wtype, String wsearchbar) throws SQLException {
+		Connection conn = ds.getConnection();
+		int cnt = 0;
+		try {
+			cnt = new withdrawDAO().wreqSearchCount(conn, wtype, wsearchbar);
+			conn.setAutoCommit(false);
+			if(cnt > 0)
+				commit();
+			else
+				rollback();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int getBoardCount() throws SQLException {
+		Connection conn = ds.getConnection();
+		int cnt = 0;
+		try {
+			cnt = new withdrawDAO().getBoardCount(conn);
+			conn.setAutoCommit(false);
+			if (cnt > 0)
+				commit();
+			else
+				rollback();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+
+	public List<WithdrawVO> getBoardPage(int start, int end) throws SQLException {
 		Connection conn = ds.getConnection();
 		List<WithdrawVO> pagelist = null;
-		pagelist = new withdrawDAO().getBoardPage(conn, start, end);
-		return pagelist;
-		}finally {
+		try {
+			pagelist = new withdrawDAO().getBoardPage(conn, start, end);
+		} finally {
 			close();
 		}
+		return pagelist;
 	}
+
 	public int wrerInsert(WithdrawVO wvo) throws SQLException {
-		try {
 		Connection conn = ds.getConnection();
 		int result = 0;
-		result = new withdrawDAO().wrerInsert(conn, wvo);
-		System.out.println(result+"행 추가됨.");
+		try {
+			result = new withdrawDAO().wrerInsert(conn, wvo);
+			System.out.println(result + "행 추가됨.");
+			conn.setAutoCommit(false);
+			if (result > 0)
+				commit();
+			else
+				rollback();
+		} finally {
+			close();
+		}
 		return result;
-		}finally {
-			close();
-		}
 	}
-	public List<WithdrawVO> wreqList() throws SQLException{
-		try {
-		Connection conn = ds.getConnection();
-		List<WithdrawVO> wvo = null;
-		wvo = new withdrawDAO().wreqList(conn);
-		return wvo;
-		}finally {
-			close();
-		}
-		
-	}
+
+
 	public WithdrawVO wreqDetail(String mid) throws SQLException {
-		try {
 		Connection conn = ds.getConnection();
 		WithdrawVO wdetail = null;
-		wdetail = new withdrawDAO().wreqDetail(conn, mid);;
-		return wdetail;
-		}finally {
+		try {
+			wdetail = new withdrawDAO().wreqDetail(conn, mid);
+		} finally {
 			close();
 		}
+		return wdetail;
 	}
-	
-	public int wreqAccept(String mid) throws SQLException{
-		try {
+
+	public int wreqAccept(String mid) throws SQLException {
 		Connection conn = ds.getConnection();
 		int result = 0;
-		result = new withdrawDAO().wreqAccept(conn, mid);
-		return result;
-		}finally {
+		try {
+			result = new withdrawDAO().wreqAccept(conn, mid);
+			conn.setAutoCommit(false);
+			if(result > 0)
+				commit();
+			else
+				rollback();
+		} finally {
 			close();
 		}
+		return result;
 	}
 }

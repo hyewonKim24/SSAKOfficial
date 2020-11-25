@@ -32,7 +32,7 @@
 * {
 	margin: 0;
 }
-	
+
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0 auto;
@@ -49,7 +49,8 @@ body {
 
 .color-preview {
 	border: 1px solid #CCC;
-	margin: 2px;
+	margin-left: 3px;
+	margin-bottom : 4px;
 	zoom: 1;
 	vertical-align: top;
 	display: inline-block;
@@ -135,12 +136,47 @@ body {
 	height: 150px;
 	border: solid 1px;
 	margin: 0 auto;
-	margin-top: 32px;
+	
 	margin-bottom: 32px;
+}
+#myImg{
+	width : 128px;
+	height : 150px;
 }
 
 .bookcustom {
-	width: 530px;
+	width: 570px;
+	heigh : 678px;
+}
+
+.well .cstinfo {
+	outline: none;
+	border: none;
+	box-shadow: none;
+}
+
+.cstoption {
+	margin-bottom: 10px;
+}
+
+.csttitle {
+	padding-bottom: 50px;
+	color : #425c5a;
+	font-size : 16px;
+	font-weight : bold;
+}
+
+#tshirtFacing {
+	width: 570px;
+}
+#text-string{
+	height : 25px;
+}
+input.cstinfo{
+	padding-left : 0;
+}
+.table td {
+	padding-left : 0;
 }
 </style>
 </head>
@@ -153,7 +189,7 @@ body {
 		<section id="typography">
 			<%
 				String bookamount = request.getParameter("bookamount");
-				String bisbn = request.getParameter("bisbn");
+			String bisbn = request.getParameter("bisbn");
 			%>
 			<!-- Headings & Paragraph Copy -->
 			<div class="row">
@@ -162,24 +198,49 @@ body {
 					<div class="tabbable">
 						<!-- Only required for left/right tabs -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1" data-toggle="tab">북커버
-									색상</a></li>
-							<li><a href="#tab3" data-toggle="tab">크기</a></li>
-							<li><a href="#tab2" data-toggle="tab">디자인</a></li>
+							<li class="active"><a href="#tab1" data-toggle="tab">북커버디자인</a></li>
+							<li><a href="#tab2" data-toggle="tab">제작옵션</a></li>
 						</ul>
 						<div class="tab-content">
 							<div class="tab-pane active" id="tab1">
 								<div class="well">
-									<!--					      	<h3>Tee Styles</h3>-->
-									<!--						      <p>-->
-									<select id="">
-										<option value="1" selected="selected">Short Sleeve
-											Shirts</option>
-										<option value="2">Long Sleeve Shirts</option>
-										<option value="3">Hoodies</option>
-										<option value="4">Tank tops</option>
-									</select>
-									<!--						      </p>-->
+									<div class="input-append">
+										<input class="span2" id="text-string" type="text"
+											placeholder="텍스트를 입력하세요">
+										<button id="add-text" class="btn" title="Add text">
+											<i class="icon-share-alt"></i>
+										</button>
+										<hr>
+									</div>
+									<div id="avatarlist">
+										<!-- img size : 96px // 이미지 추가하는 곳. -->
+										<table>
+											<tr>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/m1.png"></td>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/m2.png"></td>
+											</tr>
+											<tr>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/s1.png"></td>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/s2.png"></td>
+											</tr>
+											<tr>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/h1.png"></td>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/h2.png"></td>
+											</tr>
+											<tr>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/a1.png"></td>
+												<td><img style="cursor: pointer;" class="img-polaroid"
+													src="./imgs/a2.png"></td>
+											</tr>
+										</table>
+									</div>
 								</div>
 								<div class="well">
 									<ul class="nav">
@@ -225,61 +286,45 @@ body {
 											style="background-color: #3469b7;"></li>
 										<li class="color-preview" title="Cherry Red"
 											style="background-color: #c50404;"></li>
+										
 									</ul>
 								</div>
 							</div>
 							<div class="tab-pane" id="tab2">
 								<div class="well">
-									<div class="input-append">
-										<input class="span2" id="text-string" type="text"
-											placeholder="add text here...">
-										<button id="add-text" class="btn" title="Add text">
-											<i class="icon-share-alt"></i>
-										</button>
-										<hr>
-									</div>
-									<div id="avatarlist">
-										<!-- img size : 96px // 이미지 추가하는 곳. -->
-										<table>
-											<tr>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/m1.png"></td>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/m2.png"></td>
-											</tr>
-											<tr>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/s1.png"></td>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/s2.png"></td>
-											</tr>
-											<tr>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/h1.png"></td>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/h2.png"></td>
-											</tr>
-											<tr>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/a1.png"></td>
-												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="<%=request.getContextPath() %>/imgs/a2.png"></td>
-											</tr>
-										</table>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane" id="tab3">
-								<div class="well">
+									<div class="cstoption">제본</div>
 									<div class="input-append">
 										<select id="">
-											<option value="1" selected="selected">Short Sleeve
-												Shirts</option>
-											<option value="2">Long Sleeve Shirts</option>
-											<option value="3">Hoodies</option>
-											<option value="4">Tank tops</option>
+											<option value="1" selected="selected">무선</option>
+											<option value="2">중철</option>
+											<option value="3">하드커버</option>
 										</select>
-										<hr>
+									</div>
+									<hr>
+									<div class="cstoption">표지인쇄</div>
+									<div class="input-append">
+										<select id="">
+											<option value="1" selected="selected">단면인쇄</option>
+											<option value="2">양면인쇄</option>
+										</select>
+									</div>
+									<hr>
+									<div class="cstoption">컬러</div>
+									<div class="input-append">
+										<select id="">
+											<option value="1" selected="selected">흑백인쇄</option>
+											<option value="2">컬러인쇄(4도)</option>
+										</select>
+									</div>
+									<hr>
+									<div class="cstoption">재질</div>
+									<div class="input-append">
+										<select id="">
+											<option value="3">일반지/아트지</option>
+											<option value="3">일반지/하드커버</option>
+											<option value="4">고급지/랑데뷰 - 네츄럴</option>
+											<option value="4">고급지/랑데뷰 - 울트랄화이트</option>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -330,18 +375,18 @@ body {
 										onclick="setFont('Engagement');" class="Engagement">Engagement</a></li>
 								</ul>
 								<button id="text-bold" class="btn" data-original-title="Bold">
-									<img src="<%=request.getContextPath() %>/imgs/font_bold.png" height="" width="">
+									<img src="img/font_bold.png" height="" width="">
 								</button>
 								<button id="text-italic" class="btn"
 									data-original-title="Italic">
-									<img src="<%=request.getContextPath() %>/imgs/font_italic.png" height="" width="">
+									<img src="img/font_italic.png" height="" width="">
 								</button>
 								<button id="text-strike" class="btn" title="Strike" style="">
-									<img src="<%=request.getContextPath() %>/imgs/font_strikethrough.png" height="" width="">
+									<img src="img/font_strikethrough.png" height="" width="">
 								</button>
 								<button id="text-underline" class="btn" title="Underline"
 									style="">
-									<img src="<%=request.getContextPath() %>/imgs/font_underline.png">
+									<img src="img/font_underline.png">
 								</button>
 								<a class="btn" href="#" rel="tooltip" data-placement="top"
 									data-original-title="Font Color"><input type="hidden"
@@ -375,10 +420,10 @@ body {
 					<div class="bookcustom" id='bookcustom'>
 						<div id="shirtDiv" class="page"
 							style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);">
-							<img id="tshirtFacing" src="<%=request.getContextPath() %>/imgs/ssak_bookcover-mockup.png"></img>
+							<img id="tshirtFacing" src="img/ssak_bookcover-mockup.png"></img>
 							<div id="drawingArea"
-								style="position: absolute; top: 175px; left: 65px; z-index: 10; width: 406; height: 287;">
-								<canvas id="tcanvas" width=406 height="287" class="hover"
+								style="position: absolute; top: 188px; left: 70px; z-index: 10; width: 438; height: 308;">
+								<canvas id="tcanvas" width="445" height="313" class="hover"
 									style="-webkit-user-select: none;"></canvas>
 							</div>
 						</div>
@@ -390,48 +435,52 @@ body {
 
 				<div class="span3">
 					<div id="thumbnail">
-						<img id="myImg" >
-						<input type="hidden" id="saveImg" value="0"/>
+						<img id="myImg"> <input type="hidden" id="saveImg" value="0" />
 					</div>
 					<div class="well" id="well3">
 						<h3>
-							<input type="text" name="ddesc"
-								value="북커버입니다" readonly>
+							<input type="text" name="ddesc" value="북커버입니다" class="cstinfo"
+								readonly>
 						</h3>
 						<p>
 						<table class="table">
-							<tr>
-								<!-- <td class="customInfo"><input type="text"
+							<!-- <tr>
+								<td class="customInfo"><input type="text"
 								name="dno" value="1003" readonly></td>
 								<td align="right"><input type="text"
-								name="ddesc" value="북커버입니다" readonly></td> -->
-							</tr>
+								name="ddesc" value="북커버입니다" readonly></td>
+							</tr> -->
 							<tr>
-								<td class="customInfo"></td>
 								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name=""
-									value="${bvo.btitle }" readonly></td>
+								<td align="right" class="csttitle">책이름</td>
 							</tr>
 							<tr>
-								<td class="customInfo"></td>
+								<!-- name 넣어야함-->
+								<td align="right"><input type="text" name="" value="책 이름"
+									class="cstinfo" readonly></td>
+							</tr>
+							<tr>
+								<td align="right" class="csttitle">책표준가</td>
+							</tr>
+							<tr>
 								<td align="right"><input type="text" name="bpriceStandard"
-									value="${bvo.bpriceStandard }" readonly></td>
+									value="책표준가" class="cstinfo" readonly></td>
 							</tr>
 							<tr>
-								<td class="customInfo"></td>
-								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name="bpriceSales" value="${bvo.bpricesales }"
-									readonly></td>
+								<td align="right" class="csttitle">책세일가</td>
 							</tr>
 							<tr>
 								<!-- name 넣어야함-->
-								<td class="customInfo"><strong></strong></td>
-								<td align="right"><strong><input type="text"
-										name="dprice" value="북커버가격" readonly></strong></td>
+								<td align="right"><input type="text" name="bpriceSales"
+									value="책세일가" class="cstinfo" readonly></td>
 							</tr>
 							<tr>
-								<td><input type="hidden" id="cutsom_bisbn" value="${bvo.BISBN}"></td>
-								<td><input type="hidden" id="cutsom_bookamount" value="<%=bookamount%>"></td>
+								<td align="right" class="csttitle">북커버가격</td>
+							</tr>
+							<tr>
+								<!-- name 넣어야함-->
+								<td align="right"><input type="text" name="dprice"
+									value="북커버가격" class="cstinfo" readonly></td>
 							</tr>
 						</table>
 						</p>
@@ -460,7 +509,7 @@ body {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+	<script src="./js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
@@ -522,20 +571,14 @@ function goCart(){
 	var bbb = imgData;	
 	goC(bbb);	
 };
-
-//장바구니 갈 때 경로
  function goC(bbb){
-	 
 		$.ajax({
-			url : "CartInsert",
+			url : "cstUploadtoCart",
 			type : "post",
-			data :{customURL : bbb,
-				bookamount : $("#cutsom_bookamount").val(),
-				bisbn : $("#cutsom_bisbn").val()
-			},
+			data :{customURL : bbb},
 		success : function(res){
-			if(res>0)
-				location.href="<%=request.getContextPath() %>/CartList";
+				confirm(res);
+				/* location.href="장바구니 페이지"; */
 		}
 		})
 	}; 
@@ -561,18 +604,15 @@ function goOrder(){
 };
 function goO(bbb){
 		$.ajax({
-			url : "OrderDirect",
+			url : "cstUploadtoOrder",
 			type : "post",
-			data : {customURL : bbb,
-				bookamount : $("#cutsom_bookamount").val(),
-				bisbn : $("#cutsom_bisbn").val()
-				},
+			data : {customURL : bbb},
 		success : function(res){
 				confirm(res);
 			 	/* location.href="결제하기 페이지"; */
 		}
 		})
-	}; 
+	};
 	
 function saveAs(uri, filename) {
 	var link = document.createElement('a');

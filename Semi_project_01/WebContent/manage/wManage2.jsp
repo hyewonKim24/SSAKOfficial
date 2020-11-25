@@ -49,7 +49,7 @@ $(function(){
             </div>
         </div>
 
-        <div class="wManage_cont">
+       div class="wManage_cont">
             <div id="wManage_cont_title">
                 탈퇴요청 상세정보
             </div>

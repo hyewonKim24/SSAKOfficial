@@ -29,77 +29,90 @@
             </div>
         </div>
 
-        <div class="mManage_cont">
-            <div class="mManage_cont_title">
-                회원정보 조회 및 수정
-            </div>
-            <div class="mManage_cont_board">
-            	
-                <form method="GET" action="#">
-                    <table class="mManage_cont_board_tb1">
-                        <thead>
-                            <tr>
-                                <th class="txt_mno">회원번호</th>
-                                <th class="txt_id">아이디</th>
-                                <th class="txt_name">이름</th>
-                                <th class="txt_gd">성별</th>
-                                <th class="txt_bday">생년월일</th>
-                                <th class="txt_email">이메일주소</th>
-                                <th class="txt_addr">주소</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                       <c:if test="${not empty mlist}">	<!--변경 : el태그 - servlet이랑 맞추기 -->
-							<c:forEach items="${mlist}" var="m" varStatus="s">	<!--변경 : el태그 - servlet이랑 맞추기 -->
-								<tr class="notice1">
-                                <td class="not1_mno">${m.mno}</td>
-                                <td id="not1_id"><a href="<%=request.getContextPath() %>/memberDetail?mid=${m.mid}">${m.mid}</a></td>
-                                <td class="not1_name">${m.mname}</td>
-                                <td class="not1_gd">${m.mgender}</td>
-                                <td class="not1_bday">${m.mbirthday}</td>
-                                <td class="not1_email">${m.memail}</td>
-                                <td class="not1_addr">${m.m_first_addr}</td>
-                            	</tr> 
-							</c:forEach>
-						</c:if>
-                        </tbody>
-                    </table>
-                    
-                    <div class="mManage_pagination">
-                        <div class="mManage_pagination_warp">
-						<c:if test="${startPage != endPage}">
-							<c:forEach varStatus="s"  begin="${startPage}" end="${endPage}" step="1">
-								<a href="memberSearch?pageNum=${s.count}&msearchbar=${msearchbar}&mtype=${mtype }">${s.count}</a>	<!--변경 : href 경로 -->
-							</c:forEach>
-						</c:if>
+      
+		<div class="mManage_cont">
+			<div class="mManage_cont_title">회원정보 조회 및 수정</div>
+			<span class="mManage_cont_subtitle"> '${msearchbar}' (으)로 검색한
+				결과입니다. </span>
+			<div class="mManage_cont_board">
+
+				<form method="GET" action="#">
+					<table class="mManage_cont_board_tb1">
+						<thead>
+							<tr>
+								<th class="txt_mno">회원번호</th>
+								<th class="txt_id">아이디</th>
+								<th class="txt_name">이름</th>
+								<th class="txt_gd">성별</th>
+								<th class="txt_bday">생년월일</th>
+								<th class="txt_email">이메일주소</th>
+								<th class="txt_addr">주소</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${not empty mlist}">
+								<!--변경 : el태그 - servlet이랑 맞추기 -->
+								<c:forEach items="${mlist}" var="m" varStatus="s">
+									<!--변경 : el태그 - servlet이랑 맞추기 -->
+									<tr class="notice1">
+										<td class="not1_mno">${m.mno}</td>
+										<td id="not1_id"><a href="memberDetail?mid=${m.mid}">${m.mid}</a></td>
+										<td class="not1_name">${m.mname}</td>
+										<td class="not1_gd">${m.mgender}</td>
+										<td class="not1_bday">${m.mbirthday}</td>
+										<td class="not1_email">${m.memail}</td>
+										<td class="not1_addr">${m.m_first_addr}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</tbody>
+					</table>
+
+					<div class="mManage_pagination">
+						<div class="mManage_pagination_warp">
+							<c:if test="${startPage != 1}">
+								<a href="memberSearch?pageNum=${prev}&msearchbar=${msearchbar}&mtype=${mtype }">이전</a>
+							</c:if>
+							<c:if test="${startPage != endPage}">
+								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
+									step="1">
+									<a
+										href="memberSearch?pageNum=${s.current}&msearchbar=${msearchbar}&mtype=${mtype }">${s.current}</a>
+									<!--변경 : href 경로 -->
+								</c:forEach>
+							</c:if>
+							<c:if test="${next < pageCount}">
+								<a href="memberSearch?pageNum=${next}&msearchbar=${msearchbar}&mtype=${mtype }">다음</a>
+							</c:if>
 						</div>
 					</div>
-					
-					
-                    <div class="mManage_search">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <select name="mtype">
-                                            <option value="1">전체</option>
-                                            <option value="2">아이디</option>
-                                            <option value="3">이름</option>
-                                        </select>
-                                    </td>
-                                    <td>
-                                    	<form name="mSBar">
-                                        <input type="text" name="mManage_searchbar" id="mManage_searchbar">
-                                        <input type="button" name="mManage_searchbtn" id ="mManage_searchbtn" value="검색">
-                                        </form>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            </div>
-        </div>
+				</form>
+
+				<div class="mManage_search">
+				<form name="mSform">
+					<table>
+						<tbody>
+							<tr>
+								<td><select name="mtype">
+										<option value="1">전체</option>
+										<option value="2">아이디</option>
+										<option value="3">이름</option>
+								</select></td>
+								<td>
+									
+										<input type="text" name="msearchbar"
+											id="mManage_searchbar"> <input type="button"
+											name="mManage_searchbtn" id="mManage_searchbtn" value="검색" 
+											onclick="goSearch()">
+									
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</form>
+				</div>
+			</div>
+		</div>
     </div>
 </body>
 </html>

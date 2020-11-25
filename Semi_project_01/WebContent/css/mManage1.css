@@ -1,5 +1,13 @@
-@charset "UTF-8";
- /* 회원관리 */
+@charset "UTF-8";    
+    
+     table, td {
+            border-collapse: collapse;
+        }
+        a {
+            text-decoration: none;
+        }
+        
+        /* 회원관리 */
         .mManage {
             position: relative;
             width: 1080px;
@@ -15,20 +23,78 @@
             float: left;
             margin-right: 60px;
         }
-        
-        #mManage_asidetlt{
-        	font-size : 30px;
-            padding-bottom: 20px;
+        .mManage_asidetlt{
+            font-size: 30px;
+            padding-bottom: 26px;
+        }
+        .mManage_cont_title{
+            font-size: 24px;
+            padding-bottom: 26px;
+        }
+        .mManage_asidenav{
+            border: 1px solid #f2f2f2;
+            border-bottom: 0;
         }   
         .mManage_asidenav ul li {
             height: 50px;
-            padding-left: 20px;
-            border: solid 1px;
+            line-height: 18px;
+            padding: 15px 0 15px 20px;
+            border-bottom: 1px solid #f2f2f2;
             box-sizing: border-box;
+            
         }
         .mManage_asidenav ul li a {
-            line-height: 50px;
+            
+            font-size: 14px;
+            color: #666;
         }
+        .mManage_asidenav ul li:hover,
+        .mManage_asidenav ul li:hover a {
+            color : #425c5a;
+            font-weight: 700;
+            background-size: 20px px;
+            background-color: #fafafa;
+        }
+        
+        .aside_arrow {
+            position: absolute;
+            right: 0;
+            padding-right: 20px;
+            line-height: 20px;
+            font-size: 14px;
+        }
+        /* aside 아래 */
+        .CS_info{
+        	position : absolute;
+        	top : 261px;
+        	width : 200px;
+            height: 60px;
+            box-sizing: border-box;
+			margin-top: 20px;
+            background-color: #fafafa;
+            border-radius: 0 100px 100px 0;
+            padding : 9px 0 0 21px;   
+        }
+        .CS_info a {
+            font-size: 12px;
+            line-height: 22px;
+            color : #333;
+        }
+        #one{
+            font-size: 14px;
+            font-weight: bold;
+            color : #333;   
+        }
+        #two{
+            position: absolute;
+            right: 0;
+            color: #425c5a;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 20px;
+            margin-top: 11px;
+        }
+
 
         /* 회원관리 content*/
         .mManage_cont {
@@ -39,17 +105,23 @@
         /* 회원관리 content title*/
         .mManage_cont_title {
             width: 100%;
-            font-size:24px;
-            padding-bottom: 20px;
+            
         }
         /* 회원관리 content board*/
         .mManage_cont_board{
             width: 100%;
-        }
-        .mManage_cont_board > table{
-            width: 100%;
-            border: solid 1px;
+            border-top : 2px solid #425c5a;
             
+        }
+        .mManage_cont_board_tb1{
+            width: 100%;
+            letter-spacing: -0.4px;
+        }
+        .mManage_cont_board_tb1 thead tr{
+            border-bottom: 1px solid black;
+        }
+        .notice1{
+            border-top: 1px solid #f2f2f2;
         }
         .txt_mno, .not1_mno{
             width: 60px;
@@ -64,7 +136,7 @@
             text-align: center;
         }
         .txt_gd, .not1_gd{
-            width: 30px;
+            width: 40px;
             text-align: center;
         }
         .txt_bday, .not1_bday{
@@ -72,51 +144,91 @@
             text-align: center;
         }
         .txt_email, .not1_email{
-            width: 220px;
+            width: 210px;
             text-align: center;
         }
         .txt_addr, .not1_addr{
             width: 270px;
             text-align: center;
         }
-        table thead tr{
-            height: 40px;
-            line-height: 40px;
-            background-color: rgb(216, 216, 216);
+        table thead th{
+            padding : 20px 0;
+            vertical-align: middle;
             font-size: 12px;
         }
-        .notice1{
-            width: 820px;
-            height: 30px;
-            line-height: 30px;
+        .mManage_cont_board_tb1 tbody td{
+            padding : 20px 0;
             font-size: 12px;
         }
+        .mManage_cont_board_tb1 tbody{
+            border-bottom: 2px solid  #f2f2f2;
+        }
+        
         /* 회원관리 페이지 넘버 */
         .mManage_pagination{
             width: 100%;
-            height: 30px;
+            height: 34px;
             text-align: center;
-            margin: 15px 0;   
+            margin-top: 60px;   
+            word-spacing: -8px;
         }
-        .mManage_pagination a {
+        .mManage_pagination_warp a:nth-child(1) {
+            border-left: 1px solid #ddd;
+        }
+        .mManage_pagination_warp a {
             display: inline-block;
-            width: 15px;
-            height: 15px;
+            width: 34px;
+            height: 34px;
             font-size: 12px;
-            line-height: 15px;
-            padding: 5px;
-            border: solid 0.5px;
+            font-weight: 700;
+            line-height: 34px;
+            border: 1px solid #ddd;
+            border-left: 0;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+        .mManage_pagination_warp a:hover {
+            background-color: #f7f7f7;
+            color : #425c5a;
+        }
+        /* 검색옵션
+         */
+        .mManage_search_wrap {
+            clear : both;
+            width: 100%;
+            margin-top: 30px;
+            border-top : 2px solid #425c5a;
         }
         .mManage_search {
-            clear : both;
             float : right;
-            padding : 10px 0;
+            margin: 30px 0;
+            word-spacing: -10px;
+        }
+        .search_option{
+            width: 100px;
+            height: 34px;
+            border: 1px solid #bfbfbf;
         }
         #mManage_searchbar{
             width: 200px;
+            height: 34px;
+            border: 1px solid #bfbfbf;
+            border-right: 0;
+            box-sizing: border-box;
+            vertical-align: middle;
         }
         #mManage_searchbtn{
-            width: 50px;
+            width: 34px;
+            height: 34px;
+            border: 1px solid #425c5a;
+            box-sizing: border-box;
+            padding: 0;
+            vertical-align: middle;
+            background-color: #425c5a;
+        }
+        #search_icon{
+            -webkit-filter: opacity(1) drop-shadow(0 0 0 white);
+            filter: opacity(1) drop-shadow(0 0 0 white);
         }
 
         
