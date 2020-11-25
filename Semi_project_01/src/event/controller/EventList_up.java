@@ -48,8 +48,7 @@ public class EventList_up extends HttpServlet {
 		System.out.println(request.getParameter("eno"));
 		request.getParameter("mid");
 		request.getParameter("econtent");
-		request.getSession().setAttribute("mid", "kim");
-		String mid = (String) request.getSession().getAttribute("mid");
+
 		// 페이징
 		int pageSize = 5; // 페이지 당 글 수
 		int pageBlock = 5; // 페이지 링크 수
@@ -106,7 +105,7 @@ public class EventList_up extends HttpServlet {
 			request.setAttribute("prev", prev);
 			request.setAttribute("next", next);
 			request.setAttribute("list", eventlist);
-			RequestDispatcher ds = request.getRequestDispatcher("./event_update.jsp");
+			RequestDispatcher ds = request.getRequestDispatcher("./event/event_update.jsp");
 			ds.forward(request, response);
 		} catch(Exception e) {
 			e.printStackTrace();

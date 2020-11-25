@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import event.model.EventVO;
+import member.model.memberVO;
 import service.event.EventService;
 
 /**
@@ -50,8 +51,7 @@ public class EventList extends HttpServlet {
 			throws ServletException, IOException {
 		EventService event = new EventService();
 
-		request.getSession().setAttribute("mid", "kim");
-		String mid = (String) request.getSession().getAttribute("mid");
+		
 		// 페이징
 		int pageSize = 5; // 페이지 당 글 수
 		int pageBlock = 5; // 페이지 링크 수
@@ -110,7 +110,7 @@ public class EventList extends HttpServlet {
 			request.setAttribute("prev", prev);
 			request.setAttribute("next", next);
 			request.setAttribute("list", eventlist);
-			RequestDispatcher ds = request.getRequestDispatcher("./event.jsp");
+			RequestDispatcher ds = request.getRequestDispatcher("./event/event.jsp");
 			ds.forward(request, response);
 		} catch (Exception e) {
 			e.printStackTrace();

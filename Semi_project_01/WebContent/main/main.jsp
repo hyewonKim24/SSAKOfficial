@@ -3,10 +3,7 @@
 <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ include file="./header.jsp"%>
 <%@ include file="./recentSide.jsp"%>
-<<<<<<< HEAD
-=======
 
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 <!DOCTYPE html>
 <html lang="ko">
 <head>

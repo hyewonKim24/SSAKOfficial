@@ -30,7 +30,6 @@
 </script>
 </head>
 <body>
-<<<<<<< HEAD
 	<%@ include file="../main/header.jsp"%>
 	<div class="oManage">
 		<div class="oManage_aside">
@@ -48,9 +47,6 @@
 				<br> 1:1 문의하기
 			</a>
 		</div>
-=======
-<%@ include file="../main/header.jsp"%>
-<div class="oManage">
         <div class="oManage_aside">
             <div id="oManage_asidetlt">관리자페이지</div>
             <div class="oManage_asidenav">
@@ -60,8 +56,6 @@
                     <li><a href="wreqList">탈퇴요청관리</a></li>
                 </ul>
             </div>
-        </div>
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 
 		<div class="oManage_cont">
 			<div class="oManage_cont_title">주문내역 조회</div>
