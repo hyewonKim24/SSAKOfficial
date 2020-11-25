@@ -1,9 +1,9 @@
+    <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../main/header.jsp"%>
-    <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">

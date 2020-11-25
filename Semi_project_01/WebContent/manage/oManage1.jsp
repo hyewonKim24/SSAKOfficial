@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="../css/oManage1.css"/>
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css"/>
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -21,7 +21,7 @@
             <div class="oManage_asidenav">
                 <ul>
                     <li><a href="memberList">회원정보조회 및 수정</a></li>
-                    <li><a href="orderList">주문내역조회</a></li>
+                    <li><a href="AdminOrderList">주문내역조회</a></li>
                     <li><a href="wreqList">탈퇴요청관리</a></li>
                 </ul>
             </div>

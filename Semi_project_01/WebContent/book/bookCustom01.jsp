@@ -444,7 +444,7 @@ body {
 							장바구니 <i class="icon-briefcase icon-white"></i>
 						</button>
 						<button type="button" class="btn btn-large btn-block btn-success"
-							name="addToTheBag" id="addToTheBag" onclick=goOrder()>
+							name="gototheorder" id="gototheorder" onclick=goOrder()>
 							결제하기 <i class="icon-briefcase icon-white"></i>
 						</button>
 					</div>
@@ -460,6 +460,7 @@ body {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+			<%String member = String.valueOf(session.getAttribute("member"));%>
 	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
@@ -560,6 +561,8 @@ function goOrder(){
 	goO(bbb);
 };
 function goO(bbb){
+	var bookamount= $("#cutsom_bookamount").val();
+	var bisbn = $("#cutsom_bisbn").val();
 		$.ajax({
 			url : "OrderDirect",
 			type : "post",
@@ -568,11 +571,13 @@ function goO(bbb){
 				bisbn : $("#cutsom_bisbn").val()
 				},
 		success : function(res){
-				confirm(res);
-			 	/* location.href="결제하기 페이지"; */
+			if(res>0)
+				location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
+			
 		}
 		})
 	}; 
+
 	
 function saveAs(uri, filename) {
 	var link = document.createElement('a');

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ include file="./header.jsp"%>
+<%@ include file="./recentSide.jsp"%>
 
 <!DOCTYPE html>
 <html lang="ko">
