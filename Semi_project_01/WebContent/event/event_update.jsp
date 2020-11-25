@@ -174,6 +174,20 @@ $('#comment_form').click(function () {
 		}
 	$('#alert').html('');
 });
+$('#text_area').keyup(function () {
+	if($(this).val().length>$(this).attr('maxlength')){
+		alert('제한길이를 초과했습니다.')
+		$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+	}
+	});
+
+	$('.comment_submit').click(function () {
+		if($('#text_area').val().length==0){
+			alert('댓글을 작성해주세요.');
+			$("#text_area").focus();
+			return false;
+		}
+	});
 });
 </script>
 </head>
@@ -195,7 +209,7 @@ $('#comment_form').click(function () {
 	            	<input type="hidden" name="eno" value="${param.eno}">
 	                <input type="hidden" name="pageNum" value="${page}">
                 	<span id="alert">수정할 내용을 입력해주세요.</span>
-	                <input type="text" id="text_area" name="econtent" value="${param.econtent}">
+	                <input type="text" id="text_area" name="econtent" maxlength="165" value="${param.econtent}">
 	                </c:when>
 	                <c:otherwise>
 	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="로그인 후 이용해주세요">

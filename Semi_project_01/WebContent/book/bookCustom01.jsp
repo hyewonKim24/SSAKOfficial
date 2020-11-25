@@ -608,19 +608,22 @@ function goOrder(){
 	goO(bbb);
 };
 function goO(bbb){
-	var bookamount= $("#cutsom_bookamount").val();
-	var bisbn = $("#cutsom_bisbn").val();
-		$.ajax({
-			url : "cstUploadtoOrder",
-			type : "post",
-			data : {customURL : bbb},
-		success : function(res){
-			if(res>0)
-				location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
-			
-		}
-		})
-	};
+	   var bookamount= $("#cutsom_bookamount").val();
+	   var bisbn = $("#cutsom_bisbn").val();
+	      $.ajax({
+	         url : "OrderDirect",
+	         type : "post",
+	         data : {customURL : bbb,
+	            bookamount : $("#cutsom_bookamount").val(),
+	            bisbn : $("#cutsom_bisbn").val()
+	            },
+	      success : function(res){
+	         if(res>0)
+	            location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
+	         
+	      }
+	      })
+	   }; 
 	 
 function saveAs(uri, filename) {
 	var link = document.createElement('a');
