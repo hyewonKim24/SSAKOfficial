@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* 탈퇴요청관리 */
+        .wdrManage {
+            position: relative;
+            width: 1080px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        /* 탈퇴요청관리 aside*/
+        .wdrManage_aside{   
+            position: absolute;
+            width: 200px;
+            height: auto;
+            float: left;
+            margin-right: 60px;
+        }
+        #wdrManage_asidetlt{
+        	font-size : 30px;
+            padding-bottom: 20px;
+        }   
+        
+        .wdrManage_asidenav ul li {
+            height: 50px;
+            padding-left: 20px;
+            border: solid 1px;
+            box-sizing: border-box;
+        }
+        .wdrManage_asidenav ul li a {
+            line-height: 50px;
+        }
+
+        /* 탈퇴요청관리 content*/
+        .wdrManage_cont {
+            position: absolute;
+            left: 260px;
+            width: 820px;
+        }
+        /* 탈퇴요청관리 content title*/
+
+        .wdrManage_cont_title {
+            width: 100%;
+            font-size:24px;
+            padding-bottom: 20px;
+        }
+        /* 탈퇴요청관리 content board*/
+        .wdrManage_cont_board{
+            width: 100%;
+        }
+        .wdrManage_cont_board > table{
+            width: 100%;
+            border: solid 1px;
+            
+        }
+        .txt_wdrno, .not1_wdrno{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_wdrid, .not1_wdrid{
+            width: 200px;
+            text-align: center;
+        }
+        .txt_wdrdate, .not1_wdrdate{
+            width: 210px;
+            text-align: center;
+        }
+        .txt_wdracpDate, .not1_wdracpDate{
+            width: 210px;
+            text-align: center;
+        }
+        .txt_wdracp, .not1_wdracp{
+            width: 100px;
+            text-align: center;
+        }
+        
+        table thead tr{
+            height: 40px;
+            line-height: 40px;
+            background-color: rgb(216, 216, 216);
+            font-size: 12px;
+        }
+        .notice1{
+            width: 820px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+        }
+        /* 탈퇴요청관리 페이지 넘버 */
+        .wdrManage_pagination{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            margin: 15px 0;   
+        }
+        .wdrManage_pagination a {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            line-height: 15px;
+            padding: 5px;
+            border: solid 0.5px;
+        }
+        .wdrManage_search {
+            clear : both;
+            float : right;
+            padding : 10px 0;
+        }
+        #wdrManage_searchbar{
+            width: 200px;
+        }
+        #wdrManage_searchbtn{
+            width: 50px;
+        }
+

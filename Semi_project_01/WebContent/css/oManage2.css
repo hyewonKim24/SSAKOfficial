@@ -1,0 +1,77 @@
+@charset "UTF-8";
+/* 주문관리 */
+        .mManage {
+            position: relative;
+            width: 1080px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        /* 주문관리 aside*/
+        .mManage_aside{   
+            position: absolute;
+            width: 200px;
+            height: auto;
+            float: left;
+            margin-right: 60px;
+        }
+        .mManage_aside h2{
+            padding-bottom: 20px;
+        }   
+        .mManage_asidenav ul li {
+            height: 50px;
+            padding-left: 20px;
+            border: solid 1px;
+            box-sizing: border-box;
+        }
+        .mManage_asidenav ul li a {
+            line-height: 50px;
+        }
+
+        /* 주문관리 content*/
+        .mManage_cont {
+            position: absolute;
+            left: 260px;
+            width: 820px;
+        }
+        /* 주문관리 content title*/
+        .mManage_cont_title {
+            width: 100%;
+            padding-bottom: 20px;
+        }
+        .mManage_cont_board{
+            width: 100%;
+            height: 450px;
+            background-color: white;
+            border: solid 1px;
+            box-sizing: border-box;
+        }
+        .order_info {
+            padding-top: 30px;
+        }
+        .order_info table{
+            width: 720px;
+            margin: 0 auto;
+            background-color: white;
+            font-size: 12px;
+            border: solid 1px;
+        }
+        .order_info table tr{
+            height: 30px;
+            border: solid 1px;
+        }
+        .order_info th{
+            line-height: 30px;
+            border: solid 1px;
+            font-weight: bold;
+            background-color: rgb(233, 233, 233);
+        }
+        .order_info td{
+            padding-left: 10px;
+            line-height: 30px;
+        }
+        .order_info tr:last-child td{
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+        }

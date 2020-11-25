@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+/* 주문내역관리 */
+        .oManage {
+            position: relative;
+            width: 1080px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        /* 주문내역관리 aside*/
+        .oManage_aside{   
+            position: absolute;
+            width: 200px;
+            height: auto;
+            float: left;
+            margin-right: 60px;
+        }
+        .oManage_aside h2{
+            padding-bottom: 20px;
+        }
+        #oManage_asidetlt{
+        	font-size : 30px;
+            padding-bottom: 20px;
+        }   
+       
+        .oManage_asidenav ul li {
+            height: 50px;
+            padding-left: 20px;
+            border: solid 1px;
+            box-sizing: border-box;
+        }
+        .oManage_asidenav ul li a {
+            line-height: 50px;
+        }
+
+        /* 주문내역관리 content*/
+        .oManage_cont {
+            position: absolute;
+            left: 260px;
+            width: 820px;
+        }
+        /* 주문내역관리 content title*/
+        .oManage_cont_title {
+            width: 100%;
+            font-size:24px;
+            padding-bottom: 20px;
+        }
+        /* 주문내역관리 content board*/
+        .oManage_cont_board{
+            width: 100%;
+        }
+        .oManage_cont_board > table{
+            width: 100%;
+            border: solid 1px;
+            
+        }
+        .txt_ono, .not1_ono{
+            width: 60px;
+            text-align: center;
+        }
+        .txt_oid, .not1_oid{
+            width: 130px;
+            text-align: center;
+        }
+        /* .txt_oname, .not1_oname{
+            width: 100px;
+            text-align: center;
+        } */
+        .txt_ocnt, .not1_ocnt{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_ototalp, .not1_ototalp{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_operson, .not1_operson{
+            width: 110px;
+            text-align: center;
+        }
+        .txt_contect, .not1_ocontect{
+            width: 210px;
+            text-align: center;
+        }
+        .txt_opay, .not1_opay{
+            width: 110px;
+            text-align: center;
+        }
+        table thead tr{
+            height: 40px;
+            line-height: 40px;
+            background-color: rgb(216, 216, 216);
+            font-size: 12px;
+        }
+        .notice1{
+            width: 820px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+        }
+        /* 주문내역관리 페이지 넘버 */
+        .oManage_pagination{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            margin: 15px 0;   
+        }
+        .oManage_pagination a {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            line-height: 15px;
+            padding: 5px;
+            border: solid 0.5px;
+        }
+        .oManage_search {
+            clear : both;
+            float : right;
+            padding : 10px 0;
+        }
+        #oManage_searchbar{
+            width: 200px;
+        }
+        #oManage_searchbtn{
+            width: 50px;
+        }
+        

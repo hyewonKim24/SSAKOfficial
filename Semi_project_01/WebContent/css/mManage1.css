@@ -1,0 +1,122 @@
+@charset "UTF-8";
+ /* 회원관리 */
+        .mManage {
+            position: relative;
+            width: 1080px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        /* 회원관리 aside*/
+        .mManage_aside{   
+            position: absolute;
+            width: 200px;
+            height: auto;
+            float: left;
+            margin-right: 60px;
+        }
+        
+        #mManage_asidetlt{
+        	font-size : 30px;
+            padding-bottom: 20px;
+        }   
+        .mManage_asidenav ul li {
+            height: 50px;
+            padding-left: 20px;
+            border: solid 1px;
+            box-sizing: border-box;
+        }
+        .mManage_asidenav ul li a {
+            line-height: 50px;
+        }
+
+        /* 회원관리 content*/
+        .mManage_cont {
+            position: absolute;
+            left: 260px;
+            width: 820px;
+        }
+        /* 회원관리 content title*/
+        .mManage_cont_title {
+            width: 100%;
+            font-size:24px;
+            padding-bottom: 20px;
+        }
+        /* 회원관리 content board*/
+        .mManage_cont_board{
+            width: 100%;
+        }
+        .mManage_cont_board > table{
+            width: 100%;
+            border: solid 1px;
+            
+        }
+        .txt_mno, .not1_mno{
+            width: 60px;
+            text-align: center;
+        }
+        .txt_id, .not1_id{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_name, .not1_name{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_gd, .not1_gd{
+            width: 30px;
+            text-align: center;
+        }
+        .txt_bday, .not1_bday{
+            width: 100px;
+            text-align: center;
+        }
+        .txt_email, .not1_email{
+            width: 220px;
+            text-align: center;
+        }
+        .txt_addr, .not1_addr{
+            width: 270px;
+            text-align: center;
+        }
+        table thead tr{
+            height: 40px;
+            line-height: 40px;
+            background-color: rgb(216, 216, 216);
+            font-size: 12px;
+        }
+        .notice1{
+            width: 820px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+        }
+        /* 회원관리 페이지 넘버 */
+        .mManage_pagination{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            margin: 15px 0;   
+        }
+        .mManage_pagination a {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            font-size: 12px;
+            line-height: 15px;
+            padding: 5px;
+            border: solid 0.5px;
+        }
+        .mManage_search {
+            clear : both;
+            float : right;
+            padding : 10px 0;
+        }
+        #mManage_searchbar{
+            width: 200px;
+        }
+        #mManage_searchbtn{
+            width: 50px;
+        }
+
+        

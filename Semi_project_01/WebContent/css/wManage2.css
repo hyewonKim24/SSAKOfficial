@@ -1,0 +1,89 @@
+@charset "UTF-8";
+/* 탈퇴요청 상세정보 */
+        .wManage {
+            position: relative;
+            width: 1080px;
+            height: 500px;
+            margin: 0 auto;
+            padding-top: 60px;
+        }
+        /* 탈퇴요청 상세정보 aside*/
+        .wManage_aside{   
+            position: absolute;
+            width: 200px;
+            height: auto;
+            float: left;
+            margin-right: 60px;
+        }
+        #wManage_asidetlt{
+            padding-bottom: 20px;
+            font-size: 30px;
+        }   
+         /* reset 안먹어서 임의로 적음 */
+        .wManage_asidenav ul{
+        	padding : 0;
+        }
+        .wManage_asidenav ul li {
+            height: 50px;
+            padding-left: 20px;
+            border: solid 1px;
+            box-sizing: border-box;
+            /* reset 안먹어서 임의로 적음 */
+            list-style : none;
+        }
+        .wManage_asidenav ul li a {
+            line-height: 50px;
+        }
+
+        /* 탈퇴요청 상세정보 content*/
+        .wManage_cont {
+            position: absolute;
+            left: 260px;
+            width: 820px;
+        }
+        /* 탈퇴요청 상세정보 content title*/
+        #wManage_cont_title {
+            width: 100%;
+            font-size: 24px;
+            padding-bottom: 20px;
+        }
+        /* 탈퇴요청 상세정보 content board */
+        .wManage_cont_board{
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            border: solid 1px;
+            box-sizing: border-box;    
+        }
+        .wreq_info{
+            padding-top: 35px;
+        }
+        .wreq_info table{
+            width: 720px;
+            height: 330px;
+            margin: 0 auto;
+            background-color: white;
+            font-size: 12px;
+            
+        }
+        .wreq_info th {
+            font-weight: bold;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: solid 1px;
+            background-color: rgb(233, 233, 233);
+        }
+        .wreq_info td{
+            padding-left: 10px;
+            border: solid 1px;
+        }
+        #wreq_rdesc{
+            height: 190px;
+        }
+        .wreq_info tr:last-child td{
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border: none;
+        }
