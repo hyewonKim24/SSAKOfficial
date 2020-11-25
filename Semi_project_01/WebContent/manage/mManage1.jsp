@@ -46,7 +46,6 @@
 			<span id="one">도움이 필요하신가요?</span> 
 			<span id="two">></span>
 				<br> 1:1 문의하기
-
 			</a>
 		</div>
 	<div class="mManage_cont">
