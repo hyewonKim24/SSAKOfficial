@@ -17,7 +17,6 @@
 	text-align: center;
 	border: 1px solid black;
 	margin-left: 570px;
-	margin-top: 20px;
 	padding: 5px;
 }
 
@@ -45,16 +44,26 @@
 	font-size: 12px;
 	line-height: 30px;
 }
+#quick{
+   position: absolute;
+   top: 210px;
+   left: 50%;
+   width: 70px;
+}
 </style>
 <script>
 $(window).scroll(function(){
     var position = $(document).scrollTop();
-    $(".quick").css('top',  position );     
+    if($(this).scrollTop() > 210 ){
+      $("#quick").css('position','fixed');
+    }else{
+      $("#quick").css('position','relative');
+    }
 });
 </script>
 </head>
 <body>
-	<div class="quick">
+	<div id="quick">
 		<fieldset class="recent_book_wrap">
 			<legend>최근 본 상품</legend>
 			<c:if test="${not empty RecentBook1}">

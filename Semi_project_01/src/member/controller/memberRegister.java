@@ -64,7 +64,7 @@ public class memberRegister extends HttpServlet {
 				|| mzip_code.equals("") || m_first_addr == null || m_first_addr.equals("") || Smbirthday == null
 				|| Smbirthday.equals("") || Smgender == null || Smgender.equals("")) {
 			request.setAttribute("register_fail", "회원가입 정보를 제대로 입력해주세요.");
-			RequestDispatcher dis = request.getRequestDispatcher("./memberRegister.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("./member/memberRegister.jsp");
 			dis.forward(request, response);
 
 		} else {
@@ -89,11 +89,11 @@ public class memberRegister extends HttpServlet {
 				if (rs == 1) {
 					System.out.println(rs + "행 추가되었습니다. register controller");
 					request.setAttribute("register_ok", "회원가입이 완료되었습니다. 로그인을 해주세요");
-					RequestDispatcher dis = request.getRequestDispatcher("./memberLogin.jsp");
+					RequestDispatcher dis = request.getRequestDispatcher("./member/memberLogin.jsp");
 					dis.forward(request, response);
 				} else {
 					request.setAttribute("register_fail", "회원가입에 실패했습니다. 다시 회원가입을 해주세요.");
-					RequestDispatcher dis = request.getRequestDispatcher("./memberRegister.jsp");
+					RequestDispatcher dis = request.getRequestDispatcher("./member/memberRegister.jsp");
 					dis.forward(request, response);
 				}
 			} catch (SQLException e) {
