@@ -1,20 +1,11 @@
-<<<<<<< HEAD
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css" />
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="./viewcss/oManage1.css" />
+<link href="./reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
-=======
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css"/>
-<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-	String crtpath = request.getContextPath();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,32 +24,21 @@
 	<%@ include file="../main/header.jsp"%>
 	<div class="oManage">
 		<div class="oManage_aside">
-			<div class="oManage_asidetlt">회원관리</div>
+			<div id="oManage_asidetlt">관리자페이지</div>
+			
 			<div class="oManage_asidenav">
 				<ul>
-					<li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
+					<li><a href="memberList">회원정보조회 및 수정</a></li>
+					<li><a href="orderList">주문내역조회</a></li>
+					<li><a href="wreqList">탈퇴요청관리</a></li>
 				</ul>
 			</div>
 		</div>
-		<div class="CS_info">
-			<a href="#"> <span id="one">도움이 필요하신가요?</span> <span id="two">></span>
-				<br> 1:1 문의하기
-			</a>
-		</div>
-        <div class="oManage_aside">
-            <div id="oManage_asidetlt">관리자페이지</div>
-            <div class="oManage_asidenav">
-                <ul>
-                    <li><a href="memberList">회원정보조회 및 수정</a></li>
-                    <li><a href="AdminOrderList">주문내역조회</a></li>
-                    <li><a href="wreqList">탈퇴요청관리</a></li>
-                </ul>
-            </div>
 
 		<div class="oManage_cont">
 			<div class="oManage_cont_title">주문내역 조회</div>
+			<span class="oManage_cont_subtitle"> '${osearchbar}' (으)로 검색한
+				결과입니다. </span>
 			<div class="oManage_cont_board">
 				<form method="GET" action="#">
 					<table class="oManage_cont_board_tb1">
@@ -95,40 +75,37 @@
 					<div class="oManage_pagination">
 						<div class="oManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="orderList?pageNum=${prev}"><</a>
+								<a href="orderSearch?pageNum=${prev}&osearchbar=${osearchbar}&otype=${otype }">이전</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="orderList?pageNum=${s.current}">${s.current}</a>
+									<a
+										href="orderSearch?pageNum=${s.current}&osearchbar=${osearchbar}&otype=${otype }">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="orderList?pageNum=${next}">></a>
+								<a href="orderSearch?pageNum=${next}&osearchbar=${osearchbar}&otype=${otype }">다음</a>
 							</c:if>
 						</div>
 					</div>
 				</form>
-
-				<div class="oManage_search_wrap">
-					<!-- 여기수정 -->
+				<div class="oManage_search">
 					<form name="oSform">
-						<table class="oManage_search">
+						<table>
 							<tbody>
 								<tr>
-									<!-- 여기수정 -->
-									<td><select name="otype" class="search_option">
+									<td><select name="otype">
 											<option value="1">전체</option>
 											<option value="2">주문번호</option>
 											<option value="3">주문아이디</option>
 											<option value="4">수령인</option>
 									</select></td>
 									<td><input type="text" name="osearchbar"
-										id="oManage_searchbar"> 
-										<button type="button"
+										id="oManage_searchbar"> <input type="button"
 										name="oManage_searchbtn" id="oManage_searchbtn" value="검색"
-										onclick="goSearch()"><img src="./imgs/search.png" style="width: 15px; height: 15px;" id="search_icon"></button></td>
+										onclick="goSearch()"></td>
 								</tr>
 							</tbody>
 						</table>

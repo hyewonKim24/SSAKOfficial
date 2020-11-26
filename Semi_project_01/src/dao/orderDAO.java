@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cart.model.CartListVO;
+
 import member.model.*;
 import order.model.*;
 
@@ -33,78 +34,187 @@ public class orderDAO {
 		}
 
 	}
+	//혜림코드
+	// 회원관리- 주문조회 검색했을때 뿌려지는 애들
+			//// qna option별 검색
+			public List<orderVO> orderSearch(Connection conn, String otype, String osearchbar, int start, int end) throws SQLException {
+				List<orderVO> olist = new ArrayList<orderVO>();
+				orderVO ovo = null;
+				System.out.println("다오에 접근");
+				try {
+					if (otype == null || otype == "") {
+						String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? or mid like ? or oamount like ? or ototalprice like ? or oname like ? or ophone like ? or opay like ? order by ono) o) where rnum >= ? and rnum <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setString(2, "%" + osearchbar + "%");
+						pstmt.setString(3, "%" + osearchbar + "%");
+						pstmt.setString(4, "%" + osearchbar + "%");
+						pstmt.setString(5, "%" + osearchbar + "%");
+						pstmt.setString(6, "%" + osearchbar + "%");
+						pstmt.setString(7, "%" + osearchbar + "%");
+						pstmt.setInt(8, start);
+						pstmt.setInt(9, end);
+						rs = pstmt.executeQuery();
 
-	// 공지사항 목록 페이징 - 공지사항 총 글 개수
-	public int getBoardCount(Connection conn) throws SQLException {
-		int cnt = 0;
-		String sql = "select COUNT(*) from order2";
-		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery(sql);
-			if (rs.next()) {
-				cnt = rs.getInt(1);
-			}
-		} finally {
-			close();
-		}
-		return cnt;
-	}
+					} else if (otype.equals("1")) {
+						String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? or mid like ? or oamount like ? or ototalprice like ? or oname like ? or ophone like ? or opay like ? order by ono) o) where rnum >= ? and rnum <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setString(2, "%" + osearchbar + "%");
+						pstmt.setString(3, "%" + osearchbar + "%");
+						pstmt.setString(4, "%" + osearchbar + "%");
+						pstmt.setString(5, "%" + osearchbar + "%");
+						pstmt.setString(6, "%" + osearchbar + "%");
+						pstmt.setString(7, "%" + osearchbar + "%");
+						pstmt.setInt(8, start);
+						pstmt.setInt(9, end);
+						rs = pstmt.executeQuery();
 
-	// 공지사항 전체 목록 메소드
-	public List<orderVO> getBoardPage(Connection conn, int start, int end) throws SQLException {
-		List<orderVO> olist = new ArrayList<orderVO>();
-		orderVO ovo = null;
-		String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 order by ono desc) o) where rnum >= ? and rnum <= ?";
-		try {
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, start);
-			pstmt.setInt(2, end);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				do {
-					ovo = new orderVO();
-					ovo.setOno(rs.getInt("ono"));
-					ovo.setMid(rs.getString("mid"));
-					ovo.setOtotalamount(rs.getInt("oamount"));
-					ovo.setOtotalprice(rs.getInt("ototalprice"));
-					ovo.setOname(rs.getString("oname"));
-					ovo.setOphone(rs.getString("ophone"));
-					ovo.setOpay(rs.getString("opay"));
-					olist.add(ovo);
-				} while (rs.next());
+					} else if (otype.equals("2")) {
+						String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? order by ono) o) where rnum >= ? and rnum <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setInt(2, start);
+						pstmt.setInt(3, end);
+						rs = pstmt.executeQuery();
+					} else if (otype.equals("3")) {
+						String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 where mid like ? order by ono) o) where rnum >= ? and rnum <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setInt(2, start);
+						pstmt.setInt(3, end);
+						rs = pstmt.executeQuery();
+					} else if (otype.equals("4")) {
+						String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 where oname like ? order by ono) o) where rnum >= ? and rnum <= ?";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setInt(2, start);
+						pstmt.setInt(3, end);
+						rs = pstmt.executeQuery();
+					}
+					
+					if (rs.next()) {
+						do {
+							ovo = new orderVO();
+							ovo.setOno(rs.getInt("ono"));
+							ovo.setMid(rs.getString("mid"));
+							ovo.setOamount(rs.getInt("oamount"));
+							ovo.setOtotalprice(rs.getInt("ototalprice"));
+							ovo.setOname(rs.getString("oname"));
+							ovo.setOphone(rs.getString("ophone"));
+							ovo.setOpay(rs.getString("opay"));
+							olist.add(ovo);
+						} while (rs.next());
+					}
+				} finally {
+					close();
+				}
+				return olist;
 			}
-		} finally {
-			close();
-		}
-		return olist;
-	}
 
-	public List<orderVO> orderList(Connection conn) throws SQLException {
-		List<orderVO> oList = null;
-		String sql = "select * from order2";
-		try {
-			System.out.println("db에 접근했습니다");
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				oList = new ArrayList<orderVO>();
-				do {
-					orderVO ovo = new orderVO();
-					ovo.setOno(rs.getInt("ono"));
-					ovo.setMid(rs.getString("mid"));
-					ovo.setOtotalamount(rs.getInt("oamount"));
-					ovo.setOtotalprice(rs.getInt("ototalprice"));
-					ovo.setOname(rs.getString("oname"));
-					ovo.setOphone(rs.getString("ophone"));
-					ovo.setOpay(rs.getString("opay"));
-					oList.add(ovo);
-				} while (rs.next());
+			//// 검색 총 결과 수
+			public int orderSearchCount(Connection conn, String otype, String osearchbar) throws SQLException {
+				int cnt = 0;
+				
+				try {
+					if (otype == null || otype == "") {
+						String sql = "select COUNT(*) from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? or mid like ? or oamount like ? or ototalprice like ? or oname like ? or ophone like ? or opay like ? order by ono) o)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setString(2, "%" + osearchbar + "%");
+						pstmt.setString(3, "%" + osearchbar + "%");
+						pstmt.setString(4, "%" + osearchbar + "%");
+						pstmt.setString(5, "%" + osearchbar + "%");
+						pstmt.setString(6, "%" + osearchbar + "%");
+						pstmt.setString(7, "%" + osearchbar + "%");
+						rs = pstmt.executeQuery();
+
+					} else if (otype.equals("1")) {
+						String sql = "select COUNT(*) from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? or mid like ? or oamount like ? or ototalprice like ? or oname like ? or ophone like ? or opay like ? order by ono) o)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						pstmt.setString(2, "%" + osearchbar + "%");
+						pstmt.setString(3, "%" + osearchbar + "%");
+						pstmt.setString(4, "%" + osearchbar + "%");
+						pstmt.setString(5, "%" + osearchbar + "%");
+						pstmt.setString(6, "%" + osearchbar + "%");
+						pstmt.setString(7, "%" + osearchbar + "%");
+						rs = pstmt.executeQuery();
+
+					} else if (otype.equals("2")) {
+						String sql = "select COUNT(*) from (select ROWNUM rnum, o.* from (select * from order2 where ono like ? order by ono) o)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						
+						rs = pstmt.executeQuery();
+					} else if (otype.equals("3")) {
+						String sql = "select COUNT(*) from (select ROWNUM rnum, o.* from (select * from order2 where mid like ? order by ono) o)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+						
+						rs = pstmt.executeQuery();
+					} else if (otype.equals("4")) {
+						String sql = "select COUNT(*) from (select ROWNUM rnum, o.* from (select * from order2 where oname like ? order by ono) o)";
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%" + osearchbar + "%");
+					
+						rs = pstmt.executeQuery();
+					}
+					if (rs.next()) {
+						cnt = rs.getInt(1);
+					}
+				} finally {
+					close();
+				}
+				return cnt;
 			}
-		} finally {
-			close();
-		}
-		return oList;
-	}
+
+		// 주문내 리스트 첫 목록 - 총 글 개수 
+			// 공지사항 전체 목록 메소드
+			public List<orderVO> getBoardPage(Connection conn, int start, int end) throws SQLException {
+				List<orderVO> olist = new ArrayList<orderVO>();
+				orderVO ovo = null;
+				String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 order by ono desc) o) where rnum >= ? and rnum <= ?";
+				try {
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, start);
+					pstmt.setInt(2, end);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						do {
+							ovo = new orderVO();
+							ovo.setOno(rs.getInt("ono"));
+							ovo.setMid(rs.getString("mid"));
+							ovo.setOamount(rs.getInt("oamount"));
+							ovo.setOtotalprice(rs.getInt("ototalprice"));
+							ovo.setOname(rs.getString("oname"));
+							ovo.setOphone(rs.getString("ophone"));
+							ovo.setOpay(rs.getString("opay"));
+							olist.add(ovo);
+						} while (rs.next());
+					}
+				} finally {
+					close();
+				}
+				return olist;
+			}
+
+			// 공지사항 목록 페이징 - 공지사항 총 글 개수
+			public int getBoardCount(Connection conn) throws SQLException {
+				int cnt = 0;
+				String sql = "select COUNT(*) from order2";
+				try {
+					stmt = conn.createStatement();
+					rs = stmt.executeQuery(sql);
+					if (rs.next()) {
+						cnt = rs.getInt(1);
+					}
+				} finally {
+					close();
+				}
+				return cnt;
+			}
+
 	public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
 		List<orderVO> odList = null;
 		
@@ -147,9 +257,6 @@ public class orderDAO {
 	}
 	
 	//은실 코드
-	
-	
-
 	// 장바구니에서 불러오기
 	public List<CartListVO> orderList(Connection conn, int[] chks) throws SQLException {
 		List<CartListVO> cartlist = new ArrayList<CartListVO>();

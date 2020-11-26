@@ -1,8 +1,9 @@
- <link href="reset.css" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="../main/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,8 @@
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
     <style>
 @import
-	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+	url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap')
+	;
 
 body {
 	width: 100%;
@@ -32,7 +34,7 @@ section {
 
 #event_title {
 	text-align: center;
-	border-bottom: 2px solid gray;
+	border-bottom: 1px solid #dcdcdc;
 	margin: 30px 0;
 }
 
@@ -47,6 +49,7 @@ section {
 	padding: 0;
 	border: 1px solid gray;
 	box-sizing: border-box;
+	font-size:14px;
 }
 
 #comment_form>#text_bottom {
@@ -61,23 +64,22 @@ section {
 	height: 100%;
 	text-align: right;
 	line-height: 35px;
-	margin: 0 auto;
-	padding-right: 20px;
 	border: 1px solid gray;
 	box-sizing: border-box;
 	border-top: 0;
 	border-right: 0;
-	font-size: 11px;
 }
 
 #comment_form>#text_bottom>.comment_submit {
-	width: 20%;
+	width: 21%;
 	height: 100%;
 	line-height: 35px;
 	border: 1px solid gray;
 	border-top: 0;
-	padding: 0;
 	box-sizing: border-box;
+	padding:0;
+	background-color:#425c5a;
+	color:#e9e9e9;
 }
 
 #event_comment {
@@ -88,6 +90,7 @@ section {
 	flex-direction: column;
 	list-style: none;
 	padding: 0;
+	font-size:14px;
 }
 
 .comment_list {
@@ -121,8 +124,55 @@ ul>li>.comment_text {
 	margin-bottom: 30px;
 	text-align: center;
 }
+
+.page{
+font-size:16px;
+margin:0 2px;
+}
+.pagearrow{
+margin:0 5px;
+font-size:14px;
+}
+
+.curpage{
+color:#425c5a;
+font-weight: bold;
+font-size:16px;
+margin:0 2px;
+}
+
 </style>
-    
+<script>
+<%
+String member = String.valueOf(session.getAttribute("member"));
+%>
+$(document).ready(function () {
+$('#comment_form').click(function () {
+	
+	var member="<%=member%>";
+		if(member==null || member=="" ||member=="null"){
+			console.log(member);
+			alert('로그인 후 이용해주세요');
+		}
+});
+
+$('#text_area').keyup(function () {
+if($(this).val().length>$(this).attr('maxlength')){
+	alert('제한길이를 초과했습니다.')
+	$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+}
+});
+
+$('.comment_submit').click(function () {
+	if($('#text_area').val().length==0){
+		alert('댓글을 작성해주세요.');
+		$("#text_area").focus();
+		return false;
+	}
+});
+
+});
+</script>
 
 </head>
 
@@ -132,16 +182,17 @@ ul>li>.comment_text {
             <h2>이벤트</h2>
         </div>
         <article>
-            <img src="./img/event_ridi.jpg" id="event_img" width="100%">
+            <img src="<%=request.getContextPath() %>/imgs/event.png" id="event_img" width="100%">
         </article>
         <article>
+        <c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>					
             <form id="comment_form" method="post" action="EventWrite">
             	<c:choose>
-	            	<c:when test="${not empty sessionScope.mid }">
-	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="댓글을 입력해 주세요">
+	            	<c:when test="${not empty member }">
+	                <input type="text" id="text_area" name="econtent" maxlength="165" value="${econtent}" placeholder="  댓글을 입력해 주세요">
 	                </c:when>
 	                <c:otherwise>
-	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="로그인 후 입력해주세요">
+	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="  로그인 후 이용해주세요">
 	                </c:otherwise>
 	            </c:choose>
                 <div id="text_bottom">
@@ -159,20 +210,19 @@ ul>li>.comment_text {
                      -->
                 </div>
             </form>
-		
+
 			<form name="replylist">
             <ul id="event_comment">
          	<c:if test="${not empty list}">
      		<c:forEach var="n" items="${list}"> 		
                 <li class="comment_list">
                 	<input type="hidden" name="eno" value="${n.eno}">
-                	<input type="hidden" name="mid" value="${n.mid}">
                 	<input type="hidden" name="econtent" value="${n.econtent}">
                 	<span class="comment_id">${n.mid}</span>
                     <span class="comment_reg_date">${n.edate}</span>
-                    <c:if test="${n.mid==sessionScope.mid}">
+                    <c:if test="${n.mid==member.mid}">
                     <span class="edit">
-                   		<a href="EventList_up?eno=${n.eno}&mid=${n.eno}&econtent=${n.econtent}">수정</a>&nbsp&nbsp| &nbsp&nbsp
+                   		<a href="EventList_up?eno=${n.eno}&econtent=${n.econtent}&pageNum=${page}">수정</a>&nbsp&nbsp| &nbsp&nbsp
                         <a href="EventDelete?eno=${n.eno}">삭제</a>
                     </span>
 					</c:if>
@@ -216,19 +266,20 @@ ul>li>.comment_text {
 		
 			<!--페이징 아래 숫자-->
 			<div class="pagediv">
+			<!--<c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>-->
 				<c:if test="${startPage != 1}">
-					<a href="EventList?pageNum=${prev}">이전</a>
+					<a class="pagearrow" href="EventList?pageNum=${prev}">이전</a>
 				</c:if>
-				<c:if test="${startPage != endPage}">
+				
 					<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 						step="1">
-
-						<a href="EventList?pageNum=${s.current}">${s.current}</a>
+						<!--  <a style="color:${(page==(s.current))?'#425c5a':''}" href="EventList?pageNum=${s.current}">${s.current}</a>-->
+						<a class="${(page==(s.current))?'curpage':'page'}" href="EventList?pageNum=${s.current}">${s.current}</a>
 						<!--변경 : href 경로 -->
 					</c:forEach>
-				</c:if>
+				
 				<c:if test="${endPage < pageCount}">
-					<a href="EventList?pageNum=${next}">다음</a>
+					<a class="pagearrow" href="EventList?pageNum=${next}">다음</a>
 				</c:if>
 			</div>
         </article>

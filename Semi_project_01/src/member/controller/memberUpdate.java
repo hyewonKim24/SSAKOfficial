@@ -76,11 +76,11 @@ public class memberUpdate extends HttpServlet {
 			if(result == 1) {
 				System.out.println(result + "행 수정되었습니다");
 				request.setAttribute("memberUpdate", "수정이 완료되었습니다" );
-				RequestDispatcher disp2 = request.getRequestDispatcher("memberList");
+				RequestDispatcher disp2 = request.getRequestDispatcher("./memberList");
 				disp2.forward(request, response);
 				out.println("<script>alert('수정되었습니다 :)');</script>");	
 			} else { 
-				RequestDispatcher disp2 = request.getRequestDispatcher("memberDetail");
+				RequestDispatcher disp2 = request.getRequestDispatcher("./memberDetail");
 				disp2.forward(request, response);
 				out.println("<script>alert('수정하지 못했습니다 :(');</script>");
 			}

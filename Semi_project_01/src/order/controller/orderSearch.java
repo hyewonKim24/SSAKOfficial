@@ -1,8 +1,9 @@
-package member.controller;
+package order.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,52 +13,59 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.*;
-import service.member.memberService;
+import order.model.orderVO;
+import service.order.orderService;
+
+
 
 /**
- * Servlet implementation class memberSearch
+ * Servlet implementation class wreqList
  */
-@WebServlet("/memberSearch")
-public class memberSearch extends HttpServlet {
+@WebServlet("/orderSearch")
+public class orderSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public memberSearch() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public orderSearch() {
+		super();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		execute(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		execute(request, response);
 	}
-	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String msearchbar = request.getParameter("msearchbar");
-		System.out.println("msearchbar" + msearchbar);
-		String mtype = request.getParameter("mtype");
-		System.out.println("mtype:" + mtype);
 
-		memberService msv = new memberService();
-		
+	protected void execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String osearchbar = request.getParameter("osearchbar");
+		System.out.println("osearchbar" + osearchbar);
+		String otype = request.getParameter("otype");
+		System.out.println("otype:" + otype);
+
+		orderService osv = new orderService();
+		PrintWriter out = response.getWriter();
 		// 페이징
 		int pageSize = 10; // 페이지 당 글 수
 		int pageBlock = 10; // 페이지 링크 수
 		try {
 			// 총 글 개수
-			int nCount = msv.memberSearchCount(mtype, msearchbar);
+			int nCount = osv.orderSearchCount(otype, osearchbar);
 			System.out.println("nCount : " + nCount);
 
 			// 페이지 수 초기화
@@ -73,7 +81,6 @@ public class memberSearch extends HttpServlet {
 				currentPage = Integer.parseInt(pageNum);
 			} catch (Exception e) {
 				e.printStackTrace();
-
 			}
 
 			int pageCount = (nCount / pageSize) + (nCount % pageSize == 0 ? 0 : 1);
@@ -89,64 +96,54 @@ public class memberSearch extends HttpServlet {
 				endPage = pageCount;
 
 			// 페이징 rownum 구하기
-			int start = ((currentPage - 1) * pageSize) + 1; // 거의 공식
-			int end = start + pageSize - 1; // currentPage*pageSize
+			int start= ((currentPage - 1) * pageSize) + 1; // 거의 공식
+			int end= start + pageSize - 1; // currentPage*pageSize
 			System.out.println(start + " - " + end);
-			
 
 			// 이전 다음 기능
 			int prev = 1;
 			int next = 1;
-			next = endPage + 1;
 			prev = startPage - 1;
-			if (startPage != 1) {
-				prev = startPage - 1;
-			}
-			if (endPage > pageCount) {
-				next = endPage + 1;
-			}
+			next = endPage + 1;
+
 			System.out.println(prev + "이전 - 다음" + next);
 
 			// 보내주기
-			if (msearchbar == null || msearchbar == "") {
+			if (osearchbar == null || osearchbar == "") {
 				request.setAttribute("search_error", "검색어를 입력해주세요");
 				System.out.println("검색어가 null 인 경우");
-				RequestDispatcher disp = request.getRequestDispatcher("./memberList");
+				RequestDispatcher disp = request.getRequestDispatcher("./OrderList");
 				disp.forward(request, response);
 			} else {
 				try {
-					List<memberVO> mlist = msv.memberSearch(mtype, msearchbar, start, end);
-					if (mlist != null) {
+					List<orderVO> olist = osv.orderSearch(otype, osearchbar, start, end);
+					if (olist != null) {
 						request.setAttribute("startPage", startPage);
 						request.setAttribute("endPage", endPage);
 						request.setAttribute("PageNum", currentPage);
 						request.setAttribute("pageCount", pageCount);
 						request.setAttribute("prev", prev);
 						request.setAttribute("next", next);
-						request.setAttribute("mtype", mtype);
-						request.setAttribute("mlist", mlist);
-						request.setAttribute("msearchbar", msearchbar);
-						System.out.println("검색 수 " + mlist.size() + ", " + startPage + ", " + endPage);
-						RequestDispatcher disp = request.getRequestDispatcher("./manage/mManageSearch.jsp");
-						disp.forward(request, response);
-
+						request.setAttribute("otype", otype);
+						request.setAttribute("olist", olist); /* 변경 : el태그 - jsp이랑 맞추기 */
+						request.setAttribute("osearchbar", osearchbar);
+						System.out.println(olist.size() + ", " + startPage + ", " + endPage);
+						RequestDispatcher disp1 = request.getRequestDispatcher("./manage/oManageSearch.jsp"); /* 변경 : 경로 */
+						disp1.forward(request, response);
 					} else {
 						// null elert
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
 					request.setAttribute("errorMsg", "존재하지 않는 회원입니다. 다시 입력해주세요 :(");
-					RequestDispatcher disp1 = request.getRequestDispatcher("./manage/mManage1.jsp"); /* 변경 : 경로 */
+					RequestDispatcher disp1 = request.getRequestDispatcher("./manage/oManage1.jsp"); /* 변경 : 경로 */
 					disp1.forward(request, response);
 				}
 			}
-		}catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-			request.setAttribute("errorMsg", "존재하지 않는 회원입니다. 다시 입력해주세요 :(");
-			RequestDispatcher disp1 = request.getRequestDispatcher("./manage/mManage1.jsp"); /*변경 : 경로*/
-			disp1.forward(request, response);
-			
-					
+
 		}
+
 	}
 }

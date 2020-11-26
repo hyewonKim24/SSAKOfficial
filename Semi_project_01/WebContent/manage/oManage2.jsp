@@ -101,7 +101,7 @@
                     </tr>
                     <tr>
                         <td colspan="6">
-                            <input type="button" value="뒤로가기" onclick="location.href='orderList'">
+                            <input type="button" value="뒤로가기" onclick="location.href='<%=request.getContextPath() %>/OrderList'">
                         </td>
                     </tr>
                 </table>

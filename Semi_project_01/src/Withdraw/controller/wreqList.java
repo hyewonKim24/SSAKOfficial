@@ -46,7 +46,7 @@ public class wreqList extends HttpServlet {
 	}
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		withdrawService wsv = new withdrawService();
+withdrawService wsv = new withdrawService();
 		
 		// 페이징
 				int pageSize = 10; // 페이지 당 글 수
@@ -89,12 +89,22 @@ public class wreqList extends HttpServlet {
 					int startRnum = ((currentPage-1)*pageSize)+1;	// 거의 공식
 					int endRnum = startRnum + pageSize - 1;			// currentPage*pageSize
 					System.out.println(startRnum +  " - "+ endRnum );
+					// 이전 다음 기능
+					int prev = 1;
+					int next = 1;
+					prev = startPage - 1;
+					next = endPage + 1;
+					
+					System.out.println(prev + "이전 - 다음" + next);
 					List<WithdrawVO> wdlist = wsv.getBoardPage(startRnum , endRnum);  /*변경 : 메소드*/
 
 						//보내주기 
 					request.setAttribute("startPage", startPage);
 					request.setAttribute("endPage", endPage);
 					request.setAttribute("PageNum", currentPage);
+					request.setAttribute("pageCount", pageCount);
+					request.setAttribute("prev", prev);
+					request.setAttribute("next", next);
 				
 					request.setAttribute("wdlist", wdlist);	/* 변경 : el태그 - jsp이랑 맞추기  */
 					System.out.println(wdlist.size()+ ", " + startPage + ", "+ endPage);
