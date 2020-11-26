@@ -155,6 +155,22 @@ $('#comment_form').click(function () {
 			alert('로그인 후 이용해주세요');
 		}
 });
+
+$('#text_area').keyup(function () {
+if($(this).val().length>$(this).attr('maxlength')){
+	alert('제한길이를 초과했습니다.')
+	$(this).val($(this).val().substr(0, $(this).attr('maxlength')));
+}
+});
+
+$('.comment_submit').click(function () {
+	if($('#text_area').val().length==0){
+		alert('댓글을 작성해주세요.');
+		$("#text_area").focus();
+		return false;
+	}
+});
+
 });
 </script>
 
@@ -173,7 +189,7 @@ $('#comment_form').click(function () {
             <form id="comment_form" method="post" action="EventWrite">
             	<c:choose>
 	            	<c:when test="${not empty member }">
-	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="  댓글을 입력해 주세요">
+	                <input type="text" id="text_area" name="econtent" maxlength="165" value="${econtent}" placeholder="  댓글을 입력해 주세요">
 	                </c:when>
 	                <c:otherwise>
 	                <input type="text" id="text_area" name="econtent" value="${econtent}" placeholder="  로그인 후 이용해주세요">
