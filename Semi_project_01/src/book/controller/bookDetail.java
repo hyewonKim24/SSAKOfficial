@@ -68,6 +68,9 @@ public class bookDetail extends HttpServlet {
 				e.printStackTrace();
 			}
 			request.setAttribute("bisbn", bisbn);
+			RequestDispatcher dis = request.getRequestDispatcher("./book/bookDetail.jsp");
+			dis.forward(request, response);
+
 		} else {
 			BookVO bvo2 = null;
 			bookService bsv = new bookService();

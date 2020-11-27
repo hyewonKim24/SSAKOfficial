@@ -149,14 +149,14 @@ public class orderService {
 	
 	public List<CartListVO> orderList(int[] chks) throws SQLException {
 		Connection conn = ds.getConnection();
-		List list = new orderDAO().orderList(conn, chks);
+		List<CartListVO> list = new orderDAO().orderList(conn, chks);
 		conn.close();
 		return list;
 	}
 	
 	public List<CartListVO> directOrderList(String bisbn, int dno) throws SQLException {
 		Connection conn = ds.getConnection();
-		List list = new orderDAO().directOrderList(conn, bisbn, dno);
+		List<CartListVO> list = new orderDAO().directOrderList(conn, bisbn, dno);
 		conn.close();
 		return list;
 	}
