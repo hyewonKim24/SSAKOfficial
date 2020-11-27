@@ -40,7 +40,7 @@
 * {
 	margin: 0;
 }
-
+	
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 	margin: 0 auto;
@@ -57,8 +57,12 @@ body {
 
 .color-preview {
 	border: 1px solid #CCC;
+<<<<<<< HEAD
 	margin-left: 3px;
 	margin-bottom: 4px;
+=======
+	margin: 2px;
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	zoom: 1;
 	vertical-align: top;
 	display: inline-block;
@@ -151,29 +155,24 @@ body {
 	width: 128px;
 	height: 150px;
 }
-
 .bookcustom {
 	width: 570px;
 	heigh: 678px;
 }
-
 .well .cstinfo {
 	outline: none;
 	border: none;
 	box-shadow: none;
 }
-
 .cstoption {
 	margin-bottom: 10px;
 }
-
 .csttitle {
 	padding-bottom: 50px;
 	color: #425c5a;
 	font-size: 16px;
 	font-weight: bold;
 }
-
 #tshirtFacing {
 	width: 570px;
 }
@@ -200,7 +199,7 @@ input.cstinfo {
 		<section id="typography">
 			<%
 				String bookamount = request.getParameter("bookamount");
-			String bisbn = request.getParameter("bisbn");
+				String bisbn = request.getParameter("bisbn");
 			%>
 			<!-- Headings & Paragraph Copy -->
 			<div class="row">
@@ -209,7 +208,7 @@ input.cstinfo {
 					<div class="tabbable">
 						<!-- Only required for left/right tabs -->
 						<ul class="nav nav-tabs">
-							<li class="active"><a href="#tab1" data-toggle="tab">북커버디자인</a></li>
+								<li class="active"><a href="#tab1" data-toggle="tab">북커버디자인</a></li>
 							<li><a href="#tab2" data-toggle="tab">제작옵션</a></li>
 						</ul>
 						<div class="tab-content">
@@ -228,27 +227,27 @@ input.cstinfo {
 										<table>
 											<tr>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/m1.png"></td>
+													src="<%=request.getContextPath() %>/imgs/m1.png"></td>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/m2.png"></td>
+													src="<%=request.getContextPath() %>/imgs/m2.png"></td>
 											</tr>
 											<tr>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/s1.png"></td>
+													src="<%=request.getContextPath() %>/imgs/s1.png"></td>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/s2.png"></td>
+													src="<%=request.getContextPath() %>/imgs/s2.png"></td>
 											</tr>
 											<tr>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/h1.png"></td>
+													src="<%=request.getContextPath() %>/imgs/h1.png"></td>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/h2.png"></td>
+													src="<%=request.getContextPath() %>/imgs/h2.png"></td>
 											</tr>
 											<tr>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/a1.png"></td>
+													src="<%=request.getContextPath() %>/imgs/a1.png"></td>
 												<td><img style="cursor: pointer;" class="img-polaroid"
-													src="./imgs/a2.png"></td>
+													src="<%=request.getContextPath() %>/imgs/a2.png"></td>
 											</tr>
 										</table>
 									</div>
@@ -297,12 +296,15 @@ input.cstinfo {
 											style="background-color: #3469b7;"></li>
 										<li class="color-preview" title="Cherry Red"
 											style="background-color: #c50404;"></li>
+<<<<<<< HEAD
 
+=======
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 									</ul>
 								</div>
 							</div>
 							<div class="tab-pane" id="tab2">
-								<div class="well">
+									<div class="well">
 									<div class="cstoption">제본</div>
 									<div class="input-append">
 										<select id="">
@@ -386,18 +388,18 @@ input.cstinfo {
 										onclick="setFont('Engagement');" class="Engagement">Engagement</a></li>
 								</ul>
 								<button id="text-bold" class="btn" data-original-title="Bold">
-									<img src="img/font_bold.png" height="" width="">
+									<img src="<%=request.getContextPath() %>/imgs/font_bold.png" height="" width="">
 								</button>
 								<button id="text-italic" class="btn"
 									data-original-title="Italic">
-									<img src="img/font_italic.png" height="" width="">
+									<img src="<%=request.getContextPath() %>/imgs/font_italic.png" height="" width="">
 								</button>
 								<button id="text-strike" class="btn" title="Strike" style="">
-									<img src="img/font_strikethrough.png" height="" width="">
+									<img src="<%=request.getContextPath() %>/imgs/font_strikethrough.png" height="" width="">
 								</button>
 								<button id="text-underline" class="btn" title="Underline"
 									style="">
-									<img src="img/font_underline.png">
+									<img src="<%=request.getContextPath() %>/imgs/font_underline.png">
 								</button>
 								<a class="btn" href="#" rel="tooltip" data-placement="top"
 									data-original-title="Font Color"><input type="hidden"
@@ -431,7 +433,7 @@ input.cstinfo {
 					<div class="bookcustom" id='bookcustom'>
 						<div id="shirtDiv" class="page"
 							style="width: 530px; height: 630px; position: relative; background-color: rgb(255, 255, 255);">
-							<img id="tshirtFacing" src="img/ssak_bookcover-mockup.png"></img>
+							<img id="tshirtFacing" src="<%=request.getContextPath() %>/imgs/ssak_bookcover-mockup.png"></img>
 							<div id="drawingArea"
 								style="position: absolute; top: 188px; left: 70px; z-index: 10; width: 438; height: 308;">
 								<canvas id="tcanvas" width="445" height="313" class="hover"
@@ -446,12 +448,13 @@ input.cstinfo {
 
 				<div class="span3">
 					<div id="thumbnail">
-						<img id="myImg"> <input type="hidden" id="saveImg" value="0" />
+						<img id="myImg" >
+						<input type="hidden" id="saveImg" value="0"/>
 					</div>
 					<div class="well" id="well3">
 						<h3>
-							<input type="text" name="ddesc" value="북커버입니다" class="cstinfo"
-								readonly>
+							<input type="text" name="ddesc"
+								value="북커버입니다" readonly  class="cstinfo">
 						</h3>
 						<p>
 						<table class="table">
@@ -467,15 +470,15 @@ input.cstinfo {
 							</tr>
 							<tr>
 								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name="" value="책 이름"
-									class="cstinfo" readonly></td>
+								<td align="right"><input type="text" name="" value="${bvo.btitle }" class="cstinfo"
+								 	 readonly></td>
 							</tr>
 							<tr>
 								<td align="right" class="csttitle">책표준가</td>
 							</tr>
 							<tr>
 								<td align="right"><input type="text" name="bpriceStandard"
-									value="책표준가" class="cstinfo" readonly></td>
+									value="${bvo.bpriceStandard }" class="cstinfo" readonly></td>
 							</tr>
 							<tr>
 								<td align="right" class="csttitle">책세일가</td>
@@ -483,7 +486,7 @@ input.cstinfo {
 							<tr>
 								<!-- name 넣어야함-->
 								<td align="right"><input type="text" name="bpriceSales"
-									value="책세일가" class="cstinfo" readonly></td>
+									value="${bvo.bpricesales }" class="cstinfo" readonly></td>
 							</tr>
 							<tr>
 								<td align="right" class="csttitle">북커버가격</td>
@@ -491,7 +494,11 @@ input.cstinfo {
 							<tr>
 								<!-- name 넣어야함-->
 								<td align="right"><input type="text" name="dprice"
-									value="북커버가격" class="cstinfo" readonly></td>
+									value="0" class="cstinfo" readonly></td>
+							</tr>
+							<tr>
+								<td><input type="hidden" id="cutsom_bisbn" value="${bvo.BISBN}"></td>
+								<td><input type="hidden" id="cutsom_bookamount" value="<%=bookamount%>"></td>
 							</tr>
 						</table>
 						</p>
@@ -520,11 +527,16 @@ input.cstinfo {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+<<<<<<< HEAD
 
 	<script src="./js/bootstrap.min.js"></script>
 
 	<%String member = String.valueOf(session.getAttribute("member"));%>
 	<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+=======
+			<%String member = String.valueOf(session.getAttribute("member"));%>
+	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
@@ -586,7 +598,10 @@ function goCart(){
 	var bbb = imgData;	
 	goC(bbb);	
 };
+
+//장바구니 갈 때 경로
  function goC(bbb){
+<<<<<<< HEAD
 	 $.ajax({
 			url : "CartInsert",				
 			type : "post",				
@@ -599,6 +614,21 @@ function goCart(){
 				location.href="<%=request.getContextPath()%>/CartList";		
 		}			
 		})			
+=======
+	 
+		$.ajax({
+			url : "CartInsert",
+			type : "post",
+			data :{customURL : bbb,
+				bookamount : $("#cutsom_bookamount").val(),
+				bisbn : $("#cutsom_bisbn").val()
+			},
+		success : function(res){
+			if(res>0)
+				location.href="<%=request.getContextPath() %>/CartList";
+		}
+		})
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	}; 
 function goOrder(){
 	if(document.getElementById("saveImg").value == 0)
@@ -621,23 +651,24 @@ function goOrder(){
 	goO(bbb);
 };
 function goO(bbb){
-	   var bookamount= $("#cutsom_bookamount").val();
-	   var bisbn = $("#cutsom_bisbn").val();
-	      $.ajax({
-	         url : "OrderDirect",
-	         type : "post",
-	         data : {customURL : bbb,
-	            bookamount : $("#cutsom_bookamount").val(),
-	            bisbn : $("#cutsom_bisbn").val()
-	            },
-	      success : function(res){
-	         if(res>0)
-	            location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
-	         
-	      }
-	      })
-	   }; 
-	 
+	var bookamount= $("#cutsom_bookamount").val();
+	var bisbn = $("#cutsom_bisbn").val();
+		$.ajax({
+			url : "OrderDirect",
+			type : "post",
+			data : {customURL : bbb,
+				bookamount : $("#cutsom_bookamount").val(),
+				bisbn : $("#cutsom_bisbn").val()
+				},
+		success : function(res){
+			if(res>0)
+				location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
+			
+		}
+		})
+	}; 
+
+	
 function saveAs(uri, filename) {
 	var link = document.createElement('a');
 	if (typeof link.download === 'string') {

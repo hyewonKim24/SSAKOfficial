@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+	margin: 0 auto;
+}
+
+.register_res {
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 20px;
+}
+
+#form_title {
+	margin: 0 auto;
+	line-height: 40px;
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	height: 40px;
+	width: 640px;
+}
+
+#required_sub {
+	width: 640px;
+	height: 20px;
+	margin: 0 auto;
+	text-align: right;
+	padding-top: 10px;
+	border-bottom: 2px solid black;
+	font-size: 12px;
+	color: #666;
+	font-size: 12px;
+}
+
+#title_bottom {
+	padding-bottom: 20px;
+}
+
+#ico {
+	padding-right: 2px;
+	color: #ee6a7b;
+	font-size: 12px;
+}
+
+.form_wrap {
+	padding-top: 60px;
+	width: 1080px;
+	display: block;
+	margin: 0 auto;
+}
+
+.form_input {
+	width: 332px;
+	height: 44px;
+	column-span: 2;
+	padding: 10px 5px;
+	font-size: 14px;
+	vertical-align: top;
+	text-align: left;
+	margin: 5px 0 5px 0;
+	border: 1px solid #ccc;
+	line-height: 20px;
+	border-radius: 3px;
+}
+
+.form_btn {
+	border: 1px solid #425c5a;
+	background-color: #fff;
+	color: #425c5a;
+	display: inline-block;
+	width: 120px;
+	margin-left: 5px;
+	vertical-align: top;
+	margin-top: 5px;
+	height: 44px;
+	border-radius: 3px;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	height: 44px;
+}
+
+#sample4_jibunAddress {
+	display: none;
+}
+
+.form_wrap #sample4_extraAddress {
+	display: none;
+}
+
+.form_wrap #guide {
+	font-size: 12px;
+	display: none;
+}
+
+.form_wrap table {
+	margin: 0 auto;
+	line-height: 45px;
+	height: 40px;
+}
+
+.form_wrap th {
+	width: 159px;
+	padding: 20px 0 0 20px;
+	font-weight: 700;
+	font-size: 14px;
+	color: #333;
+	line-height: 20px;
+	vertical-align: top;
+	text-align: left;
+}
+
+.mgender_label {
+	display: inline-block;
+	padding: 10px 52px 10px 0;
+}
+
+.mgender_wrap label{
+	padding-left: 5px;	
+}
+
+#email_res {
+	font-size: 12px;
+	color: gray;
+}
+
+#id_res {
+	font-size: 12px;
+	color: gray;
+}
+
+#pw_res {
+	font-size: 12px;
+	color: gray;
+}
+
+#register_ok {
+	margin-top: 15px;
+	width: 240px;
+	height: 56px;
+	font-size: 16px;
+	line-height: 54px;
+	border: 1px solid #425c5a;
+	background-color: #425c5a;
+	border-radius: 3px;
+	font-weight: 700;
+	color: white;
+}
+
+tfoot {
+	text-align: center;
+}

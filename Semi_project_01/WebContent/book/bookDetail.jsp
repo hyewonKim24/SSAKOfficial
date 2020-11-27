@@ -4,7 +4,7 @@
 <%@ include file="../main/recentSide.jsp"%>
 <%
 	String bisbn = request.getParameter("bisbn");
-System.out.println(bisbn);
+	System.out.println(bisbn);
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -384,6 +384,7 @@ section.detail_buttons {
 					</p>
 					<p>
 						ISBN : <span id="detail_bisbn"></span>
+						<input type="hidden" id="bisbn" value="<%=bisbn %>">
 					</p>
 					<p>
 						페이지수 : <span id="detail_pageNum"></span>
@@ -522,7 +523,8 @@ section.detail_buttons {
 		
 		<%String member = String.valueOf(session.getAttribute("member"));%>
 		$(document).ready(function () {
-			
+			var bisbn = $("#bisbn").val();
+			console.log("bisbn"+bisbn);
 			$('.cartIn').click(function () {
 				
 				var member="<%=member%>";
@@ -533,7 +535,7 @@ section.detail_buttons {
 				//mid ok, bisbn, oamount ok
 				var stat = $('#bookamount').val(); //oamount
 				console.log(stat);
-				location.href = "CartInsert?bisbn=" + <%=bisbn%> + "&oamount=" + stat;	
+				location.href = "CartInsert?bisbn=" +bisbn+"&oamount=" + stat;	
 			}
 			});
 			
@@ -548,7 +550,7 @@ section.detail_buttons {
 				var stat = $('#bookamount').val(); //oamount
 				console.log(stat);
 				
-				location.href = "OrderDirect?bisbn=" + <%=bisbn%> + "&oamount=" + stat;	
+				location.href = "OrderDirect?bisbn=" +bisbn+ "&oamount=" + stat;	
 				}
 			});
 			
@@ -564,7 +566,7 @@ section.detail_buttons {
 				
 				var stat = $('#bookamount').val(); //oamount
 				console.log(stat);
-					location.href = "./bookCustom.do?bisbn='" + <%=bisbn%> + "'&bookamount=" + stat;	
+					location.href = "./bookCustom.do?bisbn=" +bisbn+ "&bookamount=" + stat;	
 				}
 			});			
 

@@ -182,7 +182,7 @@ $('.comment_submit').click(function () {
             <h2>이벤트</h2>
         </div>
         <article>
-            <img src="./imgs/event.png" id="event_img" width="100%">
+            <img src="<%=request.getContextPath() %>/imgs/event.png" id="event_img" width="100%">
         </article>
         <article>
         <c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>					

@@ -1,6 +1,10 @@
+<link href="<%=request.getContextPath()%>/css/reset.css"
+	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/memberregister.css"
+	rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    <%@ include file="../main/header.jsp"%>
+<%@ include file="../main/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +12,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
@@ -16,110 +19,17 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
-<script>
-
-    </script>
-<style>
-body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 12pt;
-	margin: 0 auto;
-}
-
-.register_res {
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 20px;
-}
-
-#form_title {
-	line-height: 80px;
-	font-weight: bold;
-}
-
-.font_large {
-	font-size: 30px;
-	text-align: center;
-}
-
-.form_wrap {
-	padding-top: 60px; width : 1080px;
-	display: block;
-	margin: 0 auto;
-	width: 1080px;
-}
-
-.form_input {
-	width: 300px;
-	height: 30px;
-	column-span: 2;
-}
-
-.form_btn {
-	width: 100px;
-	line-height: 30px;
-	margin-left: 10px;
-	background-color: #6946A7;
-	color: white;
-	border: none;
-	border-radius: 5%;
-}
-
-#sample4_jibunAddress {
-	display: none;
-}
-
-.form_wrap #sample4_extraAddress {
-	display: none;
-}
-
-.form_wrap #guide {
-	font-size: 12px;
-	display: none;
-}
-
-.form_wrap table {
-	margin: 0 auto;
-	line-height: 45px;
-	height: 40px;
-}
-
-.form_wrap th {
-	text-align: right;
-	padding-right: 10px; width : 120px;
-	font-weight: bold;
-	width: 120px;
-}
-
-#email_res {
-	font-size: 12px;
-	color: gray;
-}
-
-#id_res {
-	font-size: 12px;
-	color: gray;
-	height: 20px;
-}
-
-
-#pw_res {
-	font-size: 12px;
-	color: gray;
-}
-
-tfoot {
-	text-align: center;
-}
-</style>
 
 <script>
 function goRegister(){
+	if($('#f_chk1').prop('checked') == false || $('#f_chk2').prop('checked') == false){
+    	alert('필수 약관에 동의 하셔야 합니다.');
+	}else{
 	var frm=document.register_frm;
 		frm.action="<%=request.getContextPath()%>/memberRegister.do";
 		frm.method = "post";
 		frm.submit();
+	}
 	}
 </script>
 </head>
@@ -128,23 +38,24 @@ function goRegister(){
 <body>
 	<div class="register_res">
 		<c:if test="${not empty register_fail}">
-				<script> alert('${register_fail}'); </script>
+			<script> alert('${register_fail}'); </script>
 		</c:if>
 	</div>
 	<div class="form_wrap">
-		<hr>
-		<h3 class="font_large" id="form_title">회원가입</h3>
+		<h3 id="form_title">회원가입</h3>
+		<p id="required_sub">
+			<span id="ico">*</span>필수 입력사항
+		</p>
+		<p id="title_bottom"></p>
 		<form name="register_frm">
 			<table id="login">
 				<tbody>
 
 					<tr>
-						<th>아이디</th>
+						<th>아이디<span id="ico">*</span></th>
 						<td><input type="text" class="form_input" name="mid" id="mid"
-							placeholder="5~20자 영문,숫자 입력" required></td>
-						<td>
-							<button class="form_btn" id="idDoubleChk">중복확인</button>
-						</td>
+							placeholder="5~20자 영문,숫자 입력" required>
+							<button class="form_btn" id="idDoubleChk">중복확인</button></td>
 					</tr>
 					<tr>
 						<th></th>
@@ -152,35 +63,41 @@ function goRegister(){
 					</tr>
 					<script type="text/javascript">
 						//아이디
+						var idreg=false;
 						$("#mid").on("input", function() {
 							var a = $("#mid").val();
 							var regex = /[A-Za-z0-9]{5,20}/;
 							if (!regex.exec(a)) {
 								$("#id_res").html("아이디 형식이 맞지 않습니다");
 								return;
-							} else
+							} else{
+								idreg=true;
 								$("#id_res").html("아이디 형식이 맞습니다.");
+							}
 						});
 
 						$("#idDoubleChk").on("click", function() {
 							$.ajax({
 								type : 'post',
-								url : "CheckId",
+								url : "<%=request.getContextPath()%>/CheckId",
 								data : {
 									mid : $("#mid").val()
 								},
-								async : false,
 								success : function(res) {
 									alert(res);
 								},
-								error : function() {
-									alert('에러입니다');
+								error : function(jqXHR,textStatus, errorThrown) {
+									alert('오류가 발생했습니다');
+									
+									console.log(jqXHR.status);
+									console.log(textStatus);
+									console.log(errorThrown);
 								}
 							});
 						});
 					</script>
 					<tr>
-						<th>비밀번호</th>
+						<th>비밀번호<span id="ico">*</span></th>
 						<td><input type="password" class="form_input" name="mpw"
 							id="mpw" placeholder="8자 이상, 대문자/소문자/숫자/특수문자  모두 포함." required>
 						</td>
@@ -190,12 +107,13 @@ function goRegister(){
 						<td><span id="pw_res"> </span></td>
 					</tr>
 					<tr>
-						<th>비밀번호확인</th>
+						<th>비밀번호확인<span id="ico">*</span></th>
 						<td><input type="password" class="form_input" name="pwre"
 							id="pwre" placeholder="비밀번호를 한번 더 입력해주세요" required></td>
 					</tr>
 
 					<script type="text/javascript">
+						var pwreg=false;
 						$("#mpw").on("input",
 						function() {
 							var a = $("#mpw").val();
@@ -204,6 +122,7 @@ function goRegister(){
 								$("#pw_res").html('비밀번호 형식이 맞지않습니다.');
 								return;
 							} else {
+								pwreg=true;
 								$("#pw_res").html('비밀번호 형식이 맞습니다.');
 							}});
 
@@ -224,59 +143,64 @@ function goRegister(){
 						});
 					</script>
 					<tr>
-						<th>이메일 주소</th>
+						<th>이메일 주소<span id="ico">*</span></th>
 						<td><input type="text" class="form_input" name="memail"
-							id="memail" required></td>
-						<td><button class="form_btn" id="emailDoubleChk">중복확인</button></td>
+							id="memail" required>
+							<button class="form_btn" id="emailDoubleChk">중복확인</button></td>
 					</tr>
 					<tr>
 						<th></th>
 						<td><span id="email_res"></span></td>
 					</tr>
 					<script type="text/javascript">
+						var emailreg = false;
 						$("#memail").on("input",function() {
 							var a = $("#memail").val();
 							var regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 							if (!regex.exec(a)) {
 								$("#email_res").html("이메일 형식이 맞지 않습니다");
 								return;} 
-							else
+							else{ 
 								$("#email_res").html("이메일 형식이 맞습니다.");
+								emailreg=true;
+							}
 							});
 
 						$("#emailDoubleChk").on("click", function() {
 							$.ajax({
-								url : "CheckEmail",
-								data : {
-									memail : $("#memail").val()
-								},
-								async : false,
-								success : function(res) {
-									alert(res);
-								},
-								error : function() {
-									alert('오류가 발생했습니다');
-								}
-							});
-						});
+								url : "<%=request.getContextPath()%>
+						/CheckEmail",
+														data : {
+															memail : $(
+																	"#memail")
+																	.val()
+														},
+														success : function(res) {
+															alert(res);
+														},
+														error : function() {
+															alert('오류가 발생했습니다');
+														}
+													});
+										});
 					</script>
 
 					<tr>
-						<th>이름</th>
-						<td><input type="text" class="form_input" name="mname" id="mname" required></td>
+						<th>이름<span id="ico">*</span></th>
+						<td><input type="text" class="form_input" name="mname"
+							id="mname" required></td>
 					</tr>
 					<tr>
-						<th><label for="tel">휴대전화</label></th>
+						<th><label for="tel">휴대전화<span id="ico">*</span></label></th>
 						<td><input type="text" class="form_input" name="mphone"
 							id="mphone" placeholder="숫자만 입력해주세요" required></td>
 					</tr>
 					<tr>
-						<th>우편번호</th>
+						<th>우편번호<span id="ico">*</span></th>
 						<td><input type="text" id="mzip_code" name="mzip_code"
-							class="form_input" placeholder="우편번호"></td>
-						<td>
-							<button type="button" class="form_btn" onclick="sample4_execDaumPostcode();">우편번호 찾기</button>
-						</td>
+							class="form_input" placeholder="우편번호">
+							<button type="button" class="form_btn"
+								onclick="sample4_execDaumPostcode();">우편번호 찾기</button></td>
 					</tr>
 
 					<script>
@@ -352,7 +276,7 @@ function goRegister(){
 						}
 					</script>
 					<tr>
-						<th>주소</th>
+						<th>주소<span id="ico">*</span></th>
 						<td><input type="text" id="m_first_addr" name="m_first_addr"
 							class="form_input"></td>
 						<td><span id="guide" style="color: #999; display: none"></span></td>
@@ -369,10 +293,13 @@ function goRegister(){
 					</tr>
 
 					<tr>
-						<th>성별</th>
-						<td><input type="radio" name="mgender" id="m" value="1">
-							<label for="m">남자</label> <input type="radio" name="mgender"
-							id="f" value="2"> <label for="f">여자</label></td>
+						<th class="mgender_wrap">성별</th>
+						<td><span class="mgender_label"><input type="radio"
+								name="mgender" id="m" value="1"> <label for="m">남자</label></span><span
+							class="mgender_label"> <input type="radio" name="mgender"
+								id="f" value="2"> <label for="f">여자</label></span><span
+							class="mgender_label"><input type="radio" name="mgender"
+								id="n" value="3"><label for="n">선택안함</label></span></td>
 					</tr>
 					<tr>
 						<th>생년월일</th>
@@ -381,50 +308,38 @@ function goRegister(){
 					</tr>
 					<tr>
 						<th>이용약관동의</th>
-						<td><input type="checkbox" class="form_input_chk" id="f_chk1" required checked>
-							<label for="f_chk1">이용약관 동의(필수)</label>
-						<td><a href="#">약관보기</a></td>
+						<td><input type="checkbox" class="form_input_chk" id="f_chk1"
+							required checked> <label for="f_chk1">이용약관 동의(필수)</label></td>
 					</tr>
 					<tr>
 						<th></th>
-						<td><input type="checkbox" class="form_input_chk" id="f_chk2" required checked>
-							<label for="f_chk2">개인정보 수집 및 이용(필수)</label>
-						<td><a href="#">내용확인</a></td>
+						<td><input type="checkbox" class="form_input_chk" id="f_chk2"
+							required checked> <label for="f_chk2">개인정보 수집 및
+								이용(필수)</label></td>
 					</tr>
 					<tr>
 						<th></th>
 						<td><input type="checkbox" class="form_input_chk" id="f_chk3">
-							<label for="f_chk3">이벤트, 혜택 알림 수신 동의(선택)</label>
-						<td><a href="#">내용확인</a></td>
+							<label for="f_chk3">이벤트, 혜택 알림 수신 동의(선택)</label></td>
 					</tr>
+
 				</tbody>
+
 				<tfoot>
 					<tr>
-						<td colspan="3" id="footer"><button type="submit" class="form_btn"
-								onclick="goRegister();">회원가입</button> <input type="reset"
-							class="form_btn" value="취소"></td>
+						<td colspan="3" id="footer"><button type="submit"
+								id="register_ok" onclick="goRegister();">회원가입</button>
 					</tr>
 				</tfoot>
 
 			</table>
-			<br>
-			<hr>
 		</form>
+		<p id="required_sub"></p>
 	</div>
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
 </body>
+<%@ include file="../main/footer.jsp"%>
 
 </html>
