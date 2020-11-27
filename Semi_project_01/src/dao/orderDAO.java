@@ -216,44 +216,44 @@ public class orderDAO {
 				return cnt;
 			}
 
-	public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
-		List<orderVO> odList = null;
-		String sql = "select o.mid, o.ono, o.odate, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, b.bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1, n.dno, n.oamount"
-						+" from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
-						+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
-		try {
- 			System.out.println("orderdetail까지 옴");
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
-			rs = pstmt.executeQuery();
-			if (rs.next()) {
-				odList = new ArrayList<orderVO>();
-				do {
-				orderVO ovo = new orderVO();
-				ovo.setMid(mid);
-				ovo.setOno(rs.getInt("ono"));
-				ovo.setOdate(rs.getDate("odate"));
-				ovo.setBISBN(rs.getString("BISBN"));
-				ovo.setBcover(rs.getString("bcover"));
-				ovo.setBtitle(rs.getString("btitle"));
-				ovo.setBpriceStandard(rs.getInt("bpriceStandard"));
-				ovo.setBpricesales(rs.getInt("bpricesales"));
-				ovo.setOpay(rs.getString("opay"));
-				ovo.setOdprice(rs.getInt("odprice"));
-				ovo.setOtotalprice(rs.getInt("ototalprice"));
-				ovo.setOname(rs.getString("oname"));
-				ovo.setOphone(rs.getString("ophone"));
-				ovo.setOaddr1("oaddr1");
-				ovo.setDno(rs.getInt("dno"));
-				ovo.setOamount(rs.getInt("oamount"));
-				odList.add(ovo);
-				}while(rs.next());
+			public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
+				List<orderVO> odList = null;
+				String sql = "select o.mid, o.ono, o.odate, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, b.bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1, n.dno, n.oamount"
+								+" from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
+								+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
+				try {
+		 			System.out.println("orderdetail까지 옴");
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setString(1, mid);
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						odList = new ArrayList<orderVO>();
+						do {
+						orderVO ovo = new orderVO();
+						ovo.setMid(mid);
+						ovo.setOno(rs.getInt("ono"));
+						ovo.setOdate(rs.getDate("odate"));
+						ovo.setBISBN(rs.getString("BISBN"));
+						ovo.setBcover(rs.getString("bcover"));
+						ovo.setBtitle(rs.getString("btitle"));
+						ovo.setBpriceStandard(rs.getInt("bpriceStandard"));
+						ovo.setBpricesales(rs.getInt("bpricesales"));
+						ovo.setOpay(rs.getString("opay"));
+						ovo.setOdprice(rs.getInt("odprice"));
+						ovo.setOtotalprice(rs.getInt("ototalprice"));
+						ovo.setOname(rs.getString("oname"));
+						ovo.setOphone(rs.getString("ophone"));
+						ovo.setOaddr1("oaddr1");
+						ovo.setDno(rs.getInt("dno"));
+						ovo.setOamount(rs.getInt("oamount"));
+						odList.add(ovo);
+						}while(rs.next());
+					}
+				} finally {
+					close();
+				}
+				return odList;
 			}
-		} finally {
-			close();
-		}
-		return odList;
-	}
 	
 	//혜원코드
 	//myOrderList
