@@ -27,10 +27,7 @@
             font-size: 30px;
             padding-bottom: 26px;
         }
-        .mManage_cont_title{
-            font-size: 24px;
-            padding-bottom: 26px;
-        }
+        
         .mManage_asidenav{
             border: 1px solid #f2f2f2;
             border-bottom: 0;
@@ -44,7 +41,6 @@
             
         }
         .mManage_asidenav ul li a {
-            
             font-size: 14px;
             color: #666;
         }
@@ -65,18 +61,15 @@
         }
         /* aside 아래 */
         .CS_info{
-        	position : absolute;
-        	top : 261px;
-        	width : 200px;
+        	margin-top: 20px;
             height: 60px;
             box-sizing: border-box;
-			margin-top: 20px;
             background-color: #fafafa;
             border-radius: 0 100px 100px 0;
-            padding : 9px 0 0 21px;   
+            padding : 18px 0 0 21px;   
+            
         }
         .CS_info a {
-            font-size: 12px;
             line-height: 22px;
             color : #333;
         }
@@ -92,9 +85,7 @@
             font-size: 14px;
             font-weight: 700;
             margin-right: 20px;
-            margin-top: 11px;
         }
-
 
         /* 회원관리 content*/
         .mManage_cont {
@@ -103,10 +94,12 @@
             width: 820px;
         }
         /* 회원관리 content title*/
-        .mManage_cont_title {
+        .mManage_cont_title{
+            font-size: 24px;
+            padding-bottom: 26px;
             width: 100%;
-            
         }
+        
         /* 회원관리 content board*/
         .mManage_cont_board{
             width: 100%;
@@ -229,6 +222,13 @@
         #search_icon{
             -webkit-filter: opacity(1) drop-shadow(0 0 0 white);
             filter: opacity(1) drop-shadow(0 0 0 white);
+        }
+
+        /* search페이지 */
+        #mManage_cont_subtitle {
+        	font-size : 15px;
+       		padding-left : 20px;
+       		line-height : 15px;
         }
 
         

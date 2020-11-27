@@ -1,15 +1,19 @@
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/wManage1.css"/>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/wManage1.css" />
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
+	rel="stylesheet">
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <title>탈퇴요청 조회 목록</title>
 <script type="text/javascript">
 	function goSearch() {
@@ -22,27 +26,30 @@
 
 </head>
 <body>
-<%@ include file="../main/header.jsp"%>
-	 <div class="wdrManage">
-        <div class="wdrManage_aside">
-            <div class="wdrManage_asidetlt">회원관리</div>
-            <div class="wdrManage_asidenav">
-                <ul>
-                 <li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
-                </ul>
-            </div>
-        </div>
-				<div class="CS_info">
-			<a href="#"> 
-			<span id="one">도움이 필요하신가요?</span> 
-			<span id="two">></span>
-				<br> 1:1 문의하기
+	<%@ include file="../main/header.jsp"%>
+	<div class="wdrManage">
+		<div class="wdrManage_aside">
+			<div class="wdrManage_asidetlt">회원관리</div>
+			<div class="wdrManage_asidenav">
+				<ul>
+					<li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+							및 수정<span class="aside_arrow">></span>
+					</a></li>
+					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+							class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+							class="aside_arrow">></span></a></li>
+				</ul>
+			</div>
+			<div class="CS_info">
+				<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
 
-			</a>
+				</a>
+			</div>
+
 		</div>
-        <div class="wdrManage_cont">
+		<div class="wdrManage_cont">
 			<div class="wdrManage_cont_title">탈퇴요청관리</div>
 			<div class="wdrManage_cont_board">
 				<form>
@@ -106,9 +113,13 @@
 											<option value="4">승인여부</option>
 									</select></td>
 									<td><input type="text" name="wsearchbar"
-										id="wdrManage_searchbar"> <button type="button"
-										name="wdrManage_searchbtn" id="wdrManage_searchbtn" value="검색"
-										onclick="goSearch()"><img src="./imgs/search.png" style="width: 15px; height: 15px;" id="search_icon"></button></button></td>
+										id="wdrManage_searchbar">
+										<button type="button" name="wdrManage_searchbtn"
+											id="wdrManage_searchbtn" value="검색" onclick="goSearch()">
+											<img src="./imgs/search.png"
+												style="width: 15px; height: 15px;" id="search_icon">
+										
+										</button></td>
 								</tr>
 							</tbody>
 						</table>
@@ -117,7 +128,7 @@
 
 			</div>
 		</div>
-    </div>
-    
+	</div>
+
 </body>
 </html>

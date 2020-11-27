@@ -3,6 +3,7 @@
 table, td {
 	border-collapse: collapse;
 }
+
 a {
 	text-decoration: none;
 }
@@ -210,19 +211,15 @@ table thead th {
 }
 /* aside 아래 */
 .CS_info {
-	position: absolute;
-	top: 261px;
-	width: 200px;
+	margin-top: 20px;
 	height: 60px;
 	box-sizing: border-box;
-	margin-top: 20px;
 	background-color: #fafafa;
 	border-radius: 0 100px 100px 0;
-	padding: 9px 0 0 21px;
+padding : 18px 0 0 21px;
 }
 
 .CS_info a {
-	font-size: 12px;
 	line-height: 22px;
 	color: #333;
 }
@@ -240,5 +237,10 @@ table thead th {
 	font-size: 14px;
 	font-weight: bold;
 	margin-right: 20px;
-	margin-top: 11px;
 }
+/* search페이지 */
+        #wdrManage_cont_subtitle {
+        	font-size : 15px;
+       		padding-left : 20px;
+       		line-height : 15px;
+        }

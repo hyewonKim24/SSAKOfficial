@@ -51,6 +51,7 @@ public class orderDetail extends HttpServlet {
 		orderService osv = new orderService();
 		
 		try {
+			System.out.println("orderdetail 서블 까지 옴");
 			List<orderVO> odList = osv.orderDetail(mid);
 			request.setAttribute("odetail", odList);
 			RequestDispatcher disp = request.getRequestDispatcher("./manage/oManage2.jsp");

@@ -38,12 +38,14 @@
                     <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
 				</ul>
 			</div>
-		</div>
-		<div class="CS_info">
-			<a href="#"> <span id="one">도움이 필요하신가요?</span> <span id="two">></span>
-				<br> 1:1 문의하기
+			<div class="CS_info">
+			<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
 			</a>
 		</div>
+		
+		</div>
+		
 
 		<div class="oManage_cont">
 			<div class="oManage_cont_title">주문내역 조회</div>
@@ -68,7 +70,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>
