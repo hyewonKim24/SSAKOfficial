@@ -172,7 +172,7 @@ public class orderDAO {
 		// 주문내 리스트 첫 목록 - 총 글 개수 
 			// 공지사항 전체 목록 메소드
 			public List<orderVO> getBoardPage(Connection conn, int start, int end) throws SQLException {
-				List<orderVO> olist = new ArrayList<orderVO>();
+				List<orderVO> olist = null;
 				orderVO ovo = null;
 				String sql = "select * from (select ROWNUM rnum, o.* from (select * from order2 order by ono desc) o) where rnum >= ? and rnum <= ?";
 				try {
@@ -181,6 +181,7 @@ public class orderDAO {
 					pstmt.setInt(2, end);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
+						olist=new ArrayList<orderVO>();
 						do {
 							ovo = new orderVO();
 							ovo.setOno(rs.getInt("ono"));
@@ -215,15 +216,16 @@ public class orderDAO {
 				return cnt;
 			}
 
-	public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
+	public List<orderVO> orderDetail(Connection conn, String mid, int ono) throws SQLException {
 		List<orderVO> odList = null;
 		String sql = "select o.mid, o.ono, o.odate, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, b.bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1, n.dno, n.oamount"
 						+" from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
-						+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
+						+" where o.mid=? and o.ono=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
 		try {
  			System.out.println("orderdetail까지 옴");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
+			pstmt.setInt(2, ono);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				odList = new ArrayList<orderVO>();

@@ -70,7 +70,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}&ono=${o.ono}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>
@@ -85,17 +85,17 @@
 					<div class="oManage_pagination">
 						<div class="oManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="orderList?pageNum=${prev}"><</a>
+								<a href="OrderList?pageNum=${prev}"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="orderList?pageNum=${s.current}">${s.current}</a>
+									<a href="OrderList?pageNum=${s.current}">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="orderList?pageNum=${next}">></a>
+								<a href="OrderList?pageNum=${next}">></a>
 							</c:if>
 						</div>
 					</div>

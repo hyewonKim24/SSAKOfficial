@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+#navi {
+	cursor: pointer;
+	padding-left: 40px;
+}
+
+.sub li {
+	padding-left: 20px;
+	font-size: 13px;
+}
+
+
+.bestseller {
+	width: 1080px;
+	margin: 0 auto;
+	display: flex;
+	margin-top: 60px;
+}
+
+#category {
+	float: left;
+	width: 200px;
+	height: 800px;
+	margin-right: 60px;
+	border: 1px solid #dcdcdc;
+}
+
+.classify {
+	font-weight: bold;
+	font-size: 20px;
+	padding: 20px 20px 20px 35px;
+	color: #425c5a;
+}
+
+#category ul {
+	font-size: 15px;
+	padding-bottom: 11px;
+}
+
+#category ul li {
+	list-style-type: none;
+	margin: 10px 0;
+}
+
+/*오른쪽 본문*/
+#bestseller__C {
+	float: right;
+	width: 820px;
+}
+
+#bestsellertitle {
+	font-size: 16px;
+	height: 20px;
+	font-weight: 700;
+	color: #425c5a;
+	margin-top: 27px;
+	margin-left: 40px;
+}
+
+#list_table {
+	background-color: #425c5a;
+	width: 820px;
+	margin: 15px 0 20px 0;
+}
+
+.list_btn {
+	float: right;
+	margin: 3px;
+}
+
+.list_btn button {
+	color: white;
+	background-color: transparent;
+	border: none;
+	padding: 5px 10px;
+	font-size: 12px;
+	color: white;
+	font-weight: bold;
+}
+
+.menu_line {
+	color: white;
+	font-size: 3px;
+}
+
+#bes_list {
+	float: none;
+	display: block;
+}
+
+#bes_list ul {
+	list-style-type: none;
+}
+
+#bes_list ul a {
+	text-decoration: none;
+}
+
+.bes_list2 {
+	display: flex;
+	position: relative;
+	padding: 20px 0;
+}
+
+.bes_num {
+	margin-right: 10px;
+	color: #425c5a;
+}
+
+.bes_thumb img {
+	width: 150px;
+	margin: 0 20px;
+}
+
+.bes_info {
+	width: 460px;
+	padding-left: 10px;
+	padding-right: 30px;
+}
+
+.bes_title {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 20px;
+}
+
+.bes_block {
+	font-size: 12px;
+	color: #7c7c7c;
+}
+
+.bes_money {
+	font-weight: 600;
+	font-size: 14px;
+	padding: 20px 0;
+	color: #425c5a;
+}
+
+.bes_text {
+	margin-top: 10px;
+	font-size: 13px;
+	line-height: 20px;
+	text-overflow: ellipsis;
+	font-size: 14px;
+	color: #7c7c7c;
+}
+
+.bes_btn {
+	float: right;
+	right: 0;
+	margin: 0;
+}
+
+.bes_btn p {
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+.bes_btn .bes_num {
+	padding-left: 35px;
+	padding-right: 5px;
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.bes_btn button {
+	width: 130px;
+	height: 40px;
+	margin: 4px;
+	border: 1px solid #425c5a;
+	background-color: white;
+	color: #425c5a;
+	font-weight: 600;
+	border-radius: 3px;
+}
+
+.bes_btn input[type="checkbox"] {
+	width: auto;
+	margin-left: 5px;
+}
+
+.bes_btn input[type="number"] {
+	width: 40px;
+	text-align: right;
+	margin: 0;
+	border: 1px solid #dcdcdc;
+}
+
+.bes_btn input {
+	width: 30px;
+	text-align: center;
+}
+
+.bes_info {
+	width: 480px;
+}
+/*페이징*/
+.pagediv {
+	text-align: center;
+	margin-top: 20px;
+	letter-spacing: -0.4px;
+	word-spacing: -3px;
+}
+
+.pagediv a:hover {
+	background: #fafafa;
+	font-weight: 700;
+	color: #425c5a;
+}
+
+.page_btn {
+	display: inline-block;
+	width: 34px;
+	height: 34px;
+	border: 1px solid #ddd;
+	border-left: 0;
+	vertical-align: top;
+	font-size: 12px;
+	line-height: 32px;
+}
+
+.page_btn:nth-child(1) {
+	border-left: 1px solid #ddd !important;
+}
+
+.prev {
+	background-size: 8px 8px;
+	border-left: 1px solid #ddd !important;
+}
+
+.next {
+	background-position: 50% 50%;
+	background-size: 8px 8px;
+}
+
+.scr_btn {
+	position: relative;
+	left: 95%;
+	width: 30px;
+	z-index: 10;
+	margin-bottom: 50px;
+}

@@ -31,7 +31,6 @@ public class orderList extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -96,9 +95,7 @@ public class orderList extends HttpServlet {
 
 			System.out.println(prev + "이전 - 다음" + next);
 			List<orderVO> olist = osv.getBoardPage(startRnum, endRnum); /* 변경 : 메소드 */
-
 			// 보내주기
-		
 			request.setAttribute("startPage", startPage);
 			request.setAttribute("endPage", endPage);
 			request.setAttribute("PageNum", currentPage);

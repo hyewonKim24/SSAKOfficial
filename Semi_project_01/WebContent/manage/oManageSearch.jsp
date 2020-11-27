@@ -65,7 +65,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}&ono=${o.ono}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>
