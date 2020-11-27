@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
+import java.util.HashMap;
 import java.util.List;
 
 import cart.model.CartListVO;
@@ -257,13 +257,25 @@ public class orderDAO {
 		return odList;
 	}
 	
+	//혜원코드
 	//myOrderList
 	public List<orderVO> myOrderlist(Connection conn, String mid) throws SQLException {
 		List<orderVO> odList = null;
 		
-		String sql = "select o.ono, o.odate, o.ototalamount, o.ostatus, o.ototalprice, b.bcover, b.btitle, n.oamount "
-				+ "from order2 o, neworder2 n, (select btitle, bcover, bisbn from book) b"
-				+ " where o.mid=? and n.ono=o.ono and n.bisbn=b.bisbn order by ono";
+		String sql = "select case when a.rnm = 1 then a.btitle" + 
+				" else a.btitle || ' 외 ' ||(a.rnm-1)|| '권' end as btitle," + 
+				"a.ono as ono, a.odate as odate, a.ototalamount as ototalamount," + 
+				"a.ostatus as ostatus, a.ototalprice as ototalprice, a.bcover as bcover" + 
+				" from(" + 
+				"select row_number() over(partition by o.ono order by o.ono) as rnm," + 
+				"o.mid as mid, o.ono as ono ,o.odate as odate, o.ototalamount as ototalamount," + 
+				"o.ostatus as ostatus, o.ototalprice as ototalprice, b.bcover as bcover, b.btitle as btitle" + 
+				" from order2 o, neworder2 n, (select btitle, bcover, bisbn from book) b" + 
+				" where o.mid=? and n.ono=o.ono and n.bisbn=b.bisbn" + 
+				" group by o.mid, o.ono, o.odate, o.ototalamount, o.ostatus, o.ototalprice, b.bcover, b.btitle" + 
+				" order by ono, rnm desc)a," + 
+				"(select count(ono) as rnm, ono as ono from neworder2 group by ono) c" + 
+				" where a.ono=c.ono and a.mid='tms00350' and a.rnm=c.rnm order by ono desc";
 		try {
 			System.out.println("myorderlist까지 옴");
 			pstmt = conn.prepareStatement(sql);
@@ -291,9 +303,6 @@ public class orderDAO {
 		}
 		return odList;
 	}
-	
-	
-	
 	
 	
 	
