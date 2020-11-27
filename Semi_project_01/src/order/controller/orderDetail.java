@@ -48,11 +48,12 @@ public class orderDetail extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		
 		String mid = request.getParameter("mid");
+		int ono = Integer.parseInt(request.getParameter("ono"));
 		orderService osv = new orderService();
 		
 		try {
 			System.out.println("orderdetail 서블 까지 옴");
-			List<orderVO> odList = osv.orderDetail(mid);
+			List<orderVO> odList = osv.orderDetail(mid, ono);
 			request.setAttribute("odetail", odList);
 			RequestDispatcher disp = request.getRequestDispatcher("./manage/oManage2.jsp");
 			disp.forward(request, response);

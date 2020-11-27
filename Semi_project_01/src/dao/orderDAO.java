@@ -216,15 +216,16 @@ public class orderDAO {
 				return cnt;
 			}
 
-			public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
+			public List<orderVO> orderDetail(Connection conn, String mid, int ono) throws SQLException {
 				List<orderVO> odList = null;
 				String sql = "select o.mid, o.ono, o.odate, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, b.bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1, n.dno, n.oamount"
 								+" from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
-								+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
+								+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno and o.ono=?";
 				try {
 		 			System.out.println("orderdetail까지 옴");
 					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, mid);
+					pstmt.setInt(2, ono);
 					rs = pstmt.executeQuery();
 					if (rs.next()) {
 						odList = new ArrayList<orderVO>();
@@ -273,12 +274,13 @@ public class orderDAO {
 				" group by o.mid, o.ono, o.odate, o.ototalamount, o.ostatus, o.ototalprice, b.bcover, b.btitle" + 
 				" order by ono, rnm desc)a," + 
 				"(select count(ono) as rnm, ono as ono from neworder2 group by ono) c" + 
-				" where a.ono=c.ono and a.mid='tms00350' and a.rnm=c.rnm order by ono desc";
+				" where a.ono=c.ono and a.mid=? and a.rnm=c.rnm order by ono desc";
 		try {
 			System.out.println("myorderlist까지 옴");
 			pstmt = conn.prepareStatement(sql);
 			System.out.println(mid);
 			pstmt.setString(1, mid);
+			pstmt.setString(2, mid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				odList = new ArrayList<orderVO>();

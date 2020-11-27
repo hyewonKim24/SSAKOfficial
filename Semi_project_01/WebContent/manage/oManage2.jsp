@@ -45,7 +45,7 @@
                 <div class="mDetailPage">
                 <table>
                 	<c:if test="${not empty odetail }">
-                        <c:forEach items="${odetail }" var="od" varStatus="s" begin="1" end="1">
+                        <c:forEach items="${odetail }" var="od" varStatus="s" begin="0" end="0">
 					 <tr>
                         <th colspan ="4" class="member_info">"${od.mid }" 회원의 주문내역입니다.</th>
 					</tr>

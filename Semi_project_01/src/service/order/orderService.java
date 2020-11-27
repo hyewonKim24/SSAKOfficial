@@ -121,11 +121,11 @@ public class orderService {
 	}
 	
 
-	public List<orderVO> orderDetail(String mid) throws SQLException {
+	public List<orderVO> orderDetail(String mid, int ono) throws SQLException {
 		List<orderVO> odetail = null;
 		try {
 		Connection conn = ds.getConnection();
-		odetail = new orderDAO().orderDetail(conn, mid);
+		odetail = new orderDAO().orderDetail(conn, mid, ono);
 	}finally {
 		close();
 	}
