@@ -1,8 +1,13 @@
 <!-- Le styles -->
-<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.miniColors.css" />
-<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
-<link href="<%=request.getContextPath() %>/css/bootstrap-responsive.min.css" rel="stylesheet">
-<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/jquery.miniColors.css" />
+<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css"
+	rel="stylesheet">
+<link href="<%=request.getContextPath()%>/css/reset.css"
+	rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
@@ -23,10 +28,13 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/fabric.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.miniColors.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/js/tshirtEditor.js"></script>
-<script src="<%=request.getContextPath() %>/book/html2canvas.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/fabric.js"></script> <script
+	type="text/javascript"
+	src="<%=request.getContextPath()%>/js/jquery.miniColors.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/tshirtEditor.js"></script> <script
+	src="<%=request.getContextPath()%>/book/html2canvas.js"></script>
 
 <style type="text/css">
 * {
@@ -49,7 +57,12 @@ body {
 
 .color-preview {
 	border: 1px solid #CCC;
+<<<<<<< HEAD
+	margin-left: 3px;
+	margin-bottom: 4px;
+=======
 	margin: 2px;
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	zoom: 1;
 	vertical-align: top;
 	display: inline-block;
@@ -135,16 +148,16 @@ body {
 	height: 150px;
 	border: solid 1px;
 	margin: 0 auto;
-	
 	margin-bottom: 32px;
 }
-#myImg{
-	width : 128px;
-	height : 150px;
+
+#myImg {
+	width: 128px;
+	height: 150px;
 }
 .bookcustom {
 	width: 570px;
-	heigh : 678px;
+	heigh: 678px;
 }
 .well .cstinfo {
 	outline: none;
@@ -156,21 +169,24 @@ body {
 }
 .csttitle {
 	padding-bottom: 50px;
-	color : #425c5a;
-	font-size : 16px;
-	font-weight : bold;
+	color: #425c5a;
+	font-size: 16px;
+	font-weight: bold;
 }
 #tshirtFacing {
 	width: 570px;
 }
-#text-string{
-	height : 25px;
+
+#text-string {
+	height: 25px;
 }
-input.cstinfo{
-	padding-left : 0;
+
+input.cstinfo {
+	padding-left: 0;
 }
+
 .table td {
-	padding-left : 0;
+	padding-left: 0;
 }
 </style>
 </head>
@@ -280,6 +296,10 @@ input.cstinfo{
 											style="background-color: #3469b7;"></li>
 										<li class="color-preview" title="Cherry Red"
 											style="background-color: #c50404;"></li>
+<<<<<<< HEAD
+
+=======
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 									</ul>
 								</div>
 							</div>
@@ -507,8 +527,16 @@ input.cstinfo{
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
+<<<<<<< HEAD
+
+	<script src="./js/bootstrap.min.js"></script>
+
+	<%String member = String.valueOf(session.getAttribute("member"));%>
+	<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+=======
 			<%String member = String.valueOf(session.getAttribute("member"));%>
 	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
@@ -573,6 +601,20 @@ function goCart(){
 
 //장바구니 갈 때 경로
  function goC(bbb){
+<<<<<<< HEAD
+	 $.ajax({
+			url : "CartInsert",				
+			type : "post",				
+			data :{customURL : bbb,		
+				bookamount : $("#cutsom_bookamount").val(),	
+				bisbn : $("#cutsom_bisbn").val()			
+			},			
+			success : function(res){
+			if(res>0)			
+				location.href="<%=request.getContextPath()%>/CartList";		
+		}			
+		})			
+=======
 	 
 		$.ajax({
 			url : "CartInsert",
@@ -586,6 +628,7 @@ function goCart(){
 				location.href="<%=request.getContextPath() %>/CartList";
 		}
 		})
+>>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	}; 
 function goOrder(){
 	if(document.getElementById("saveImg").value == 0)

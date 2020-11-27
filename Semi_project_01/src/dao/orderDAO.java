@@ -218,25 +218,21 @@ public class orderDAO {
 
 	public List<orderVO> orderDetail(Connection conn, String mid) throws SQLException {
 		List<orderVO> odList = null;
-		
-		String sql = "select o.ono, o.odate, o.oamout, n.dno, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1" 
-				+ "from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
-				+ "where o.mid = ? and n.bisbn=b.bisbn and n.dno = bc.dno";
+		String sql = "select o.mid, o.ono, o.odate, b.bisbn, b.bcover, b.btitle, b.bpriceStandard, b.bpricesales, o.opay, o.odprice, o.ototalprice, o.oname, o.ophone, o.oaddr1, n.dno, n.oamount"
+						+" from order2 o, neworder2 n, bookcover bc, (select bisbn, btitle, bcover, bpriceStandard, bpriceSales from book) b"
+						+" where o.mid=? and o.ono = n.ono and n.bisbn=b.bisbn and n.dno = bc.dno";
 		try {
-			System.out.println("orderdetail까지 옴");
+ 			System.out.println("orderdetail까지 옴");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				odList = new ArrayList<orderVO>();
-				
 				do {
 				orderVO ovo = new orderVO();
-				ovo.setMid(rs.getString("mid"));
+				ovo.setMid(mid);
 				ovo.setOno(rs.getInt("ono"));
 				ovo.setOdate(rs.getDate("odate"));
-				ovo.setOamount(rs.getInt("oamount"));
-				ovo.setDno(rs.getInt("dno"));
 				ovo.setBISBN(rs.getString("BISBN"));
 				ovo.setBcover(rs.getString("bcover"));
 				ovo.setBtitle(rs.getString("btitle"));
@@ -248,6 +244,8 @@ public class orderDAO {
 				ovo.setOname(rs.getString("oname"));
 				ovo.setOphone(rs.getString("ophone"));
 				ovo.setOaddr1("oaddr1");
+				ovo.setDno(rs.getInt("dno"));
+				ovo.setOamount(rs.getInt("oamount"));
 				odList.add(ovo);
 				}while(rs.next());
 			}

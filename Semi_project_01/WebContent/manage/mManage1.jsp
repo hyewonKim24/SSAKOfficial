@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/mManage1.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/mManage1.css" />
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
@@ -20,7 +21,7 @@
 <script type="text/javascript">
 	function goSearch() {
 		var frm = document.mSform;
-		frm.action = "<%=request.getContextPath() %>/memberSearch";
+		frm.action = "<%=request.getContextPath()%>/memberSearch";
 		frm.method = "post";
 		frm.submit();
 	}
@@ -31,25 +32,27 @@
 	<%@ include file="../main/header.jsp"%>
 	<div class="mManage">
 		<div class="mManage_aside">
-		<!-- 여기수정 -->
+			<!-- 여기수정 -->
 			<div class="mManage_asidetlt">회원관리</div>
 			<div class="mManage_asidenav">
 				<ul>
-					<li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+							및 수정<span class="aside_arrow">></span>
+					</a></li>
+					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+							class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+							class="aside_arrow">></span></a></li>
 				</ul>
 			</div>
+			<div class="CS_info">
+				<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
+				</a>
+			</div>
 		</div>
-		<div class="CS_info">
-			<a href="#"> 
-			<span id="one">도움이 필요하신가요?</span> 
-			<span id="two">></span>
-				<br> 1:1 문의하기
 
-			</a>
-		</div>
-	<div class="mManage_cont">
+		<div class="mManage_cont">
 			<div class="mManage_cont_title">회원정보 조회 및 수정</div>
 			<div class="mManage_cont_board">
 				<form>
@@ -72,7 +75,8 @@
 									<!--변경 : el태그 - servlet이랑 맞추기 -->
 									<tr class="notice1">
 										<td class="not1_mno">${m.mno}</td>
-										<td id="not1_id"><a href="memberDetail?mid=${m.mid}&pageNum=${s.count}">${m.mid}</a></td>
+										<td id="not1_id"><a
+											href="<%=request.getContextPath() %>/memberDetail?mid=${m.mid}&pageNum=${s.count}">${m.mid}</a></td>
 										<td class="not1_name">${m.mname}</td>
 										<td class="not1_gd">${m.mgender}</td>
 										<td class="not1_bday">${m.mbirthday}</td>
@@ -81,7 +85,7 @@
 									</tr>
 								</c:forEach>
 							</c:if>
-							
+
 						</tbody>
 					</table>
 
@@ -93,7 +97,7 @@
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="memberList?pageNum=${s.current}">${s.current}</a>
+									<a href="<%=request.getContextPath()%>/memberList?pageNum=${s.current}">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
@@ -116,8 +120,12 @@
 									</select></td>
 									<td><input type="text" name="msearchbar"
 										id="mManage_searchbar">
-										<button type="button" name="mManage_searchbtn" id ="mManage_searchbtn">
-                                            <img src="./imgs/search.png" style="width: 15px; height: 15px;" id="search_icon"></button></td>
+										<button type="button" name="mManage_searchbtn"
+											id="mManage_searchbtn"value="검색" 
+											onclick="goSearch()">
+											<img src="./imgs/search.png"
+												style="width: 15px; height: 15px;" id="search_icon">
+										</button></td>
 								</tr>
 							</tbody>
 						</table>

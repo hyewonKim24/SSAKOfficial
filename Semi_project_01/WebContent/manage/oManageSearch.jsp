@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./viewcss/oManage1.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css" />
 <link href="./reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
@@ -24,21 +24,26 @@
 	<%@ include file="../main/header.jsp"%>
 	<div class="oManage">
 		<div class="oManage_aside">
-			<div id="oManage_asidetlt">관리자페이지</div>
+			<div class="oManage_asidetlt">회원관리</div>
 			
 			<div class="oManage_asidenav">
 				<ul>
-					<li><a href="memberList">회원정보조회 및 수정</a></li>
-					<li><a href="orderList">주문내역조회</a></li>
-					<li><a href="wreqList">탈퇴요청관리</a></li>
+				<li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
 				</ul>
+			</div>
+			<div class="CS_info">
+				<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
+				</a>
 			</div>
 		</div>
 
 		<div class="oManage_cont">
-			<div class="oManage_cont_title">주문내역 조회</div>
-			<span class="oManage_cont_subtitle"> '${osearchbar}' (으)로 검색한
-				결과입니다. </span>
+			<div class="oManage_cont_title">주문내역 조회<span id="oManage_cont_subtitle"> '${osearchbar}' (으)로 검색한
+				결과입니다. </span></div>
+			
 			<div class="oManage_cont_board">
 				<form method="GET" action="#">
 					<table class="oManage_cont_board_tb1">
@@ -60,7 +65,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>
@@ -75,7 +80,7 @@
 					<div class="oManage_pagination">
 						<div class="oManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="orderSearch?pageNum=${prev}&osearchbar=${osearchbar}&otype=${otype }">이전</a>
+								<a href="orderSearch?pageNum=${prev}&osearchbar=${osearchbar}&otype=${otype }"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
@@ -86,26 +91,30 @@
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="orderSearch?pageNum=${next}&osearchbar=${osearchbar}&otype=${otype }">다음</a>
+								<a href="orderSearch?pageNum=${next}&osearchbar=${osearchbar}&otype=${otype }">></a>
 							</c:if>
 						</div>
 					</div>
 				</form>
-				<div class="oManage_search">
+				<div class="oManage_search_wrap">
 					<form name="oSform">
-						<table>
+						<table class="oManage_search">
 							<tbody>
 								<tr>
-									<td><select name="otype">
+									<td><select name="otype" class="search_option">
 											<option value="1">전체</option>
 											<option value="2">주문번호</option>
 											<option value="3">주문아이디</option>
 											<option value="4">수령인</option>
 									</select></td>
 									<td><input type="text" name="osearchbar"
-										id="oManage_searchbar"> <input type="button"
+										id="oManage_searchbar"> 
+										<button type="button"
 										name="oManage_searchbtn" id="oManage_searchbtn" value="검색"
-										onclick="goSearch()"></td>
+										onclick="goSearch()">
+										<img src="./imgs/search.png"
+												style="width: 15px; height: 15px;" id="search_icon">
+												</button></td>
 								</tr>
 							</tbody>
 						</table>

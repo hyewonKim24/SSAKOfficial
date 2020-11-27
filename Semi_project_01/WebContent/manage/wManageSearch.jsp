@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="./viewcss/wManage1.css"/>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/wManage1.css"/>
 <link href="./reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@page import="java.util.List"%>
@@ -24,22 +24,25 @@
 <%@ include file="../main/header.jsp"%>
 	 <div class="wdrManage">
         <div class="wdrManage_aside">
-            <div id="wdrManage_asidetlt">관리자페이지</div>
+            <div class="wdrManage_asidetlt">회원관리</div>
             <div class="wdrManage_asidenav">
                 <ul>
-                    <li><a href="memberList">회원정보조회 및 수정</a></li>
-                    <li><a href="orderList">주문내역조회</a></li>
-                    <li><a href="wreqList">탈퇴요청관리</a></li>
+                   <li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
                 </ul>
             </div>
+            <div class="CS_info">
+				<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
+				</a>
+			</div>
         </div>
 
         <div class="wdrManage_cont">
-            <div class="wdrManage_cont_title">
-                탈퇴요청관리
+            <div class="wdrManage_cont_title">탈퇴요청관리<span id="wdrManage_cont_subtitle"> '${wsearchbar}' (으)로 검색한 결과입니다. </span>
             </div>
-            <span class="mManage_cont_subtitle"> '${wsearchbar}' (으)로 검색한
-				결과입니다. </span>
+            
             <div class="wdrManage_cont_board">
                 <form>
                     <table class="wdrManage_cont_board_tb1">
@@ -71,7 +74,7 @@
                     <div class="wdrManage_pagination">
                     	<div class="wdrManage_pagination_warp">
                     	<c:if test="${startPage != 1}">
-								<a href="wreqSearch?pageNum=${prev}&wsearchbar=${wsearchbar}&wtype=${wtype }">이전</a>
+								<a href="wreqSearch?pageNum=${prev}&wsearchbar=${wsearchbar}&wtype=${wtype }"><</a>
 							</c:if>
 						<c:if test="${startPage != endPage}">
 							<c:forEach varStatus="s"  begin="${startPage}" end="${endPage}" step="1">
@@ -79,19 +82,19 @@
 							</c:forEach>
 						</c:if>
 						<c:if test="${next < pageCount}">
-								<a href="wreqSearch?pageNum=${next}&wsearchbar=${wsearchbar}&wtype=${wtype }">다음</a>
+								<a href="wreqSearch?pageNum=${next}&wsearchbar=${wsearchbar}&wtype=${wtype }">></a>
 							</c:if>
 						</div>
 					</div>
 				</form>
 				
-                    <div class="wdrManage_search">
+                    <div class="wdrManage_search_wrap">
                     <form name="wSform">
-                        <table>
+                        <table class="wdrManage_search">
                             <tbody>
                                 <tr>
                                     <td>
-                                        <select name="wtype">
+                                        <select name="wtype" class="search_option">
                                             <option value="1">전체</option>
                                             <option value="2">아이디</option>
                                             <option value="3">요청일자</option>
@@ -100,7 +103,9 @@
                                     </td>
                                     <td>
                                         <input type="text" name="wsearchbar" id="wdrManage_searchbar">
-                                        <input type="button" name="wdrManage_searchbtn" id ="wdrManage_searchbtn" value="검색" onclick="goSearch()">
+                                        <button type="button" name="wdrManage_searchbtn" id ="wdrManage_searchbtn" value="검색" onclick="goSearch()">
+                                        <img src="./imgs/search.png"
+												style="width: 15px; height: 15px;" id="search_icon"></button>
                                     </td>
                                 </tr>
                             </tbody>

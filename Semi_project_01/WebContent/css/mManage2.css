@@ -1,273 +1,175 @@
 @charset "UTF-8";
 
-    <style>
-     *{
-         margin : 0;
-        }
-        body{
-            width : 100%;
-            position: relative;
-        }
-        .Header{
-            width: 100%;
-            height: 170px;
-        }
-        table, td {
-            border-collapse: collapse;
-        }
-        /* 메인_회원가입 */
-        #mHeader1{
-            position: relative;
-            width : 100%;
-            height: 25px;
-            background-color: rgb(224, 224, 224);
-        }
-        .mSubnav{
-            position: relative;
-            width: 1080px;
-            
-            margin: 0 auto;
-        }
-        .mSubnav ul {
-            float :right;
-            margin-top : 10px;           
-        }
-        .mSubnav ul li {
-            float: left;
-            padding-right: 10px;
-            font-size: 15px;
-        }
-        #mSubnav_dropdown > li {
-            display: none;
-            font-size: 15px;
-        }
+table, td {
+	border-collapse: collapse;
+}
 
-        /* 로고 */
-        #mHeader2{
-            position: relative;
-            width : 100%;
-            height: 100px;
-            background-color: rgb(224, 224, 224);
-        }
-        .mLogoWrap{
-            position: relative;
-            width : 1080px;
-            margin: 0 auto;
-        }
-        #mLogo {   
-            position: absolute;
-            height: 100px;
-            margin : 0 40%;  
-        }
-        /* 메인_네비 */
-        #mHeader3{
-            position: relative;
-            width : 100%;
-            height: 45px;
-            background-color: rgb(224, 224, 224);
-        }
-        #mHeader3.fixed{
-            position: fixed;
-            height: 45px;
-            z-index: 1;              
-            top:0;
-        }
-        .mMainnav_wrap{
-            position: relative;
-            width : 1080px;
-            margin: 0 auto;
-            z-index: 1;
-        }
-        .mMainnav_wrap ul{
-            width: 65%;
-            height: 45px;
-            float:left;
-            list-style: none;
-        }
-        .mMainnav_wrap ul li{
-            float : left;
-            padding-right: 60px;
-            line-height: 45px;
-        }
-        .mMainnav_wrap ul li a{
-            text-decoration: none;
-            font-size: 18px;
-            color: black;
-        }
-        #mMainnav_dropdown li {
-            display : none;
-            font-size: 15px;
-        }
-        .mSearch {
-            position : absolute;
-            width: 35%;
-            right : 0;
-            line-height: 45px;
-        }
-        .mSearch #mSearchBar {
-            width: 50%;
-            box-sizing: border-box;
-            
-        }
-        #mSearchBtn {
-            width : 15%;
-            box-sizing: border-box;
-        }
-        #mCart {
-            width : 20%;
-            box-sizing: border-box;
-		}		
-        /* 회원관리 */
-        .mManage {
-            position: relative;
-            width: 1080px;
-            height: 500px;
-            margin: 0 auto;
-            padding-top: 60px;
-        }
-        /* 회원관리 aside*/
-        .mManage_aside{   
-            position: absolute;
-            width: 200px;
-            height: auto;
-            float: left;
-            margin-right: 60px;
-        }
-        #mMaisde_title {
-            font-size: 30px;
-            font-weight: bold;
-            padding-bottom: 20px;
-        }   
-        .mManage_asidenav ul li {
-            height: 50px;
-            padding-left: 20px;
-            border: solid 1px;
-            box-sizing: border-box;
-        }
-        .mManage_asidenav ul li a {
-            line-height: 50px;
-            text-decoration: none;
-        }
-        /* 회원관리 content*/
-        .mManage_cont {
-            position: absolute;
-            left: 260px;
-            width: 820px;
-        }
-        /* 회원관리 content title*/
-        .mManage_cont_title {
-            width: 100%;
-            font-size: 24px;
-            font-weight: bold;
-            padding-bottom: 20px;
-        }
-        /* 회원관리 content board*/
-        .mManage_cont_board{
-            width: 100%;
-            height: 400px;
-            background-color: white;
-            border: solid 1px;
-            box-sizing: border-box;
-        }
-        .mManage_cont_board form {
-            padding-top: 25px;
-        }
-        .mManage_cont_board table {
-            width: 720px;
-            height: 330px;
-            margin: 0 auto;
-            background-color: white;
-            font-size: 12px;
-        }
-        .txt_img{
-            border: solid 1px;
-            box-sizing: border-box;
-            width: 200px;
-            text-align: center;
-        }
-        .txt_title{
-            border: solid 1px;
-            box-sizing: border-box;
-            width: 100px;
-            text-align: center;
-        }
-        .txt_cont{
-            border: solid 1px;
-            box-sizing: border-box;
-            width: 400px;
-            text-align: left;
-            padding-left: 20px;
-        }
-        table th{
-            height: 27px;
-            line-height: 27px;
-            background-color: rgb(212, 212, 212);
-            font-weight: bold;
-        }
-        table tr:last-child td{
-            padding-top: 20px;
-            text-align: center;
-        }
-        /* footer */
-        footer {
-            position: relative;
-            width: 100%;
-            background-color: rgb(224, 224, 224);
-        }
-        .footer_cont {
-            position: relative;
-            width: 1080px;
-            height: 300px;
-            margin: 0 auto;
-            padding-top : 20px;
-            margin-top: 60px;
-        }
-        /* footer right */
-        .mCS{
-            position: absolute;
-            width: 50%;
-        }
-        #mCS_title {
-            font-size: 30px;
-            padding-top: 20px;
-        }
-        #mCS_info_left{
-            float: left;
-            width: 50%;
-        }
-        #mCS_phone {
-            font-size: 25px;
-            padding: 20px 0;
-        }
-        #mCS_address, #mCS_email {
-            font-size: 15px;
-            padding: 10px 0;
-        }
-        .mCS_opertime {
-            font-size: 15px;
-            padding: 10px 0;
-        }
-        /* footer left */
-        .mSsakInfo {
-            position: absolute;
-            width: 50%;
-            left:50%;
-        }
-        #mSsakInfo_nav {
-            width: 100%;
-            padding-top: 20px;
-            font-size: 15px;
-            height: 30px;
-        }
-        #mSsakInfo_nav ul li {
-            float: left;
-            padding-right: 10%;
-        }
-        #mSsakInfo_text {
-            clear: both;
-            height: 130px;
-        }
-        #mSsakInfo_sns {
-            height: 60px;
-        }
-    </style>
+a {
+	text-decoration: none;
+}
+input[type="text"]{
+	border : none;
+}
+/* 회원관리 */
+.mManage {
+	position: relative;
+	width: 1080px;
+	height: 500px;
+	margin: 0 auto;
+	padding-top: 60px;
+}
+/* 회원관리 aside*/
+.mManage_aside {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	float: left;
+	margin-right: 60px;
+}
+
+.mManage_asidetlt {
+	font-size: 30px;
+	padding-bottom: 26px;
+}
+
+.mManage_asidenav {
+	border: 1px solid #f2f2f2;
+	border-bottom: 0;
+}
+
+.mManage_asidenav ul li {
+	height: 50px;
+	line-height: 18px;
+	padding: 15px 0 15px 20px;
+	border-bottom: 1px solid #f2f2f2;
+	box-sizing: border-box;
+}
+
+.mManage_asidenav ul li a {
+	font-size: 14px;
+	color: #666;
+}
+
+.mManage_asidenav ul li:hover, 
+.mManage_asidenav ul li:hover a {
+	color: #425c5a;
+	font-weight: 700;
+	background-size: 20px px;
+	background-color: #fafafa;
+}
+
+.aside_arrow {
+	position: absolute;
+	right: 0;
+	padding-right: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+/* aside 아래 */
+.CS_info {
+	margin-top: 20px;
+	height: 60px;
+	box-sizing: border-box;
+	background-color: #fafafa;
+	border-radius: 0 100px 100px 0;
+	padding : 18px 0 0 21px;
+}
+
+.CS_info a {
+	line-height: 22px;
+	color: #333;
+}
+
+#one {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+
+#two {
+	position: absolute;
+	right: 0;
+	color: #425c5a;
+	font-size: 14px;
+	font-weight: 700;
+	margin-right: 20px;
+}
+
+/* 회원관리 content*/
+.mManage_cont {
+	position: absolute;
+	left: 260px;
+	width: 820px;
+}
+/* 회원관리 content title*/
+.mManage_cont_title {
+	width: 100%;
+	font-size: 24px;
+	padding-bottom: 26px;
+}
+/* 회원관리 content board*/
+.mManage_cont_board {
+	width: 100%;
+	border-top: 2px solid #425c5a;
+}
+.member_info {
+	font-size: 18px;
+	text-align: left;
+	padding-left: 10px;
+	padding-bottom: 20px;
+}
+.mManage_cont_board form {
+	padding-top: 40px;
+}
+.mManage_cont_board_tb1 {
+	width: 650px;
+	letter-spacing: -0.4px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+
+.txt_title {
+	width: 150px;
+	border: 1px solid #f2f2f2;
+	border-left: 0;
+	border-bottom: 2px solid white;
+	box-sizing: border-box;
+	text-align: center;
+	padding: 15px 0;
+	color: #666;
+	background-color: #f2f2f2;
+}
+
+.txt_cont {
+	width: 400px;
+	border: 1px solid #f2f2f2;
+	text-align: center;
+	color: #666;
+	box-sizing: border-box;
+}
+
+table tr:last-child td {
+	padding-top: 40px;
+	text-align: center;
+}
+
+#edit {
+	width: 150px;
+	height: 45px;
+	background-color: #425c5a;
+	border: 1px solid #425c5a;
+	border-radius: 3px;
+	color: #f2f2f2;
+	font-size: 14px;
+}
+
+#goback {
+	margin-left: 30px;
+	width: 150px;
+	height: 45px;
+	background-color: white;
+	border-radius: 3px;
+	border: 2px solid #425c5a;
+	color: #425c5a;
+	font-size: 14px;
+}

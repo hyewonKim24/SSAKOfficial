@@ -1,14 +1,11 @@
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css" />
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
-=======
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css"/>
 <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
->>>>>>> 1c0b0dd50d4fbc42f1f8bdd230d6b103a1a87e7d
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -41,21 +38,14 @@
                     <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
 				</ul>
 			</div>
-		</div>
-		<div class="CS_info">
-			<a href="#"> <span id="one">도움이 필요하신가요?</span> <span id="two">></span>
-				<br> 1:1 문의하기
+			<div class="CS_info">
+			<a href="<%=request.getContextPath()%>/noticeList.do"> <span id="one">고객센터 바로가기</span> <span id="two">></span>
+					<br>
 			</a>
 		</div>
-        <div class="oManage_aside">
-            <div id="oManage_asidetlt">관리자페이지</div>
-            <div class="oManage_asidenav">
-                <ul>
-                    <li><a href="memberList">회원정보조회 및 수정</a></li>
-                    <li><a href="AdminOrderList">주문내역조회</a></li>
-                    <li><a href="wreqList">탈퇴요청관리</a></li>
-                </ul>
-            </div>
+		
+		</div>
+		
 
 		<div class="oManage_cont">
 			<div class="oManage_cont_title">주문내역 조회</div>
@@ -80,7 +70,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>

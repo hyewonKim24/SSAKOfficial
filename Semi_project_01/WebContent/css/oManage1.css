@@ -1,228 +1,256 @@
 @charset "UTF-8";
 
-     table, td {
-            border-collapse: collapse;
-        }
-        a {
-            text-decoration: none;
-        }
+table, td {
+	border-collapse: collapse;
+}
+
+a {
+	text-decoration: none;
+}
 
 /* 주문내역관리 */
-        .oManage {
-            position: relative;
-            width: 1080px;
-            height: 500px;
-            margin: 0 auto;
-            padding-top: 60px;
-        }
-        /* 주문내역관리 aside*/
-        .oManage_aside{   
-            position: absolute;
-            width: 200px;
-            height: auto;
-            float: left;
-            margin-right: 60px;
-        }
-        .oManage_asidetlt{
-            font-size: 30px;
-            padding-bottom: 26px;
-        }
-        .oManage_cont_title{
-        	font-size: 24px;
-            padding-bottom: 26px;
-        }   
-        .oManage_asidenav{
-            border: 1px solid #f2f2f2;
-            border-bottom: 0;
-        }   
-       
-        .oManage_asidenav ul li {
-            height: 50px;
-            line-height: 19px;
-            padding: 15px 0 15px 20px;
-            border-bottom: 1px solid #f2f2f2;
-            box-sizing: border-box;
-        }
-        .oManage_asidenav ul li a {
-            font-size: 14px;
-            color: #666;
-        }
-        .oManage_asidenav ul li:hover,
-        .oManage_asidenav ul li:hover a {
-            color : #425c5a;
-            font-weight: 700;
-            background-size: 20px px;
-            background-color: #fafafa;
+.oManage {
+	position: relative;
+	width: 1080px;
+	height: 500px;
+	margin: 0 auto;
+	padding-top: 60px;
+}
+/* 주문내역관리 aside*/
+.oManage_aside {
+	position: absolute;
+	width: 200px;
+	height: auto;
+	float: left;
+	margin-right: 60px;
+}
+
+.oManage_asidetlt {
+	font-size: 30px;
+	padding-bottom: 26px;
+}
+
+.oManage_asidenav {
+	border: 1px solid #f2f2f2;
+	border-bottom: 0;
+}
+
+.oManage_asidenav ul li {
+	height: 50px;
+	line-height: 19px;
+	padding: 15px 0 15px 20px;
+	border-bottom: 1px solid #f2f2f2;
+	box-sizing: border-box;
+}
+
+.oManage_asidenav ul li a {
+	font-size: 14px;
+	color: #666;
+}
+
+.oManage_asidenav ul li:hover, .oManage_asidenav ul li:hover a {
+	color: #425c5a;
+	font-weight: 700;
+	background-size: 20px px;
+	background-color: #fafafa;
+}
+
+.aside_arrow {
+	position: absolute;
+	right: 0;
+	padding-right: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+/* 주문내역관리 content*/
+.oManage_cont {
+	position: absolute;
+	left: 260px;
+	width: 820px;
+}
+/* 주문내역관리 content title*/
+.oManage_cont_title {
+	width: 100%;
+	font-size: 24px;
+	padding-bottom: 26px;
+}
+/* 주문내역관리 content board*/
+.oManage_cont_board {
+	width: 100%;
+	border-top: 2px solid #425c5a;
+}
+
+.oManage_cont_board_tb1 {
+	width: 100%;
+	letter-spacing: -0.4px;
+}
+
+.oManage_cont_board_tb1 thead tr {
+	border-bottom: 1px solid black;
+}
+
+.notice1 {
+	border-top: 1px solid #f2f2f2;
+}
+
+.txt_ono, .not1_ono {
+	width: 60px;
+	text-align: center;
+}
+
+.txt_oid, .not1_oid {
+	width: 130px;
+	text-align: center;
+}
+
+.txt_ocnt, .not1_ocnt {
+	width: 100px;
+	text-align: center;
+}
+
+.txt_ototalp, .not1_ototalp {
+	width: 100px;
+	text-align: center;
+}
+
+.txt_operson, .not1_operson {
+	width: 110px;
+	text-align: center;
+}
+
+.txt_contect, .not1_ocontect {
+	width: 210px;
+	text-align: center;
+}
+
+.txt_opay, .not1_opay {
+	width: 110px;
+	text-align: center;
+}
+
+table thead th {
+	padding: 20px 0;
+	vertical-align: middle;
+	font-size: 12px;
+}
+
+.oManage_cont_board_tb1 tbody td {
+	padding: 20px 0;
+	font-size: 12px;
+}
+
+.oManage_cont_board_tb1 tbody {
+	border-bottom: 2px solid #f2f2f2;
+}
+
+/* 주문내역관리 페이지 넘버 */
+.oManage_pagination {
+	width: 100%;
+	height: 34px;
+	text-align: center;
+	margin-top: 60px;
+	word-spacing: -8px;
+}
+
+.oManage_pagination_warp a:nth-child(1) {
+	border-left: 1px solid #ddd;
+}
+
+.oManage_pagination_warp a {
+	display: inline-block;
+	width: 34px;
+	height: 34px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 34px;
+	border: 1px solid #ddd;
+	border-left: 0;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+.oManage_pagination_warp a:hover {
+	background-color: #f7f7f7;
+	color: #425c5a;
+}
+/* 검색옵션 */
+.oManage_search_wrap {
+	clear: both;
+	width: 100%;
+	margin-top: 30px;
+	border-top: 2px solid #425c5a;
+}
+
+.oManage_search {
+	float: right;
+	margin: 30px 0;
+	word-spacing: -10px;
+}
+
+.search_option {
+	width: 100px;
+	height: 34px;
+	border: 1px solid #bfbfbf;
+}
+
+#oManage_searchbar {
+	width: 200px;
+	height: 34px;
+	border: 1px solid #bfbfbf;
+	border-right: 0;
+	box-sizing: border-box;
+	vertical-align: middle;
+}
+
+#oManage_searchbtn {
+	width: 34px;
+	height: 34px;
+	border: 1px solid #425c5a;
+	box-sizing: border-box;
+	padding: 0;
+	vertical-align: middle;
+	background-color: #425c5a;
+}
+
+#search_icon {
+	-webkit-filter: opacity(1) drop-shadow(0 0 0 white);
+	filter: opacity(1) drop-shadow(0 0 0 white);
+}
+/* aside 아래 */
+.CS_info {
+	margin-top: 20px;
+	height: 60px;
+	box-sizing: border-box;
+	background-color: #fafafa;
+	border-radius: 0 100px 100px 0;
+	padding : 18px 0 0 21px;
+}
+
+.CS_info a {
+	line-height: 22px;
+	color: #333;
+}
+
+#one {
+	font-size: 14px;
+	font-weight: bold;
+	color: #333;
+}
+
+#two {
+	position: absolute;
+	right: 0;
+	color: #425c5a;
+	font-size: 14px;
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+/* search페이지 */
+        #oManage_cont_subtitle {
+        	font-size : 15px;
+       		padding-left : 20px;
+       		line-height : 15px;
         }
         
-        .aside_arrow {
-            position: absolute;
-            right: 0;
-            padding-right: 20px;
-            line-height: 20px;
-            font-size: 14px;
-        }
-
-        /* 주문내역관리 content*/
-        .oManage_cont {
-            position: absolute;
-            left: 260px;
-            width: 820px;
-        }
-        /* 주문내역관리 content title*/
-        .oManage_cont_title {
-            width: 100%;
-        }
-        /* 주문내역관리 content board*/
-        .oManage_cont_board{
-            width: 100%;
-            border-top : 2px solid #425c5a;
-        }
-        .oManage_cont_board_tb1{
-            width: 100%;
-            letter-spacing: -0.4px;
-        }
-        .oManage_cont_board_tb1 thead tr{
-            border-bottom: 1px solid black;
-        }
-        .notice1{
-            border-top: 1px solid #f2f2f2;
-        }
-        
-        .txt_ono, .not1_ono{
-            width: 60px;
-            text-align: center;
-        }
-        .txt_oid, .not1_oid{
-            width: 130px;
-            text-align: center;
-        }
-        .txt_ocnt, .not1_ocnt{
-            width: 100px;
-            text-align: center;
-        }
-        .txt_ototalp, .not1_ototalp{
-            width: 100px;
-            text-align: center;
-        }
-        .txt_operson, .not1_operson{
-            width: 110px;
-            text-align: center;
-        }
-        .txt_contect, .not1_ocontect{
-            width: 210px;
-            text-align: center;
-        }
-        .txt_opay, .not1_opay{
-            width: 110px;
-            text-align: center;
-        }
-        table thead th{
-            padding : 20px 0;
-            vertical-align: middle;
-            font-size: 12px;
-        }
-        .oManage_cont_board_tb1 tbody td{
-            padding : 20px 0;
-            font-size: 12px;
-        }
-        .oManage_cont_board_tb1 tbody{
-            border-bottom: 2px solid  #f2f2f2;
-        }
-
-        /* 주문내역관리 페이지 넘버 */
-        .oManage_pagination{
-            width: 100%;
-            height: 34px;
-            text-align: center;
-            margin-top: 60px;   
-            word-spacing: -8px;
-        }
-        .oManage_pagination_warp a:nth-child(1) {
-            border-left: 1px solid #ddd;
-        }
-        .oManage_pagination_warp a {
-            display: inline-block;
-            width: 34px;
-            height: 34px;
-            font-size: 12px;
-            font-weight: 700;
-            line-height: 34px;
-            border: 1px solid #ddd;
-            border-left: 0;
-            box-sizing: border-box;
-            cursor: pointer;
-        }
-        .oManage_pagination_warp a:hover {
-            background-color: #f7f7f7;
-            color : #425c5a;
-        }
-        /* 검색옵션 */
-        .oManage_search_wrap {
-            clear : both;
-            width: 100%;
-            margin-top: 30px;
-            border-top : 2px solid #425c5a;
-        }
-        .oManage_search {
-            float : right;
-            margin: 30px 0;
-            word-spacing: -10px;
-        }
-        .search_option{
-            width: 100px;
-            height: 34px;
-            border: 1px solid #bfbfbf;
-        }
-        #oManage_searchbar{
-            width: 200px;
-            height: 34px;
-            border: 1px solid #bfbfbf;
-            border-right: 0;
-            box-sizing: border-box;
-            vertical-align: middle;
-        }
-        #oManage_searchbtn{
-            width: 34px;
-            height: 34px;
-            border: 1px solid #425c5a;
-            box-sizing: border-box;
-            padding: 0;
-            vertical-align: middle;
-            background-color: #425c5a;
-        }
-        #search_icon{
-            -webkit-filter: opacity(1) drop-shadow(0 0 0 white);
-            filter: opacity(1) drop-shadow(0 0 0 white);
-        }
-        /* aside 아래 */
-        .CS_info{
-            position : absolute;
-        	top : 261px;
-        	width : 200px;
-            height: 60px;
-            box-sizing: border-box;
-			margin-top: 20px;
-            background-color: #fafafa;
-            border-radius: 0 100px 100px 0;
-            padding : 9px 0 0 21px;
-        }
-        .CS_info a {
-            font-size: 12px;
-            line-height: 22px;
-            color : #333;
-        }
-        #one{
-            font-size: 14px;
-            font-weight: bold;
-            color : #333;   
-        }
-        #two{
-            position: absolute;
-            right: 0;
-            color: #425c5a;
-            font-size: 14px;
-            font-weight: bold;
-            margin-right: 20px;
-            margin-top: 11px;
-        }
