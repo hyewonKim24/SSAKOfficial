@@ -205,7 +205,7 @@ body {
 	function startUpdate() {
 		var frm = document.qnaDetail;
 		frm.method = "post";
-		frm.action = "qnaUpdate.jsp";
+		frm.action = ".//qna/qnaUpdate.jsp";
 		frm.submit();
 	}
 	function goBackList() {
@@ -214,13 +214,13 @@ body {
 	function goDelete(){
 		var frm = document.qnaDetail;
 		frm.method = "post";
-		frm.action = "qnaDelete.do";
+		frm.action = "<%=request.getContextPath()%>qnaDelete.do";
 		frm.submit();
 	}
 	function goReply(){
 		var frm = document.qnaDetail;
 		frm.method="post";
-		frm.action="qnaReply.jsp";
+		frm.action="./qna/qnaReply.jsp";
 		frm.submit();
 	}
 </script>

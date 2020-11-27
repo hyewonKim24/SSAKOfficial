@@ -10,17 +10,19 @@
 	crossorigin="anonymous"></script>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
+
 #quick {
    position: absolute;
    top: 300px;
    left: 50%;
-   width: 70px;
-   z-index: 1;
+   width: 150px;
+   z-index: -1;
 }
 #quick.fixed {
 	position : fixed;
 	top : 100px;
 }
+
 
 .recent_book_wrap {
 <<<<<<< HEAD
@@ -96,7 +98,6 @@ $(document).ready(function() {
 			$("#quick").removeClass("fixed");
 		}
 	});
->>>>>>> b04f2c1bcd630b822c09a2a8611942febefc5acc
 });
 </script>
 </head>

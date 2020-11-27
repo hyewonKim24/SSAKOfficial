@@ -127,6 +127,9 @@ body {
 	margin: 25px 0 25px 0;
 	line-height: 20px;
 }
+.detail_number{
+	z-index:9999;
+}
 
 #detail_order {
 	margin-left: 140px
@@ -352,7 +355,7 @@ section.detail_buttons {
 				<form name="detail_frm" id="detail_amount">
 					<hr id="detail_hr" width="570" color="gray" height="1px">
 					<span>수량 </span> <input type="number" value="1" min="1" max="50"
-						width="10px" name="bookamount" id="bookamount">
+						width="10px" name="bookamount" id="bookamount" class="detail_number">
 					<span id="detail_order">
 						<button type="button" class="detail_order_btn cartIn">장바구니</button>
 						<button type="button" class="detail_order_btn orderIn">구매하기</button>

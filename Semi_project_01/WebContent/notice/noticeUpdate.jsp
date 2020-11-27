@@ -1,3 +1,4 @@
+<link href="<%=request.getContextPath() %>/reset.css" rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -22,6 +23,9 @@ a:visited {
 	text-decoration: none;
 	color: gray;
 }
+a:link {
+	color: gray;
+}
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -33,41 +37,22 @@ body {
 	margin: auto;
 }
 
+/***************side menu   START****************/
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 #c_nav {
 	float: left;
 	width: 200px;
+	padding-bottom: 10px;
 }
 
 #c_nav .tit_c_nav {
+	font-size: 30px;
 	padding: 7px 0 34px;
-}
-
-.nav_t {
-	display: block;
-	width: 200px;
-	height: 60px;
-	background-color: gold;
-}
-
-#c_nav .nav_link {
-	display: block;
-	width: 200px;
-	height: 130px;
-	margin-top: 16px;
-	padding-top: 19px;
-	border: 1px solid #f7f5f7;
-	background: #E6E6E6;
-	background-size: 6px 11px;
-	line-height: 20px;
-	border-radius: 30px;
-}
-
-#c_nav .nav_link .emph {
-	display: block;
-	padding-bottom: 1px;
-	font-weight: 700;
-	font-size: 14px;
-	text-align: center;
+	letter-spacing: -0.4px;
 }
 
 .inner_nav {
@@ -77,15 +62,53 @@ body {
 
 .list_menu li {
 	border-bottom: 1px solid #dcdbde;
+	list-style: none;
 }
 
 .list_menu li a {
 	display: block;
 	overflow: hidden;
-	padding: 16px 0 16px 19px;
-	background: #fff url("./images/ico_arrow_on_12x22.png") no-repeat 174px
-		50%;
-	background-size: 6px 10px;
+	padding: 15px 0 15px 20px;
+	line-height: 20px;
+	background: #fff /* url("./arrow-right2.png") no-repeat 169px 50% */;
+	background-size: 10px 11px;
+	font-size: 14px;
+}
+
+.list_menu li a:hover {
+	background: #fafafa /* url("./arrow-right2.png") no-repeat 169px 50% */;
+	background-size: 10px 11px;
+	font-weight: 700;
+	color: #425c5a;
+}
+
+.aside_arrow {
+	float: right;
+	padding-right: 20px;
+	right: 0;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+#c_nav .link_inquire {
+	display: block;
+	overflow: hidden;
+	height: 60px;
+	margin-top: 20px;
+	padding: 9px 0 0 21px;
+	border-radius: 0 100px 100px 0;
+	background: #fafafa url("./arrow-right2.png") no-repeat 169px 50%;
+	background-size: 10px 11px;
+	font-size: 12px;
+	color: #333;
+	line-height: 20px;
+}
+
+#c_nav .link_inquire .emph {
+	display: block;
+	padding-bottom: 1px;
+	font-weight: 700;
+	font-size: 14px;
 }
 
 .page_section {
@@ -124,11 +147,43 @@ body {
 	width: 100%;
 }
 
+.qna_desc {
+	line-height: 250px;
+	padding-top: 0px;
+	vertical-align: middle;
+}
+
+.qna_box {
+	background-color: #f7f7f7;
+}
+
+.subM {
+	float: right;
+	padding: 10px 0;
+}
+
+.hr_bottm {
+	width: 100%;
+	margin: 30px;
+}
+
+.b_button {
+	width: 100px;
+	line-height: 30px;
+	font-size: 11px;
+	text-align: center;
+	background-color: #425c5a;
+	border: 1px solid #425c5a;
+	color: #fff;
+}
+
 .CSq1_cont_board table {
 	width: 100%;
 	height: 450px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	border-collapse: collapse;
+	border-top: 3px solid #425c5a;
+	
 }
 
 .CSq1_cont_board tr td:nth-child(1) {
@@ -137,7 +192,7 @@ body {
 	font-weight: bold;
 	width: 150px;
 	line-height: 30px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	vertical-align: middle;
 	height: 10px;
 }
@@ -145,28 +200,8 @@ body {
 .CSq1_cont_board tr td:nth-child(2) {
 	font-size: 13px;
 	width: 180px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	vertical-align: middle;
-}
-
-.qna_desc {
-	line-height: 250px;
-	padding-top: 0px;
-	vertical-align: middle;
-}
-
-.qna_box {
-	background-color: gainsboro;
-}
-
-.subM {
-	float: right;
-	padding-top: 10px;
-}
-
-.hr_bottm {
-	width: 100%;
-	margin: 30px;
 }
 </style>
 <script type="text/javascript">
@@ -195,21 +230,17 @@ body {
 	<div id="wrap">
 		<div id="c_main">
 			<div id="c_nav">
-				<h1 class="tit_c_nav">고객센터</h1>
+				<h2 class="tit_c_nav">고객센터</h2>
 				<div class="inner_nav">
 					<ul class="list_menu">
-					<li><a href="<%=request.getContextPath() %>/noticeList.do">공지사항</a></li>
-					<li><a href="<%=request.getContextPath() %>/qna/fq.jsp">자주하는질문</a></li>
-					<li><a href="<%=request.getContextPath() %>/qnaList.do">1:1문의</a></li>
+						<li><a href="noticeList.do">공지사항<span class="aside_arrow">></span></a></li>
+						<li><a href="#">자주하는질문<span class="aside_arrow">></span></a></li>
+						<li><a href="qnaList.do">1:1문의<span class="aside_arrow">></span></a></li>
 					</ul>
 				</div>
-				<a href="#" class="nav_link">
-					<div class="nav_text">고객센터</div>
-					<div class="nav_text">111-1111</div>
-					<div class="nav_text2">
-						<div class="nav_text">월~금 09:00~18:00</div>
-						<div class="nav_text">(토요일,공휴일 휴무)</div>
-					</div>
+
+				<a href="#" class="link_inquire"> <span class="emph">도움이
+						필요하신가요 ?</span> 1:1 문의하기
 				</a>
 			</div>
 
@@ -219,28 +250,30 @@ body {
 						공지사항 <span class="tit_sub"> 최신 싹(SAKK)의 소식을 보실 수 있습니다. </span>
 					</h2>
 				</div>
+	
+
 				<div class="CSq1_cont_board">
 					<form name="nDetialUpdate">
 						<input type="hidden" name="nno" value="${param.nno}">
-						<table style="margin-top: 34px;">
+						<table class="qnq_board" style="margin-top: 34px;">
 							<tr>
 								<td class="qna_title qna_box">제목</td>
 								<td colspan="2" style="padding-left: 8px;"><input
 									type="text" id="ntitle" name="ntitle"
-									style="width: 640px; height: 30px;" value="${param.ntitle}"></td>
+									style="width: 640px; height: 30px; border: 1px solid #e8e8e8;" value="${param.ntitle}"></td>
 							</tr>
 							<tr>
 								<td class="qna_desc qna_box">내용</td>
-								<td colspan="2" style="padding-left: 8px;"><input
-									type="text" id="ncontent" name="ncontent"
-									style="width: 640px; height: 350px;" value="${param.ncontent}">
+								<td colspan="2" style="padding-left: 8px;">
+								<textarea cols="50" rows="10" id="ncontent" name="ncontent" style="width: 640px; height: 350px; border: 1px solid #e8e8e8; "  value="${param.ncontent}"></textarea>
+								
 								</td>
 							</tr>
 						</table>
 						<div class="subM">
 							<input type="button" onclick="endUpdate()" value="수정하기"
-								style="height: 50px; width: 134px; background-color: gray; border-radius: 8px;">
-							<input type="button" value="취소" onclick="goBack()">
+								class="b_button"> <input type="button" class="b_button"
+								value="취소" onclick="goBack()">
 						</div>
 					</form>
 				</div>

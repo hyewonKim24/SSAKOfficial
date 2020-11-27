@@ -348,7 +348,7 @@ function goSearch(){
 			</div>
 			<div id="qWritebtn">
 				<button type="button" id="qWrite" name="qWrite"
-					onclick="location.href='./qnaWrite.jsp'">글쓰기</button>
+					onclick="location.href='./qna/qnaWrite.jsp'">글쓰기</button>
 			</div>
 		</div>
 	</div>

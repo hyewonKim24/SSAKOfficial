@@ -56,9 +56,12 @@ public class MyOrderList extends HttpServlet {
 		String mid= mvo.getMid();
 		try {
 			List<orderVO> myolist = osv.myOrderlist(mid);
-			for(int i=0; i<myolist.size();i++) {
-				
-			}
+//			for(int i=0; i<myolist.size();i++) {
+//				for(j=0; j<clist.size() ;j++) {
+//					clist(j) == 
+//							
+//				}
+//			}
 			request.setAttribute("myolist", myolist);
 			
 			RequestDispatcher disp = request.getRequestDispatcher("./member/myOrderList.jsp");
