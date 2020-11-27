@@ -208,6 +208,26 @@ public class CartDAO {
 		}
 		return result;
 	}
+	
+	//혜원 코드 추가 (장바구니 뿌리기)
+	public int CartCount(Connection conn, String mid) throws SQLException {
+		int result=0;
+		String sql="select count(*) from cart where mid=?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+				System.out.println(result+"개 장바구니 갯수");
+			}
+			
+		}finally {
+			close();
+		}
+		return result;
+		
+	}
 
 
 	

@@ -219,7 +219,7 @@ a {
 							<a href="#"><i class="fas fa-shopping-bag fa-3x fa-border"></i></a>
 							<div class="btn_dcp">
 								장바구니<br> <a href="#">
-									<div class="btn_num">0개</div>
+									<div class="btn_num">${cartCount }개</div>
 								</a>
 							</div>
 						</div>

@@ -1,13 +1,7 @@
-<!-- Le styles -->
-<link type="text/css" rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/jquery.miniColors.css" />
-<link href="<%=request.getContextPath()%>/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="<%=request.getContextPath()%>/css/bootstrap-responsive.min.css"
-	rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/reset.css"
-	rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.miniColors.css" />
+<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
@@ -28,13 +22,10 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/fabric.js"></script> <script
-	type="text/javascript"
-	src="<%=request.getContextPath()%>/js/jquery.miniColors.min.js"></script>
-<script type="text/javascript"
-	src="<%=request.getContextPath()%>/js/tshirtEditor.js"></script> <script
-	src="<%=request.getContextPath()%>/book/html2canvas.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/fabric.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/jquery.miniColors.min.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/js/tshirtEditor.js"></script>
+<script src="<%=request.getContextPath() %>/book/html2canvas.js"></script>
 
 <style type="text/css">
 * {
@@ -47,22 +38,15 @@ body {
 	width: 100%;
 	position: relative;
 }
-
 .footer {
 	padding: 70px 0;
 	margin-top: 70px;
 	border-top: 1px solid #E5E5E5;
 	background-color: whiteSmoke;
 }
-
 .color-preview {
 	border: 1px solid #CCC;
-<<<<<<< HEAD
-	margin-left: 3px;
-	margin-bottom: 4px;
-=======
 	margin: 2px;
->>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	zoom: 1;
 	vertical-align: top;
 	display: inline-block;
@@ -71,93 +55,75 @@ body {
 	width: 20px;
 	height: 20px;
 }
-
 .rotate {
 	-webkit-transform: rotate(90deg);
 	-moz-transform: rotate(90deg);
 	-o-transform: rotate(90deg);
 	-ms-transform: rotate(90deg);
 }
-
 .Arial {
 	font-family: "Arial";
 }
-
 .Helvetica {
 	font-family: "Helvetica";
 }
-
 .MyriadPro {
 	font-family: "Myriad Pro";
 }
-
 .Delicious {
 	font-family: "Delicious";
 }
-
 .Verdana {
 	font-family: "Verdana";
 }
-
 .Georgia {
 	font-family: "Georgia";
 }
-
 .Courier {
 	font-family: "Courier";
 }
-
 .ComicSansMS {
 	font-family: "Comic Sans MS";
 }
-
 .Impact {
 	font-family: "Impact";
 }
-
 .Monaco {
 	font-family: "Monaco";
 }
-
 .Optima {
 	font-family: "Optima";
 }
-
 .HoeflerText {
 	font-family: "Hoefler Text";
 }
-
 .Plaster {
 	font-family: "Plaster";
 }
-
 .Engagement {
 	font-family: "Engagement";
 }
-
 #drawingArea:hover {
 	border: 2px solid black;
 }
-
 .container {
 	padding-top: 60px;
 }
-
 #thumbnail {
 	width: 128px;
 	height: 150px;
 	border: solid 1px;
 	margin: 0 auto;
+	
 	margin-bottom: 32px;
 }
-
-#myImg {
-	width: 128px;
-	height: 150px;
+#myImg{
+	width : 128px;
+	height : 150px;
 }
 .bookcustom {
 	width: 570px;
-	heigh: 678px;
+	heigh : 678px;
 }
 .well .cstinfo {
 	outline: none;
@@ -169,24 +135,21 @@ body {
 }
 .csttitle {
 	padding-bottom: 50px;
-	color: #425c5a;
-	font-size: 16px;
-	font-weight: bold;
+	color : #425c5a;
+	font-size : 16px;
+	font-weight : bold;
 }
 #tshirtFacing {
 	width: 570px;
 }
-
-#text-string {
-	height: 25px;
+#text-string{
+	height : 25px;
 }
-
-input.cstinfo {
-	padding-left: 0;
+input.cstinfo{
+	padding-left : 0;
 }
-
 .table td {
-	padding-left: 0;
+	padding-left : 0;
 }
 </style>
 </head>
@@ -296,10 +259,6 @@ input.cstinfo {
 											style="background-color: #3469b7;"></li>
 										<li class="color-preview" title="Cherry Red"
 											style="background-color: #c50404;"></li>
-<<<<<<< HEAD
-
-=======
->>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 									</ul>
 								</div>
 							</div>
@@ -527,21 +486,11 @@ input.cstinfo {
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-<<<<<<< HEAD
-
-	<script src="./js/bootstrap.min.js"></script>
-
-	<%String member = String.valueOf(session.getAttribute("member"));%>
-	<script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
-=======
-			<%String member = String.valueOf(session.getAttribute("member"));%>
 	<script src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
->>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	<script type="text/javascript">
 		var _gaq = _gaq || [];
 		_gaq.push([ '_setAccount', 'UA-35639689-1' ]);
 		_gaq.push([ '_trackPageview' ]);
-
 		(function() {
 			var ga = document.createElement('script');
 			ga.type = 'text/javascript';
@@ -577,7 +526,6 @@ function drawImg1(imgData) {
 function save(){
 	document.getElementById("saveImg").value = '1'
 }
-
 function goCart(){
 	if(document.getElementById("saveImg").value == 0)
 		alert("저장하기를 눌러주세요")
@@ -598,23 +546,8 @@ function goCart(){
 	var bbb = imgData;	
 	goC(bbb);	
 };
-
 //장바구니 갈 때 경로
  function goC(bbb){
-<<<<<<< HEAD
-	 $.ajax({
-			url : "CartInsert",				
-			type : "post",				
-			data :{customURL : bbb,		
-				bookamount : $("#cutsom_bookamount").val(),	
-				bisbn : $("#cutsom_bisbn").val()			
-			},			
-			success : function(res){
-			if(res>0)			
-				location.href="<%=request.getContextPath()%>/CartList";		
-		}			
-		})			
-=======
 	 
 		$.ajax({
 			url : "CartInsert",
@@ -628,7 +561,6 @@ function goCart(){
 				location.href="<%=request.getContextPath() %>/CartList";
 		}
 		})
->>>>>>> bba2409189e0a573423e63df055d12e6450bc098
 	}; 
 function goOrder(){
 	if(document.getElementById("saveImg").value == 0)
@@ -667,7 +599,6 @@ function goO(bbb){
 		}
 		})
 	}; 
-
 	
 function saveAs(uri, filename) {
 	var link = document.createElement('a');

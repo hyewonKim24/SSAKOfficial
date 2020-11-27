@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import member.model.memberVO;
 import order.model.orderVO;
+import service.cart.CartService;
 import service.order.orderService;
 
 /**
@@ -52,18 +53,21 @@ public class MyOrderList extends HttpServlet {
 			throws ServletException, IOException {
 		
 		orderService osv = new orderService();
+		CartService csv = new CartService();
+		
 		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
-		String mid= mvo.getMid();
-		try {
-			List<orderVO> myolist = osv.myOrderlist(mid);
-//			for(int i=0; i<myolist.size();i++) {
-//				for(j=0; j<clist.size() ;j++) {
-//					clist(j) == 
-//							
-//				}
-//			}
-			request.setAttribute("myolist", myolist);
+		if(mvo==null || mvo.equals("") || mvo.equals("null")) {
+			//로그인화면으로 보내기
 			
+			
+		}else {
+		String mid = mvo.getMid();
+		try {
+			int rs = csv.CartCount(mid);
+			List<orderVO> myolist = osv.myOrderlist(mid);
+			request.setAttribute("myolist", myolist);
+			request.setAttribute("cartCount", rs);
+
 			RequestDispatcher disp = request.getRequestDispatcher("./member/myOrderList.jsp");
 			disp.forward(request, response);
 			
@@ -71,6 +75,7 @@ public class MyOrderList extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
 	}
 
 }
