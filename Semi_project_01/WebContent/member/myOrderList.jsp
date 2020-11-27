@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    <%@ include file="../main/header.jsp"%>
+<%@ include file="../main/header.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +55,7 @@ a {
 .mycate {
 	width: 200px;
 	height: 50px;
-	font-size:14px;
+	font-size: 14px;
 	border: 1px solid black;
 	border-bottom: 0px;
 	display: table-cell;
@@ -134,6 +134,7 @@ a {
 
 .order_detail {
 	margin: auto 0;
+	width: 500px;
 	font-size: 12pt;
 }
 
@@ -156,7 +157,7 @@ a {
 	cursor: pointer;
 }
 
-#mylist{
+#mylist {
 	font-weight: bold;
 }
 </style>
@@ -167,29 +168,30 @@ a {
 	<div class="mypage">
 		<aside id="category">
 			<div class="classify">마이페이지</div>
-            <a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
-                <div class="mycate">주문내역조회
-                    <div class="arrow">></div>
-                </div>
+			<a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+				<div class="mycate">
+					주문내역조회
+					<div class="arrow">></div>
+				</div>
 
-            </a>
-            <a href="<%=request.getContextPath()%>/member/mypagePwrechk.jsp">
-                <div class="mycate" id="alter">내 정보 수정
-                    <div class="arrow">></div>
-                </div>
+			</a> <a href="<%=request.getContextPath()%>/member/mypagePwrechk.jsp">
+				<div class="mycate" id="alter">
+					내 정보 수정
+					<div class="arrow">></div>
+				</div>
 
-            </a>
-            <a href="<%=request.getContextPath()%>/member/WrerPwrechk.jsp">
-                <div class="mycate" id="last">탈퇴하기
-                    <div class="arrow">></div>
-                </div>
-            </a>
+			</a> <a href="<%=request.getContextPath()%>/member/WrerPwrechk.jsp">
+				<div class="mycate" id="last">
+					탈퇴하기
+					<div class="arrow">></div>
+				</div>
+			</a>
 		</aside>
 		<section id="mypage_order">
 			<div class="personal">
 				<div id="personal_intro">
-					<i class="fas fa-user"></i> <span> ${member.mname }님, 안녕하세요! 회원님의 등급은
-						GOLD입니다.</span>
+					<i class="fas fa-user"></i> <span> ${member.mname }님, 안녕하세요!
+						회원님의 등급은 GOLD입니다.</span>
 				</div>
 				<div id="person_btn">
 					<div class="person_wrapper">
@@ -237,81 +239,41 @@ a {
 
 			<div class="orderwrap">
 				<div class="ordertitle">주문내역 / 배송조회</div>
-				<div class="order">
-					<div class="date">주문일 2020-10-17</div>
-					<div class="order_contents">
-						<a href="#"><img
-							src="http://image.bandinlunis.com/upload/product/3558/3558588.jpg"
-							alt="book" class="book"></a>
-						<div class="order_detail">
-							<a href="#">
-								<p>상품명</p>
-							</a> <a href="#""><p>주문번호</p></a>
-							<p>결제금액</p>
-							<p>주문상태</p>
-						</div>
-						<div class="order_apli">
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">배송조회</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">교환신청</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">반품신청</button>
-						</div>
-					</div>
-				</div>
-				<div class="order">
-					<div class="date">주문일 2020-10-17</div>
-					<div class="order_contents">
-						<a href="#"><img
-							src="http://image.bandinlunis.com/upload/product/3558/3558588.jpg"
-							alt="book" class="book"></a>
-						<div class="order_detail">
-							<a href="#">
-								<p>상품명</p>
-							</a> <a href="#""><p>주문번호</p></a>
-							<p>결제금액</p>
-							<p>주문상태</p>
-						</div>
-						<div class="order_apli">
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">배송조회</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">교환신청</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">반품신청</button>
+				<c:if test="${not empty myolist }">
+				<c:forEach items="${myolist }" var="olist" varStatus="status" > 
+					<c:set var="str" value="${myolist[status.index + 1].ono}"/>
+					<c:if test="str==${o.ono }">
+						
+						
+					</c:if>
+					<div class="order">
+						<div class="date">주문일자 : ${olist.odate}</div>
+						<div class="order_contents">
+							<a href="#"><img
+								src="${olist.bcover }"
+								alt="book" class="book"></a>
+							<div class="order_detail">
+								<a href="#">
+								</a> <a href="#""><p>주문번호 : ${olist.ono }</p></a>
+									<p>상품명 : ${olist.btitle }</p>
+								<p>총 가격 : ${olist.ototalprice}</p>
+								<p>총 책수량 : ${olist.oamount }</p>
+								<p>주문 상태 : ${olist.ostatus }</p>
+							</div>
+							<div class="order_apli">
+								<button type="button" onclick="location.href='#'"
+									class="order_btn">배송조회</button>
+								<br>
+								<button type="button" onclick="location.href='#'"
+									class="order_btn">교환신청</button>
+								<br>
+								<button type="button" onclick="location.href='#'"
+									class="order_btn">반품신청</button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="order">
-					<div class="date">주문일 2020-10-17</div>
-					<div class="order_contents">
-						<a href="#"><img
-							src="http://image.bandinlunis.com/upload/product/3558/3558588.jpg"
-							alt="book" class="book"></a>
-						<div class="order_detail">
-							<a href="#">
-								<p>상품명</p>
-							</a> <a href="#"><p>주문번호</p></a>
-							<p>결제금액</p>
-							<p>주문상태</p>
-						</div>
-						<div class="order_apli">
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">배송조회</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">교환신청</button>
-							<br>
-							<button type="button" onclick="location.href='#'"
-								class="order_btn">반품신청</button>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
+				</c:if>
 			</div>
 		</section>
 	</div>

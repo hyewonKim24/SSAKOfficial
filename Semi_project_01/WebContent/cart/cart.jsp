@@ -338,7 +338,7 @@
 				if(checkboxVal==null){
 					alert("상품을 한 개 이상 선택해주세요.")
 				} else{
-					location.href = "OrderList?cno=" + check;				
+					location.href = "<%=ctxPath%>/NewOrderList.do?cno=" + check;				
 				}				
 			});
 			

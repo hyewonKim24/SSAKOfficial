@@ -352,7 +352,7 @@ section.detail_buttons {
 				<form name="detail_frm" id="detail_amount">
 					<hr id="detail_hr" width="570" color="gray" height="1px">
 					<span>수량 </span> <input type="number" value="1" min="1" max="50"
-						width="10px" margin-right="20px" name="bookamount" id="bookamount">
+						width="10px" name="bookamount" id="bookamount">
 					<span id="detail_order">
 						<button type="button" class="detail_order_btn cartIn">장바구니</button>
 						<button type="button" class="detail_order_btn orderIn">구매하기</button>

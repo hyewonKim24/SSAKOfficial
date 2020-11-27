@@ -185,7 +185,8 @@ public class orderDAO {
 							ovo = new orderVO();
 							ovo.setOno(rs.getInt("ono"));
 							ovo.setMid(rs.getString("mid"));
-							ovo.setOamount(rs.getInt("oamount"));
+							//오류가 나서 수정,,
+							ovo.setOamount(rs.getInt("ototalamount"));
 							ovo.setOtotalprice(rs.getInt("ototalprice"));
 							ovo.setOname(rs.getString("oname"));
 							ovo.setOphone(rs.getString("ophone"));
@@ -255,6 +256,46 @@ public class orderDAO {
 		}
 		return odList;
 	}
+	
+	//myOrderList
+	public List<orderVO> myOrderlist(Connection conn, String mid) throws SQLException {
+		List<orderVO> odList = null;
+		
+		String sql = "select o.ono, o.odate, o.ototalamount, o.ostatus, o.ototalprice, b.bcover, b.btitle, n.oamount "
+				+ "from order2 o, neworder2 n, (select btitle, bcover, bisbn from book) b"
+				+ " where o.mid=? and n.ono=o.ono and n.bisbn=b.bisbn order by ono";
+		try {
+			System.out.println("myorderlist까지 옴");
+			pstmt = conn.prepareStatement(sql);
+			System.out.println(mid);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				odList = new ArrayList<orderVO>();
+				
+				do {
+				orderVO ovo = new orderVO();
+				ovo.setOno(rs.getInt("ono"));
+				ovo.setOdate(rs.getDate("odate"));
+				System.out.println("totalamount확인+"+rs.getInt("ototalamount"));
+				ovo.setOamount(rs.getInt("ototalamount"));
+				ovo.setOtotalprice(rs.getInt("ototalprice"));
+				ovo.setOstatus(rs.getString("ostatus"));
+				ovo.setBcover(rs.getString("bcover"));
+				ovo.setBtitle(rs.getString("btitle"));
+				odList.add(ovo);
+				}while(rs.next());
+			}
+		} finally {
+			close();
+		}
+		return odList;
+	}
+	
+	
+	
+	
+	
 	
 	//은실 코드
 	// 장바구니에서 불러오기

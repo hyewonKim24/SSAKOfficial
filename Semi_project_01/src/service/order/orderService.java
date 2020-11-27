@@ -132,6 +132,18 @@ public class orderService {
 		return odetail;
 	}
 
+	//내 주문내역 조회
+	public List<orderVO> myOrderlist(String mid) throws SQLException {
+		List<orderVO> myolist = null;
+		try {
+		Connection conn = ds.getConnection();
+		myolist = new orderDAO().myOrderlist(conn, mid);
+	}finally {
+		close();
+	}
+		return myolist;
+	}
+
 
 	//주문하기 관련
 	

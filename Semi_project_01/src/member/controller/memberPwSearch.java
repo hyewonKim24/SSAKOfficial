@@ -56,7 +56,7 @@ public class memberPwSearch extends HttpServlet {
 		if (mid == null || mid == "" || memail == null || memail == "") {
 			System.out.println("pw_search_null임");
 			request.setAttribute("pw_Search_error", "아이디와 이메일을 바르게 입력해주세요.");
-			RequestDispatcher dis = request.getRequestDispatcher("./memberPwSearch.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("./member/memberPwSearch.jsp");
 			dis.forward(request, response);
 		} else {
 			try {
