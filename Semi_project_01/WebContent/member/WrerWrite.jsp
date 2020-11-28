@@ -53,19 +53,28 @@ a {
 }
 
 .mycate {
-	width: 200px;
-	height: 50px;
-	border: 1px solid black;
-	border-bottom: 0px;
-	display: table-cell;
-	vertical-align: middle;
-	padding-left: 10px;
-}
+            width: 200px;
+            height: 50px;
+            border: 1px solid #dcdcdc;
+            border-bottom: 0px;
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
+            font-size:14px;
+        }
 
-#last {
-	border-bottom: 1px solid black;
-	font-weight: bold;
-}
+        #last {
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
+        }
 
 .arrow {
 	float: right;
@@ -85,19 +94,21 @@ a {
 }
 
 .delete_box {
-	border: 1px solid black;
+	border: 1px solid #dcdcdc;
 	padding: 10px;
 }
 
 #delete_text {
 	font-size: 12pt;
 	line-height: 40px;
+	    color: #4a4a4a;
 }
 
 #wrer {
 	width: 780px;
 	height: 170px;
 	vertical-align: middle;
+	border: 1px solid #dcdcdc;
 }
 
 .button_wrap {
@@ -109,9 +120,13 @@ a {
 	width: 100px;
 	height: 40px;
 	padding: 5px;
-	background-color: white;
-	border: gray solid 1px;
-	border-radius: 5px;
+	line-height: 33px;
+    border-radius: 3px;
+    margin-top: 10px;
+    background-color: #425c5a;
+    color: white;
+    border: none;
+    font-size: 12px;
 }
 .wrer_res {
 	text-align: center;

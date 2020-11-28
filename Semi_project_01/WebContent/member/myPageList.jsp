@@ -51,15 +51,25 @@
         .mycate {
             width: 200px;
             height: 50px;
-            border: 1px solid black;
+            border: 1px solid #dcdcdc;
             border-bottom: 0px;
             display: table-cell;
             vertical-align: middle;
-            padding-left: 10px;
+            padding-left: 20px;
+            font-size:14px;
         }
 
         #last {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
         }
 
         .arrow {
@@ -82,41 +92,54 @@
         }
         #updatetable table{
             padding:10px;
-            width:600px;
+            width:100%;
             font-size:12pt;
-            border:1px solid gray;
+            border-top:2px solid #425c5a;
         }
         #updatetable td{
-            border:0;
-            padding:10px;
+            padding: 10px 0;
+    border-top: 0;
+    font-size: 14px;
+    vertical-align: top;
         }
         #updatetable th{
-            border:0;
-            text-align: start;
-            padding-left:15px;
-            padding-right: 17px;
-            line-height:35px;
-            font-size:11pt;
-            font-weight: 600;
+           padding: 20px 0 0 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;b
+    vertical-align: top;
+    text-align: left;
         }
         input{
-            width:230px;
-            height:25px;
-            margin-bottom:5px;
+               width: 332px;
+               height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
         }
         .btndesign{
-        	width:70px;
-            padding:4px;	
-            background-color: rgb(107, 61, 167);
-            border-radius:3px;
-            color:white;
-            border:0;
-        }
+        	width: 120px;
+    height: 44px;
+    padding: 4px;
+    background-color: white;
+    border: 1.5px solid #425c5a;
+    border-radius: 3px;
+    color: #425c5a;
+    font-weight: bold;
+
+}
         #updateSave{
             text-align: center;
             width:230px;
             height:40px;
-            background-color: rgb(107, 61, 167);
+            background-color: #425c5a;
             border-radius:5px;
             color:white;
             border:0;
@@ -198,12 +221,25 @@
                     <tr>
                         <th>비밀번호 변경</th>
                         <td>
-                            <input type="password" name="mpw" placeholder="현재 비밀번호"><br>
-                            <input type="password" name="newpw" id="newpw" placeholder="새 비밀번호">
-                            <button type="button" id="pw_reqx" class="btndesign">확인</button><br>
-                            <input type="password" name="newpwre" id="newpwre" placeholder="새 비밀번호 확인"><br>
-                        </td>
-                    </tr>
+                            <input type="password" name="mpw" placeholder="현재 비밀번호">
+                            </td>
+                     </tr>
+                    <tr>
+                        <th>새 비밀번호</th>
+                        <td>
+                           <input type="password" name="newpw" id="newpw" placeholder="새 비밀번호">
+                           <button type="button" id="pw_reqx" class="btndesign">확인</button>
+                            </td>
+                     </tr>
+                    <tr>
+                        <th>새 비밀번호 확인</th>
+                        <td>
+                            <input type="password" name="newpwre" id="newpwre" placeholder="새 비밀번호 확인">
+                            </td>
+                     </tr>
+                     
+                    
+                    
                  <script type="text/javascript">
                  
 						$("#pw_reqx").on("click", function() {
@@ -244,8 +280,8 @@
                         <td>
                             <input type="text" name="mzip_code" class="address" placeholder="우편번호" value="${member.mzip_code}">
                             <button type="button" class="btndesign" >주소검색</button><br>
-                            <input type="text" name="m_first_addr" class="address" placeholder="기본주소" value="${member.m_first_addr}"><br>
-                            <input type="text" name="m_second_addr" class="address" placeholder="상세주소" value="${member.m_second_addr}">
+                            <input type="text" style="border-top:0;" name="m_first_addr" class="address" placeholder="기본주소" value="${member.m_first_addr}"><br>
+                            <input type="text" style="border-top:0;" name="m_second_addr" class="address" placeholder="상세주소" value="${member.m_second_addr}">
                         </td>
                     </tr>
                     <tr>
