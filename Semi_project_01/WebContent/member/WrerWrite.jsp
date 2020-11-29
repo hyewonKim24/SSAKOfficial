@@ -148,7 +148,7 @@ a {
 	<div class="mypage">
 		<aside id="category">
 			<div class="classify">마이페이지</div>
-            <a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+            <a href="<%=request.getContextPath()%>/MyOrderList.do">
                 <div class="mycate">주문내역조회
                     <div class="arrow">></div>
                 </div>

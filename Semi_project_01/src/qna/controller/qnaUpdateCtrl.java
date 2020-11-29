@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.memberVO;
 import notice.model.NoticeVO;
 import qna.model.QnAVO;
 import service.notice.NoticeService;
@@ -46,23 +47,21 @@ public class qnaUpdateCtrl extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Update 서블릿 진입");
 		QnAService qsv = new QnAService();
 		PrintWriter out = response.getWriter();
 		
 		String qtype = request.getParameter("qtype");
 		int qno = Integer.parseInt(request.getParameter("qno").trim());
-		String mid = request.getParameter("mid");
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		String qtitle = request.getParameter("qtitle");
 		String qcontent = request.getParameter("qcontent");
-		String qpw = request.getParameter("qpw");
 		
 		QnAVO vo = new QnAVO();
 		vo.setQno(qno);
-		vo.setMid(mid);
+		vo.setMid(mvo.getMid());
 		vo.setQtitle(qtitle);
 		vo.setQcontent(qcontent);
-		vo.setQpw(qpw);
-
 		
 		try {
 			int result = qsv.qnaUpdate(vo,qno);

@@ -181,7 +181,7 @@
     <div class="mypage">
         <aside id="category">
             <div class="classify">마이페이지</div>
-            <a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+            <a href="<%=request.getContextPath()%>/MyOrderList.do">
                 <div class="mycate">주문내역조회
                     <div class="arrow">></div>
                 </div>
@@ -220,7 +220,7 @@
 
 					</tr>
                     <tr>
-				<td colspan="5" class="input_login_wrap"><input type="text"
+				<td colspan="5" class="input_login_wrap"><input type="password"
 					name="mpw" id="mid"  size="20" tabindex="1"
 					placeholder="비밀번호를 입력해주세요"></td>
 
@@ -228,7 +228,7 @@
                     
                         <tr>
 				<td colspan="5" class="form_login_btn"><button
-						class="form_btn1" onclick="goPwchk();">로그인</button></td>
+						class="form_btn1" onclick="goPwchk();">확인</button></td>
 				</tr>
                         
                     </form>

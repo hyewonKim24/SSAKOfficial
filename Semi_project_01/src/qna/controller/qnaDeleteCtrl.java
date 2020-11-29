@@ -27,7 +27,6 @@ public class qnaDeleteCtrl extends HttpServlet {
 	 */
 	public qnaDeleteCtrl() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -57,7 +56,6 @@ public class qnaDeleteCtrl extends HttpServlet {
 			int qref = Integer.parseInt(request.getParameter("qref"));
 			System.out.println(qref);
 			System.out.println(request.getParameter("qref"));
-			int qpw = Integer.parseInt(request.getParameter("qpw"));
 
 			int result = qsv.qnaDelete(qref);
 			if (result == 1) {
@@ -66,10 +64,9 @@ public class qnaDeleteCtrl extends HttpServlet {
 					RequestDispatcher disp = request.getRequestDispatcher("qnaList.do");
 					disp.forward(request, response);
 			} else {
-				RequestDispatcher disp = request.getRequestDispatcher("./qna/qnaDetail.jsp");
+				RequestDispatcher disp = request.getRequestDispatcher("qnaList.do");
 				disp.forward(request, response);
-				System.out.println("삭제 실패");
-				out.append("<script>alert('삭제에 실패 했습니다. 다시 시도해 주세요.')</script>");
+				System.out.println("삭제 실패 또는 원글답글 모두 삭제");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

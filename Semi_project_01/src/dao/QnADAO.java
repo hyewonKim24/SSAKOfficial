@@ -232,7 +232,6 @@ public class QnADAO {
 					vo.setQtitle(rs.getString("qtitle"));
 					vo.setQdate(rs.getDate("qdate"));
 					vo.setQcontent(rs.getString("qcontent"));
-					vo.setQpw(rs.getString("qpw"));
 					vo.setQref(rs.getInt("qref"));
 					vo.setQref_step(rs.getInt("qref_step"));
 					vo.setQref_level(rs.getInt("qref_level"));
@@ -262,7 +261,6 @@ public class QnADAO {
 				vo.setQtitle(rs.getString("qtitle"));
 				vo.setQdate(rs.getDate("qdate"));
 				vo.setQcontent(rs.getString("qcontent"));
-				vo.setQpw(rs.getString("qpw"));
 				vo.setQref(rs.getInt("qref"));
 				vo.setQref_step(rs.getInt("qref_step"));
 				vo.setQref_level(rs.getInt("qref_level"));
@@ -283,7 +281,6 @@ public class QnADAO {
 		String mid = vo.getMid();
 		String qtitle = vo.getQtitle();
 		String qcontent = vo.getQcontent();
-		String qpw = vo.getQpw();
 		int qref = vo.getQref();
 		int qref_step = vo.getQref_step();
 		int qref_level = vo.getQref_level();
@@ -308,17 +305,16 @@ public class QnADAO {
 		}
 
 		try {
-			String sql_insert = "insert into qna values (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?,0,?)";
+			String sql_insert = "insert into qna values (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,0,?)";
 			pstmt = conn.prepareStatement(sql_insert);
 			pstmt.setInt(1, maxQno);
 			pstmt.setString(2, mid);
 			pstmt.setString(3, qtitle);
 			pstmt.setString(4, qcontent);
-			pstmt.setString(5, qpw);
-			pstmt.setInt(6, maxQno);
-			pstmt.setInt(7, qref_step + 1); // qref_step + 1
-			pstmt.setInt(8, qref_level + 1); // qref_level + 1
-			pstmt.setString(9, qtype);
+			pstmt.setInt(5, maxQno);
+			pstmt.setInt(6, qref_step + 1); // qref_step + 1
+			pstmt.setInt(7, qref_level + 1); // qref_level + 1
+			pstmt.setString(8, qtype);
 			result = pstmt.executeUpdate();
 
 			if (result < 1) {
@@ -338,7 +334,6 @@ public class QnADAO {
 		String mid = vo.getMid();
 		String qtitle = vo.getQtitle();
 		String qcontent = vo.getQcontent();
-		String qpw = vo.getQpw();
 		int qref = vo.getQref();
 		int qref_step = vo.getQref_step();
 		int qref_level = vo.getQref_level();
@@ -379,17 +374,16 @@ public class QnADAO {
 			}
 
 			// insert
-			String sql_insert = "insert into qna values (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?,0,?)";
+			String sql_insert = "insert into qna values (?,?,?,CURRENT_TIMESTAMP,?,?,?,?,0,?)";
 			pstmt = conn.prepareStatement(sql_insert);
 			pstmt.setInt(1, maxQno);
 			pstmt.setString(2, mid);
 			pstmt.setString(3, qtitle);
 			pstmt.setString(4, qcontent);
-			pstmt.setString(5, qpw);
-			pstmt.setInt(6, qref);
-			pstmt.setInt(7, qref_step + 1);
-			pstmt.setInt(8, qref_level + 1);
-			pstmt.setString(9, qtype);
+			pstmt.setInt(5, qref);
+			pstmt.setInt(6, qref_step + 1);
+			pstmt.setInt(7, qref_level + 1);
+			pstmt.setString(8, qtype);
 			result = pstmt.executeUpdate();
 			if (result < 1) {
 				System.out.println("insert 실패");

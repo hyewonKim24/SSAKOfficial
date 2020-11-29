@@ -58,9 +58,11 @@ public class CheckEmail extends HttpServlet {
 		boolean a = msv.isEmailChk(memail);
 		System.out.println("email 체크"+a);
 		if(a==true){
-			out.println("이미 사용중인 이메일 입니다.");
+			//사용중 0
+			out.println("0");
 		}else{
-			out.println("사용가능한 이메일 입니다.");
+			//사용가능 1
+			out.println("1");
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();
