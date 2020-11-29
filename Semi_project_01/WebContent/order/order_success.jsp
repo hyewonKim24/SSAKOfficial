@@ -27,7 +27,7 @@
             text-align: center;
             padding: 20px;
             margin: 50px auto;
-            border: 1px solid gray;
+            border: 1px solid #425c5a;
             border-radius: 10px;
             width: 200px;
         }
@@ -37,12 +37,12 @@
 
         button {
             color:white;
-            background-color: gray;
+            background-color: #425c5a;
             width:200px;
             height: 30px;
             margin: 0 auto;
             border-radius: 5px;
-
+			border: none;
         }
     </style>
 	<script>

@@ -53,17 +53,25 @@
         .mycate {
             width: 200px;
             height: 50px;
-            border: 1px solid black;
+            border: 1px solid #dcdcdc;
             border-bottom: 0px;
             display: table-cell;
             vertical-align: middle;
-            padding-left: 10px;
+            padding-left: 20px;
             font-size:14px;
         }
 
         #last {
-            border-bottom: 1px solid black;
-            font-weight: bold;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
         }
 
         .arrow {
@@ -81,7 +89,6 @@
         }
 
         .alter_box {
-            border: 1px solid black;
             padding: 30px;
             width: 500px;
             margin: 0 auto;
@@ -93,38 +100,38 @@
         }
 
         #alter_text2 {
-            font-size: 12pt;
-            margin-left: 40px;
-            margin-bottom: 25px;
+              font-size: 10pt;
+            margin: 10px 0 25px 0 ;
+
         }
         #login{
             display:flex;
             justify-content: center;
         }
-        .id_box {
-            border: 1px solid black;
-            width: 300px;
-            height: 32px;
-            padding: 6px;
-            border-radius: 4px;
-            margin: 0 auto;
-        }
 
-        #mid {
-            border: none;
-            height: 25px;
-            width: 250px;
-            margin: auto 0;
-        }
+         #mid {
+            width: 340px;
+    height: 54px;
+    padding: 0 19px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
+    margin-top: 10px;
+}
+.form_btn1 {
+	width: 340px;
+	line-height: 54px;
+	border-radius: 3px;
+	margin-top: 10px;
+	background-color: #425c5a;
+	color: white;
+	border: none;
+}
 
-        .pwd_box {
-            border: 1px solid black;
-            width: 300px;
-            height: 32px;
-            padding: 6px;
-            border-radius: 4px;
-            margin: 3px auto;
-        }
+
 
         #mpw {
             border: none;
@@ -168,7 +175,7 @@
     <div class="mypage">
         <aside id="category">
             <div class="classify">마이페이지</div>
-            <a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+            <a href="<%=request.getContextPath()%>/MyOrderList.do">
                 <div class="mycate">주문내역조회
                     <div class="arrow">></div>
                 </div>
@@ -197,19 +204,26 @@
                 <div id="alter_text2">
                     	개인정보 보호를 위해 비밀번호를 다시 확인 합니다.
                 </div>
+                <hr style=" width:340px; color:#425c5a;">
                 <div id="login">
                     <form name="pwrechk_frm">
-                        <div class="id_box">
-                            <i class="fas fa-user fa-2x"></i>
-                            <input type="text" id="mid" name="mid">
-                        </div>
-                        <div class="pwd_box">
-                            <i class="fas fa-key fa-2x"></i>
-                            <input type="password" id="mpw" name="mpw">
-                        </div>
-                    <div class="button_wrap">
-                        <button type="button" class="alter_btn" onclick="goPwchk();">확인</button>
-                    </div>
+                    <tr>
+				<td colspan="5" class="input_login_wrap"><input type="text"
+					name="mid" id="mid"  size="20" tabindex="1"
+					placeholder="아이디를 입력해주세요"></td>
+
+					</tr>
+                    <tr>
+				<td colspan="5" class="input_login_wrap"><input type="password"
+					name="mpw" id="mid"  size="20" tabindex="1"
+					placeholder="비밀번호를 입력해주세요"></td>
+
+					</tr>
+                    
+                        <tr>
+				<td colspan="5" class="form_login_btn"><button
+						class="form_btn1" onclick="goPwchk();">확인</button></td>
+				</tr>
                     </form>
                 </div>
             </div>

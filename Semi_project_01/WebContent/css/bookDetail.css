@@ -16,6 +16,17 @@ ul {
 	display: block;
 	float: left;
 	box-sizing: border-box;
+}
+
+.sub li {
+	padding-left: 20px;
+	font-size: 13px;
+}
+#category {
+	float: left;
+	width: 200px;
+	height: 800px;
+	margin-right: 60px;
 	border: 1px solid #dcdcdc;
 }
 
@@ -25,7 +36,6 @@ ul {
 	padding: 20px 20px 20px 35px;
 	color: #425c5a;
 }
-
 #navi {
 	cursor: pointer;
 	padding-left: 40px;
@@ -164,8 +174,12 @@ ul {
 	line-height: 15px;
 	text-align: center;
 	border: 1px solid #425c5a;
+	border-right : 0;
 	box-sizing: border-box;
 	color: gray;
+}
+.detail_buttons>label:nth-child(3) {
+	border-right : 1px solid #425c5a;
 }
 
 #detail_book_info_wrap {
@@ -295,7 +309,3 @@ ul {
 	font-weight: 700;
 	border-bottom: 0;
 }
-
-/* .detail_bestseller > p {
-	text-align: center;
-} */

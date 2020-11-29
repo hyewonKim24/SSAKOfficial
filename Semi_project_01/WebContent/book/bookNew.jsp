@@ -1,7 +1,16 @@
+<link href="<%=request.getContextPath()%>/css/reset.css"
+	rel="stylesheet" type="text/css" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../main/header.jsp"%>
+<%@include file="../main/recentSide.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/bookNew.css" />
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,319 +18,130 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<script src="reset.css"></script>
-<script type="text/javascript" src="plugin/jquery-3.5.1.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-<title>싹-신간도서</title>
-<style>
-ul {
-	margin: 0;
-	padding: 0;
-}
-
-#navi {
-	cursor: pointer;
-	padding-left: 40px;
-}
-
-.sub li {
-	padding-left: 20px;
-	font-size: 13px;
-}
-
-.new_content {
-	width: 1080px;
-	margin: 0 auto;
-	display: flex;
-	margin-top: 80px;
-}
-
-.new_content #category {
-	float: left;
-	width: 200px;
-	height: 750px;
-	margin-right: 60px;
-	border: 1px solid #b9b6b6;
-}
-
-.classify {
-	font-weight: bold;
-	font-size: 30px;
-	padding: 20px;
-}
-
-.new_content #category ul {
-	font-size: 15px;
-	padding-bottom: 11px;
-}
-
-.new_content #category ul li {
-	list-style-type: none;
-	margin: 10px 0;
-}
-
-#newbook {
-	float: right;
-	width: 820px;
-}
-
-#newbooktitle {
-	font-size: 24px;
-	margin-top: 20px;
-}
-
-#subtitle {
-	font-size: 20px;
-	/* font-weight: bold; */
-	margin: 39px 15px 40px 0;
-}
-
-.noticeable {
-	display: flex;
-	flex-wrap: nowrap;
-	list-style-type: none;
-	text-align: center;
-	width: 700px;
-	margin: 0 auto;
-}
-
-.img_book {
-	margin-right: 10px;
-	width: 150px;
-	height: 220px;
-	margin: 0 auto;
-}
-
-.new_noticeable {
-	margin: 2px;
-	text-decoration: none;
-	color: black;
-}
-
-.slick-prev:before, .slick-next:before {
-	color: purple;
-}
-.pagediv {
-	text-align: center;
-}
-
-#list_table {
-	background-color: rgb(206, 206, 206);
-	width: 820px;
-	border-top: 1px solid gray;
-	border-bottom: 1px solid gray;
-	margin: 60px 0 20px 0;
-}
-
-.list_btn {
-	float: right;
-	margin: 3px;
-}
-
-.list_btn button {
-	background-color: lightgrey;
-	border: gray solid 1px;
-	border-radius: 8px;
-	padding: 5px 10px;
-}
-
-#new_list {
-	float: none;
-	display: block;
-}
-
-#new_list ul {
-	list-style-type: none;
-}
-
-#new_list ul a {
-	text-decoration: none;
-}
-
-.new_list2 {
-	display: flex;
-	/* justify-content: space-around; */
-	position: relative;
-	padding-top:30px;
-	padding-bottom:30px;
-}
-
-.new_thumb img {
-	width: 180px;
-}
-
-.new_money {
-	font-size: 17px;
-}
-
-.new_btn {
-	float: right;
-	position: absolute;
-	right: 0;
-}
-
-.new_btn button {
-	width: 130px;
-	height: 50px;
-	margin: 5px;
-	background-color: white;
-	border: gray solid 1px;
-	border-radius: 8px;
-}
-
-.new_btn input {
-	width: 30px;
-	text-align: center;
-}
-
-.new_info {
-	width: 480px;
-}
-.scr_btn {
-	float: right;
-}
-</style>
-<%
-String member = String.valueOf(session.getAttribute("member"));
-%>
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.min.js"></script>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript">
-        $(document).ready(function () {
-            $(".noticeable").slick({
-                arrows: true,
-                dots: true,
-                infinite: true,
-                slidesToShow: 4,
-                slidesToScroll: 4,
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                }
-            });
-        });
+	$(document).ready(function() {
+		$(".noticeable").slick({
+			arrows : true,
+			dots : true,
+			infinite : true,
+			slidesToShow : 4,
+			slidesToScroll : 4,
+			navigation : {
+				nextEl : ".swiper-button-next",
+				prevEl : ".swiper-button-prev"
+			}
+		});
+	});
 
-      //aside 드롭다운
-      $(document).ready(function() {
-      	$(".sub").css({
-      		display : "none"
-      	});
-      	$(".title").click(function() {
-      		$(".sub").each(function() {
-      			console.log($(this).css("display"));
-      			if ($(this).css("display") == "block") {
-      				$(this).slideUp("fast");
-      			}
-      		});
-      		$(this).next("ul").slideDown("fast");
-      	})
-      
-      
-		$('.cartIn').click(function () {
-			var member="<%=member%>";
-			if(member==null || member=="" ||member=="null"){
-				console.log(member);
-				alert('로그인 후 이용해주세요');
-			}else{
-			var $t = $(this).parents('div.new_list2');
-			
-			var stat = $t.find('input.num').val(); //oamount
-			console.log(stat);
-			var bisbn = $t.find('input.bisbn').val();
-			console.log(bisbn);
-			if(stat<1){
-				alert("주문은 한 개 이상부터 가능합니다.")
-				$t.find('input.num').val(1);
-			} else{
-				location.href = "CartInsert?bisbn=" + bisbn + "&oamount=" + stat;	
-			}
-			}
-		});
-		
-		$('.orderIn').click(function () {
-			var member="<%=member%>";
-			if(member==null || member=="" ||member=="null"){
-				console.log(member);
-				alert('로그인 후 이용해주세요');
-			}else{
-			//mid ok, bisbn, oamount ok
-			var $t = $(this).parents('div.new_list2');
-			
-			var stat = $t.find('input.num').val(); //oamount
-			console.log(stat);
-			var bisbn = $t.find('input.bisbn').val();
-			console.log(bisbn);
-			if(stat<1){
-				alert("주문은 한 개 이상부터 가능합니다.")
-				$t.find('input.num').val(1);
-			} else{
-				location.href = "OrderDirect?bisbn=" + bisbn + "&oamount=" + stat;	
-			}
-			}
-		});
-		
-		$('#cartIns').click(function(){
-			var member="<%=member%>";
-			if(member==null || member=="" ||member=="null"){
-				console.log(member);
-				alert('로그인 후 이용해주세요');
-			}else{
-			var checkbox = $("input[name=check]:checked");
-			var checkboxVal = $("input[name=check]:checked").val();
-			//console.log(checkbox);
-			var bisbn = new Array();
-			var stat = new Array();
-			
-			checkbox.each(function(){
-				bisbn.push($(this).val());
-				stat.push($(this).siblings('input[name=oamount]').val());
-				if(stat<1){
-					alert('상품을 한 개 이상 선택해주세요.');
-					$(this).siblings('input[name=oamount]').val(1);
-				}
-			});	
-			
-			if(checkboxVal==null){
-				alert("상품을 한 개 이상 선택해주세요.")
-			} else{
-				location.href = "CartInserts?bisbn=" + bisbn + "&oamount=" + stat;				
-			}
-			}
-		});
-		//북커버로 이동
-		$('.bookcoverIn').click(function () {
-			
-			var member="<%=member%>";
-			if(member==null || member=="" ||member=="null"){
-				console.log(member);
-				alert('로그인 후 이용해주세요');
-			}else{
-			//mid ok, bisbn, oamount ok
-			var $t = $(this).parents('div.bes_list2');
-			var stat = $t.find('input.num').val(); //oamount
-			var bisbn = $t.find('input.bisbn').val();
-			if(stat<1){
-				alert("주문은 한 개 이상부터 가능합니다.")
-				$t.find('input.num').val(1);
-			} else{
-				location.href = "./bookCustom.do?bisbn=" + bisbn + "&bookamount=" + stat;	
-			}
-			}
-		});	
-      });
-    </script>
+	$(document).ready(
+			function() {
+				//모두 선택 해제
+				$("#checkall").click(function() {
+					if ($("#checkall").prop("click")) {
+						$("input[name=check]").prop("checked", true);
+					}
+				});
+				$("#uncheck_all").click(function() {
+					if ($("#uncheck_all").prop("click")) {
+						$("input[name=check]").prop("checked", false);
+					}
+				});
 
+				//aside 드롭다운
+				$('.sub').hide();
+				$('.title').click(
+						function() {
+							var checkElement = $(this).next();
+							if ((checkElement.is('ul'))
+									&& (checkElement.is(':visible'))) {
+								$('#navi ul:visible').slideUp(400);
+								return false;
+							}
+							if ((checkElement.is('ul'))
+									&& (!checkElement.is(':visible'))) {
+								$('#navi ul:visible').slideUp(400);
+								checkElement.slideDown(400);
+								return false;
+							}
+						});
+				//장바구니 구매하기 이동
+				$('.cartIn').click(
+						function() {
+							//mid ok, bisbn, oamount ok
+							var $t = $(this).parents('div.new_list2');
+
+							var stat = $t.find('input.num').val(); //oamount
+							console.log(stat);
+							var bisbn = $t.find('input.bisbn').val();
+							console.log(bisbn);
+							if (stat < 1) {
+								alert("주문은 한 개 이상부터 가능합니다.")
+								$t.find('input.num').val(1);
+							} else {
+								location.href = "CartInsert?bisbn=" + bisbn
+										+ "&oamount=" + stat;
+							}
+						});
+
+				$('.orderIn').click(
+						function() {
+							//mid ok, bisbn, oamount ok
+							var $t = $(this).parents('div.new_list2');
+
+							var stat = $t.find('input.num').val(); //oamount
+							console.log(stat);
+							var bisbn = $t.find('input.bisbn').val();
+							console.log(bisbn);
+							if (stat < 1) {
+								alert("주문은 한 개 이상부터 가능합니다.")
+								$t.find('input.num').val(1);
+							} else {
+								location.href = "OrderDirect?bisbn=" + bisbn
+										+ "&oamount=" + stat;
+							}
+						});
+
+				$('#cartIns').click(
+						function() {
+							var checkbox = $("input[name=check]:checked");
+							var checkboxVal = $("input[name=check]:checked")
+									.val();
+							//console.log(checkbox);
+							var bisbn = new Array();
+							var stat = new Array();
+
+							checkbox.each(function() {
+								bisbn.push($(this).val());
+								stat.push($(this).siblings(
+										'input[name=oamount]').val());
+								if (stat < 1) {
+									alert('상품을 한 개 이상 선택해주세요.');
+									$(this).siblings('input[name=oamount]')
+											.val(1);
+								}
+							});
+
+							if (checkboxVal == null) {
+								alert("상품을 한 개 이상 선택해주세요.")
+							} else {
+								location.href = "CartInserts?bisbn=" + bisbn
+										+ "&oamount=" + stat;
+							}
+						});
+			});
+</script>
 </head>
-
 <body>
 </head>
 <div class="new_content">
 	<aside id="category">
-		<h3 class="classify">소설</h3>
-		<hr style="border: solid 1px #bdbbbb;">
+		<h3 class="classify">새로나온책</h3>
+		<hr style="height: 1px; background-color: #dcdcdc; border-width: 0;">
 		<ul id="navi">
 			<li class="group">
 				<div class="title">소설</div>
@@ -443,18 +263,22 @@ String member = String.valueOf(session.getAttribute("member"));
 	</aside>
 	<section id="newbook">
 		<div id="bigSubtitle">
-			<div id="newbooktitle">종합</div>
+			<div id="newbooktitle">#&nbsp;소설</div>
 		</div>
-		<hr style="margin-top:30px;">
-		<div id="subtitle">주목할만한 신간도서</div>
+		<hr
+			style="height: 1px; background-color: #425c5a; border-width: 0; margin-top: 20px;">
+		<div id="subtitle">주목할 만한 신간도서</div>
 		<div class="noticeable">
 			<c:forEach items="${newList}" var="bsb" varStatus="a" begin="0"
 				end="8">
-				<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }" class="new_noticeable"> <img src="${bsb.bcover }"
-					alt="book" class="img_book">
+				<a
+					href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"
+					class="new_noticeable"> <img src="${bsb.bcover }" alt="book"
+					class="img_book">
 					<div class="noticeable_text">
-						<span>${bsb.btitle }</span><br> <span>${bsb.bauthor }</span><br>
-						<span>${bsb.bpricesales }</span>
+						<div class="noticeable_title">${bsb.btitle }</div>
+						<div class="noticeable_author">${bsb.bauthor }</div>
+						<div class="noticeable_sales">${bsb.bpricesales }</div>
 					</div>
 				</a>
 			</c:forEach>
@@ -466,7 +290,10 @@ String member = String.valueOf(session.getAttribute("member"));
 			<tr>
 				<td>
 					<div class="list_btn">
-						<button type="button" onclick="location.href='#'">전체선택</button>
+						<button type="button" id="checkall">전체선택</button>
+						<span class="menu_line">|</span>
+						<button type="button" id="uncheck_all">모두해제</button>
+						<span class="menu_line">|</span>
 						<button type="button" id="cartIns">장바구니 담기</button>
 					</div>
 				</td>
@@ -479,12 +306,14 @@ String member = String.valueOf(session.getAttribute("member"));
 
 					<div class="new_list2">
 						<h3 class="new_num">${bsb.bno }</h3>
-						<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }" class="new_thumb"> <img src="${bsb.bcover }"
-							alt="book">
+						<a
+							href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"
+							class="new_thumb"> <img src="${bsb.bcover }" alt="book">
 						</a>
 						<div class="new_info">
 							<ul>
-								<li><a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">${bsb.btitle }</a></li>
+								<li><a
+									href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">${bsb.btitle }</a></li>
 								<li class="new_block"><span>${bsb.bauthor }</span></li>
 								<li class="new_money"><span>정가${bsb.bpriceStandard }->판매가(10%할인)${bsb.bpricesales
 										}</span></li>
@@ -493,48 +322,52 @@ String member = String.valueOf(session.getAttribute("member"));
 						</div>
 						<div class="new_btn">
 							<p>
-								<input type="hidden" value="${bsb.BISBN}" name="bisbn" class="bisbn">
-								<input type="hidden" value="0" name="dno" class="dno">
-								<input class="checkbox" type="checkbox" name="check" value="${bsb.BISBN}"> <span
-									class="new_num" >수량</span> <input type="number" id="cntVal_1234"
-									value="1" class="num" size="3" name="oamount">
+								<input type="hidden" value="${bsb.BISBN}" name="bisbn"
+									class="bisbn"> <input type="hidden" value="0"
+									name="dno" class="dno"> <input class="checkbox"
+									type="checkbox" name="check" value="${bsb.BISBN}"> <span
+									class="new_num">수량</span> <input type="number" id="cntVal_1234"
+									value="1" class="num" size="3" min="1" name="oamount">
 							</p>
 							<button type="button" class="cartIn">장바구니</button>
 							</br>
 							<button type="button" class="orderIn">구매하기</button>
 							</br>
-							<button type="button" class="bookcoverIn">북커버
+							<button type="button" onclick="location.href='#'">북커버
 								커스텀</button>
 						</div>
 					</div>
-					<hr>
+					<hr
+						style="height: 1px; background-color: #dcdcdc; border-width: 0;">
 				</c:forEach>
 			</c:if>
 
 		</div>
 		<div class="pagediv">
-		<c:if test="${startPage != 1}">
-			<a href="/bookNew.do?pageNum=${prev}">이전</a>
-				</c:if>
+			<c:if test="${startPage != 1}">
+				<a href="/bookNew.do?pageNum=${prev}" class="page_btn prev"><</a>
+			</c:if>
 			<c:if test="${startPage != endPage}">
 				<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 					step="1">
-					<a href="<%=ctxPath %>/bookNew.do?pageNum=${s.current}">${s.current}</a>
+					<a href="<%=ctxPath %>/bookNew.do?pageNum=${s.current}"
+						class="page_btn">${s.current}</a>
 					<!--변경 : href 경로 -->
 				</c:forEach>
 			</c:if>
 			<c:if test="${next < pageCount}">
-					<a href="<%=ctxPath %>/bookNew.do?pageNum=${next}">다음</a>
-				</c:if>
-			</div>
-			<div class="scr_btn">
-				<!-- <a href="#" onClick="javascript:window.scrollTo(0,0)">맨 위로</a>  -->
-				<input type="image" src="../imgs/arrow-circle-up.png"
-					style="width: 40px;" onClick="javascript:window.scrollTo(0,0)"
-					alt="맨위로" />
-			</div>
+				<a href="<%=ctxPath %>/bookNew.do?pageNum=${next}"
+					class="page_btn next">></a>
+			</c:if>
+		</div>
+		<div class="scr_btn">
+			<input type="image"
+				src="<%=request.getContextPath()%>/imgs/top_button.png"
+				onClick="javascript:window.scrollTo(0,0)" alt="맨위로" />
+		</div>
 	</section>
 </div>
+<%@include file="../main/footer.jsp"%>
 </body>
 
 </html>

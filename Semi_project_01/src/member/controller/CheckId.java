@@ -56,9 +56,11 @@ public class CheckId extends HttpServlet {
 		boolean a = msv.isIdChk(mid);
 		System.out.println("id 체크"+a);
 		if(a==true){
-			out.println("이미 사용중인 아이디 입니다.");
+			//0 : 이미 사용중
+			out.println("0");
 		}else{
-			out.println("사용가능한 아이디 입니다.");
+			//1 : 사용가능
+			out.println("1");
 		}
 		}catch(SQLException e) {
 			e.printStackTrace();

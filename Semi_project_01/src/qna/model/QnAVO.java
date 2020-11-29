@@ -1,25 +1,24 @@
 package qna.model;
 
-
 import java.util.Date;
 
-public class QnAVO {
+public class QnAVO { 
 //	QNO        NOT NULL NUMBER(10)     
 //	MID                 VARCHAR2(30)   
 //	QTITLE              VARCHAR2(120)  
 //	QDATE               DATE           
 //	QCONTENT            VARCHAR2(1800) 
-//	QPW                 NUMBER(4)      
-//	QREF                NUMBER(3)      
+//	QREF                NUMBER(10)     
 //	QREF_STEP           NUMBER(3)      
-//	QREF_LEVEL          NUMBER(3)  
+//	QREF_LEVEL          NUMBER(3)      
+//	QVIEW               NUMBER         
+//	QTYPE               VARCHAR2(30)  
 	
 	private int qno;
 	private String mid;
 	private String qtitle;
 	private Date qdate;
 	private String qcontent;
-	private String qpw;
 	private int qref;
 	private int qref_step;
 	private int qref_level;
@@ -56,12 +55,6 @@ public class QnAVO {
 	}
 	public void setQcontent(String qcontent) {
 		this.qcontent = qcontent;
-	}
-	public String getQpw() {
-		return qpw;
-	}
-	public void setQpw(String qpw) {
-		this.qpw = qpw;
 	}
 	public int getQref() {
 		return qref;

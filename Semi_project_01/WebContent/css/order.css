@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+        body {
+            width: 100%;
+            position: relative;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        section {
+            width: 1080px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 50px 0 50px 0;
+            font-size:25px;
+            color:#425c5a;
+        }
+        
+        h3{
+        color:#425c5a;
+        font-size:18px;
+        margin-bottom:8px;
+        }
+        
+        .non_line_title {
+            border: none;
+            padding: 0;
+        }
+
+        .img_book {
+            width: 100px;
+            border: 1px solid lightgray;
+        }
+
+        #column {
+            width: 100%;
+            display: flex;
+            border-top: 2px solid #425c5a;
+            border-bottom: 1px solid #425c5a;
+            padding: 10px 0;
+        }
+
+        #column :nth-child(1) {
+            flex-shrink: 1;
+            text-align: center;
+            margin: auto;
+        }
+
+        #column :nth-child(2) {
+            text-align: center;
+            flex-basis: 130px;
+            flex-shrink: 0;
+            margin: auto;
+            margin-right: 10px;
+        }
+        
+        #column :nth-child(3) {
+            text-align: center;
+            flex-basis: 130px;
+            flex-shrink: 0;
+            margin: auto;
+            margin-right: 10px;
+        }
+
+		#orderform{
+		color:#333333;
+		}
+		
+		.member_txt{
+			padding: 0px 3px;
+			margin-bottom : 3px;
+			height:35px;
+			width:230px;
+		}
+		
+        .item {
+            width: 100%;
+            display: flex;
+            padding: 10px 0;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #orderform>ul:last-of-type{
+        border-bottom:2px solid #425c5a;
+        }
+
+        .product_img {
+            flex-basis: 110px;
+            flex-shrink: 0;
+            margin: auto 20px;
+        }
+
+        .product_info {
+            text-align: left;
+            flex: 1 1 auto;
+            margin: auto;
+            margin-left: 60px;
+            overflow: hidden;
+            width:200px;
+            color:#333333;
+        }
+		.amount{
+		    text-align: center;
+            flex-basis: 130;
+            flex-shrink: 0;
+            margin: auto;
+            margin-right: 105px;
+		}
+        .price {
+            text-align: right;
+            flex-basis: 130;
+            flex-shrink: 0;
+            margin: auto;
+            margin-right: 50px;
+        }
+
+        .indent {
+            width: 70px;
+            text-align: right;
+            margin: auto;
+            padding: 20px;
+            font-size: 30px;
+            color: rgb(200, 200, 200);
+        }
+
+        #order_member {
+            margin-top: 80px;
+            margin-bottom: 80px;
+            float:left;
+        }
+
+        .row {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .member_txt {
+            width: 200px;
+        }
+        
+        .form_btn{
+            padding: 5px 5px;
+            color: #425c5a;
+            border: 1.5px solid #425c5a;
+            background-color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            height:30px;
+        }
+        
+        #sample4_jibunAddress {
+			display: none;
+		}
+
+		#sample4_extraAddress {
+			display: none;
+		}
+        
+
+        #payment {
+            clear: both;
+            width: 320px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+	
+		#payment>ul{
+		list-style: none;
+		}
+        #payment>ul>li {
+            padding: 3px 12px;            
+        }
+
+        #pay_result {
+        	margin-top: 80px;
+            float: right;
+            width: 320px;
+            background-color: #fafafa;
+            padding:20px;
+        }
+
+        #pay_result>table {
+            width: 320px;
+            height: 200px;
+        }
+        
+        #pay_result>table tr:nth-child(1){
+			 border-top: 1px solid #425c5a;
+        }
+
+        .result {
+            font-size: 20px;
+            text-align: right;
+            padding: 10px;
+        }
+        
+        #line2{
+        	background-color:#425c5a;
+        	margin-bottom:30px;
+        }
+
+        #agreement {
+            clear: both;
+            
+        }
+        
+        #checkBox_01{
+        margin-top:10px;
+        }
+        #checkBox_02{
+        margin-top:10px;
+        }
+
+        .underline {
+            border-top: 1px solid #425c5a;
+        }
+
+        #order {
+            clear: both;
+            padding: 10px 30px;
+            font-size: 20px;
+            display: table;
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 30px;
+            background-color:#425c5a;
+            color:#ffe8d4;
+            border:none;
+            border-radius: 5px;
+        }

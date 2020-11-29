@@ -43,7 +43,7 @@ public class NoticeDeleteCtrl extends HttpServlet {
 	}
 	
 	private void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("삭제 서블릿 진입");
 		PrintWriter out = response.getWriter();
 		NoticeService nsv = new NoticeService();
 		try {
@@ -52,7 +52,7 @@ public class NoticeDeleteCtrl extends HttpServlet {
 			if(result == 1) {
 				System.out.println("삭제 성공");
 				out.println("삭제 되었습니다.");
-				RequestDispatcher disp = request.getRequestDispatcher("noticeList.do");
+				RequestDispatcher disp = request.getRequestDispatcher("./noticeList.do");
 				disp.forward(request, response);
 			}else {
 				RequestDispatcher disp = request.getRequestDispatcher("./notice/noticeDetail.jsp");

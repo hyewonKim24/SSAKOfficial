@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.memberVO;
 import notice.model.NoticeVO;
 import qna.model.QnAVO;
 import service.notice.NoticeService;
@@ -52,34 +53,18 @@ public class qnaWriteCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("write 서블릿 진입");
 		QnAService qsv = new QnAService();
-		request.getSession().setAttribute("mid", "kim");
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		String qtype = request.getParameter("qtype");
 		String qtitle = request.getParameter("qtitle");
 		String qcontent = request.getParameter("qcontent");
-		String qpw = request.getParameter("qpw").trim();
-		/*
-		 * int qref = Integer.parseInt(request.getParameter("qref").trim()); int
-		 * qref_step = Integer.parseInt(request.getParameter("qref_step").trim()); int
-		 * qref_level = Integer.parseInt(request.getParameter("qref_level").trim());
-		 */
-
-//		if(qref == 0) {
-//			qref = 0;
-//			qref_step = 0;
-//			qref_level = 0;
-//		} 		
+	
 		QnAVO vo = new QnAVO();
-		vo.setMid(request.getSession().getAttribute("mid").toString());
+		vo.setMid(mvo.getMid());
 		vo.setQtype(qtype);
 		vo.setQtitle(qtitle);
 		vo.setQcontent(qcontent);
-		vo.setQpw(qpw);
-//		vo.setQref(qref);
-//		vo.setQref_step(qref_step);
-//		vo.setQref_level(qref_level);
 
 		try {
-			
 			int result = qsv.qnaWrite(vo);
 			if (result == 1) {
 				System.out.println(result + "행 추가되었습니다. qna등록 controller");

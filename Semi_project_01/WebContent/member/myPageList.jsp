@@ -12,6 +12,8 @@
     <link href="../css/reset.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<script
+	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <title>Document</title>
 
     <style>
@@ -51,15 +53,25 @@
         .mycate {
             width: 200px;
             height: 50px;
-            border: 1px solid black;
+            border: 1px solid #dcdcdc;
             border-bottom: 0px;
             display: table-cell;
             vertical-align: middle;
-            padding-left: 10px;
+            padding-left: 20px;
+            font-size:14px;
         }
 
         #last {
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
         }
 
         .arrow {
@@ -82,41 +94,54 @@
         }
         #updatetable table{
             padding:10px;
-            width:600px;
+            width:100%;
             font-size:12pt;
-            border:1px solid gray;
+            border-top:2px solid #425c5a;
         }
         #updatetable td{
-            border:0;
-            padding:10px;
+            padding: 10px 0;
+    border-top: 0;
+    font-size: 14px;
+    vertical-align: top;
         }
         #updatetable th{
-            border:0;
-            text-align: start;
-            padding-left:15px;
-            padding-right: 17px;
-            line-height:35px;
-            font-size:11pt;
-            font-weight: 600;
+           padding: 20px 0 0 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;b
+    vertical-align: top;
+    text-align: left;
         }
         input{
-            width:230px;
-            height:25px;
-            margin-bottom:5px;
+               width: 332px;
+               height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
         }
         .btndesign{
-        	width:70px;
-            padding:4px;	
-            background-color: rgb(107, 61, 167);
-            border-radius:3px;
-            color:white;
-            border:0;
-        }
+        	width: 120px;
+    height: 44px;
+    padding: 4px;
+    background-color: white;
+    border: 1.5px solid #425c5a;
+    border-radius: 3px;
+    color: #425c5a;
+    font-weight: bold;
+
+}
         #updateSave{
             text-align: center;
             width:230px;
             height:40px;
-            background-color: rgb(107, 61, 167);
+            background-color: #425c5a;
             border-radius:5px;
             color:white;
             border:0;
@@ -154,7 +179,7 @@
     <div class="mypage">
         <aside id="category">
             <div class="classify">마이페이지</div>
-            <a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+            <a href="<%=request.getContextPath()%>/MyOrderList.do">
                 <div class="mycate">주문내역조회
                     <div class="arrow">></div>
                 </div>
@@ -198,12 +223,25 @@
                     <tr>
                         <th>비밀번호 변경</th>
                         <td>
-                            <input type="password" name="mpw" placeholder="현재 비밀번호"><br>
-                            <input type="password" name="newpw" id="newpw" placeholder="새 비밀번호">
-                            <button type="button" id="pw_reqx" class="btndesign">확인</button><br>
-                            <input type="password" name="newpwre" id="newpwre" placeholder="새 비밀번호 확인"><br>
-                        </td>
-                    </tr>
+                            <input type="password" name="mpw" placeholder="현재 비밀번호">
+                            </td>
+                     </tr>
+                    <tr>
+                        <th>새 비밀번호</th>
+                        <td>
+                           <input type="password" name="newpw" id="newpw" placeholder="새 비밀번호">
+                           <button type="button" id="pw_reqx" class="btndesign">확인</button>
+                            </td>
+                     </tr>
+                    <tr>
+                        <th>새 비밀번호 확인</th>
+                        <td>
+                            <input type="password" name="newpwre" id="newpwre" placeholder="새 비밀번호 확인">
+                            </td>
+                     </tr>
+                     
+                    
+                    
                  <script type="text/javascript">
                  
 						$("#pw_reqx").on("click", function() {
@@ -242,12 +280,87 @@
                     <tr>
                         <th>주소</th>
                         <td>
-                            <input type="text" name="mzip_code" class="address" placeholder="우편번호" value="${member.mzip_code}">
-                            <button type="button" class="btndesign" >주소검색</button><br>
-                            <input type="text" name="m_first_addr" class="address" placeholder="기본주소" value="${member.m_first_addr}"><br>
-                            <input type="text" name="m_second_addr" class="address" placeholder="상세주소" value="${member.m_second_addr}">
+                            <input type="text" name="mzip_code" id="mzip_code" class="address" placeholder="우편번호" value="${member.mzip_code}">
+                            <button type="button" class="btndesign" onclick="sample4_execDaumPostcode();">주소검색</button><br>
+                            <input type="text" style="border-top:0;" name="m_first_addr" id="m_first_addr" class="address" placeholder="기본주소" value="${member.m_first_addr}"><br>
+                            <input type="text" style="border-top:0;" name="m_second_addr" id="m_second_addr" class="address" placeholder="상세주소" value="${member.m_second_addr}">
+                        	<input type="hidden" id="sample4_jibunAddress" class="form_input">
+							<input type="hidden" id="sample4_extraAddress"class="form_input">
+							<input type="hidden" id="guide" style="color: #999; display: none">
                         </td>
                     </tr>
+                    <script type="text/javascript">
+					function sample4_execDaumPostcode() {
+						new daum.Postcode(
+								{
+									oncomplete : function(data) {
+										// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+										// 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+										// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+										var roadAddr = data.roadAddress; // 도로명 주소 변수
+										var extraRoadAddr = ''; // 참고 항목 변수
+
+										// 법정동명이 있을 경우 추가한다. (법정리는 제외)
+										// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+										if (data.bname !== ''
+												&& /[동|로|가]$/g
+														.test(data.bname)) {
+											extraRoadAddr += data.bname;
+										}
+										// 건물명이 있고, 공동주택일 경우 추가한다.
+										if (data.buildingName !== ''
+												&& data.apartment === 'Y') {
+											extraRoadAddr += (extraRoadAddr !== '' ? ', '
+													+ data.buildingName
+													: data.buildingName);
+										}
+										// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+										if (extraRoadAddr !== '') {
+											extraRoadAddr = ' ('
+													+ extraRoadAddr + ')';
+										}
+
+										// 우편번호와 주소 정보를 해당 필드에 넣는다.
+										document
+												.getElementById('mzip_code').value = data.zonecode;
+										document
+												.getElementById("m_first_addr").value = roadAddr;
+										document
+												.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+
+										// 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+										if (roadAddr !== '') {
+											document
+													.getElementById("sample4_extraAddress").value = extraRoadAddr;
+										} else {
+											document
+													.getElementById("sample4_extraAddress").value = '';
+										}
+
+										var guideTextBox = document
+												.getElementById("guide");
+										// 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+										if (data.autoRoadAddress) {
+											var expRoadAddr = data.autoRoadAddress
+													+ extraRoadAddr;
+											guideTextBox.innerHTML = '(예상 도로명 주소 : '
+													+ expRoadAddr + ')';
+											guideTextBox.style.display = 'block';
+
+										} else if (data.autoJibunAddress) {
+											var expJibunAddr = data.autoJibunAddress;
+											guideTextBox.innerHTML = '(예상 지번 주소 : '
+													+ expJibunAddr + ')';
+											// guideTextBox.style.display = 'block';
+										} else {
+											guideTextBox.innerHTML = '';
+											guideTextBox.style.display = 'none';
+										}
+									}
+								}).open();
+					}
+					</script>
                     <tr>
                         <th>생년월일</th>
                         <td>
