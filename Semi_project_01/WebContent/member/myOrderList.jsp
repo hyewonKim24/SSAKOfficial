@@ -125,18 +125,51 @@ a {
 }
 
 .order {
-	border: 1px solid#dcdcdc;
+	margin-bottom:15px;
 }
 
 .date {
-    padding: 10px;
-    background-color: #dcdcdc;
+    background-color: #425c5a;
     font-size: 11pt;
-    color: black;
+    color: white;
+    height: 33px;
 }
 
+#orderDate{
+	float: right;
+    line-height: 33px;
+	padding-right: 15px;
+	font-size:12px;
+	font-weight: bold;
+}
+
+#orderOno{
+	float: lefr;
+    line-height: 33px;
+	padding-left: 15px;
+	font-size:12px;
+	font-weight: bold;
+}
+
+#myListTitle{
+	font-size:18px;
+	font-weight: bold;
+}
+
+#myListContent{
+	padding-top:5px;
+}
+#myListStatus{
+	font-weight: bold;
+}
+
+#myList_sub{
+	font-size:12px;
+	color:#7c7c7c;
+}
 .book {
-	width: 130px;
+	width:130px;
+	border : 1px solid #dcdcdc;
 	padding: 10px 15px;
 }
 
@@ -148,7 +181,8 @@ a {
 
 .order_detail {
 	margin: auto 0;
-	width: 500px;
+	padding-left:15px;
+	width: 485px;
 	font-size: 11pt;
 }
 
@@ -162,14 +196,21 @@ a {
 }
 
 .order_btn {
-	width: 130px;
-	height: 50px;
-	margin: 5px;
-	background-color:#425c5a;
-	border: #425c5a solid 1px;
-	border-radius: 8px;
-	cursor: pointer;
-    color: white;
+	border: 1px solid #425c5a;
+	background-color: #fff;
+	color: #425c5a;
+	display: inline-block;
+	width: 120px;
+	margin-left: 5px;
+	vertical-align: top;
+	margin-top: 5px;
+	height: 44px;
+	border-radius: 3px;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 40px;
+	text-align: center;
+	height: 44px;
 }
 
 #mylist {
@@ -177,13 +218,13 @@ a {
 }
 </style>
 
-</head>
+</head>	
 
 <body>
 	<div class="mypage">
 		<aside id="category">
 			<div class="classify">마이페이지</div>
-			<a href="<%=request.getContextPath()%>/member/myOrderList.jsp">
+			<a href="<%=request.getContextPath()%>/MyOrderList.do">
 				<div class="mycate">
 					주문내역조회
 					<div class="arrow">></div>
@@ -256,24 +297,22 @@ a {
 				<div class="ordertitle">주문내역 / 배송조회</div>
 				<c:if test="${not empty myolist }">
 				<c:forEach items="${myolist }" var="olist" varStatus="status" > 
-					<c:set var="str" value="${myolist[status.index + 1].ono}"/>
-					<c:if test="str==${o.ono }">
-						
-						
-					</c:if>
 					<div class="order">
-						<div class="date">주문일자 : ${olist.odate}</div>
+						<div class="date">
+							<span id="orderOno">주문번호 : ${olist.ono }</span>
+							<span id="orderDate">주문일자 : ${olist.odate}</span>
+						</div>
 						<div class="order_contents">
 							<a href="#"><img
-								src="${olist.bcover }"
-								alt="book" class="book"></a>
+								src="${olist.bcover }"alt="book" class="book" width="150px;" height="210px;"></a>
 							<div class="order_detail">
-								<a href="#">
-								</a> <a href="#"><p>주문번호 : ${olist.ono }</p></a>
-									<p>상품명 : ${olist.btitle }</p>
-								<p>총 가격 : ${olist.ototalprice}</p>
-								<p>총 책수량 : ${olist.oamount }</p>
-								<p>주문 상태 : ${olist.ostatus }</p>
+								<p id="myListTitle">${olist.btitle }</p>
+								<div id="myListContent"> ${olist.ototalprice} 원 &nbsp;&nbsp;|&nbsp;&nbsp; 상품 ${olist.oamount }개 <br/>
+								<br>
+								<p id="myListStatus">${olist.ostatus }</p>
+								<p id="myList_sub">구매가 완료되었습니다. 이용해주셔서 감사합니다.</p>
+								
+								</div>
 							</div>
 							<div class="order_apli">
 								<button type="button" onclick="location.href='#'"

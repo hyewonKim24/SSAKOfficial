@@ -211,7 +211,7 @@
 								onclick="sample4_execDaumPostcode();">우편번호 찾기</button></td>
 					</tr>
 
-					<script>
+					<script type="text/javascript">
 						function sample4_execDaumPostcode() {
 							new daum.Postcode(
 									{
