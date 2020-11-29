@@ -19,6 +19,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>주문내역 리스트</title>
 <style>
+
+
+
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 12pt;
@@ -53,19 +56,28 @@ a {
 }
 
 .mycate {
-	width: 200px;
-	height: 50px;
-	font-size: 14px;
-	border: 1px solid black;
-	border-bottom: 0px;
-	display: table-cell;
-	vertical-align: middle;
-	padding-left: 10px;
-}
+            width: 200px;
+            height: 50px;
+            border: 1px solid #dcdcdc;
+            border-bottom: 0px;
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
+            font-size:14px;
+        }
 
-#last {
-	border-bottom: 1px solid black;
-}
+        #last {
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
+        }
 
 .arrow {
 	float: right;
@@ -79,7 +91,7 @@ a {
 
 /*개인정보창*/
 .personal {
-	border: 1px solid black;
+	border: 1px solid #dcdcdc;
 	margin-bottom: 35px;
 }
 
@@ -113,13 +125,14 @@ a {
 }
 
 .order {
-	border: 1px solid gray;
+	border: 1px solid#dcdcdc;
 }
 
 .date {
-	padding: 10px;
-	background-color: lightgray;
-	font-size: 12pt;
+    padding: 10px;
+    background-color: #dcdcdc;
+    font-size: 11pt;
+    color: black;
 }
 
 .book {
@@ -130,12 +143,13 @@ a {
 .order_contents {
 	display: flex;
 	position: relative;
+    padding: 13px;
 }
 
 .order_detail {
 	margin: auto 0;
 	width: 500px;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 
 .order_apli {
@@ -151,10 +165,11 @@ a {
 	width: 130px;
 	height: 50px;
 	margin: 5px;
-	background-color: white;
-	border: gray solid 1px;
+	background-color:#425c5a;
+	border: #425c5a solid 1px;
 	border-radius: 8px;
 	cursor: pointer;
+    color: white;
 }
 
 #mylist {
@@ -254,7 +269,7 @@ a {
 								alt="book" class="book"></a>
 							<div class="order_detail">
 								<a href="#">
-								</a> <a href="#""><p>주문번호 : ${olist.ono }</p></a>
+								</a> <a href="#"><p>주문번호 : ${olist.ono }</p></a>
 									<p>상품명 : ${olist.btitle }</p>
 								<p>총 가격 : ${olist.ototalprice}</p>
 								<p>총 책수량 : ${olist.oamount }</p>
@@ -271,7 +286,10 @@ a {
 									class="order_btn">반품신청</button>
 							</div>
 						</div>
-					</div>
+                    </div>
+                    
+
+                    
 				</c:forEach>
 				</c:if>
 			</div>
