@@ -150,14 +150,14 @@ public class orderService {
 	public List<CartListVO> orderList(int[] chks) throws SQLException {
 		Connection conn = ds.getConnection();
 		List<CartListVO> list = new orderDAO().orderList(conn, chks);
-		conn.close();
+		close();
 		return list;
 	}
 	
 	public List<CartListVO> directOrderList(String bisbn, int dno) throws SQLException {
 		Connection conn = ds.getConnection();
 		List<CartListVO> list = new orderDAO().directOrderList(conn, bisbn, dno);
-		conn.close();
+		close();
 		return list;
 	}
 	
@@ -169,7 +169,7 @@ public class orderService {
 		int rs1 = new orderDAO().orderInsert2(conn,dno,bisbn,oamount);
 		System.out.println(rs + "행 추가됨");
 		System.out.println(rs1 + "행 추가됨");
-		conn.close();
+		close();
 		return rs;
 	}
 	
