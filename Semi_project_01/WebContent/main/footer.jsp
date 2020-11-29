@@ -6,8 +6,10 @@
 <meta charset="UTF-8">
 <style>
 footer {
+	clear:both;
 	position: relative;
-	width: 100%;
+	width: 1080px;
+	margin: 0 auto;
 	background-color: white;
 	letter-spacing: -0.4px;
 	
@@ -26,6 +28,7 @@ hr {
 
 #mSsakInfo ul {
 	width: 100%;
+	margin-left: 10px;
 	left: 0;
 }
 
@@ -50,10 +53,12 @@ hr {
 	font-size: 14px;
 	line-height: 20px;
 	float: left;
+	margin-top: 20px;
 }
 /* footer right */
 #mCS {
 	position: relative;
+	margin-left: 650px;
 }
 
 #mCS_title {

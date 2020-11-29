@@ -1,7 +1,7 @@
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/reset.css" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%
 	String ctxPath = request.getContextPath();
 %>
@@ -16,7 +16,6 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
-
 <style>
 * {
 	margin: 0;
@@ -166,8 +165,7 @@ table, td {
 	clear: both;
 	display: block;
 	width: 150px; 
-	background-color: rgba(253, 253, 253, 0.8);
-/* 	transform : translateY(5px); */
+	background-color: rgba(253, 253, 253, 0.9);
 }
 
 .mMainnav_wrap ul li a {
@@ -235,7 +233,6 @@ table, td {
 	padding: 12px;
 	cursor: pointer;
 }
-
 </style>
 <script>
 	$(document).ready(function() {
@@ -278,7 +275,7 @@ table, td {
 					<c:if test="${not empty member}">
 						<c:if test="${member.authority eq 0}">
 						<ul>
-							<li><a href="<%=ctxPath%>/MyOrderList.do">마이페이지</a></li>
+							<li><a href="<%=ctxPath%>/member/myOrderList.jsp">마이페이지</a></li>
 							<li><a href="<%=ctxPath%>/memberLogout.do">로그아웃</a></li>
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">
@@ -290,7 +287,7 @@ table, td {
 					</c:if>
 						<c:if test="${member.authority eq 1}">
 						<ul>
-							<li><a href="<%=ctxPath%>/memberList">회원관리</a></li>
+							<li><a href="<%=ctxPath%>/member/memberList">회원관리</a></li>
 							<li><a href="<%=ctxPath%>/memberLogout.do">로그아웃</a></li>
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">
@@ -334,9 +331,9 @@ table, td {
 						<li class="menu_line">|</li>
 						<li><a href="<%=ctxPath %>/bookNew.do">새로나온 책</a></li>
 						<li class="menu_line">|</li>
-						<li><a href="#">이벤트</a></li>
+						<li><a href="<%=ctxPath %>/EventList">이벤트</a></li>
 						<li class="menu_line">|</li>
-						<li><a href="<%=ctxPath%>/book/bookCustom01.jsp">CUSTOM</a></li>
+						<li><a href="<%=ctxPath%>/book/bookCustomInfo.jsp">CUSTOM</a></li>
 					</ul>
 				</nav>
 

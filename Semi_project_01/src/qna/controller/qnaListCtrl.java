@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.memberVO;
 import qna.model.QnAVO;
 import service.qna.QnAService;
 
@@ -95,10 +96,9 @@ public class qnaListCtrl extends HttpServlet {
 			next = endPage + 1;
 			prev = startPage - 1;
 			System.out.println(prev + "이전 - 다음" + next);
-//			if (startPage != 1) {
-//			}
-//			if (endPage > pageCount) {
-//			}
+			
+			//로그인 세션
+			memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 
 			// 보내주기
 			String search_error = (String) request.getAttribute("search_error");
