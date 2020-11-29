@@ -1,7 +1,16 @@
+<link href="<%=request.getContextPath()%>/css/reset.css"
+	rel="stylesheet" type="text/css" />
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ include file="../main/header.jsp"%>
+<%@include file="../main/recentSide.jsp"%>
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick-theme.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/bookCategory.css" />
 <html>
 <head>
 <meta charset="UTF-8">
@@ -9,184 +18,11 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
 	rel="stylesheet">
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-	integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-	crossorigin="anonymous"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
-<title>카테고리-소설</title>
-<style>
-ul {
-	margin: 0;
-	padding: 0;
-}
-
-#navi {
-	cursor: pointer;
-	padding-left: 40px;
-}
-
-.sub li {
-	padding-left: 20px;
-	font-size: 13px;
-}
-
-.bestseller {
-	width: 1080px;
-	margin: 0 auto;
-	display: flex;
-	margin-top: 80px;
-}
-
-a {
-	text-decoration: none;
-}
-
-#category {
-	float: left;
-	width: 200px;
-	height: 750px;
-	margin-right: 60px;
-	border: 1px solid #b9b6b6;
-}
-
-.classify {
-	font-weight: bold;
-	font-size: 30px;
-	padding: 20px;
-}
-
-.bestseller #category ul {
-	font-size: 15px;
-	padding-bottom: 11px;
-}
-
-.bestseller #category ul li {
-	list-style-type: none;
-	margin: 10px 0;
-}
-
-#bestseller__Nobel {
-	float: right;
-	width: 820px;
-}
-
-.bestseller__class {
-	display: flex;
-	justify-content: space-between;
-	margin-bottom: 30px;
-}
-
-.bestseller__class .subtitle {
-	margin: 0, 0, 20px, 0;
-}
-
-.subtitle {
-	font-size: 18px;
-	font-weight: bold;
-	margin: 15px 15px 15px 0;
-}
-
-.additem {
-	font-size: 13px;
-	margin: auto 0;
-	color: gray;
-}
-
-.noticeable {
-	float: none;
-	display: flex;
-	flex-wrap: nowrap;
-	list-style-type: none;
-	text-align: center;
-	width: 700px;
-	margin: 0 auto;
-}
-
-.img_book {
-	margin-right: 10px;
-	width: 150px;
-	height: 220px;
-	margin: 0 auto;
-}
-
-.new_noticeable {
-	margin: 2px;
-	text-decoration: none;
-	color: black;
-}
-
-.slick-prev:before, .slick-next:before {
-	color: purple;
-}
-
-.new_book {
-	display: flex;
-	justify-content: space-around;
-}
-
-.new_book__detail .title {
-	font-weight: bold;
-}
-
-.banner {
-	width: 820px;
-	margin: 35px 0;
-}
-
-.bloger_wrap {
-	float: none;
-	display: flex;
-	justify-content: space-around;
-	height: 300px;
-}
-
-.img_book2 {
-	width: 150px;
-	height: 220px;
-	float: left;
-	margin-left: 100px;
-}
-
-.bloger_best{
-	width:820px;
-	height: 300px;
-}
-
-.bloger_best__text {
-	border: 1px solid black;
-	width: 380px;
-	height: 180px;
-	float: right;
-	padding: 20px;
-	margin-right: 100px;
-}
-
-.bloger_best__text>p {
-	width: 380px;
-	height: 90px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	word-wrap: break-word;
-	-webkit-line-clamp: 4;
-	-webkit-box-orient: vertical;
-	text-align: left;
-}
-
-.noticeable_text {
-	width: 150px;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-}
-</style>
-
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/js/slick.min.js"></script>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$(".noticeable").slick({
@@ -215,18 +51,19 @@ a {
 
 	//aside 드롭다운
 	$(document).ready(function() {
-		$(".sub").css({
-			display : "none"
+		$('.sub').hide();
+		$('.title').click(function() {
+			var checkElement = $(this).next();
+			if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+				$('#navi ul:visible').slideUp(400);
+				return false;
+			}
+			if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+				$('#navi ul:visible').slideUp(400);
+				checkElement.slideDown(400);
+				return false;
+			}
 		});
-		$(".title").click(function() {
-			$(".sub").each(function() {
-				console.log($(this).css("display"));
-				if ($(this).css("display") == "block") {
-					$(this).slideUp("fast");
-				}
-			});
-			$(this).next("ul").slideDown("fast");
-		})
 	});
 </script>
 </head>
@@ -235,7 +72,7 @@ a {
 	<div class="bestseller">
 		<aside id="category">
 			<h3 class="classify">소설</h3>
-			<hr style="border: solid 1px #bdbbbb;">
+			<hr style="height: 1px; background-color: #dcdcdc; border-width: 0;">
 			<ul id="navi">
 				<li class="group">
 					<div class="title">소설</div>
@@ -363,25 +200,14 @@ a {
 			<div class="noticeable">
 				<c:forEach items="${bestSeller }" var="bsb" varStatus="a" begin="0"
 					end="8">
-					<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }" class="new_noticeable"> <img src="${bsb.bcover }"
-						alt="book" class="img_book">	
-						<style>
-						.b_title{
-						font-weight:bold;
-						}
-						.b_author{
-						color: #919191;
-						font-size:12px;
-						}
-						.b_price{
-						font-size:15px;
-						}
-						</style>
+					<a
+						href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"
+						class="new_noticeable"> <img src="${bsb.bcover }" alt="book"
+						class="img_book">
 						<div class="noticeable_text">
-						
-							<span class="b_title">${bsb.btitle }</span><br>
-							 <span class="b_author">${bsb.bauthor }</span><br>
-							<span class="b_price">${bsb.bpricesales }원</span>
+							<span class="b_title">${bsb.btitle }</span><br> <span
+								class="b_author">${bsb.bauthor }</span><br> <span
+								class="b_price">${bsb.bpricesales }원</span>
 						</div>
 					</a>
 				</c:forEach>
@@ -390,7 +216,8 @@ a {
 			<div class="swiper-button-next"></div>
 			<div class="swiper-button-prev"></div>
 			<!-- </div> -->
-			<hr>
+
+
 			<div class="bestseller__class">
 				<div class="subtitle">새로나온 책</div>
 				<a href="bookNew.do" class="additem">더보기+</a>
@@ -399,37 +226,44 @@ a {
 				<c:forEach items="${NewList }" var="bsb" varStatus="a" begin="1"
 					end="2">
 					<div class="new_book__block">
-						<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"><img src="${bsb.bcover }" alt="book" width="180px" height="270px"
+						<a
+							href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"><img
+							src="${bsb.bcover }" alt="book" width="180px" height="270px"
 							class="img_book"> </a>
 					</div>
 					<div class="new_book__detail">
-						<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">
-							<div class="title">${bsb.btitle }</div>
-						</a>
-						<div>${bsb.bauthor }</div>
-						<p>정가${bsb.bpriceStandard }->판매가(10%할인)${bsb.bpricesales }</p>
-						<div>${bsb.bdiscription }</div>
+						<a
+							href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">
+							<span class="b_title_n">${bsb.btitle }</span>
+						</a> <span class="b_author_n">${bsb.bauthor }</span> <span
+							class="b_price_n">정가${bsb.bpriceStandard }->판매가(10%할인)${bsb.bpricesales
+							}</span> <span class="b_author_n">${bsb.bdiscription }</span>
 					</div>
 				</c:forEach>
 
 			</div>
-			<a href="#"><img
-				src="http://www.canwa.com.au/wp-content/uploads/2019/09/KK-Facebook-Header-820px-x-360px-No-tag.jpg"
-				alt="book" class="banner"></a>
+			<a
+				href="<%=request.getContextPath()%>/bookDetail.do?bisbn=K922633306"><img
+				src="<%=request.getContextPath()%>/imgs/banner01.png" alt="book"
+				class="banner"></a>
 			<div class="subtitle">블로거 베스트셀러</div>
 			<div class="bloger_best">
 				<c:forEach items="${blogBest }" var="bsb" varStatus="a" begin="0"
 					end="4">
 					<div class="bloger_wrap" height="300px">
-						<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"> <img src="${bsb.bcover }" alt="book"
-							class="img_book2">
+						<a
+							href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">
+							<img src="${bsb.bcover }" alt="book" class="img_book2">
 						</a>
 						<!-- </div>
                     <div class="bloger_wrap"> -->
 						<div class="bloger_best__text">
-							<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }"><span>${bsb.btitle}</span></a><br> <span>${bsb.bauthor }</span><br>
-							<span>${bsb.bpricesales }</span>
-							<p>${bsb.bdiscription }</p>
+							<a
+								href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${bsb.BISBN }">
+								<span class="b_title">${bsb.btitle}</span>
+							</a><br> <span class="b_author">${bsb.bauthor }</span><br>
+							<span class="b_price">${bsb.bpricesales }원</span> <span
+								class="b_author_b">${bsb.bdiscription } </span>
 						</div>
 					</div>
 				</c:forEach>
@@ -438,6 +272,6 @@ a {
 			<div class="swiper-button-prev"></div>
 		</section>
 	</div>
+	<%@include file="../main/footer.jsp"%>
 </body>
-
 </html>

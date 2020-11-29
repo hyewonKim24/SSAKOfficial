@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.memberVO;
 import notice.model.NoticeVO;
 import service.notice.NoticeService;
 
@@ -50,21 +51,12 @@ public class NoticeWriteCtrl extends HttpServlet {
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		NoticeService nsv = new NoticeService();
-
-//		String mid =(request.getParameter("mid")!=null) ? request.getParameter("mid") : "0";
-//		String ntitle = (request.getParameter("ntitle")!=null) ? request.getParameter("ntitle") : "0";
-//		String ncontent = (request.getParameter("ncontent")!=null) ? request.getParameter("ncontent") : "0";
-
-//		String mid = request.getParameter("mid");
-
-		request.getSession().setAttribute("mid", "kim");
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		String ntitle = request.getParameter("ntitle");
-		System.out.println(ntitle);
 		String ncontent = request.getParameter("ncontent");
-
+		System.out.println(ntitle);
 		NoticeVO vo = new NoticeVO();
-		vo.setMid(request.getSession().getAttribute("mid").toString());
-//		vo.setMid(mid);
+		vo.setMid(mvo.getMid());
 		vo.setNtitle(ntitle);
 		vo.setNcontent(ncontent);
 

@@ -76,15 +76,13 @@
 }
 </style>
 <script>
-<<<<<<< HEAD
 $(window).scroll(function(){
     var position = $(document).scrollTop();
     if($(this).scrollTop() > 210 ){
       $("#quick").css('position','fixed');
     }else{
       $("#quick").css('position','relative');
-    }
-=======
+    });
 $(document).ready(function() {
     var Mnav = $("#quick").offset().top ;
 	$(window).scroll(function() {

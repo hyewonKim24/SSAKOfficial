@@ -1,0 +1,288 @@
+@charset "UTF-8";
+/* 배너_slick */
+	#slick-items1 {
+		position: relative;
+		width: 1080px;
+		height: 360px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	
+	.mBanner_img {
+		width: 100%;
+		height: 360px;
+	}
+	
+	.sub {
+		font-size: 16px;
+		height: 40px;
+		font-weight: 700;
+		color: #425c5a;
+	}
+/* 오늘의 책, 블로그 베스트 셀러 */
+	.mCont {
+		position: relative;
+		width: 1080px;
+		height: 340px;
+		margin: 10 auto;
+		overflow: hidden;
+	}
+	
+	.mTodayB {
+		position: absolute;
+		width: 60%;
+		height: 310px;
+		margin-top: 30px;
+		margin-right: 10px;
+	}
+	
+	.mTodayB_title {
+		font-weight: 700;
+		font-size: 20px;
+		height: 40px;
+		font-size: 20px;
+	}
+	
+	.mTodayB_author {
+		font-size: 14px;
+	}
+	
+	.mTodayB_cont {
+		width: 100%;
+		height: 270px;
+	}
+	
+	.mTodayB_img {
+		width: 30%;
+		height: 270px;
+		float: left;
+		margin-right: 5%;
+		border: 1px solid #dcdcdc;
+	}
+	
+	.mTodayB_cont dl {
+		height: 270px;
+		overflow: hidden;
+	}
+	
+	dl:nth-child(1) {
+		display: none;
+	}
+	
+	dl:nth-child(2) {
+		display: none;
+	}
+	
+	dl:nth-child(3) {
+		display: none;
+	}
+	
+	dl:nth-child(4) {
+		display: none;
+	}
+	
+	dl:nth-child(1).active {
+		display: block;
+		font-size: 14px;
+	}
+	
+	dl:nth-child(2).active {
+		display: block;
+		font-size: 14px;
+	}
+	
+	dl:nth-child(3).active {
+		display: block;
+		font-size: 14px;
+	}
+	
+	dl:nth-child(4).active {
+		display: block;
+		font-size: 14px;
+	}
+	
+	.mTodayB_title {
+		font-size: 18px;
+	}
+	
+	.mTodayB_desc {
+		padding-top: 16px;
+		font-size: 12px;
+		line-height: 16px;
+		text-overflow: ellipsis;
+	}
+	
+	.mTodayB_cont>ul {
+		position: absolute;
+		left: 35%;
+		width: 65%;
+		height: 130px;
+		bottom: 0;
+	}
+	
+	.mTodayB_cont ul li {
+		float: left;
+		padding-right: 18px;
+	}
+	
+	.mTodayB_others_img {
+		width: 85px;
+		height: 120px;
+		border: 1px solid #dcdcdc;
+	}
+/*세로 경계선*/
+	.vertical-line {
+		position: absolute;
+		display: inline-block;
+		width: 1px;
+		background-color: #DCDCDC;
+		height: 320px;
+		left: 65%;
+		margin: 40px 0 0 0;
+		padding: 0;
+	}
+	
+/* 블로그베스트 셀러 */
+	.mBlogbest {
+		position: absolute;
+		width: 30%;
+		height: 310px;
+		left: 70%;
+		margin-top: 35px;
+	}
+	
+	.mBlogbest_title {
+		font-size: 20px;
+		height: 40px;
+		line-height: 16px;
+		text-align: center;
+	}
+	
+	.mBlogbest_cont {
+		width: 100%;
+		height: 270px;
+	}
+	
+	.mBlogbest_cont img {
+		width: 150px;
+		height: 210px;
+		margin: 0 25%;
+	}
+	
+	.mBlogbest_cont p {
+		padding-top: 10px;
+		height: 50px;
+		margin: 0 25%;
+	}
+/* 커스텀소개 이미지 */
+	.mCustomIntro {
+		position: relative;
+		width: 1080px;
+		height: 250px;
+		margin: 80px auto;
+	}
+	
+	#mCustomIntro_img {
+		position: absolute;
+		width: 100%;
+		height: 250px;
+	}
+	
+/* 베스트셀러 소개  */
+	.mBestsell {
+		position: relative;
+		width: 1080px;
+		height: 320px;
+		margin: 0 auto;
+	}
+	
+	#mBestsell_title {
+		font-size: 20px;
+		height: 40px;
+	}
+	
+	.mBestsell_cont {
+		position: absolute;
+		width: 100%;
+		height: 320px;
+		margin: 0 auto;
+	}
+	
+	.mBestsell_btn {
+		float: left;
+		height: 320px;
+	}
+	
+	.mBestsell_cont ul {
+		width: 80%;
+		margin-left: 60px;
+	}
+	
+	.mBestsell_cont ul li {
+		float: left;
+		margin: 0 2%;
+		width: 150px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.mBestsell_cont_img {
+		width: 150px;
+		height: 230px;
+		border: 1px solid #dcdcdc;
+	}
+	
+	a .mBestsell_cont_txt {
+		font-size: 15px;
+		height: 40px;
+	}
+/* 새로나온책 소개  */
+	.mNewbook {
+		position: relative;
+		width: 1080px;
+		height: 310px;
+		margin: 50px auto;
+		margin-bottom: 100px;
+	}
+	
+	#mNewbook_title {
+		font-size: 20px;
+		height: 40px;
+	}
+	
+	.mNewbook_cont {
+		position: absolute;
+		width: 100%;
+		height: 280px;
+	}
+	
+	.mNewbook_btn {
+		float: left;
+		height: 270px;
+	}
+	
+	.mNewbook_cont ul {
+		width: 80%;
+		margin-left: 60px;
+	}
+	
+	.mNewbook_cont ul li {
+		float: left;
+		margin: 0 2%;
+		width: 150px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.mNewbook_cont_img {
+		width: 150px;
+		height: 230px;
+		border: 1px solid #dcdcdc;
+	}
+	
+	.mNewbook_cont_txt {
+		font-size: 15px;
+		height: 40px;
+	}

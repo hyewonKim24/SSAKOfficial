@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.model.memberVO;
 import qna.model.QnAVO;
 import service.qna.QnAService;
 
@@ -49,21 +50,19 @@ public class qnaReplyCtrl extends HttpServlet {
 			throws ServletException, IOException {
 		QnAService qsv = new QnAService();
 
-		request.getSession().setAttribute("mid", "kim");
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		String qtype = request.getParameter("qtype");
 		String qtitle = request.getParameter("qtitle");
 		String qcontent = request.getParameter("qcontent");
-		String qpw =request.getParameter("qpw").trim();
 		int qref = Integer.parseInt(request.getParameter("qref"));
 		int qref_step = Integer.parseInt(request.getParameter("qref_step"));
 		int qref_level = Integer.parseInt(request.getParameter("qref_level"));
 
 		QnAVO vo = new QnAVO();
-		vo.setMid(request.getSession().getAttribute("mid").toString());
+		vo.setMid(mvo.getMid());
 		vo.setQtype(qtype);
 		vo.setQtitle(qtitle);
 		vo.setQcontent(qcontent);
-		vo.setQpw(qpw);
 		vo.setQref(qref);
 		vo.setQref_step(qref_step);
 		vo.setQref_level(qref_level);

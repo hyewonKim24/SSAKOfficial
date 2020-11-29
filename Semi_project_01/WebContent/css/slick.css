@@ -63,7 +63,7 @@
 {
     display: table;
 
-    content: '';
+/*     content: ''; */
 }
 .slick-track:after
 {
@@ -79,6 +79,7 @@
     display: none;
     float: left;
 
+    height: 100%;
     min-height: 1px;
 }
 [dir='rtl'] .slick-slide
