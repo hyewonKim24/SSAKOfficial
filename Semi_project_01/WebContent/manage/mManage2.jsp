@@ -1,3 +1,6 @@
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/mManage2.css"/>
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/mManage2.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mManage2.css"/>
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
@@ -8,7 +11,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="./css/mManage2.css" rel="stylesheet" type="text/css">
 <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
 <title>회원정보조회 상세페이지</title>
 

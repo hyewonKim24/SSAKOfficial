@@ -21,31 +21,22 @@ System.out.println(bisbn);
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
 <script type="text/javascript">
-	//aside 드롭다운
-	$(document).ready(function () {
-			$("#checkall").click(function() {
-				if ($("#checkall").prop("click")) {
-					$("input[name=check]").prop("checked", true);
-				}
-			});
-			$("#uncheck_all").click(function() {
-				if ($("#uncheck_all").prop("click")) {
-					$("input[name=check]").prop("checked", false);
-				}
-			});
-		$(".sub").css({
-			display: "none"
-		});
-		$(".title").click(function () {
-			$(".sub").each(function () {
-				console.log($(this).css("display"));
-				if ($(this).css("display") == "block") {
-					$(this).slideUp("fast");
-				}
-			});
-			$(this).next("ul").slideDown("fast");
-		})
-	});
+//aside 드롭다운
+$(document).ready(function () {
+        $('.sub').hide();
+        $('.title').click(function () {
+            var checkElement = $(this).next();
+            if ((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+                $('#navi ul:visible').slideUp(400);
+                return false;
+            }
+            if ((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+                $('#navi ul:visible').slideUp(400);
+                checkElement.slideDown(400);
+                return false;
+            }
+        });
+    });
 	</script>
 </head>
 <body>

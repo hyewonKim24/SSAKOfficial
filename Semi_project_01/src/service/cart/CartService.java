@@ -103,4 +103,13 @@ public class CartService {
 		conn.close();
 		return rs;
 	}
+	
+	public int CartCount(String mid) throws SQLException {
+		Connection conn=ds.getConnection();
+		int rs= new CartDAO().CartCount(conn, mid);
+		System.out.println(rs+"개의 장바구니 불러옴");
+		conn.close();
+		return rs;
+	}
+
 }

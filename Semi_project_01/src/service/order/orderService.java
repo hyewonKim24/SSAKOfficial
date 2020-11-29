@@ -115,27 +115,38 @@ public class orderService {
 	public List<orderVO> orderDetail(String mid, int ono) throws SQLException {
 		List<orderVO> odetail = null;
 		try {
-			Connection conn = ds.getConnection();
-			odetail = new orderDAO().orderDetail(conn, mid, ono);
-		} finally {
-			close();
-		}
+		Connection conn = ds.getConnection();
+		odetail = new orderDAO().orderDetail(conn, mid, ono);
+	}finally {
+		close();
+	}
 		return odetail;
 	}
 
-	// 주문하기 관련
+	//내 주문내역 조회
+	public List<orderVO> myOrderlist(String mid) throws SQLException {
+		List<orderVO> myolist = null;
+		try {
+		Connection conn = ds.getConnection();
+		myolist = new orderDAO().myOrderlist(conn, mid);
+	}finally {
+		close();
+	}
+		return myolist;
+	}
 
-//	public List<CartListVO> orderList(int[] chks) throws SQLException {
-//		try {
-//		Connection conn = ds.getConnection();
-//		List list = new orderDAO().orderList(conn, chks);
-//		conn.close();
-//		return list;
-//	}
 
+	//주문하기 관련
+	public List<CartListVO> orderList(int[] chks) throws SQLException {
+		Connection conn = ds.getConnection();
+		List<CartListVO> list = new orderDAO().orderList(conn, chks);
+		conn.close();
+		return list;
+	}
+	
 	public List<CartListVO> directOrderList(String bisbn, int dno) throws SQLException {
 		Connection conn = ds.getConnection();
-		List list = new orderDAO().directOrderList(conn, bisbn, dno);
+		List<CartListVO> list = new orderDAO().directOrderList(conn, bisbn, dno);
 		conn.close();
 		return list;
 	}

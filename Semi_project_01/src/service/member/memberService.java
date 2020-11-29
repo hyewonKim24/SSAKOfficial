@@ -44,7 +44,7 @@ public class memberService {
 	public boolean isEmailChk(String memail) throws SQLException {
 		Connection conn = ds.getConnection();
 		boolean a = new memberDAO().isEmailChk(conn, memail);
-		conn.close();
+		close();
 		return a;
 
 	}
@@ -52,7 +52,7 @@ public class memberService {
 	public boolean isIdChk(String mid) throws SQLException {
 		Connection conn = ds.getConnection();
 		boolean a = new memberDAO().isIdChk(conn, mid);
-		conn.close();
+		close();
 		return a;
 
 	}
@@ -68,14 +68,14 @@ public class memberService {
 		} else {
 			conn.rollback();
 		}
-		conn.close();
+		close();
 		return rs;
 	}
 
 	public memberVO loginMember(String mid, String mpw) throws SQLException {
 		Connection conn = ds.getConnection();
 		memberVO mvo = new memberDAO().loginMember(conn, mid, mpw);
-		conn.close();
+		close();
 		return mvo;
 
 	}
@@ -83,14 +83,14 @@ public class memberService {
 	public memberVO idSearch(String mname, String memail) throws SQLException {
 		Connection conn = ds.getConnection();
 		memberVO mvo = new memberDAO().idSearch(conn, mname, memail);
-		conn.close();
+		close();
 		return mvo;
 	}
 
 	public boolean pwSearch(String mid, String memail) throws SQLException {
 		Connection conn = ds.getConnection();
 		boolean a = new memberDAO().pwSearch(conn, mid, memail);
-		conn.close();
+		close();
 		return a;
 	}
 
@@ -103,7 +103,7 @@ public class memberService {
 		} else {
 			conn.rollback();
 		}
-		conn.close();
+		close();
 		return rs;
 	}
 
@@ -116,7 +116,7 @@ public class memberService {
 		} else {
 			conn.rollback();
 		}
-		conn.close();
+		close();
 		return rs;
 	}
 

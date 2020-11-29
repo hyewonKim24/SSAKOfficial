@@ -168,12 +168,9 @@ function goRegister(){
 
 						$("#emailDoubleChk").on("click", function() {
 							$.ajax({
-								url : "<%=request.getContextPath()%>
-						/CheckEmail",
+								url : "<%=request.getContextPath()%>/CheckEmail",
 														data : {
-															memail : $(
-																	"#memail")
-																	.val()
+															memail : $("#memail").val()
 														},
 														success : function(res) {
 															alert(res);

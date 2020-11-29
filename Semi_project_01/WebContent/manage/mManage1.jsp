@@ -1,6 +1,6 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/mManage1.css" />
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">

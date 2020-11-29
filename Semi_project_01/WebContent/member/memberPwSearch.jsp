@@ -39,11 +39,15 @@ body {
 }
 
 .input_pw_search {
-	padding-top: 0;
-	width: 350px;
-	height: 40px;
-	vertical-align: middle;
-	column-span: 2;
+	width: 340px;
+    height: 54px;
+    padding: 0 19px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+    outline: none;
 }
 
 .login_font_size {
@@ -56,13 +60,15 @@ body {
 }
 
 .form_btn1 {
-	width: 360px;
-	margin-top: 10px;
-	line-height: 40px;
-	background-color: #6946A7;
-	color: white;
-	border: none;
-	border-radius: 5%;
+	display: block;
+	width: 340px;
+	height: 54px;
+	border-radius: 3px;
+	text-align: center;
+	border: 1px solid #425c5a;
+	background-color: #425c5a;
+	color:white;
+	margin-top:30px;
 }
 
 #pw_search {

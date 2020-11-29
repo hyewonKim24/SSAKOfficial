@@ -139,7 +139,7 @@ public class memberPwtmpSend extends HttpServlet {
 					System.out.println("이메일 전송");
 					
 					request.setAttribute("login_error", "임시비밀번호가 전송되었습니다. 메일 확인 후 로그인해주세요.");
-					RequestDispatcher dis = request.getRequestDispatcher("./memberLogin.jsp");
+					RequestDispatcher dis = request.getRequestDispatcher("./member/memberLogin.jsp");
 					dis.forward(request, response);
 
 				} catch (Exception e) {
@@ -148,7 +148,7 @@ public class memberPwtmpSend extends HttpServlet {
 				
 			}else {
 				request.setAttribute("pw_Search_error", "에러가 발생했습니다. 다시 시도해주세요");
-				RequestDispatcher dis = request.getRequestDispatcher("./memberPwSearch.jsp");
+				RequestDispatcher dis = request.getRequestDispatcher("./member/memberPwSearch.jsp");
 				dis.forward(request, response);
 				
 			}

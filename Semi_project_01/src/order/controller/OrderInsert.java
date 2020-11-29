@@ -52,7 +52,8 @@ public class OrderInsert extends HttpServlet {
 		orderVO vo = new orderVO();
 		NewOrderVO vo2 = new NewOrderVO();
 		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
-
+		
+		System.out.println(mvo.getMid());
 		vo.setMid(mvo.getMid());
 		vo.setOtotalprice(Integer.parseInt(request.getParameter("ototalprice")));
 		vo.setOsalesprice(Integer.parseInt(request.getParameter("osalesprice")));

@@ -1,9 +1,9 @@
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
-<link href="./reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
@@ -29,6 +29,9 @@ a:visited {
 	text-decoration: none;
 	color: gray;
 }
+a:link {
+	color: gray;
+}ㄴ
 
 body {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -47,21 +50,81 @@ body {
 	margin: auto;
 }
 
+/***************side menu   START****************/
+ul {
+	margin: 0;
+	padding: 0;
+}
+
 #c_nav {
 	float: left;
 	width: 200px;
+	padding-bottom: 10px;
 }
 
 #c_nav .tit_c_nav {
+	font-size: 30px;
 	padding: 7px 0 34px;
+	letter-spacing: -0.4px;
 }
 
-.nav_t {
-	display: block;
-	width: 200px;
-	height: 60px;
-	background-color: gold;
+.inner_nav {
+	border: 1px solid #dcdbde;
+	border-bottom: 0;
 }
+
+.list_menu li {
+	border-bottom: 1px solid #dcdbde;
+	list-style: none;
+}
+
+.list_menu li a {
+	display: block;
+	overflow: hidden;
+	padding: 15px 0 15px 20px;
+	line-height: 20px;
+	background: #fff /* url("./arrow-right2.png") no-repeat 169px 50% */;
+	background-size: 10px 11px;
+	font-size: 14px;
+}
+
+.list_menu li a:hover {
+	background: #fafafa /* url("./arrow-right2.png") no-repeat 169px 50% */;
+	background-size: 10px 11px;
+	font-weight: 700;
+	color: #425c5a;
+}
+
+.aside_arrow {
+	float: right;
+	padding-right: 20px;
+	right: 0;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+#c_nav .link_inquire {
+	display: block;
+	overflow: hidden;
+	height: 60px;
+	margin-top: 20px;
+	padding: 9px 0 0 21px;
+	border-radius: 0 100px 100px 0;
+	background: #fafafa url("./arrow-right2.png") no-repeat 169px 50%;
+	background-size: 10px 11px;
+	font-size: 12px;
+	color: #333;
+	line-height: 20px;
+}
+
+#c_nav .link_inquire .emph {
+	display: block;
+	padding-bottom: 1px;
+	font-weight: 700;
+	font-size: 14px;
+}
+
+
 
 #c_nav .nav_link {
 	display: block;
@@ -73,7 +136,7 @@ body {
 	background: #E6E6E6;
 	background-size: 6px 11px;
 	line-height: 20px;
-	border-radius: 30px;
+	border-radius: 0 30px 30px 0;
 }
 
 #c_nav .nav_link .emph {
@@ -84,23 +147,7 @@ body {
 	text-align: center;
 }
 
-.inner_nav {
-	border: 1px solid #dcdbde;
-	border-bottom: 0;
-}
-
-.list_menu li {
-	border-bottom: 1px solid #dcdbde;
-}
-
-.list_menu li a {
-	display: block;
-	overflow: hidden;
-	padding: 16px 0 16px 19px;
-	background: #fff url("./images/ico_arrow_on_12x22.png") no-repeat 174px
-		50%;
-	background-size: 6px 10px;
-}
+/***************side menu   END ****************/
 
 .page_section {
 	float: right;
@@ -109,6 +156,7 @@ body {
 
 .head_aticle {
 	padding: 5px 0 10px;
+	padding-bottom: 42px;
 }
 
 .tit {
@@ -141,26 +189,30 @@ body {
 .CSq1_cont_board table {
 	width: 100%;
 	height: 450px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	border-collapse: collapse;
+	border-top: 3px solid #425c5a;
+	
 }
 
 .CSq1_cont_board tr td:nth-child(1) {
-	font-size: 15px;
+	font-size: 12px;
 	text-align: center;
 	font-weight: bold;
 	width: 150px;
 	line-height: 30px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	vertical-align: middle;
 	height: 10px;
+	padding:10px;
 }
 
 .CSq1_cont_board tr td:nth-child(2) {
-	font-size: 13px;
+	font-size: 12px;
 	width: 180px;
-	border: solid 1px;
+	border: 1px solid #e8e8e8;
 	vertical-align: middle;
+	padding:10px;
 }
 
 .qna_desc {
@@ -170,7 +222,7 @@ body {
 }
 
 .qna_box {
-	background-color: gainsboro;
+	background-color: #f7f7f7;
 }
 
 .subM {
@@ -181,6 +233,15 @@ body {
 .hr_bottm {
 	width: 100%;
 	margin: 30px;
+}
+.b_button {
+	width: 100px;
+	line-height: 30px;
+	font-size: 11px;
+	text-align: center;
+	background-color: #425c5a;
+	border: 1px solid #425c5a;
+	color: #fff;
 }
 </style>
 <script>
@@ -202,23 +263,20 @@ function goReply(){
 	<div id="wrap">
 		<div id="c_main">
 			<div id="c_nav">
-				<h1 class="tit_c_nav">고객센터</h1>
-				<div class="inner_nav">
-					<ul class="list_menu">
-					<li><a href="<%=request.getContextPath() %>/noticeList.do">공지사항</a></li>
-					<li><a href="<%=request.getContextPath() %>/qna/fq.jsp">자주하는질문</a></li>
-					<li><a href="<%=request.getContextPath() %>/qnaList.do">1:1문의</a></li>
-					</ul>
-				</div>
-				<a href="#" class="nav_link">
-					<div class="nav_text">고객센터</div>
-					<div class="nav_text">111-1111</div>
-					<div class="nav_text2">
-						<div class="nav_text">월~금 09:00~18:00</div>
-						<div class="nav_text">(토요일,공휴일 휴무)</div>
-					</div>
-				</a>
+			<h2 class="tit_c_nav">고객센터</h2>
+			<div class="inner_nav">
+				<ul class="list_menu">
+					<li><a href="<%=request.getContextPath() %>/noticeList.do">공지사항<span class="aside_arrow">></span></a></li>
+					<li><a href="#">자주하는질문<span class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath() %>/qnaList.do">1:1문의<span class="aside_arrow">></span></a></li>
+				</ul>
 			</div>
+
+			<a href="#"
+				class="link_inquire"> <span class="emph">도움이 필요하신가요 ?</span> 1:1
+				문의하기
+			</a>
+		</div>
 
 			<div class="page_section">
 				<div class="head_aticle">
@@ -232,8 +290,8 @@ function goReply(){
 							<tr>
 								<td class="qna_ctg qna_box">질문유형</td>
 								<td colspan="2"
-									style="background-color: gainsboro; padding-left: 8px;">
-									<select class="qna_se" name="qtype" style="width: 320px; height: 30px;">
+									style="padding-left: 8px;">
+									<select class="qna_se" name="qtype" style="width: 320px; height: 30px;     border: 1px solid #e8e8e8;">
 										<option value="${param.qtype }">${param.qtype }</option>
 										<!-- <option value="주문결제">주문/결제</option>
 										<option value="커스텀문의">커스텀문의</option>
@@ -246,20 +304,18 @@ function goReply(){
 								<td class="qna_title qna_box">제목</td>
 								<td colspan="2" style="padding-left: 8px;"><input
 									type="text" name="qtitle" placeholder="제목을 입력해주세요."
-									style="width: 640px; height: 30px;"></td>
+									style="width: 640px; height: 30px;  border: 1px solid #e8e8e8;"></td>
 
 							</tr>
 							<tr>
 								<td class="qna_desc qna_box">내용</td>
-								<td colspan="2" style="padding-left: 8px;"><input
-									type="text" name="qcontent"
-									placeholder="질문내용을 구체적으로 작성해주시면 더 빠르고 정확한 답변을 받으실 수 있습니다."
-									style="width: 640px; height: 250px;"></input></td>
+								<td colspan="2" style="padding-left: 8px;">
+								<textarea name="qcontent" style="width: 640px; height: 350px; border: 1px solid #e8e8e8;  border: 1px solid #e8e8e8;"></textarea>
 							</tr>
 							<tr>
 								<td class="qna_email qna_box">비밀번호</td>
 								<td colspan="2" style="padding-left: 8px;"><input
-									type="password" name="qpw" style="width: 320px; height: 30px;"
+									type="password" name="qpw" style="width: 320px; height: 30px;  border: 1px solid #e8e8e8;"
 									value="${param.qpw}"></td>
 							</tr>
 							<tr>
@@ -269,7 +325,7 @@ function goReply(){
 								<input type="hidden" name="qref_step" value="${param.qref_step}"> 
 								<input type="hidden" name="qref_level" value="${param.qref_level}">
 									<button type="button" onclick="goReply()"
-										style="height: 50px; width: 134px; background-color: gray; border-radius: 8px;">등록하기</button>
+										class="b_button">등록하기</button>
 								</td>
 							</tr>
 						</table>
