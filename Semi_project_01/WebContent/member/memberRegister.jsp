@@ -20,18 +20,7 @@
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
 
-<script>
-function goRegister(){
-	if($('#f_chk1').prop('checked') == false || $('#f_chk2').prop('checked') == false){
-    	alert('필수 약관에 동의 하셔야 합니다.');
-	}else{
-	var frm=document.register_frm;
-		frm.action="<%=request.getContextPath()%>/memberRegister.do";
-		frm.method = "post";
-		frm.submit();
-	}
-	}
-</script>
+
 </head>
 
 
@@ -64,10 +53,12 @@ function goRegister(){
 					<script type="text/javascript">
 						//아이디
 						var idreg=false;
+						var iddbchk=0;
 						$("#mid").on("input", function() {
 							var a = $("#mid").val();
 							var regex = /[A-Za-z0-9]{5,20}/;
 							if (!regex.exec(a)) {
+								idreg=false;
 								$("#id_res").html("아이디 형식이 맞지 않습니다");
 								return;
 							} else{
@@ -84,7 +75,16 @@ function goRegister(){
 									mid : $("#mid").val()
 								},
 								success : function(res) {
-									alert(res);
+									if(res==1){
+										//사용가능
+										iddbchk=1;
+										alert('사용가능한 아이디입니다.');
+									}else if(res==0){
+										iddbchk=2;
+										alert('이미 사용중인 아이디입니다.');
+									}else{
+										alert(res);
+									}
 								},
 								error : function(jqXHR,textStatus, errorThrown) {
 									alert('오류가 발생했습니다');
@@ -119,6 +119,7 @@ function goRegister(){
 							var a = $("#mpw").val();
 							var regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
 							if (!regex.exec(a)) {
+								pwreg=false;
 								$("#pw_res").html('비밀번호 형식이 맞지않습니다.');
 								return;
 							} else {
@@ -154,10 +155,12 @@ function goRegister(){
 					</tr>
 					<script type="text/javascript">
 						var emailreg = false;
+						var emaildbchk= 0;
 						$("#memail").on("input",function() {
 							var a = $("#memail").val();
 							var regex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 							if (!regex.exec(a)) {
+								emailreg=false;
 								$("#email_res").html("이메일 형식이 맞지 않습니다");
 								return;} 
 							else{ 
@@ -173,7 +176,15 @@ function goRegister(){
 															memail : $("#memail").val()
 														},
 														success : function(res) {
-															alert(res);
+															if(res==1){
+															alert('사용가능한 이메일입니다');
+															emaildbchk=1;
+															}else if(res==0){
+															alert('이미 사용중인 이메일입니다');
+															emaildbchk=2;
+															}else{
+																alert(res);
+															}
 														},
 														error : function() {
 															alert('오류가 발생했습니다');
@@ -306,13 +317,12 @@ function goRegister(){
 					<tr>
 						<th>이용약관동의</th>
 						<td><input type="checkbox" class="form_input_chk" id="f_chk1"
-							required checked> <label for="f_chk1">이용약관 동의(필수)</label></td>
+							required> <label for="f_chk1">이용약관 동의(필수)</label></td>
 					</tr>
 					<tr>
 						<th></th>
 						<td><input type="checkbox" class="form_input_chk" id="f_chk2"
-							required checked> <label for="f_chk2">개인정보 수집 및
-								이용(필수)</label></td>
+							required> <label for="f_chk2">개인정보 수집 및 이용(필수)</label></td>
 					</tr>
 					<tr>
 						<th></th>
@@ -336,6 +346,38 @@ function goRegister(){
 	<br>
 	<br>
 	<br>
+	<script>
+
+function goRegister(){
+	if(iddbchk==0){
+		alert('아이디 중복체크를 해주세요.');
+	}else if(iddbchk==2){
+		alert('사용중인 아이디 입니다. 변경해주세요.');
+	}else if(emaildbchk==0){
+		alert('이메일 중복체크를 해주세요.');
+	}else if(emaildbchk==2){
+		alert('사용중인 이메일입니다. 변경해주세요.');
+	}
+	else{ 
+	 if(idreg==false){
+		console.log(idreg);
+		alert('아이디 형식을 바르게 입력해주세요');
+	}else if(pwreg==false){
+		console.log(pwreg);
+		alert('비밀번호 형식을 바르게 입력해주세요');
+	}else if(emailreg==false){
+		alert('이메일 형식을 바르게 입력해주세요');
+	}else if($('#f_chk1').prop('checked') == false || $('#f_chk2').prop('checked') == false){
+    	alert('필수 약관에 동의 하셔야 합니다.');
+	}else{
+	var frm=document.register_frm;
+		frm.action="<%=request.getContextPath()%>/memberRegister.do";
+		frm.method = "post";
+		frm.submit();
+	}
+	}
+	}
+</script>
 </body>
 <%@ include file="../main/footer.jsp"%>
 
