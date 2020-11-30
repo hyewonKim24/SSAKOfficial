@@ -1,7 +1,5 @@
-<link href="<%=request.getContextPath()%>/css/reset.css"
-	rel="stylesheet" type="text/css">
-<link href="<%=request.getContextPath()%>/css/memberregister.css"
-	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/memberregister.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
@@ -11,7 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>회원가입</title>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script
@@ -44,7 +42,7 @@
 						<th>아이디<span id="ico">*</span></th>
 						<td><input type="text" class="form_input" name="mid" id="mid"
 							placeholder="5~20자 영문,숫자 입력" required>
-							<button class="form_btn" id="idDoubleChk">중복확인</button></td>
+							<button type="button" class="form_btn" id="idDoubleChk">중복확인</button></td>
 					</tr>
 					<tr>
 						<th></th>
@@ -70,7 +68,7 @@
 						$("#idDoubleChk").on("click", function() {
 							$.ajax({
 								type : 'post',
-								url : "<%=request.getContextPath()%>/CheckId",
+								url : "<%=request.getContextPath()%>/CheckId.do",
 								data : {
 									mid : $("#mid").val()
 								},
@@ -147,7 +145,7 @@
 						<th>이메일 주소<span id="ico">*</span></th>
 						<td><input type="text" class="form_input" name="memail"
 							id="memail" required>
-							<button class="form_btn" id="emailDoubleChk">중복확인</button></td>
+							<button type="button" class="form_btn" id="emailDoubleChk">중복확인</button></td>
 					</tr>
 					<tr>
 						<th></th>
@@ -171,7 +169,7 @@
 
 						$("#emailDoubleChk").on("click", function() {
 							$.ajax({
-								url : "<%=request.getContextPath()%>/CheckEmail",
+								url : "<%=request.getContextPath()%>/CheckEmail.do",
 														data : {
 															memail : $("#memail").val()
 														},

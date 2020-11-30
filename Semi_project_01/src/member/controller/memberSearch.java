@@ -18,7 +18,7 @@ import service.member.memberService;
 /**
  * Servlet implementation class memberSearch
  */
-@WebServlet("/memberSearch")
+@WebServlet("/memberSearch.do")
 public class memberSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -111,7 +111,7 @@ public class memberSearch extends HttpServlet {
 			if (msearchbar == null || msearchbar == "") {
 				request.setAttribute("search_error", "검색어를 입력해주세요");
 				System.out.println("검색어가 null 인 경우");
-				RequestDispatcher disp = request.getRequestDispatcher("./memberList");
+				RequestDispatcher disp = request.getRequestDispatcher("./memberList.do");
 				disp.forward(request, response);
 			} else {
 				try {

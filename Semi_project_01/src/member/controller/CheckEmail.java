@@ -15,7 +15,7 @@ import service.member.memberService;
 /**
  * Servlet implementation class CheckEmail
  */
-@WebServlet("/CheckEmail")
+@WebServlet("/CheckEmail.do")
 public class CheckEmail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

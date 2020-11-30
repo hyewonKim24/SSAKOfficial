@@ -37,7 +37,7 @@ body {
 	<div id="custom_info">
 		<img src="<%=request.getContextPath()%>/imgs/custom_info.png" alt="custom_info_img" id="custom_info_img">
 	</div>
-		<button id="custom_btn" type="button" onclick="location.href='<%=request.getContextPath()%>/book/bookCustom01.jsp'"></button>
+		<button id="custom_btn" type="button" onclick="location.href='<%=request.getContextPath()%>/book/bookCustom02.jsp'"></button>
 	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>

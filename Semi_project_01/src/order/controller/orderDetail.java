@@ -18,7 +18,7 @@ import service.order.orderService;
 /**
  * Servlet implementation class wreqDetail
  */
-@WebServlet("/orderDetail")
+@WebServlet("/orderDetail.do")
 public class orderDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

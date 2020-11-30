@@ -1,3 +1,5 @@
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/memberLogin.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
@@ -6,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link
@@ -14,119 +15,7 @@
 	rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<title>로그인</title>
-<style>
-body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 12pt;
-	margin: 0 auto;
-}
-
-#form_title {
-	line-height: 60px;
-	font-weight: bold;
-}
-
-.font_large {
-	font-size: 30px;
-	font-weight: bolder;
-	text-align: center;
-}
-
-.form_wrap {
-	padding-top: 60px;
-	width: 1080px;
-	display: block;
-	margin: 0 auto;
-}
-
-.register_res {
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 20px;
-}
-
-.input_login_wrap {
-	width: 340px;
-	height: 60px;
-}
-
-.input_login {
-	width: 100%;
-	height: 54px;
-	padding: 0 19px;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	background-color: #fff;
-	font-size: 14px;
-	line-height: 20px;
-	outline: none;
-	margin-top: 10px;
-}
-
-.login_font_size {
-	font-size: 11pt;
-	line-height: 30px;
-}
-
-.form_login_btn {
-	text-align: center;
-}
-
-.form_btn1 {
-	width: 340px;
-	line-height: 54px;
-	border-radius: 3px;
-	margin-top: 10px;
-	background-color: #425c5a;
-	color: white;
-	border: none;
-}
-
-.form_btn2 {
-	width: 340px;
-	margin-top: 10px;
-	background-color: white;
-	color: #425c5a;
-	line-height: 54px;
-	border-radius: 3px;
-	border: 1px solid #425c5a;
-}
-
-#login_tbl {
-	margin: 0 auto;
-	line-height: 30px;
-	height: 40px;
-	vertical-align: middle;
-}
-
-#login_tbl th {
-	height: 60px;
-}
-
-#login_tbl td {
-	height: 60px;
-	vertical-align: middle;
-}
-
-#login_tbl a {
-	color: black;
-	text-decoration: none;
-}
-
-#login_search {
-	float: right;
-}
-
-.login_icon {
-	padding: 10px;
-}
-
-.container {
-	padding-top: 40px;
-}
-</style>
+<title>ssak, 나만의 책</title>
 <script>
  function goLogin(){
 		var frm=document.login_frm;
@@ -187,6 +76,7 @@ body {
 
 		</table>
 	</form>
-
+	<br><br><br><br><br>
+<%@include file="../main/footer.jsp"%>
 </body>
 </html>

@@ -1,24 +1,20 @@
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/directOrder.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ include file="../main/header.jsp"%>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link href="<%=request.getContextPath()%>/css/directOrder.css"
-	rel="stylesheet" type="text/css">
 	
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ssak, 나만의 책</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./reset.css" rel="stylesheet" type="text/css">
 	<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
-	<script
-	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <title>Order Page</title>
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 
     <script>
@@ -30,7 +26,7 @@
 			} else{
 				var frm=document.orderform;
 				frm.method="post";
-				frm.action="OrderInsert"
+				frm.action="OrderInsert.do"
 				frm.submit();			
 			}				
 		});
@@ -38,6 +34,7 @@
     </script>
 </head>
 <body>
+<div id="directOrder_wrap">
    <section>
         <h2>주문/결제</h2>
 
@@ -177,10 +174,9 @@
                     </tr>
                     <tr>
                     	<td><input type="text" class="member_txt" id="m_second_addr" name="maddress3" value="${member.m_second_addr }" placeholder="상세주소"></td>
-                    	<td><input type="text" id="sample4_jibunAddress"
-							class="form_input"></td>
-						<td><input type="text" id="sample4_extraAddress"
-							class="form_input"></td>
+                    	<td><input type="text" id="sample4_jibunAddress" class="form_input"></td>
+						<td><input type="text" id="sample4_extraAddress" class="form_input"></td>
+						<td><input type="hidden" id="guide" class="form_input"></td>
                     </tr>
                     <tr>
                         <td class="member row">배송메모</td>
@@ -265,5 +261,7 @@
             <button type="button" id="order">결제하기</button>
         </form>
     </section>
+    </div>
+    <%@include file="../main/footer.jsp"%>
 </body>
 </html>

@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
-<title>회원정보조회 상세페이지</title>
+<title>ssak, 나만의 책</title>
 
 <script type="text/javascript">
 function startUpdate(){
@@ -30,13 +30,13 @@ function startUpdate(){
             <div class="mManage_asidetlt">회원관리</div>
             <div class="mManage_asidenav">
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
-							및 수정<span class="aside_arrow">></span>
+                    <li><a href="<%=request.getContextPath()%>/memberList.do">회원정보조회
+							및 수정<span class="aside_arrow"></span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
-							class="aside_arrow">></span></a></li>
-					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
-							class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath()%>/OrderList.do">주문내역조회<span
+							class="aside_arrow"></span></a></li>
+					<li><a href="<%=request.getContextPath()%>/wreqList.do">탈퇴요청관리<span
+							class="aside_arrow"></span></a></li>
                 </ul>
             </div>
             <div class="CS_info">
@@ -106,7 +106,7 @@ function startUpdate(){
                                 <td colspan="3">
                                 <input type="button" value="수정하기" id="edit" onclick="startUpdate()">
                                 <!-- onclick="location.href='mManage3.jsp'" -->
-                                <input type="button" value="뒤로가기" id="goback" onclick="location.href='<%=request.getContextPath()%>/memberList'">
+                                <input type="button" value="뒤로가기" id="goback" onclick="location.href='<%=request.getContextPath()%>/memberList.do'">
                                 </td>
                             </tr>
                         </tbody>
@@ -115,5 +115,6 @@ function startUpdate(){
             </div>
         </div>
     </div>
+    <%@include file="../main/footer.jsp"%>
 </body>
 </html>

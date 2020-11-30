@@ -8,6 +8,11 @@
             color:#333333;
         }
 
+		#cart_wrap{
+            width: 1080px;
+            margin: 0 auto;
+		
+		}
         a {
             text-decoration: none;
             color: black;

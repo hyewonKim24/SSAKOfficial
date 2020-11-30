@@ -1,6 +1,7 @@
 package order.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -55,12 +56,14 @@ public class MyOrderList extends HttpServlet {
 		orderService osv = new orderService();
 		CartService csv = new CartService();
 		
-		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
-		if(mvo==null || mvo.equals("") || mvo.equals("null")) {
-			//로그인화면으로 보내기
-			
-			
-		}else {
+		//로그인 x
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 		String mid = mvo.getMid();
 		try {
 			int rs = csv.CartCount(mid);

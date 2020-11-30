@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/wManage1.css"/>
-<link href="./reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,11 +10,11 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<title>탈퇴요청 조회 목록</title>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript">
 	function goSearch() {
 		var frm = document.wSform;
-		frm.action = "<%=request.getContextPath()%>/wreqSearch";
+		frm.action = "<%=request.getContextPath()%>/wreqSearch.do";
 		frm.method = "post";
 		frm.submit();
 	}
@@ -27,9 +27,9 @@
             <div class="wdrManage_asidetlt">회원관리</div>
             <div class="wdrManage_asidenav">
                 <ul>
-                   <li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
+                   <li><a href="<%=request.getContextPath() %>/memberList.do">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/OrderList.do">주문내역조회<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/wreqList.do">탈퇴요청관리<span class="aside_arrow">></span></a></li>
                 </ul>
             </div>
             <div class="CS_info">
@@ -60,7 +60,7 @@
 							<c:forEach items="${wdlist}" var="wd" varStatus="s">	<!--변경 : el태그 - servlet이랑 맞추기 -->
 								<tr class="notice1">
 								<td class="not1_wdrno">${wd.wno}</td>
-								<td class="not1_wdrid"><a href="wreqDetail?mid=${wd.mid }">${wd.mid }</a></td>
+								<td class="not1_wdrid"><a href="wreqDetail.do?mid=${wd.mid }">${wd.mid }</a></td>
                                 <!-- 아이디를 클릭했을때 해당 아이디에 댛한 상세정보를 표시해줘야함 (id 값을 디비에 저장된것과 비교해서 같은것에 대한 정보를 가져옴) -->
                                 <td id="not1_wdrdate">${wd.wrer }</td>
                                 <td class="not1_wdracpDate">${wd.wred }</td>
@@ -74,15 +74,15 @@
                     <div class="wdrManage_pagination">
                     	<div class="wdrManage_pagination_warp">
                     	<c:if test="${startPage != 1}">
-								<a href="wreqSearch?pageNum=${prev}&wsearchbar=${wsearchbar}&wtype=${wtype }"><</a>
+								<a href="wreqSearch.do?pageNum=${prev}&wsearchbar=${wsearchbar}&wtype=${wtype }"><</a>
 							</c:if>
 						<c:if test="${startPage != endPage}">
 							<c:forEach varStatus="s"  begin="${startPage}" end="${endPage}" step="1">
-								<a href="wreqSearch?pageNum=${s.current}&wsearchbar=${wsearchbar}&wtype=${wtype }">${s.current}</a>	<!--변경 : href 경로 -->
+								<a href="wreqSearch.do?pageNum=${s.current}&wsearchbar=${wsearchbar}&wtype=${wtype }">${s.current}</a>	<!--변경 : href 경로 -->
 							</c:forEach>
 						</c:if>
 						<c:if test="${next < pageCount}">
-								<a href="wreqSearch?pageNum=${next}&wsearchbar=${wsearchbar}&wtype=${wtype }">></a>
+								<a href="wreqSearch.do?pageNum=${next}&wsearchbar=${wsearchbar}&wtype=${wtype }">></a>
 							</c:if>
 						</div>
 					</div>
@@ -104,7 +104,7 @@
                                     <td>
                                         <input type="text" name="wsearchbar" id="wdrManage_searchbar">
                                         <button type="button" name="wdrManage_searchbtn" id ="wdrManage_searchbtn" value="검색" onclick="goSearch()">
-                                        <img src="./imgs/search.png"
+                                        <img src="<%=request.getContextPath() %>/imgs/search.png"
 												style="width: 15px; height: 15px;" id="search_icon"></button>
                                     </td>
                                 </tr>
@@ -116,6 +116,6 @@
             </div>
         </div>
     </div>
-    
+    <%@include file="../main/footer.jsp"%>
 </body>
 </html>

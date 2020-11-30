@@ -57,6 +57,8 @@ public class qnaWriteCtrl extends HttpServlet {
 		String qtype = request.getParameter("qtype");
 		String qtitle = request.getParameter("qtitle");
 		String qcontent = request.getParameter("qcontent");
+		System.out.println(qcontent);
+		qcontent.replaceAll("\n","<br>");
 	
 		QnAVO vo = new QnAVO();
 		vo.setMid(mvo.getMid());

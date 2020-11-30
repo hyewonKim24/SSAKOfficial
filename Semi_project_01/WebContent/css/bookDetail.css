@@ -12,10 +12,11 @@ ul {
 }
 .category_nav {
 	width: 200px;
-	height: 700px;
+	height: 750px;
 	display: block;
 	float: left;
 	box-sizing: border-box;
+	border : 1px solid #dcdcdc;
 }
 
 .sub li {
@@ -147,7 +148,7 @@ ul {
 }
 
 #bookamount {
-	width: 70px;
+	width: 50px;
 	maring-left: 20px;
 }
 

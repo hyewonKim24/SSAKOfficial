@@ -1,0 +1,142 @@
+@charset "UTF-8";
+      body {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 12pt;
+	margin: 0 auto;
+}
+        .mypage {
+            width: 1080px;
+            display: flex;
+            padding-top:60px;
+            margin:0 auto;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        /*카테고리*/
+        #category {
+            float: left;
+            width: 200px;
+            height: 600px;
+            margin-right: 60px;
+        }
+
+        .classify {
+            font-weight: bold;
+            width: 1080px;
+            padding-bottom:20px;
+            font-size:30px;
+        }
+
+
+        .mycate {
+            width: 200px;
+            height: 50px;
+            border: 1px solid #dcdcdc;
+            border-bottom: 0px;
+            display: table-cell;
+            vertical-align: middle;
+            padding-left: 20px;
+            font-size:14px;
+        }
+
+        #last {
+            border-bottom: 1px solid #dcdcdc;
+        }
+        #category a{
+        	color: #808080;
+        }
+        #category .mycate:hover{
+		  	background: #fafafa; 
+		    background-size: 10px 11px;
+		    font-weight: 700;
+		    color: #425c5a;
+        }
+
+        .arrow {
+            float: right;
+            margin-right: 10px;
+        }
+        #alter{
+            font-weight: bold;
+        }
+
+        /*본문*/
+        #mypage_alter {
+            float: right;
+            width: 820px;
+        }
+        #alter_text {
+            font-size: 24px;
+            font-weight: bolder;
+            margin-bottom: 20px;
+        }
+        #updatetable table{
+            padding:10px;
+            width:100%;
+            font-size:12pt;
+            border-top:2px solid #425c5a;
+        }
+        #updatetable td{
+            padding: 10px 0;
+    border-top: 0;
+    font-size: 14px;
+    vertical-align: top;
+        }
+        #updatetable th{
+           padding: 20px 0 0 20px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;b
+    vertical-align: top;
+    text-align: left;
+        }
+        input{
+               width: 332px;
+               height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+        }
+        .btndesign{
+        	width: 120px;
+    height: 44px;
+    padding: 4px;
+    background-color: white;
+    border: 1.5px solid #425c5a;
+    border-radius: 3px;
+    color: #425c5a;
+    font-weight: bold;
+
+}
+        #updateSave{
+            text-align: center;
+            width:230px;
+            height:40px;
+            background-color: #425c5a;
+            border-radius:5px;
+            color:white;
+            border:0;
+        }
+        #btnlast{
+            text-align: center;
+        }
+        
+        .myPage_res{
+			text-align:left;
+			font-size:14px;
+			font-weight:bold;
+			margin-bottom:20px;
+			margin-top:20px;
+			
+		}

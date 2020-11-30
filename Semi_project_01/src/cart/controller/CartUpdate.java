@@ -13,7 +13,7 @@ import service.event.EventService;
 /**
  * Servlet implementation class CartUpdate
  */
-@WebServlet("/CartUpdate")
+@WebServlet("/CartUpdate.do")
 public class CartUpdate extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class CartUpdate extends HttpServlet {
 		try {
 			int result = cart.cartUpdate(cno, oamount);
 			if(result==1) {
-				response.sendRedirect("CartList");
+				response.sendRedirect("CartList.do");
 				System.out.println("수량이 변경 되었습니다.");
 				System.out.println(oamount);
 				System.out.println(cno);

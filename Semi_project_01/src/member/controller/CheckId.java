@@ -15,7 +15,7 @@ import service.member.memberService;
 /**
  * Servlet implementation class CheckId
  */
-@WebServlet("/CheckId")
+@WebServlet("/CheckId.do")
 public class CheckId extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
