@@ -88,16 +88,12 @@ $(function(){
                             <input type="button" value="뒤로가기" id="reset" onclick="location.href='<%=request.getContextPath() %>/wreqList'">
                             </td>
                         </tr>
-                    
-                      
-                      
                 </table>
                </form>
             </div>
             </div>
         </div>
     </div>
-
+<%@ include file="../main/footer.jsp"%>
 </body>
-
 </html>

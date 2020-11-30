@@ -16,6 +16,7 @@ input[type="text"]{
 	height: 500px;
 	margin: 0 auto;
 	padding-top: 60px;
+	min-height: 120%;
 }
 /* 회원관리 aside*/
 .mManage_aside {

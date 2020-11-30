@@ -15,6 +15,7 @@ a {
 	height: 500px;
 	margin: 0 auto;
 	padding-top: 60px;
+	min-height: 120%;
 }
 /* 주문내역관리 aside*/
 .oManage_aside {

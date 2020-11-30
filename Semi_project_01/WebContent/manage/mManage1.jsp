@@ -26,7 +26,6 @@
 		frm.submit();
 	}
 </script>
-
 </head>
 <body>
 	<%@ include file="../main/header.jsp"%>
@@ -134,5 +133,6 @@
 			</div>
 		</div>
 	</div>
+	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>
