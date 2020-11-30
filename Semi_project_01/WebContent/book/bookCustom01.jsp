@@ -5,7 +5,6 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 이게 body 안으로 들어가면 색상 입히는거 안먹힘 -->
@@ -17,7 +16,7 @@
 <head>
 <meta charset="utf-8">
 <title>ssak, 나만의 책</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">h
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <mea name="description" content="">
 <meta name="author" content="">
 
@@ -183,7 +182,7 @@ input.cstinfo{
 										<input class="span2" id="text-string" type="text"
 											placeholder="텍스트를 입력하세요">
 										<button id="add-text" class="btn" title="Add text">
-											<i class="icon-share-alt"></i>
+										<img src="<%=request.getContextPath() %>/imgs/right-arrow.png" style="width: 15px; height:15px">
 										</button>
 										<hr>
 									</div>
@@ -317,8 +316,8 @@ input.cstinfo{
 							<div class="btn-group inline pull-left" id="texteditor"
 								style="display: none">
 								<button id="font-family" class="btn dropdown-toggle"
-									data-toggle="dropdown" title="Font Style">
-									<i class="icon-font" style="width: 19px; height: 19px;"></i>
+									data-toggle="dropdown" title="Font Style" style="padding:8.5px 14px; border-radius : 0; border-right:0;">
+									<img src="<%=request.getContextPath() %>/imgs/font.png" style="width: 13px; height:13px">
 								</button>
 								<ul class="dropdown-menu" role="menu"
 									aria-labelledby="font-family-X">
@@ -365,32 +364,26 @@ input.cstinfo{
 									<img src="<%=request.getContextPath() %>/imgs/font_strikethrough.png" height="" width="">
 								</button>
 								<button id="text-underline" class="btn" title="Underline"
-									style="">
+									style="border-radius : 0;" >
 									<img src="<%=request.getContextPath() %>/imgs/font_underline.png">
 								</button>
-								<a class="btn" href="#" rel="tooltip" data-placement="top"
-									data-original-title="Font Color"><input type="hidden"
-									id="text-fontcolor" class="color-picker" size="7"
-									value="#000000"></a> <a class="btn" href="#" rel="tooltip"
-									data-placement="top" data-original-title="Font Border Color"><input
-									type="hidden" id="text-strokecolor" class="color-picker"
-									size="7" value="#000000"></a>
+								
 								<!--- Background <input type="hidden" id="text-bgcolor" class="color-picker" size="7" value="#ffffff"> --->
 							</div>
 							<div class="pull-right" align="" id="imageeditor"
 								style="display: none">
 								<div class="btn-group">
 									<!-- 캔버스 안 수정 버튼. show back view 없애야함. -->
-									<button class="btn" id="bring-to-front" title="Bring to Front">
-										<i class="icon-fast-backward rotate" style="height: 19px;"></i>
+									<button class="btn" id="bring-to-front" title="Bring to Front" style=" padding:7.5px 14px; border-radius : 0; ">
+										<img src="<%=request.getContextPath() %>/imgs/forward.png" style="width : 15px; height : 15px">
 									</button>
-									<button class="btn" id="send-to-back" title="Send to Back">
-										<i class="icon-fast-forward rotate" style="height: 19px;"></i>
+									<button class="btn" id="send-to-back" title="Send to Back" style=" padding:7px 14px; border-radius : 0;">
+										<img src="<%=request.getContextPath() %>/imgs/backward.png" >
 									</button>
 
 									<button id="remove-selected" class="btn"
-										title="Delete selected item">
-										<i class="icon-trash" style="height: 19px;"></i>
+										title="Delete selected item" style=" padding:7px 14px; border-radius : 0;">
+										<img src="<%=request.getContextPath() %>/imgs/trash.png" >
 									</button>
 								</div>
 							</div>
@@ -471,15 +464,15 @@ input.cstinfo{
 						</p>
 						<button type="button" class="btn btn-large btn-block btn-success"
 							name="addToTheBag" id="saveImg" onclick=partShot()>
-							저장하기 <i class="icon-briefcase icon-white"></i>
+							저장하기
 						</button>
 						<button type="button" class="btn btn-large btn-block btn-success"
 							name="addToTheBag" id="addToTheBag" onclick=goCart()>
-							장바구니 <i class="icon-briefcase icon-white"></i>
+							장바구니
 						</button>
 						<button type="button" class="btn btn-large btn-block btn-success"
 							name="gototheorder" id="gototheorder" onclick=goOrder()>
-							결제하기 <i class="icon-briefcase icon-white"></i>
+							결제하기
 						</button>
 					</div>
 				</div>
