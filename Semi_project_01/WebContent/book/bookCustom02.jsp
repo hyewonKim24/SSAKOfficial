@@ -1,5 +1,5 @@
 <link type="text/css" rel="stylesheet" href="<%=request.getContextPath() %>/css/jquery.miniColors.css" />
-<link href="<%=request.getContextPath() %>/css/bootstrap.min.css" rel="stylesheet">
+<link href="<%=request.getContextPath() %>/css/bootstrap2.min.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link
@@ -16,7 +16,7 @@
 <head>
 <meta charset="utf-8">
 <title>북커버커스텀</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">h
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <mea name="description" content="">
 <meta name="author" content="">
 
@@ -114,9 +114,7 @@ body {
 	width: 128px;
 	height: 150px;
 	border: solid 1px;
-	margin: 0 auto;
-	
-	margin-bottom: 32px;
+	margin: 32px auto;
 }
 #myImg{
 	width : 128px;
@@ -149,9 +147,26 @@ body {
 input.cstinfo{
 	padding-left : 0;
 }
-.table td {
-	padding-left : 0;
+
+#info_title{
+font-size : 22px;
+text-align : center;
+margin: 10px;
+line-height : 22px;
 }
+#info_subtitle{
+font-size : 20px;
+line-height : 22px;
+text-align : center;
+}
+#info_desc{
+text-align : center;
+}
+#well3{
+	padding-top : 40px;
+	padding-bottom : 40px;
+}
+
 </style>
 </head>
 
@@ -265,7 +280,7 @@ input.cstinfo{
 										<li class="color-preview" title="Dark Heather"
 											style="background-color: #616161;"></li>
 										<li class="color-preview" title="Gray"
-											style="background-color: #f0f0f0;"></li>
+											style="background-color: #f0f0f0;"></li> 
 									</ul>
 								</div>
 							</div>
@@ -418,10 +433,7 @@ input.cstinfo{
 						<input type="hidden" id="saveImg" value="0"/>
 					</div>
 					<div class="well" id="well3">
-						<h3>
-							<input type="text" name="ddesc"
-								value="북커버입니다" readonly  class="cstinfo">
-						</h3>
+						
 						<p>
 						<table class="table">
 							<!-- <tr>
@@ -432,39 +444,15 @@ input.cstinfo{
 							</tr> -->
 							<tr>
 								<!-- name 넣어야함-->
-								<td align="right" class="csttitle">책이름</td>
+								<td align="right" class="csttitle" id="info_title">북커버커스텀 체험하기<br><br><br></td>
+							</tr>
+							
+							<tr>
+								<td align="right" class="csttitle" id="info_subtitle">ssak, 나만의 책<br></td>
 							</tr>
 							<tr>
 								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name="" value="${bvo.btitle }" class="cstinfo"
-								 	 readonly></td>
-							</tr>
-							<tr>
-								<td align="right" class="csttitle">책표준가</td>
-							</tr>
-							<tr>
-								<td align="right"><input type="text" name="bpriceStandard"
-									value="${bvo.bpriceStandard }" class="cstinfo" readonly></td>
-							</tr>
-							<tr>
-								<td align="right" class="csttitle">책세일가</td>
-							</tr>
-							<tr>
-								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name="bpriceSales"
-									value="${bvo.bpricesales }" class="cstinfo" readonly></td>
-							</tr>
-							<tr>
-								<td align="right" class="csttitle">북커버가격</td>
-							</tr>
-							<tr>
-								<!-- name 넣어야함-->
-								<td align="right"><input type="text" name="dprice"
-									value="0" class="cstinfo" readonly></td>
-							</tr>
-							<tr>
-								<td><input type="hidden" id="cutsom_bisbn" value="${bvo.BISBN}"></td>
-								<td><input type="hidden" id="cutsom_bookamount" value="<%=bookamount%>"></td>
+								<td align="right" id="info_desc">지금 바로<br>나만의 북커버를 만들어보세요!<br>저장하기를 누르면 <br>디자인한 북커버가 저장됩니다.</td>
 							</tr>
 						</table>
 						</p>
@@ -473,13 +461,10 @@ input.cstinfo{
 							저장하기 <i class="icon-briefcase icon-white"></i>
 						</button>
 						<button type="button" class="btn btn-large btn-block btn-success"
-							name="addToTheBag" id="addToTheBag" onclick=goCart()>
-							장바구니 <i class="icon-briefcase icon-white"></i>
+							name="addToTheBag" id="addToTheBag" onclick="location.href='<%=request.getContextPath() %>/book/bookCustomInfo.jsp'">
+							뒤로가기 <i class="icon-briefcase icon-white"></i>
 						</button>
-						<button type="button" class="btn btn-large btn-block btn-success"
-							name="gototheorder" id="gototheorder" onclick=goOrder()>
-							결제하기 <i class="icon-briefcase icon-white"></i>
-						</button>
+						
 					</div>
 				</div>
 

@@ -1,3 +1,5 @@
+
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,12 +19,10 @@
 	width: 150px;
 	z-index: -1;
 }
-
 #quick.fixed {
 	position: fixed;
 	top: 100px;
 }
-
 .recent_book_wrap {
 	position: absolute;
 	left: 50%;
@@ -37,7 +37,6 @@
 	text-align: center;
 	border: 1px solid #dcdcdc;
 }
-
 #recent_title {
 	font-size: 12px;
 	line-height: 16px;
@@ -47,19 +46,16 @@
 	overflow: hidden;
 	line-height: 30px;
 }
-
 .recent_book_wrap legend {
 	text-align: center;
 	font-weight: bold;
 	color: #425c5a;
 	line-height: 20px;
 }
-
 .recent_img {
 	width: 70px;
 	padding: 10px 0 5px 0;
 }
-
 #recent_empty {
 	width: 70px;
 	font-size: 12px;
@@ -67,7 +63,6 @@
 	padding: 20px;
 	font-size: 12px;
 }
-
 #quick {
 	position: absolute;
 	top: 210px;
@@ -121,7 +116,6 @@ $(document).ready(function() {
 						${RecentBook2.btitle}</a>
 				</p>
 			</c:if>
-
 			<c:if test="${empty RecentBook1}">
 				<p id="recent_empty">최근 본 상품이 없습니다.</p>
 			</c:if>

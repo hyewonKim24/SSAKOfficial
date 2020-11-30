@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/mManage2.css"/>
 <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="<%=request.getContextPath() %>/css/mManage2.css" rel="stylesheet" type="text/css">
-=======
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mManage2.css"/>
 <link href="../css/reset.css" rel="stylesheet" type="text/css">
->>>>>>> 32957fe584261016aeb52167e1fe745434fc40ed
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>

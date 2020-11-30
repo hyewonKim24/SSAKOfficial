@@ -1,6 +1,7 @@
 package order.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -23,95 +24,110 @@ import service.order.orderService;
 @WebServlet("/OrderList")
 public class orderList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public orderList() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public orderList() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doProcess(request, response);
 	}
-	
-	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		orderService osv = new orderService();
-		// 페이징
-		int pageSize = 10; // 페이지 당 글 수
-		int pageBlock = 10; // 페이지 링크 수
-		try {
-			// 총 글 개수
-			int nCount = osv.getBoardCount();/* 변경 : 메소드 */
-			System.out.println(nCount);
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 
-			// 페이지 수 초기화
-			String pageNum = request.getParameter("pageNum");
-			if (pageNum == null) {
-				pageNum = "1";
-			} else if (pageNum.equals("")) {
-				pageNum = "1";
-			}
-			// startPage , endPage 구하는 식
-			int currentPage = 1;
+			// 페이징
+			int pageSize = 10; // 페이지 당 글 수
+			int pageBlock = 10; // 페이지 링크 수
 			try {
-				currentPage = Integer.parseInt(pageNum);
+				// 총 글 개수
+				int nCount = osv.getBoardCount();/* 변경 : 메소드 */
+				System.out.println(nCount);
+
+				// 페이지 수 초기화
+				String pageNum = request.getParameter("pageNum");
+				if (pageNum == null) {
+					pageNum = "1";
+				} else if (pageNum.equals("")) {
+					pageNum = "1";
+				}
+				// startPage , endPage 구하는 식
+				int currentPage = 1;
+				try {
+					currentPage = Integer.parseInt(pageNum);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+				int pageCount = (nCount / pageSize) + (nCount % pageSize == 0 ? 0 : 1);
+				int startPage = 1;
+				int endPage = 1;
+				if (currentPage % pageBlock == 0) {
+					startPage = ((currentPage / pageBlock) - 1) * pageBlock + 1;
+				} else {
+					startPage = ((currentPage / pageBlock)) * pageBlock + 1;
+				}
+				endPage = startPage + pageBlock - 1;
+				if (endPage > pageCount)
+					endPage = pageCount;
+
+				// 페이징 rownum 구하기
+				int startRnum = ((currentPage - 1) * pageSize) + 1; // 거의 공식
+				int endRnum = startRnum + pageSize - 1; // currentPage*pageSize
+				System.out.println(startRnum + " - " + endRnum);
+
+				// 이전 다음 기능
+				int prev = 1;
+				int next = 1;
+				prev = startPage - 1;
+				next = endPage + 1;
+
+				System.out.println(prev + "이전 - 다음" + next);
+				List<orderVO> olist = osv.getBoardPage(startRnum, endRnum); /* 변경 : 메소드 */
+
+				// 보내주기
+
+				request.setAttribute("startPage", startPage);
+				request.setAttribute("endPage", endPage);
+				request.setAttribute("PageNum", currentPage);
+				request.setAttribute("pageCount", pageCount);
+				request.setAttribute("prev", prev);
+				request.setAttribute("next", next);
+
+				request.setAttribute("olist", olist); /* 변경 : el태그 - jsp이랑 맞추기 */
+				System.out.println(olist.size() + ", " + startPage + ", " + endPage);
+				RequestDispatcher disp1 = request.getRequestDispatcher("./manage/oManage1.jsp"); /* 변경 : 경로 */
+				disp1.forward(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
-			int pageCount = (nCount / pageSize) + (nCount % pageSize == 0 ? 0 : 1);
-			int startPage = 1;
-			int endPage = 1;
-			if (currentPage % pageBlock == 0) {
-				startPage = ((currentPage / pageBlock) - 1) * pageBlock + 1;
-			} else {
-				startPage = ((currentPage / pageBlock)) * pageBlock + 1;
-			}
-			endPage = startPage + pageBlock - 1;
-			if (endPage > pageCount)
-				endPage = pageCount;
-
-			// 페이징 rownum 구하기
-			int startRnum = ((currentPage - 1) * pageSize) + 1; // 거의 공식
-			int endRnum = startRnum + pageSize - 1; // currentPage*pageSize
-			System.out.println(startRnum + " - " + endRnum);
-
-			// 이전 다음 기능
-			int prev = 1;
-			int next = 1;
-			prev = startPage - 1;
-			next = endPage + 1;
-
-			System.out.println(prev + "이전 - 다음" + next);
-			List<orderVO> olist = osv.getBoardPage(startRnum, endRnum); /* 변경 : 메소드 */
-
-			// 보내주기
-		
-			request.setAttribute("startPage", startPage);
-			request.setAttribute("endPage", endPage);
-			request.setAttribute("PageNum", currentPage);
-			request.setAttribute("pageCount", pageCount);
-			request.setAttribute("prev", prev);
-			request.setAttribute("next", next);
-
-			request.setAttribute("olist", olist); /* 변경 : el태그 - jsp이랑 맞추기 */
-			System.out.println(olist.size() + ", " + startPage + ", " + endPage);
-			RequestDispatcher disp1 = request.getRequestDispatcher("./manage/oManage1.jsp"); /* 변경 : 경로 */
-			disp1.forward(request, response);
-		} catch(Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 

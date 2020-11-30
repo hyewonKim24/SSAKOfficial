@@ -57,6 +57,8 @@ public class orderSearch extends HttpServlet {
 		System.out.println("osearchbar" + osearchbar);
 		String otype = request.getParameter("otype");
 		System.out.println("otype:" + otype);
+//		int ono = Integer.parseInt(request.getParameter("ono"));
+		
 
 		orderService osv = new orderService();
 		PrintWriter out = response.getWriter();

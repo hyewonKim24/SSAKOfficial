@@ -85,17 +85,17 @@
 					<div class="oManage_pagination">
 						<div class="oManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="orderList?pageNum=${prev}"><</a>
+								<a href="OrderList?pageNum=${prev}"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="orderList?pageNum=${s.current}">${s.current}</a>
+									<a href="OrderList?pageNum=${s.current}">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="orderList?pageNum=${next}">></a>
+								<a href="OrderList?pageNum=${next}">></a>
 							</c:if>
 						</div>
 					</div>
