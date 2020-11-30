@@ -15,6 +15,7 @@ ul {
 	font-size: 13px;
 }
 
+
 .bestseller {
 	width: 1080px;
 	margin: 0 auto;
@@ -47,7 +48,7 @@ ul {
 	margin: 10px 0;
 }
 
-/*오른쪽*/
+/*오른쪽 본문*/
 #bestseller__C {
 	float: right;
 	width: 820px;

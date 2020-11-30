@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +18,7 @@ import service.member.memberService;
 /**
  * Servlet implementation class memberDetail
  */
-@WebServlet("/memberDetail")
+@WebServlet("/memberDetail.do")
 public class memberDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -43,6 +44,14 @@ public class memberDetail extends HttpServlet {
 		execute(request, response);
 	}
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//로그인 x
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 		String mid = request.getParameter("mid");
 		memberService msv = new memberService();
 		
@@ -55,7 +64,7 @@ public class memberDetail extends HttpServlet {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+		}
 		
 	}
 

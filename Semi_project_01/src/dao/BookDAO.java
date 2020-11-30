@@ -57,8 +57,7 @@ public class BookDAO {
       JSONParser p1 = new JSONParser();
       System.out.println("getbookinfo 메소드 들어옴");
       try {
-         JSONArray arrCon = (JSONArray) p1
-               .parse(new FileReader("C:\\_z_bykim\\homework\\semi_project02\\category.json"));
+         JSONArray arrCon = (JSONArray) p1.parse(new FileReader("C:\\Users\\jjang\\OneDrive\\바탕 화면\\hyewon\\학원관련\\학원수업관련\\Semi_project\\Semi_project_01\\category.json"));
          // enhanced for //foreach
          // 범위를 정하기는 힘들지만 리스트(배열) 전체를 반복하기에 좋음.
          for (Object obj : arrCon) {

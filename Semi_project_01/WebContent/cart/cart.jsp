@@ -1,11 +1,10 @@
+    <link href="<%=request.getContextPath()%>/css/cart.css" rel="stylesheet" type="text/css">
+    <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-    <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ include file="../main/header.jsp"%>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/css/cart.css"
-	rel="stylesheet" type="text/css">
 <!DOCTYPE html>
 
 <head>
@@ -13,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://kit.fontawesome.com/22634e2e1a.js" crossorigin="anonymous"></script>
 	<script src="http://code.jquery.com/jquery-3.4.0.js"></script>
-    <title>cart</title>
+<title>ssak, 나만의 책</title>
 
 </head>
 <script>
@@ -22,7 +21,7 @@ window.FontAwesomeConfig = {
 	   }
 </script>
 <body>
-   
+   <div id="cart_wrap">
     <section>
         <h2>장바구니</h2>
         <form name="deleteform" id="deleteform">
@@ -116,6 +115,8 @@ window.FontAwesomeConfig = {
             
         </form>
     </section>
+        </div>
+    <%@include file="../main/footer.jsp"%>
     
  <script>
     //선택삭제
@@ -131,7 +132,7 @@ window.FontAwesomeConfig = {
 			}	
 			var frm=document.deleteform;
 			frm.method="get";
-			frm.action="CartDelete"
+			frm.action="CartDelete.do	"
 			frm.submit();
 		}
     
@@ -151,7 +152,7 @@ window.FontAwesomeConfig = {
 			//개별삭제
 			$('.btn_delete_a').on('click', (e) => {
 				console.log(e.target.value);
-				location.href="CartDeleteOne?cno="+(e.target.value)
+				location.href="CartDeleteOne.do?cno="+(e.target.value)
 			});
 			
 			//주문하기
@@ -195,7 +196,7 @@ window.FontAwesomeConfig = {
 				setTimeout(function(){
 					$.ajax({
 						type:"get",
-						url:"CartUpdate",
+						url:"CartUpdate.do",
 						data:{
 							oamount:stat,
 							chk2:index
@@ -226,7 +227,7 @@ window.FontAwesomeConfig = {
 				setTimeout(function(){
 					$.ajax({
 						type:"get",
-						url:"CartUpdate",
+						url:"CartUpdate.do",
 						data:{
 							oamount:stat,
 							chk2:index

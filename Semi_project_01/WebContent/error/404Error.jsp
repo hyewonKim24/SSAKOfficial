@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ include file="../main/header.jsp"%>
 <%
 response.setStatus(HttpServletResponse.SC_OK);
@@ -8,13 +8,13 @@ response.setStatus(HttpServletResponse.SC_OK);
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ssak, 나만의 책</title>
 <style>
 .error_wrap{
 	width: 1080px;
 	margin: 0 auto;
 	text-align: center;
-	padding-top:60px;
+	padding-top:100px;
 }
 .error_title{
 	font-size: 1.17em;
@@ -54,5 +54,7 @@ response.setStatus(HttpServletResponse.SC_OK);
 <button type="button" onclick="location.href='<%=request.getContextPath()%>/ssakMain.do';" class="error_btn">SSAK 메인</button>
 
 </div>
+<br><br><br><br><br>
+<%@include file="../main/footer.jsp"%>
 </body>
 </html>

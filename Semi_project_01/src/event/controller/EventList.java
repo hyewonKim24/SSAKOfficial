@@ -17,7 +17,7 @@ import service.event.EventService;
 /**
  * Servlet implementation class EventList
  */
-@WebServlet("/EventList")
+@WebServlet("/EventList.do")
 public class EventList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

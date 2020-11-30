@@ -1,3 +1,5 @@
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/pwRechk.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ include file="../main/header.jsp"%>
@@ -9,157 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/22634e2e1a.js" crossorigin="anonymous"></script>
-    <link href="../css/reset.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <title>탈퇴하기</title>
-
+<title>ssak, 나만의 책</title>
+	
     <style>
     
-    body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 12pt;
-	margin: 0 auto;
-}
-        .mypage {
-        	margin: 0 auto;
-            width: 1080px;
-            display: flex;
-            padding-top:60px;
-        }
-
-        a {
-            text-decoration: none;
-            color: black;
-        }
-
-        /*카테고리*/
-        #category {
-            float: left;
-            width: 200px;
-            height: 600px;
-            margin-right: 60px;
-        }
-
-        .classify {
-            font-weight: bold;
-            width: 1080px;
-            padding-bottom:20px;
-            /* margin: 20px auto; */
-            font-size:30px;
-        }
-
-
-        .mycate {
-            width: 200px;
-            height: 50px;
-            border: 1px solid #dcdcdc;
-            border-bottom: 0px;
-            display: table-cell;
-            vertical-align: middle;
-            padding-left: 20px;
-            font-size:14px;
-        }
-
-        #last {
-            border-bottom: 1px solid #dcdcdc;
-        }
-        #category a{
-        	color: #808080;
-        }
-        #category .mycate:hover{
-		  	background: #fafafa; 
-		    background-size: 10px 11px;
-		    font-weight: 700;
-		    color: #425c5a;
-        }
-
-        .arrow {
-            float: right;
-            margin-right: 10px;
-        }
-        #alter{
-            font-weight: bold;
-        }
-
-        /*본문*/
-        #mypage_alter {
-            float: right;
-            width: 820px;
-        }
-
-        .alter_box {
-            padding: 30px;
-            width: 500px;
-            margin: 0 auto;
-        }
-
-        #alter_text {
-            font-size: 15pt;
-            font-weight: bolder;
-        }
-
-        #alter_text2 {
-              font-size: 10pt;
-            margin: 10px 0 25px 0 ;
-
-        }
-        #login{
-            display:flex;
-            justify-content: center;
-        }
-
-         #mid {
-            width: 340px;
-    height: 54px;
-    padding: 0 19px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-color: #fff;
-    font-size: 14px;
-    line-height: 20px;
-    outline: none;
-    margin-top: 10px;
-}
-.form_btn1 {
-	width: 340px;
-	line-height: 54px;
-	border-radius: 3px;
-	margin-top: 10px;
-	background-color: #425c5a;
-	color: white;
-	border: none;
-}
-
-
-
-        #mpw {
-            border: none;
-            height: 25px;
-            width: 250px;
-            margin: auto 0;
-        }
-        .button_wrap{
-        	margin-left:100px;
-        }
-
-        .alter_btn {
-            width: 100px;
-            height: 47px;
-            padding: 5px;
-            background-color: #6946A7;
-            color:white;
-            border: gray solid 1px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-           .pw_re_res{
-			text-align:center;
-			font-size:14px;
-			font-weight:bold;
-			margin-bottom:20px;
-			
-		}
     </style>
     <script>
     function goPwchk(){
@@ -182,7 +39,7 @@
 
             </a>
             <a href="<%=request.getContextPath()%>/member/mypagePwrechk.jsp">
-                <div class="mycate" id="alter">내 정보 수정
+                <div class="mycate">내 정보 수정
                     <div class="arrow">></div>
                 </div>
 
@@ -229,6 +86,7 @@
             </div>
         </section>
     </div>
+    <%@include file="../main/footer.jsp"%>
 </body>
 
 </html>

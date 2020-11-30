@@ -1,3 +1,5 @@
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/memberSearch.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
@@ -6,14 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
 
-<title>아이디 찾기</title>
+<title>ssak, 나만의 책</title>
 <style>
 body {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -116,6 +117,11 @@ body {
 
 		</table>
 	</form>
-
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<%@include file="../main/footer.jsp"%>
 </body>
 </html>

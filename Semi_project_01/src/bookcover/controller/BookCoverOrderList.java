@@ -1,6 +1,7 @@
 package bookcover.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -13,12 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import cart.model.CartListVO;
+import member.model.memberVO;
 import service.bookcover.bookCoverService;
 
 /**
  * Servlet implementation class BookCoverOrderList
  */
-@WebServlet("/BookCoverOrderList")
+@WebServlet("/BookCoverOrderList.do")
 public class BookCoverOrderList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -46,6 +48,15 @@ public class BookCoverOrderList extends HttpServlet {
 
 	private void execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		//로그인 안된 경우
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 		String bookamount = request.getParameter("bookamount");
 		String bisbn = request.getParameter("bisbn");
 		int dno = Integer.parseInt(request.getParameter("dno"));
@@ -64,6 +75,7 @@ public class BookCoverOrderList extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
 	}
 
 }

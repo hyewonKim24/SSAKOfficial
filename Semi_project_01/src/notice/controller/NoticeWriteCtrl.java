@@ -54,6 +54,7 @@ public class NoticeWriteCtrl extends HttpServlet {
 		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		String ntitle = request.getParameter("ntitle");
 		String ncontent = request.getParameter("ncontent");
+		ncontent.replaceAll("\n", "<br>");
 		System.out.println(ntitle);
 		NoticeVO vo = new NoticeVO();
 		vo.setMid(mvo.getMid());

@@ -21,7 +21,7 @@ import service.order.orderService;
 /**
  * Servlet implementation class OrderDirect
  */
-@WebServlet("/OrderDirect")
+@WebServlet("/OrderDirect.do")
 public class OrderDirect extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

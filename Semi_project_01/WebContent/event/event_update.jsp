@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>event</title>
+<title>ssak, 나만의 책</title>
 <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
     <style>
 
@@ -198,7 +198,7 @@ $('#text_area').keyup(function () {
             <h2>이벤트</h2>
         </div>
         <article>
-            <img src="./imgs/event.png" id="event_img" width="100%">
+            <img src="<%=request.getContextPath() %>/imgs/event.png" id="event_img" width="100%">
         </article>
         <article>
         <c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>
@@ -233,8 +233,8 @@ $('#text_area').keyup(function () {
                     <span class="comment_reg_date">${n.edate}</span>
                     <c:if test="${n.mid==member.mid}">
                     <span class="edit">
-                   		<a href="EventList_up?eno=${n.eno}&mid=${n.eno}&econtent=${n.econtent}&pageNum=${page}">수정</a>&nbsp&nbsp| &nbsp&nbsp
-                        <a href="EventDelete?eno=${n.eno}">삭제</a>
+                   		<a href="EventList_up.do?eno=${n.eno}&mid=${n.eno}&econtent=${n.econtent}&pageNum=${page}">수정</a>&nbsp&nbsp| &nbsp&nbsp
+                        <a href="EventDelete.do?eno=${n.eno}">삭제</a>
                     </span>
 					</c:if>
                    <p class="comment_text">${n.econtent}</p> 
@@ -248,18 +248,19 @@ $('#text_area').keyup(function () {
 	<!--페이징 아래 숫자-->
 			<div class="pagediv">
 				<c:if test="${startPage != 1}">
-					<a class="pagearrow" href="EventList?pageNum=${prev}">이전</a>
+					<a class="pagearrow" href="EventList.do?pageNum=${prev}">이전</a>
 				</c:if>
 					<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 						step="1">
-						<a class="${(page==(s.current))?'curpage':'page'}" href="EventList?pageNum=${s.current}">${s.current}</a>						
+						<a class="${(page==(s.current))?'curpage':'page'}" href="EventList.do?pageNum=${s.current}">${s.current}</a>						
 						<!--변경 : href 경로 -->
 					</c:forEach>
 				<c:if test="${endPage < pageCount}">
-					<a class="pagearrow" href="EventList?pageNum=${next}">다음</a>
+					<a class="pagearrow" href="EventList.do?pageNum=${next}">다음</a>
 				</c:if>
 			</div>
         </article>
     </section>
+    <%@include file="../main/footer.jsp"%>
 </body>
 </html>

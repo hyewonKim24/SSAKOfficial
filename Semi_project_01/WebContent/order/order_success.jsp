@@ -1,14 +1,13 @@
+    <link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>주문완료</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./reset.css" rel="stylesheet" type="text/css">
     <script src="http://code.jquery.com/jquery-3.4.0.js"></script>
-    <title>Document</title>
+	<title>ssak, 나만의 책</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 

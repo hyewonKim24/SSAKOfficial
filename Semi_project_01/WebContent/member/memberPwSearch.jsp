@@ -1,3 +1,5 @@
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/memberSearch.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
     <%@ include file="../main/header.jsp"%>
@@ -6,102 +8,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<title>비밀번호 찾기</title>
-<style>
-body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 12pt;
-	margin: 0 auto;
-}
-
-.form_title {
-	line-height: 70px;
-	font-weight: bold;
-}
-
-.font_large {
-	font-size: 30px;
-	font-weight: bolder;
-	text-align: center;
-}
-
-.form_wrap {
-	padding-top: 60px;
-	width: 1080px;
-	display: block;
-	margin: 0 auto;
-}
-
-.input_pw_search {
-	width: 340px;
-    height: 54px;
-    padding: 0 19px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    background-color: #fff;
-    font-size: 14px;
-    line-height: 20px;
-    outline: none;
-}
-
-.login_font_size {
-	font-size: 11pt;
-	line-height: 30px;
-}
-
-.form_login_btn {
-	text-align: center;
-}
-
-.form_btn1 {
-	display: block;
-	width: 340px;
-	height: 54px;
-	border-radius: 3px;
-	text-align: center;
-	border: 1px solid #425c5a;
-	background-color: #425c5a;
-	color:white;
-	margin-top:30px;
-}
-
-#pw_search {
-	margin: 0 auto;
-	line-height: 30px;
-	height: 40px;
-	vertical-align: middle;
-}
-
-#pw_search td {
-	vertical-align: middle;
-}
-
-#pw_search_com {
-	text-align: center;
-	font-size: 13px;
-}
-
-#pw_search_tbl {
-	margin: 0 auto;
-	line-height: 40px;
-	height: 40px;
-	vertical-align: middle;
-}
-
-.pw_search_res{
-			text-align: center;
-			font-size:14px;
-			font-weight:bold;
-			margin:20px;
-			
-		}
-</style>
+<title>ssak, 나만의 책</title>
 <script>
  function goPwSearch(){
 	 var frm=document.pw_search_frm;
@@ -154,6 +66,7 @@ body {
 
 		</table>
 	</form>
-
+	<br><br><br><br><br>
+<%@include file="../main/footer.jsp"%>
 </body>
 </html>

@@ -11,7 +11,11 @@
             text-decoration: none;
             color: black;
         }
-
+		#directOrder_wrap{
+            width: 1080px;
+            margin: 0 auto;
+		
+		}
         section {
             width: 1080px;
             margin: 0 auto;

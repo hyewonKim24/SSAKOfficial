@@ -17,9 +17,9 @@ import member.model.*;
 import order.model.*;
 
 public class orderService {
-	private DataSource ds=null;
-	private Connection conn=null;
-	
+	private DataSource ds = null;
+	private Connection conn = null;
+
 	public orderService() {
 		Context initContext1;
 		try {
@@ -33,17 +33,18 @@ public class orderService {
 	}
 
 	private void close() {
-		
+
 		try {
-			if(conn!=null) {
-			conn.close();
-			conn=null;
+			if (conn != null) {
+				conn.close();
+				conn = null;
 			}
-			
-		}catch(SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
+
 	private void commit() {
 		try {
 			if (conn != null) {
@@ -63,12 +64,12 @@ public class orderService {
 			e.printStackTrace();
 		}
 	}
-	
-	//관리자페이지- 주문내역 조회 관련
+
+	// 관리자페이지- 주문내역 조회 관련
 	public List<orderVO> orderSearch(String otype, String osearchbar, int start, int end) throws SQLException {
-		Connection conn = ds.getConnection();
 		List<orderVO> ovo = null;
 		try {
+			Connection conn = ds.getConnection();
 			ovo = new orderDAO().orderSearch(conn, otype, osearchbar, start, end);
 		} finally {
 			close();
@@ -76,33 +77,23 @@ public class orderService {
 		return ovo;
 
 	}
-	
+
 	public int orderSearchCount(String otype, String osearchbar) throws SQLException {
-		Connection conn = ds.getConnection();
 		int cnt = 0;
 		try {
+			Connection conn = ds.getConnection();
 			cnt = new orderDAO().orderSearchCount(conn, otype, osearchbar);
-			conn.setAutoCommit(false);
-			if(cnt > 0)
-				commit();
-			else
-				rollback();
 		} finally {
 			close();
 		}
 		return cnt;
 	}
-	
+
 	public int getBoardCount() throws SQLException {
-		Connection conn = ds.getConnection();
 		int cnt = 0;
 		try {
+			Connection conn = ds.getConnection();
 			cnt = new orderDAO().getBoardCount(conn);
-			conn.setAutoCommit(false);
-			if(cnt > 0)
-				commit();
-			else
-				rollback();
 		} finally {
 			close();
 		}
@@ -110,16 +101,16 @@ public class orderService {
 	}
 
 	public List<orderVO> getBoardPage(int start, int end) throws SQLException {
-		Connection conn = ds.getConnection();
 		List<orderVO> pagelist = null;
 		try {
+			Connection conn = ds.getConnection();
 			pagelist = new orderDAO().getBoardPage(conn, start, end);
 		} finally {
-			close();
+			
 		}
+		close();
 		return pagelist;
 	}
-	
 
 	public List<orderVO> orderDetail(String mid, int ono) throws SQLException {
 		List<orderVO> odetail = null;
@@ -146,7 +137,6 @@ public class orderService {
 
 
 	//주문하기 관련
-	
 	public List<CartListVO> orderList(int[] chks) throws SQLException {
 		Connection conn = ds.getConnection();
 		List<CartListVO> list = new orderDAO().orderList(conn, chks);
@@ -160,18 +150,17 @@ public class orderService {
 		close();
 		return list;
 	}
-	
+
 	public int orderInsert(orderVO vo, int[] dno, String[] bisbn, int[] oamount) throws SQLException {
 		Connection conn = ds.getConnection();
-		//order insert 
+		// order insert
 		int rs = new orderDAO().orderInsert(conn, vo);
-		//neworder insert
-		int rs1 = new orderDAO().orderInsert2(conn,dno,bisbn,oamount);
+		// neworder insert
+		int rs1 = new orderDAO().orderInsert2(conn, dno, bisbn, oamount);
 		System.out.println(rs + "행 추가됨");
 		System.out.println(rs1 + "행 추가됨");
 		close();
 		return rs;
 	}
-	
 
 }

@@ -20,7 +20,7 @@ import service.withdraw.withdrawService;
 /**
  * Servlet implementation class wreqList
  */
-@WebServlet("/wreqSearch")
+@WebServlet("/wreqSearch.do")
 public class wreqSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -117,7 +117,7 @@ public class wreqSearch extends HttpServlet {
 			if (wsearchbar == null || wsearchbar == "") {
 				request.setAttribute("search_error", "검색어를 입력해주세요");
 				System.out.println("검색어가 null 인 경우");
-				RequestDispatcher disp = request.getRequestDispatcher("./wreqList");
+				RequestDispatcher disp = request.getRequestDispatcher("./wreqList.do");
 				disp.forward(request, response);
 			} else {
 				try {

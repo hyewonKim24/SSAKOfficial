@@ -1,10 +1,8 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css" />
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/oManage1.css"/>
-<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -20,7 +18,7 @@
 <script type="text/javascript">
 	function goSearch() {
 		var frm = document.oSform;
-		frm.action = "<%=request.getContextPath()%>/orderSearch";
+		frm.action = "<%=request.getContextPath()%>/orderSearch.do";
 		frm.method = "post";
 		frm.submit();
 	}
@@ -33,9 +31,9 @@
 			<div class="oManage_asidetlt">회원관리</div>
 			<div class="oManage_asidenav">
 				<ul>
-					<li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                    <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
+					<li><a href="<%=request.getContextPath() %>/memberList.do">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
+                    <li><a href="<%=request.getContextPath() %>/OrderList.do">주문내역조회<span class="aside_arrow">></span></a></li>
+                    <li><a href="<%=request.getContextPath() %>/wreqList.do">탈퇴요청관리<span class="aside_arrow">></span></a></li>
 				</ul>
 			</div>
 			<div class="CS_info">
@@ -70,7 +68,7 @@
 									<tr class="notice1">
 										<td class="not1_ono">${o.ono }</td>
 										<td class="not1_oid"><a
-											href="<%=request.getContextPath() %>/orderDetail?mid=${o.mid}&pageNum=${s.count}&ono=${o.ono}">${o.mid}</a></td>
+											href="<%=request.getContextPath() %>/orderDetail.do?mid=${o.mid}&pageNum=${s.count}&ono=${o.ono}">${o.mid}</a></td>
 										<!-- <td id="not1_oname">휴지</td> -->
 										<td class="not1_ocnt">${o.oamount }</td>
 										<td class="not1_ototalp">${o.ototalprice }</td>
@@ -85,17 +83,17 @@
 					<div class="oManage_pagination">
 						<div class="oManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="orderList?pageNum=${prev}"><</a>
+								<a href="OrderList.do?pageNum=${prev}"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="orderList?pageNum=${s.current}">${s.current}</a>
+									<a href="OrderList.do?pageNum=${s.current}">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="orderList?pageNum=${next}">></a>
+								<a href="OrderList.do?pageNum=${next}">></a>
 							</c:if>
 						</div>
 					</div>
@@ -118,7 +116,7 @@
 										id="oManage_searchbar"> 
 										<button type="button"
 										name="oManage_searchbtn" id="oManage_searchbtn" value="검색"
-										onclick="goSearch()"><img src="./imgs/search.png" style="width: 15px; height: 15px;" id="search_icon"></button></td>
+										onclick="goSearch()"><img src="<%=request.getContextPath() %>/imgs/search.png" style="width: 15px; height: 15px;" id="search_icon"></button></td>
 								</tr>
 							</tbody>
 						</table>
