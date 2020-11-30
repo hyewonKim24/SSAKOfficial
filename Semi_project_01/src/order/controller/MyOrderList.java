@@ -2,6 +2,8 @@ package order.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -54,6 +56,9 @@ public class MyOrderList extends HttpServlet {
 		
 		orderService osv = new orderService();
 		CartService csv = new CartService();
+		Date now = new Date();
+		SimpleDateFormat vans = new SimpleDateFormat("yyyyMMdd");
+		String wdate = vans.format(now);
 		
 		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
 		if(mvo==null || mvo.equals("") || mvo.equals("null")) {
@@ -67,7 +72,8 @@ public class MyOrderList extends HttpServlet {
 			List<orderVO> myolist = osv.myOrderlist(mid);
 			request.setAttribute("myolist", myolist);
 			request.setAttribute("cartCount", rs);
-
+			request.setAttribute("wdate", wdate);
+			
 			RequestDispatcher disp = request.getRequestDispatcher("./member/myOrderList.jsp");
 			disp.forward(request, response);
 			

@@ -299,7 +299,7 @@ a {
 				<c:forEach items="${myolist }" var="olist" varStatus="status" > 
 					<div class="order">
 						<div class="date">
-							<span id="orderOno">주문번호 : ${olist.ono }</span>
+							<span id="orderOno">주문번호 : s${wdate}_${olist.ono }</span>
 							<span id="orderDate">주문일자 : ${olist.odate}</span>
 						</div>
 						<div class="order_contents">

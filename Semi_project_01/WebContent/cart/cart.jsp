@@ -58,7 +58,7 @@ window.FontAwesomeConfig = {
                             <span id="price" class="bbprice">${n.oamount*n.bpricesales}</span>
                             <span class="won">원</span>
                         </div>
-                         <button type="button" class="btn_delete_a" name="btn_delete" value="${n.cno}"><i class="far fa-times-circle fa-lg"></i></button>
+                         <button type="button" class="btn_delete_a" name="btn_delete" value="${n.cno}">&#8855;</button>
                          <!-- <input type="submit" class="btn_delete" name="btn_delete2" value="&#8855" onclick="selectDelete2()">  -->
                     </li>
 

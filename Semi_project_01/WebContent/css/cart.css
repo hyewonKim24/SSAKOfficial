@@ -245,7 +245,7 @@ display:none;
         .btn_delete_a{
         	border:0px;
         	background-color:white;
+        	font-size:15px;
+        	color:gray;
         }
-        .far{
-        color:#dcdcdc;
-        }
+        
