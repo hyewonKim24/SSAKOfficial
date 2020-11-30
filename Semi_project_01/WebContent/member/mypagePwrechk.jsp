@@ -78,9 +78,6 @@
             float: right;
             margin-right: 10px;
         }
-        #alter{
-            font-weight: bold;
-        }
 
         /*본문*/
         #mypage_alter {

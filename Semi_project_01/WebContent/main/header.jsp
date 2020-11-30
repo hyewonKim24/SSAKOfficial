@@ -275,7 +275,7 @@ table, td {
 					<c:if test="${not empty member}">
 						<c:if test="${member.authority eq 0}">
 						<ul>
-							<li><a href="<%=ctxPath%>/member/myOrderList.jsp">마이페이지</a></li>
+							<li><a href="<%=ctxPath%>/MyOrderList.do">마이페이지</a></li>
 							<li><a href="<%=ctxPath%>/memberLogout.do">로그아웃</a></li>
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">

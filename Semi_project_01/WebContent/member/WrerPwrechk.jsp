@@ -182,7 +182,7 @@
 
             </a>
             <a href="<%=request.getContextPath()%>/member/mypagePwrechk.jsp">
-                <div class="mycate" id="alter">내 정보 수정
+                <div class="mycate">내 정보 수정
                     <div class="arrow">></div>
                 </div>
 
