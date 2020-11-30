@@ -9,13 +9,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!-- 이게 body 안으로 들어가면 색상 입히는거 안먹힘 -->
+
 <%@ include file="../main/header.jsp"%>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>북커버커스텀</title>
+<title>ssak, 나만의 책</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">h
 <mea name="description" content="">
 <meta name="author" content="">
@@ -489,7 +490,6 @@ input.cstinfo{
 	</div>
 	<!-- /container -->
 	<!-- Footer ================================================== -->
-	<footer class="footer"> > </footer>
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
@@ -557,7 +557,7 @@ function goCart(){
  function goC(bbb){
 	 
 		$.ajax({
-			url : "CartInsert",
+			url : "CartInsert.do",
 			type : "post",
 			data :{customURL : bbb,
 				bookamount : $("#cutsom_bookamount").val(),
@@ -565,7 +565,7 @@ function goCart(){
 			},
 		success : function(res){
 			if(res>0)
-				location.href="<%=request.getContextPath() %>/CartList";
+				location.href="<%=request.getContextPath() %>/CartList.do";
 		}
 		})
 	}; 
@@ -593,7 +593,7 @@ function goO(bbb){
 	var bookamount= $("#cutsom_bookamount").val();
 	var bisbn = $("#cutsom_bisbn").val();
 		$.ajax({
-			url : "OrderDirect",
+			url : "OrderDirect.do",
 			type : "post",
 			data : {customURL : bbb,
 				bookamount : $("#cutsom_bookamount").val(),
@@ -601,7 +601,7 @@ function goO(bbb){
 				},
 		success : function(res){
 			if(res>0)
-				location.href="<%=request.getContextPath() %>/BookCoverOrderList?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
+				location.href="<%=request.getContextPath() %>/BookCoverOrderList.do?bisbn="+bisbn+"&bookamount="+bookamount+"&dno="+res;
 			
 		}
 		})
@@ -620,5 +620,6 @@ function saveAs(uri, filename) {
 	}
 }
 </script>
+	<%@include file="../main/footer.jsp"%>
 </body>
 </html>

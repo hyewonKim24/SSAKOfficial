@@ -1,12 +1,10 @@
-<link href="<%=request.getContextPath()%>/css/reset.css"
-	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/qnaDetail.css" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/qnaDetail.css" />
 
 <!DOCTYPE html>
 <html>
@@ -100,10 +98,11 @@
 						</tr>
 						<tr>
 							<td colspan="4" id="qcontent" name="qcontent"
-								style="height: 350px;"><input type="hidden" name="qcontent"
-								value="${qdetail.qcontent}"> ${qdetail.qcontent} <input
-								type="hidden" name="qno" value="${qdetail.qno}"> <input
-								type="hidden" name="qref" value="${qdetail.qref}"> <input
+								style="height: 350px;">
+								<input type="hidden" name="qcontent" value="${qdetail.qcontent}"> 
+								<p style="white-space: pre-line;">${qdetail.qcontent}</p>
+								 <input type="hidden" name="qno" value="${qdetail.qno}">
+								  <input type="hidden" name="qref" value="${qdetail.qref}"> <input
 								type="hidden" name="qref_step" value="${qdetail.qref_step}">
 								<input type="hidden" name="qref_level"
 								value="${qdetail.qref_level}"> <input type="hidden"

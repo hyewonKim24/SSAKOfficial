@@ -21,7 +21,7 @@ import service.order.orderService;
 /**
  * Servlet implementation class OrderList
  */
-@WebServlet("/OrderList")
+@WebServlet("/OrderList.do")
 public class orderList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

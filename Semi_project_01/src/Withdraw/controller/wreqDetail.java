@@ -21,7 +21,7 @@ import service.withdraw.withdrawService;
 /**
  * Servlet implementation class wreqDetail
  */
-@WebServlet("/wreqDetail")
+@WebServlet("/wreqDetail.do")
 public class wreqDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -1,7 +1,10 @@
 package order.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -54,20 +57,26 @@ public class MyOrderList extends HttpServlet {
 		
 		orderService osv = new orderService();
 		CartService csv = new CartService();
+		Date now = new Date();
+		SimpleDateFormat vans = new SimpleDateFormat("yyyyMMdd");
+		String wdate = vans.format(now);
 		
-		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
-		if(mvo==null || mvo.equals("") || mvo.equals("null")) {
-			//로그인화면으로 보내기
-			
-			
-		}else {
+		//로그인 x
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 		String mid = mvo.getMid();
 		try {
 			int rs = csv.CartCount(mid);
 			List<orderVO> myolist = osv.myOrderlist(mid);
 			request.setAttribute("myolist", myolist);
 			request.setAttribute("cartCount", rs);
-
+			request.setAttribute("wdate", wdate);
+			
 			RequestDispatcher disp = request.getRequestDispatcher("./member/myOrderList.jsp");
 			disp.forward(request, response);
 			

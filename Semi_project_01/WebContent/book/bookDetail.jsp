@@ -1,9 +1,9 @@
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bookDetail.css" />
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
 <%@ include file="../main/recentSide.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/bookDetail.css" />
 <%
 	String bisbn = request.getParameter("bisbn");
 System.out.println(bisbn);
@@ -13,8 +13,7 @@ System.out.println(bisbn);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>책 상세페이지</title>
-<script src="../css/reset.css"></script>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link
@@ -185,7 +184,7 @@ $(document).ready(function () {
 					</tr>
 					<tr>
 						<td>배송료 &nbsp; &nbsp;</td>
-						<td colspan="2">무료배송</td>
+						<td colspan="2">2500원</td>
 					</tr>
 				</table>
 
@@ -195,7 +194,7 @@ $(document).ready(function () {
 					 <input type="number" value="1" min="1" max="50"
 						 name="bookamount" id="bookamount">
 					<span id="detail_order">
-						<button type="button" class="detail_order_btn cartIn"><img src="./imgs/shoppingcart_white.png" style="-webkit-filter: opacity(1) drop-shadow(0 0 0 white); filter: opacity(1) drop-shadow(0 0 0 white);"></button>
+						<button type="button" class="detail_order_btn cartIn"><img src="<%=request.getContextPath() %>/imgs/shoppingcart_white.png" style="-webkit-filter: opacity(1) drop-shadow(0 0 0 white); filter: opacity(1) drop-shadow(0 0 0 white);"></button>
 						<button type="button" class="detail_order_btn orderIn">구매하기</button>
 						<button type="button" class="detail_order_btn bookcoverIn" onclick="goBookcustom();">북커버커스텀</button>
 				<!-- <button type="button" class="detail_order_btn">
@@ -354,23 +353,55 @@ $(document).ready(function () {
 
 		})
 		
-		<%
-			String member = String.valueOf(session.getAttribute("member"));
+		<%String member = String.valueOf(session.getAttribute("member"));%>
+		$(document).ready(function () {
+			var bisbn = $("#bisbn").val();
+			console.log("bisbn"+bisbn);
+			$('.cartIn').click(function () {
+				
+				var member="<%=member%>";
+					if(member==null || member=="" ||member=="null"){
+						console.log(member);
+						alert('로그인 후 이용해주세요');
+					}else{
+				//mid ok, bisbn, oamount ok
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+				location.href = "CartInsert.do?bisbn=" +bisbn+"&oamount=" + stat;	
+			}
+			});
 			
-		%>
-		function goBookcustom(){
-			var member="<%=member%>";
+			$('.orderIn').click(function () {
+				
+				var member="<%=member%>";
 				if(member==null || member=="" ||member=="null"){
 					console.log(member);
 					alert('로그인 후 이용해주세요');
 				}else{
-					var frm =document.detail_frm;
-					frm.action ="./bookCustom.do?bisbn=<%=bisbn%>";
-					frm.method="post";
-					frm.submit();
+				//mid ok, bisbn, oamount ok
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+				
+				location.href = "OrderDirect.do?bisbn=" +bisbn+ "&oamount=" + stat;	
 				}
-			}
-
+			});
+			
+			//북커버로 이동
+			$('.bookcoverIn').click(function () {
+				
+				var member="<%=member%>";
+				if(member==null || member=="" ||member=="null"){
+					console.log(member);
+					alert('로그인 후 이용해주세요');
+				}else{
+				//mid ok, bisbn, oamount ok
+				
+				var stat = $('#bookamount').val(); //oamount
+				console.log(stat);
+					location.href = "./bookCustom.do?bisbn=" +bisbn+ "&bookamount=" + stat;	
+				}
+			});			
+});
 	</script>
 
 </body>

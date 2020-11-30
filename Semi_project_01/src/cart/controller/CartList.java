@@ -18,7 +18,7 @@ import service.cart.CartService;
 /**
  * Servlet implementation class CartList
  */
-@WebServlet("/CartList")
+@WebServlet("/CartList.do")
 public class CartList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

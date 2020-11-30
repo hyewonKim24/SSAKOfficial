@@ -17,7 +17,7 @@
 <script type="text/javascript">
 	function goSearch() {
 		var frm = document.mSform;
-		frm.action = "<%=request.getContextPath()%>/memberSearch";
+		frm.action = "<%=request.getContextPath()%>/memberSearch.do";
 		frm.method = "post";
 		frm.submit();
 	}
@@ -30,9 +30,9 @@
             <div class ="mManage_asidetlt">회원관리</div>
             <div class="mManage_asidenav">
                 <ul>
-                   <li><a href="<%=request.getContextPath() %>/memberList">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/OrderList">주문내역조회<span class="aside_arrow">></span></a></li>
-                 <li><a href="<%=request.getContextPath() %>/wreqList">탈퇴요청관리<span class="aside_arrow">></span></a></li>
+                   <li><a href="<%=request.getContextPath() %>/memberList.do">회원정보조회 및 수정<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/OrderList.do">주문내역조회<span class="aside_arrow">></span></a></li>
+                 <li><a href="<%=request.getContextPath() %>/wreqList.do">탈퇴요청관리<span class="aside_arrow">></span></a></li>
                 </ul>
             </div>
             <div class="CS_info">
@@ -69,7 +69,7 @@
 									<!--변경 : el태그 - servlet이랑 맞추기 -->
 									<tr class="notice1">
 										<td class="not1_mno">${m.mno}</td>
-										<td id="not1_id"><a href="<%=request.getContextPath()%>/memberDetail?mid=${m.mid}">${m.mid}</a></td>
+										<td id="not1_id"><a href="<%=request.getContextPath()%>/memberDetail.do?mid=${m.mid}">${m.mid}</a></td>
 										<td class="not1_name">${m.mname}</td>
 										<td class="not1_gd">${m.mgender}</td>
 										<td class="not1_bday">${m.mbirthday}</td>
@@ -84,18 +84,18 @@
 					<div class="mManage_pagination">
 						<div class="mManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="memberSearch?pageNum=${prev}&msearchbar=${msearchbar}&mtype=${mtype }"><</a>
+								<a href="memberSearch.do?pageNum=${prev}&msearchbar=${msearchbar}&mtype=${mtype }"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
 									<a
-										href="memberSearch?pageNum=${s.current}&msearchbar=${msearchbar}&mtype=${mtype }">${s.current}</a>
+										href="memberSearch.do?pageNum=${s.current}&msearchbar=${msearchbar}&mtype=${mtype }">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="memberSearch?pageNum=${next}&msearchbar=${msearchbar}&mtype=${mtype }">></a>
+								<a href="memberSearch.do?pageNum=${next}&msearchbar=${msearchbar}&mtype=${mtype }">></a>
 							</c:if>
 						</div>
 					</div>
@@ -117,10 +117,9 @@
 										<button type="button"
 											name="mManage_searchbtn" id="mManage_searchbtn" value="검색" 
 											onclick="goSearch()">
-											<img src="./imgs/search.png"
+											<img src="<%=request.getContextPath() %>/imgs/search.png"
 												style="width: 15px; height: 15px;" id="search_icon">
 												</button>
-									
 								</td>
 							</tr>
 						</tbody>

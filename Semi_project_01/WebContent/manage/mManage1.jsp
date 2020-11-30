@@ -1,9 +1,6 @@
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/mManage1.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/mManage1.css" />
 <link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,14 +11,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <link href="./css/mManage1.css" rel="stylesheet" type="text/css"> -->
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<title>회원정보 조회 및 수정</title>
+<title>ssak, 나만의 책</title>
 <script type="text/javascript">
 	function goSearch() {
 		var frm = document.mSform;
-		frm.action = "<%=request.getContextPath()%>/memberSearch";
+		frm.action = "<%=request.getContextPath()%>/memberSearch.do";
 		frm.method = "post";
 		frm.submit();
 	}
@@ -35,12 +31,12 @@
 			<div class="mManage_asidetlt">회원관리</div>
 			<div class="mManage_asidenav">
 				<ul>
-					<li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+					<li><a href="<%=request.getContextPath()%>/memberList.do">회원정보조회
 							및 수정<span class="aside_arrow">></span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+					<li><a href="<%=request.getContextPath()%>/OrderList.do">주문내역조회<span
 							class="aside_arrow">></span></a></li>
-					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+					<li><a href="<%=request.getContextPath()%>/wreqList.do">탈퇴요청관리<span
 							class="aside_arrow">></span></a></li>
 				</ul>
 			</div>
@@ -75,7 +71,7 @@
 									<tr class="notice1">
 										<td class="not1_mno">${m.mno}</td>
 										<td id="not1_id"><a
-											href="<%=request.getContextPath() %>/memberDetail?mid=${m.mid}&pageNum=${s.count}">${m.mid}</a></td>
+											href="<%=request.getContextPath() %>/memberDetail.do?mid=${m.mid}&pageNum=${s.count}">${m.mid}</a></td>
 										<td class="not1_name">${m.mname}</td>
 										<td class="not1_gd">${m.mgender}</td>
 										<td class="not1_bday">${m.mbirthday}</td>
@@ -91,17 +87,17 @@
 					<div class="mManage_pagination">
 						<div class="mManage_pagination_warp">
 							<c:if test="${startPage != 1}">
-								<a href="memberList?pageNum=${prev}"><</a>
+								<a href="memberList.do?pageNum=${prev}"><</a>
 							</c:if>
 							<c:if test="${startPage != endPage}">
 								<c:forEach varStatus="s" begin="${startPage}" end="${endPage}"
 									step="1">
-									<a href="<%=request.getContextPath()%>/memberList?pageNum=${s.current}">${s.current}</a>
+									<a href="<%=request.getContextPath()%>/memberList.do?pageNum=${s.current}">${s.current}</a>
 									<!--변경 : href 경로 -->
 								</c:forEach>
 							</c:if>
 							<c:if test="${next < pageCount}">
-								<a href="memberList?pageNum=${next}">></a>
+								<a href="memberList.do?pageNum=${next}">></a>
 							</c:if>
 						</div>
 					</div>
@@ -122,7 +118,7 @@
 										<button type="button" name="mManage_searchbtn"
 											id="mManage_searchbtn"value="검색" 
 											onclick="goSearch()">
-											<img src="./imgs/search.png"
+											<img src="<%=request.getContextPath() %>/imgs/search.png"
 												style="width: 15px; height: 15px;" id="search_icon">
 										</button></td>
 								</tr>
@@ -136,3 +132,4 @@
 	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>
+	<%@include file="../main/footer.jsp"%>

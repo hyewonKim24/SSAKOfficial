@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/oManage2.css"/>
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>주문내역조회 상세페이지</title>
+<title>ssak, 나만의 책</title>
 <style type="text/css">
 
 </style>
@@ -21,12 +21,12 @@
             <div class="mManage_asidetlt">회원관리</div>
             <div class="mManage_asidenav">
                 <ul>
-                      <li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+                      <li><a href="<%=request.getContextPath()%>/memberList.do">회원정보조회
 							및 수정<span class="aside_arrow">></span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+					<li><a href="<%=request.getContextPath()%>/OrderList.do">주문내역조회<span
 							class="aside_arrow">></span></a></li>
-					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+					<li><a href="<%=request.getContextPath()%>/wreqList.do">탈퇴요청관리<span
 							class="aside_arrow">></span></a></li>
                 </ul>
             </div>
@@ -100,7 +100,7 @@
                 	</c:if>
                     <tr>
                         <td colspan="4">
-                            <input type="button" id="back" value="뒤로가기" onclick="location.href='<%=request.getContextPath() %>/OrderList'">
+                            <input type="button" id="back" value="뒤로가기" onclick="location.href='<%=request.getContextPath() %>/OrderList.do'">
                         </td>
                     </tr>
                 </table>

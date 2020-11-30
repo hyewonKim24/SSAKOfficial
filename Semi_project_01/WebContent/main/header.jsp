@@ -266,7 +266,7 @@ table, td {
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">
 									<li><a href="<%=ctxPath%>/noticeList.do">공지사항</a></li>
-									<li><a href="<%=ctxPath%>/qna/fq.jsp">자주하는 질문</a></li>
+									<li><a href="<%=ctxPath%>/qna/faqList.jsp">자주하는 질문</a></li>
 									<li><a href="<%=ctxPath %>/qnaList.do">1:1 문의</a></li>
 								</ul></li>
 						</ul>
@@ -275,24 +275,24 @@ table, td {
 					<c:if test="${not empty member}">
 						<c:if test="${member.authority eq 0}">
 						<ul>
-							<li><a href="<%=ctxPath%>/member/myOrderList.jsp">마이페이지</a></li>
+							<li><a href="<%=ctxPath%>/MyOrderList.do">마이페이지</a></li>
 							<li><a href="<%=ctxPath%>/memberLogout.do">로그아웃</a></li>
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">
 									<li><a href="<%=ctxPath%>/noticeList.do">공지사항</a></li>
-									<li><a href="<%=ctxPath%>/qna/fq.jsp">자주하는 질문</a></li>
+									<li><a href="<%=ctxPath%>/qna/faqList.jsp">자주하는 질문</a></li>
 									<li><a href="<%=ctxPath %>/qnaList.do">1:1 문의</a></li>
 								</ul></li>
 						</ul>
 					</c:if>
 						<c:if test="${member.authority eq 1}">
 						<ul>
-							<li><a href="<%=ctxPath%>/member/memberList">회원관리</a></li>
+							<li><a href="<%=ctxPath%>/memberList.do">회원관리</a></li>
 							<li><a href="<%=ctxPath%>/memberLogout.do">로그아웃</a></li>
 							<li><a href="#" class="mSubnav_cs">고객센터&nbsp;▼</a>
 								<ul class="mSubnav_dropdown">
 									<li><a href="<%=ctxPath%>/noticeList.do">공지사항</a></li>
-									<li><a href="<%=ctxPath%>/qna/fq.jsp">자주하는 질문</a></li>
+									<li><a href="<%=ctxPath%>/qna/faqList.jsp">자주하는 질문</a></li>
 									<li><a href="<%=ctxPath %>/qnaList.do">1:1 문의</a></li>
 								</ul></li>
 						</ul>
@@ -331,7 +331,7 @@ table, td {
 						<li class="menu_line">|</li>
 						<li><a href="<%=ctxPath %>/bookNew.do">새로나온 책</a></li>
 						<li class="menu_line">|</li>
-						<li><a href="<%=ctxPath %>/EventList">이벤트</a></li>
+						<li><a href="<%=ctxPath %>/EventList.do">이벤트</a></li>
 						<li class="menu_line">|</li>
 						<li><a href="<%=ctxPath%>/book/bookCustomInfo.jsp">CUSTOM</a></li>
 					</ul>
@@ -344,7 +344,7 @@ table, td {
 							<img src="<%=ctxPath %>/imgs/search.png" style="width: 20px; height: 20px;">
 						</button>
 					</form>
-					<button type="button" id="mCart">
+					<button type="button" id="mCart" onclick="location.href='<%=ctxPath%>/CartList.do'">
 						<img src="<%=ctxPath %>/imgs/shoppingcart.png"
 							style="width: 28px; height: 28px;">
 					</button>

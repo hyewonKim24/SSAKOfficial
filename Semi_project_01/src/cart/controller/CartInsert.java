@@ -23,7 +23,7 @@ import service.cart.CartService;
 /**
  * Servlet implementation class cartInsert
  */
-@WebServlet("/CartInsert")
+@WebServlet("/CartInsert.do")
 public class CartInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -54,9 +54,17 @@ public class CartInsert extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//로그인 x
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
+
 		CartService service = new CartService();
 		CartVO vo = new CartVO();
-		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
 		vo.setMid(mvo.getMid());
 		System.out.println(mvo.getMid());
 		vo.setBisbn(request.getParameter("bisbn"));
@@ -98,7 +106,7 @@ public class CartInsert extends HttpServlet {
 						oamount += hasOamount;
 						int result = service.cartUpdateIns(bisbn, oamount, mid);
 						if (result >= 1) {
-							response.sendRedirect("CartList");
+							response.sendRedirect("CartList.do");
 							System.out.println("중복상품 수량이 변경되었습니다.");
 						} else {
 							System.out.println("중복상품 수량 변경 실패");
@@ -109,7 +117,7 @@ public class CartInsert extends HttpServlet {
 					// 카트 인서트
 					int result = service.cartInsert(vo);
 					if (result >= 1) {
-						response.sendRedirect("CartList");
+						response.sendRedirect("CartList.do");
 						System.out.println("상품이 추가되었습니다.");
 					} else {
 						System.out.println("상품 추가 실패");
@@ -146,5 +154,6 @@ public class CartInsert extends HttpServlet {
 			
 
 		}
+	}
 	}
 }

@@ -140,26 +140,20 @@
 
 	<div id="slick-items1" class="mBanner">
 		<div>
-			<a
-				href="<%=request.getContextPath()%>/bookDetail.do?bisbn=K922633306"
-				class="bn"><img
-				src="<%=request.getContextPath()%>/imgs/banner01.png"
-				class="mBanner_img"></a>
+			<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=K922633306" class="bn">
+			<img src="<%=request.getContextPath()%>/imgs/banner01.png" class="mBanner_img"></a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/bookNew.do" class="bn"><img
-				src="<%=request.getContextPath()%>/imgs/banner02.png"
-				class="mBanner_img"></a>
+			<a href="<%=request.getContextPath()%>/bookNew.do" class="bn">
+			<img src="<%=request.getContextPath()%>/imgs/banner02.png" class="mBanner_img"></a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/EventList" class="bn"><img
-				src="<%=request.getContextPath()%>/imgs/banner03.png"
-				class="mBanner_img"></a>
+			<a href="<%=request.getContextPath()%>/EventList" class="bn">
+			<img src="<%=request.getContextPath()%>/imgs/banner03.png" class="mBanner_img"></a>
 		</div>
 		<div>
-			<a href="<%=request.getContextPath()%>/bookCategory.do" class="bn"><img
-				src="<%=request.getContextPath()%>/imgs/banner04.png"
-				class="mBanner_img"></a>
+			<a href="<%=request.getContextPath()%>/bookCategory.do" class="bn">
+			<img src="<%=request.getContextPath()%>/imgs/banner04.png" class="mBanner_img"></a>
 		</div>
 	</div>
 
@@ -172,14 +166,11 @@
 					<c:forEach items="${todaylist }" var="today">
 						<dl>
 							<dt>
-								<a
-									href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN}"><img
-									src="${today.bcover }" class="mTodayB_img"></a>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN}">
+								<img src="${today.bcover }" class="mTodayB_img"></a>
 							</dt>
 							<dd>
-								<a
-									href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }"
-									class="mTodayB_title">${today.btitle } </a>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }" class="mTodayB_title">${today.btitle } </a>
 							</dd>
 							<dd class="mTodayB_author">${today.bauthor }</dd>
 							<dd class="mTodayB_desc">${today.bdiscription }</dd>
@@ -191,14 +182,11 @@
 					<c:forEach items="${todaylist }" var="today">
 						<dl>
 							<dt>
-								<a
-									href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }"><img
-									src="${today.bcover }" class="mTodayB_img"></a>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }">
+								<img src="${today.bcover }" class="mTodayB_img"></a>
 							</dt>
 							<dd>
-								<a
-									href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }"
-									class="mTodayB_title">${today.btitle } </a>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${today.BISBN }" class="mTodayB_title">${today.btitle } </a>
 							</dd>
 							<dd class="mTodayB_author">${today.bauthor }</dd>
 							<dd class="mTodayB_desc">${today.bdiscription }</dd>
@@ -226,10 +214,8 @@
 				<c:if test="${not empty blogbest}">
 					<c:forEach items="${blogbest}" var="blog">
 						<div>
-							<a
-								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${blog.BISBN }"><img
-								src=${blog.bcover }></a> <a
-								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${blog.BISBN }">
+							<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${blog.BISBN }">
+							<img src=${blog.bcover }></a> <a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${blog.BISBN }">
 								<p>${blog.btitle }</p>
 							</a>
 						</div>
@@ -254,7 +240,7 @@
 							<li><a
 								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${best.BISBN}"><img
 									src="${best.bcover}" class="mBestsell_cont_img"></a><br>
-								<a href="#" class="mBestsell_cont_txt">${best.btitle }</a></li>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${best.BISBN}" class="mBestsell_cont_txt">${best.btitle }</a></li>
 						</c:forEach>
 					</ul>
 					<ul>
@@ -262,7 +248,7 @@
 							<li><a
 								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${best.BISBN}"><img
 									src="${best.bcover}" class="mBestsell_cont_img"></a><br>
-								<a href="#" class="mBestsell_cont_txt">${best.btitle }</a></li>
+								<a href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${best.BISBN}" class="mBestsell_cont_txt">${best.btitle }</a></li>
 						</c:forEach>
 					</ul>
 					<ul>
@@ -292,7 +278,7 @@
 							<li><a
 								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${newlist.BISBN}"><img
 									src="${newlist.bcover }" class="mNewbook_cont_img"></a><br>
-								<a href="#" class="mNewbook_cont_txt">${newlist.btitle }</a></li>
+								<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${newlist.BISBN}" class="mNewbook_cont_txt">${newlist.btitle }</a></li>
 						</c:forEach>
 					</ul>
 					<ul>
@@ -300,7 +286,7 @@
 							<li><a
 								href="<%=request.getContextPath() %>/bookDetail.do?bisbn=${newlist.BISBN}"><img
 									src="${newlist.bcover }" class="mNewbook_cont_img"></a><br>
-								<a href="#" class="mNewbook_cont_txt">${newlist.btitle }</a></li>
+								<a href="<%=request.getContextPath()%>/bookDetail.do?bisbn=${newlist.BISBN}" class="mNewbook_cont_txt">${newlist.btitle }</a></li>
 						</c:forEach>
 					</ul>
 					<ul>

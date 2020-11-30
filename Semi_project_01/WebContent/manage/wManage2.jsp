@@ -1,5 +1,5 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/wManage2.css"/>
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap" rel="stylesheet">
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -11,19 +11,19 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<title>탈퇴요청 상세정보</title>
+<title>ssak, 나만의 책</title>
  <script type="text/javascript">
 $(function(){
 	$("#edit").on("click",function(){
 		var a = "${wdetail.mid }";
 		$.ajax({
-			url : "wreqAccept", 
+			url : "wreqAccept.do", 
 			type : "GET",
 			data :{mid : a},
 			datatype : "json",
 			success : function(res1){
 					alert(res1);
-					location.href="wreqList";
+					location.href="wreqList.do";
 				
 			},
 			error : function(res2){
@@ -42,12 +42,12 @@ $(function(){
             <div id="wManage_asidetlt">회원관리</div>
             <div class="wManage_asidenav">
                 <ul>
-                      <li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+                      <li><a href="<%=request.getContextPath()%>/memberList.do">회원정보조회
 							및 수정<span class="aside_arrow">></span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+					<li><a href="<%=request.getContextPath()%>/OrderList.do">주문내역조회<span
 							class="aside_arrow">></span></a></li>
-					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+					<li><a href="<%=request.getContextPath()%>/wreqList.do">탈퇴요청관리<span
 							class="aside_arrow">></span></a></li>
                 </ul>
             </div>
@@ -85,7 +85,7 @@ $(function(){
                         <tr class="notice1">
                             <td colspan="4">
                             <input type="button" value="승인하기" id="edit">
-                            <input type="button" value="뒤로가기" id="reset" onclick="location.href='<%=request.getContextPath() %>/wreqList'">
+                            <input type="button" value="뒤로가기" id="reset" onclick="location.href='<%=request.getContextPath() %>/wreqList.do'">
                             </td>
                         </tr>
                 </table>
@@ -95,5 +95,6 @@ $(function(){
         </div>
     </div>
 <%@ include file="../main/footer.jsp"%>
+
 </body>
 </html>

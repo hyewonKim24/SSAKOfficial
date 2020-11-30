@@ -14,7 +14,7 @@
 function endUpdate(){
 	var frm = document.mDetailUpdate;
 	frm.method="get";
-	frm.action="<%=request.getContextPath()%>/memberUpdate";
+	frm.action="<%=request.getContextPath()%>/memberUpdate.do";
 	frm.submit();
 }
 </script>
@@ -31,12 +31,12 @@ function endUpdate(){
             <div id="mManage_asidetlt">회원관리</div>
             <div class="mManage_asidenav">
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/memberList">회원정보조회
+                    <li><a href="<%=request.getContextPath()%>/memberList.do">회원정보조회
 							및 수정<span class="aside_arrow">></span>
 					</a></li>
-					<li><a href="<%=request.getContextPath()%>/OrderList">주문내역조회<span
+					<li><a href="<%=request.getContextPath()%>/OrderList.do">주문내역조회<span
 							class="aside_arrow">></span></a></li>
-					<li><a href="<%=request.getContextPath()%>/wreqList">탈퇴요청관리<span
+					<li><a href="<%=request.getContextPath()%>/wreqList.do">탈퇴요청관리<span
 							class="aside_arrow">></span></a></li>
                 </ul>
             </div>
@@ -106,7 +106,7 @@ function endUpdate(){
                             <tr>
                                 <td colspan="3">
                                 <input type="button" value="등록하기" id="update" onclick="endUpdate()">
-                                <input type="button" value="취소" id="reset" onclick="location.href='<%=request.getContextPath()%>/memberList'">
+                                <input type="button" value="취소" id="reset" onclick="location.href='<%=request.getContextPath()%>/memberList.do'">
                                 </td>
                             </tr>
                         </tbody>

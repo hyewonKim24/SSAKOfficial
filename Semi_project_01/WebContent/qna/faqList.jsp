@@ -3,8 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/faqList.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/faqList.css" />
 <!DOCTYPE html>
 <html>
 <head>

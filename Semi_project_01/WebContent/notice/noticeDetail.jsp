@@ -1,12 +1,10 @@
-<link href="<%=request.getContextPath()%>/css/reset.css"
-	rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath()%>/css/reset.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/noticeDetail.css" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/noticeDetail.css" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -82,15 +80,17 @@
 									value="${ndetail.ndate}" pattern="yyyy-MM-dd" var="date" /> <input
 								type="hidden" name="ndate" value="${date}"> ${date}</td>
 							<td class="qna_title2 qna_box">조회수</td>
-							<td id="nview" name="nview"><input type="hidden"
-								name="nview" value="${ndetail.nview}"> ${ndetail.nview}
+							<td id="nview" name="nview">
+							<input type="hidden" name="nview" value="${ndetail.nview}"> ${ndetail.nview}
 							</td>
 
 						</tr>
 						<tr>
 							<td colspan="4" id="ncontent" name="ncontent"
 								style="height: 350px;"><input type="hidden" name="ncontent"
-								value="${ndetail.ncontent}"> ${ndetail.ncontent}</td>
+								value="${ndetail.ncontent}">
+								<p style="white-space: pre-line;"> ${ndetail.ncontent}</p>
+								</td>
 						</tr>
 					</table>
 					<div class="b_button2">

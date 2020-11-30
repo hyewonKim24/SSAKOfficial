@@ -21,7 +21,7 @@ import service.order.orderService;
 /**
  * Servlet implementation class wreqList
  */
-@WebServlet("/orderSearch")
+@WebServlet("/orderSearch.do")
 public class orderSearch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -114,7 +114,7 @@ public class orderSearch extends HttpServlet {
 			if (osearchbar == null || osearchbar == "") {
 				request.setAttribute("search_error", "검색어를 입력해주세요");
 				System.out.println("검색어가 null 인 경우");
-				RequestDispatcher disp = request.getRequestDispatcher("./OrderList");
+				RequestDispatcher disp = request.getRequestDispatcher("./OrderList.do");
 				disp.forward(request, response);
 			} else {
 				try {

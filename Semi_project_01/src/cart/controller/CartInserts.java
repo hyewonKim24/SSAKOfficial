@@ -1,6 +1,7 @@
 package cart.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -20,7 +21,7 @@ import service.cart.CartService;
 /**
  * Servlet implementation class CartInserts
  */
-@WebServlet("/CartInserts")
+@WebServlet("/CartInserts.do")
 public class CartInserts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -38,8 +39,15 @@ public class CartInserts extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//로그인 x
+		memberVO mvo = (memberVO) request.getSession().getAttribute("member");
+		if (mvo == null || mvo.equals("") || mvo.equals("null")) {
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('로그인을 해주세요.'); location.href='./member/memberLogin.jsp';</script>");
+			writer.flush();
+			writer.close();
+		} else {
 		CartService cart = new CartService();
-		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
 		String mid = mvo.getMid();
 		String bisbn = request.getParameter("bisbn");
 		String stat = request.getParameter("oamount");
@@ -97,10 +105,11 @@ public class CartInserts extends HttpServlet {
 
 			}
 
-			response.sendRedirect("CartList");
+			response.sendRedirect("CartList.do");
 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
 		}
 	}
 

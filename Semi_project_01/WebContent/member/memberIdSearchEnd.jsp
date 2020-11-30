@@ -1,3 +1,5 @@
+<link href="<%=request.getContextPath() %>/css/reset.css" rel="stylesheet" type="text/css">
+<link href="<%=request.getContextPath() %>/css/memberSearch.css" rel="stylesheet" type="text/css">
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../main/header.jsp"%>
@@ -6,81 +8,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="../css/reset.css" rel="stylesheet" type="text/css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap"
 	rel="stylesheet">
 
-<title>아이디 찾기</title>
-<style>
-body {
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 12pt;
-	margin: 0 auto;
-}
-
-.form_title {
-	line-height: 70px;
-	font-weight: bold;
-}
-
-.font_large {
-	font-size: 30px;
-	font-weight: bolder;
-	text-align: center;
-}
-
-.form_wrap {
-	padding-top: 60px;
-	width: 1080px;
-	display: block;
-	margin: 0 auto;
-}
-
-.form_login_btn {
-	text-align: center;
-}
-
-.id_search_title {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	font-size: 18px;
-	color: #425c5a;
-	text-align: center;
-	font-weight: bold;
-}
-
-#id_search_view {
-	font-size: 14px;
-	color: gray;
-	text-align: center;
-}
-
-.form_btn1 {
-	display: block;
-	width: 340px;
-	height: 54px;
-	border-radius: 3px;
-	text-align: center;
-	border: 1px solid #425c5a;
-	background-color: #425c5a;
-	color: white;
-	margin-top: 30px;
-}
-
-#id_search_end_tbl {
-	margin: 0 auto;
-	line-height: 30px;
-	height: 40px;
-	vertical-align: middle;
-}
-
-#id_search_end_tbl td {
-	vertical-align: middle;
-}
-</style>
+<title>ssak, 나만의 책</title>
 </head>
 <body>
 
@@ -119,9 +53,9 @@ body {
 					value="로그인 하기"></td>
 			</tr>
 
-
 		</table>
+			<br><br><br><br>
 	</form>
-
+<%@include file="../main/footer.jsp"%>
 </body>
 </html>

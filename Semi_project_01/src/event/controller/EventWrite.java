@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import event.model.EventVO;
+import member.model.memberVO;
 import service.event.EventService;
 
 /**
  * Servlet implementation class EventWrite
  */
-@WebServlet("/EventWrite")
+@WebServlet("/EventWrite.do")
 public class EventWrite extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -32,8 +33,8 @@ public class EventWrite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EventService event = new EventService();
 		EventVO vo = new EventVO();
-		request.getSession().setAttribute("mid", "kim");
-		vo.setMid(request.getSession().getAttribute("mid").toString());
+		memberVO mvo = (memberVO)request.getSession().getAttribute("member");
+		vo.setMid(mvo.getMid());
 		vo.setEcontent(request.getParameter("econtent"));
 //		String id = request.getSession().getAttribute("mid").toString();
 //		String content = request.getParameter("econtent");
@@ -43,7 +44,7 @@ public class EventWrite extends HttpServlet {
 		try {
 			int result = event.eventWrite(vo);
 			if(result==1) {
-				response.sendRedirect("EventList");
+				response.sendRedirect("EventList.do");
 				System.out.println("게시글이 삽입되었습니다.");
 			} else {
 				System.out.println("게시글 삽입 실패했습니다.");

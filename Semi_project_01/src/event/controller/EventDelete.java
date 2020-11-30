@@ -13,7 +13,7 @@ import service.event.EventService;
 /**
  * Servlet implementation class EventDelete
  */
-@WebServlet("/EventDelete")
+@WebServlet("/EventDelete.do")
 public class EventDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,7 +35,7 @@ public class EventDelete extends HttpServlet {
 		try {
 			int result = event.eventDelete(eno);
 			if(result==1) {
-				response.sendRedirect("EventList");
+				response.sendRedirect("EventList.do");
 				System.out.println("게시글이 삭제되었습니다.");
 			} else {
 				System.out.println("게시글 삭제 실패했습니다.");
