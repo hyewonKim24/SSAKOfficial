@@ -32,6 +32,7 @@ public class wreqList extends HttpServlet {
         super();
     }
 
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -46,7 +47,7 @@ public class wreqList extends HttpServlet {
 	}
 	protected void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-withdrawService wsv = new withdrawService();
+		withdrawService wsv = new withdrawService();
 		
 		// 페이징
 				int pageSize = 10; // 페이지 당 글 수

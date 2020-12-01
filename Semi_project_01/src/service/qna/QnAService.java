@@ -1,4 +1,8 @@
 package service.qna;
+import static common.filter.JDBCTemplete.close;
+import static common.filter.JDBCTemplete.commit;
+import static common.filter.JDBCTemplete.getConnection;
+import static common.filter.JDBCTemplete.rollback;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -15,89 +19,77 @@ import notice.model.NoticeVO;
 import qna.model.QnAVO;
 
 public class QnAService {
-	private DataSource ds = null;
-	private Connection conn = null;
 
-	public QnAService() {
-		Context initContext1;
-		try {
-			initContext1 = new InitialContext();
-			Context envContext1 = (Context) initContext1.lookup("java:/comp/env");
-			ds = (DataSource) envContext1.lookup("jdbc/myoracle");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public int getBoardCount() throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().getBoardCount(conn);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public List<QnAVO> qnaList(int start, int end) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		List<QnAVO> list = new QnADAO().qnaList(conn, start, end);
-		conn.close();
+		close(conn);
 		return list;
 	}
 
 	public QnAVO qnaDetail(int nno) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		QnAVO vo = null;
 		vo = new QnADAO().qnaDetail(conn, nno);
-		conn.close();
+		close(conn);
 		return vo;
 	}
 
 	public int qnaWrite(QnAVO vo) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().qnaWrite(conn, vo);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public int qnaReply(QnAVO vo) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().qnaReply(conn, vo);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public int qnaUpdate(QnAVO vo, int qno) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().qnaUpdate(conn, vo, qno);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public int qnaDelete(int qref2) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().qnaDelete(conn, qref2);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public int viewCount(int qno) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().viewCount(conn, qno);
-		conn.close();
+		close(conn);
 		return result;
 	}
 
 	public List<QnAVO> qnaSearch(String qtype, String qSearch, int start, int end) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		List<QnAVO> list = new QnADAO().qnaSearch(conn, qtype, qSearch, start, end);
-		conn.close();
+		close(conn);
 		return list;
 	}
 
 	public int qnaSearchCount(String qtype, String qsearch) throws SQLException {
-		Connection conn = ds.getConnection();
+		Connection conn = getConnection();
 		int result = new QnADAO().qnaSearchCount(conn, qtype, qsearch);
 		System.out.println(result);
-		conn.close();
+		close(conn);
 		return result;
 	}
 }

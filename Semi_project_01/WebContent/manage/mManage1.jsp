@@ -132,4 +132,3 @@
 	<%@ include file="../main/footer.jsp"%>
 </body>
 </html>
-	<%@include file="../main/footer.jsp"%>

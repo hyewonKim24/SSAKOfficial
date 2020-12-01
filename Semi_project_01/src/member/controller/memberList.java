@@ -97,6 +97,7 @@ public class memberList extends HttpServlet {
 					endPage = pageCount;
 
 				// 페이징 rownum 구하기
+				
 				int startRnum = ((currentPage - 1) * pageSize) + 1; // 거의 공식
 				int endRnum = startRnum + pageSize - 1; // currentPage*pageSize
 				System.out.println(startRnum + " - " + endRnum);
