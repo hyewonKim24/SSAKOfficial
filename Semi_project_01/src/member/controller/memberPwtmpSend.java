@@ -69,9 +69,9 @@ public class memberPwtmpSend extends HttpServlet {
 
 
 		// mail server 설정
-		String host = "smtp.naver.com";
-		String user = "jjanghyewon@naver.com"; // 자신의 네이버 계정
-		String password = "gpdnjs24";// 자신의 네이버 패스워드
+		String host = "smtp.gmail.com";
+		String user = "ssakofficial.kh@gmail.com"; // 자신의 네이버 계정
+		String password = "heracmqubxwursbw";// 자신의 네이버 패스워드
 
 		// 메일 받을 주소
 		/* String to_email = m.getEmail(); */
@@ -80,9 +80,8 @@ public class memberPwtmpSend extends HttpServlet {
 		// SMTP 서버 정보를 설정한다.
 		Properties props = new Properties();
 		props.put("mail.smtp.host", host);
-		props.put("mail.smtp.port", 465);
+		props.put("mail.smtp.port", 587);
 		props.put("mail.smtp.auth", "true");
-		props.put("mail.smtp.ssl.enable", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.debug", "true");
 

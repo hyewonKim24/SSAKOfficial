@@ -197,7 +197,7 @@ text-align : center;
 										<input class="span2" id="text-string" type="text"
 											placeholder="텍스트를 입력하세요">
 										<button id="add-text" class="btn" title="Add text">
-											<i class="icon-share-alt"></i>
+										<img src="<%=request.getContextPath() %>/imgs/right-arrow.png" style="width: 15px; height:15px">
 										</button>
 										<hr>
 									</div>
@@ -396,15 +396,15 @@ text-align : center;
 								<div class="btn-group">
 									<!-- 캔버스 안 수정 버튼. show back view 없애야함. -->
 									<button class="btn" id="bring-to-front" title="Bring to Front">
-										<i class="icon-fast-backward rotate" style="height: 19px;"></i>
+										<img src="<%=request.getContextPath() %>/imgs/forward.png" style="width : 15px; height : 15px">
 									</button>
 									<button class="btn" id="send-to-back" title="Send to Back">
-										<i class="icon-fast-forward rotate" style="height: 19px;"></i>
+										<img src="<%=request.getContextPath() %>/imgs/backward.png" >
 									</button>
 
 									<button id="remove-selected" class="btn"
 										title="Delete selected item">
-										<i class="icon-trash" style="height: 19px;"></i>
+										<img src="<%=request.getContextPath() %>/imgs/trash.png" >
 									</button>
 								</div>
 							</div>

@@ -226,6 +226,13 @@ $('.comment_submit').click(function () {
                         <a href="EventDelete.do?eno=${n.eno}">삭제</a>
                     </span>
 					</c:if>
+					<!-- 관리자가 수정, 삭제 가능하도록 -->
+                    <c:if test="${member.authority eq 1}">
+                    <span class="edit">
+                   		<a href="EventList_up.do?eno=${n.eno}&econtent=${n.econtent}&pageNum=${page}">수정</a>&nbsp&nbsp| &nbsp&nbsp
+                        <a href="EventDelete.do?eno=${n.eno}">삭제</a>
+                    </span>
+					</c:if>
                    <p class="comment_text">${n.econtent}</p> 
                 </li>
            </c:forEach>
