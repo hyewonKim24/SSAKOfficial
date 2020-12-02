@@ -105,7 +105,13 @@ a {
 .order {
 	margin-bottom:15px;
 }
-
+.order_empty{
+	text-align: center;
+	border: 1px solid #dcdcdc;
+	height: 200px;
+	line-height: 200px;
+	
+}
 .date {
     background-color: #425c5a;
     font-size: 11pt;

@@ -202,7 +202,7 @@ $('#text_area').keyup(function () {
         </article>
         <article>
         <c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>
-            <form id="comment_form" method="post" action="EventUpdate">
+            <form id="comment_form" method="post" action="EventUpdate.do">
              <c:set var="page" value="${(empty param.pageNum)?1:param.pageNum}"/>
             	<c:choose>
 	            	<c:when test="${not empty member }">

@@ -97,6 +97,12 @@
 
 			<div class="orderwrap">
 				<div class="ordertitle">주문내역 / 배송조회</div>
+				<c:if test="${empty myolist }">
+				<div class="order_empty">
+				주문내역이 없습니다.
+				</div>
+				
+				</c:if>
 				<c:if test="${not empty myolist }">
 				<c:forEach items="${myolist }" var="olist" varStatus="status" > 
 					<div class="order">

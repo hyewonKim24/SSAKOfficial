@@ -40,7 +40,7 @@
     border: none;
     outline: none;
     background: transparent;
-    z-index: 9999;
+    z-index: 1;
 }
 .slick-prev:hover,
 .slick-prev:focus,

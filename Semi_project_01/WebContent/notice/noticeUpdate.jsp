@@ -72,7 +72,7 @@
 							<tr>
 								<td class="qna_desc qna_box">내용</td>
 								<td colspan="2" style="padding-left: 8px;">
-								<textarea cols="50" rows="10" id="ncontent" name="ncontent" style="width: 640px; height: 350px; border: 1px solid #e8e8e8; "  value="${param.ncontent}"></textarea>
+								<textarea cols="50" rows="10" id="ncontent" name="ncontent" style="width: 640px; height: 350px; border: 1px solid #e8e8e8; ">${param.ncontent}</textarea>
 								
 								</td>
 							</tr>

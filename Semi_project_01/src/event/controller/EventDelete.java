@@ -30,8 +30,8 @@ public class EventDelete extends HttpServlet {
 		EventService event = new EventService();
 		EventVO vo = new EventVO();
 //		vo.setEno(Integer.parseInt(request.getParameter("eno")));
-		int eno=Integer.parseInt(request.getParameter("cnk1"));
-//		System.out.println(eno);
+		int eno=Integer.parseInt(request.getParameter("eno"));
+		System.out.println(eno);
 		try {
 			int result = event.eventDelete(eno);
 			if(result==1) {

@@ -50,8 +50,8 @@ public class memberDAO {
 	public int registerMember(Connection conn, memberVO mvo) {
 		System.out.println("INSERT 시작");
 		int result = 0;
-		String sql = "insert into member(mid,mpw,mname,memail,mphone,mzip_code,m_first_addr,m_second_addr,mbirthday,mgender,authority) "
-				+ "values(?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into member(mid,mpw,mname,memail,mphone,mzip_code,m_first_addr,m_second_addr,mbirthday,mgender,authority,mno) "
+				+ "values(?,?,?,?,?,?,?,?,?,?,?,mb_seq.nextval)";
 
 		try {
 			pstmt = conn.prepareStatement(sql);
