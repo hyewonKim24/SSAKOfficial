@@ -1,5 +1,5 @@
 # SSAK, 세상에 단 하나뿐인 나만의 책방
-### 시연 영상 ![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat-square&logo=youtube&link=https://youtu.be/XED_q4FEjxo)
+### [**시연 영상 바로 보기**](https://youtu.be/XED_q4FEjxo) ![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat-square&logo=youtube&link=https://youtu.be/XED_q4FEjxo)
 ##### 팀원 : 김혜원(조장), 김봉영, 오은실, 이윤진, 이혜림
 ## Contetns
 1. [개요](#소개)
@@ -179,3 +179,12 @@ ___
 
 ___
 ## Document
+
+1. **유스케이스**
+<p align="center">
+    <img src = "ForREADME/usecase.png", width="100%">
+</p>
+2. **ERD**
+<p align="center">
+    <img src = "ForREADME/erd.png", width="100%">
+</p>
