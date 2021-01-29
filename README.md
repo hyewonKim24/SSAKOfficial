@@ -1,5 +1,5 @@
 # SSAK, 세상에 단 하나뿐인 나만의 책방
-### 시연 영상 ![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat-square&logo=youtube&link=https://youtu.be/주소)
+### 시연 영상 ![Youtube Badge](https://img.shields.io/badge/Youtube-ff0000?style=flat-square&logo=youtube&link=https://youtu.be/XED_q4FEjxo)
 ##### 팀원 : 김혜원(조장), 김봉영, 오은실, 이윤진, 이혜림
 ## Contetns
 1. [개요](#소개)
@@ -59,57 +59,43 @@ ___
     - 전자결재 결재함
   - 업무 페이지
 - 오은실
-  - 메인 페이지
-    - 회원 가입
-      - 비즈니스, 게스트 가입
-      - BCrypt 해시 함수로 비밀번호 암호화
-      - 메일 인증번호 발송
-    - 로그인
-      - 스프링 시큐리티로 계정 권한부여 및 계정 잠금
-    - 비밀번호 재설정
-  - 마이 페이지
-    - 권한에 따른 회원정보 수정
-    - 프로필 사진 설정
-    - 비밀번호 변경
-  - 일반글
-    - 일반글 작성
-    - 일반글 & 업무 파일첨부
-    - 일반글 삭제
-  - 파일함
-    - 파일 리스트형, 썸네일형
-    - 파일 선택삭제
-    - 파일 다중 다운로드
-    - 파일명, 크기, 등록자, 최근업로드순 파일정렬
-    - 프로젝트별 파일 확인
-  - 내 게시물
-  - 업무 리스트
-    - 업무 구분, 상태별 업무 조회
+  - 장바구니
+    - 상품 추가
+      - 일괄 담기, 개별 담기, 북커버 상품과 중복상품 구분
+    - 상품 삭제
+      - 일괄 삭제, 개별 삭제
+    - 상품 수량 변경
+      - Ajax로 수량 변경과 함께 금액 변경
+  - 결제하기
+    - 해당 회원의 정보 불러옴
+    - 우편번호 api 사용
+  - 이벤트
+    - 댓글 작성
+      - 로그인 한 회원만 작성 가능
+    - 댓글 수정, 삭제
+      - 자신이 작성한 댓글만, 관리자는 모든 댓글 대상으로
 - 이윤진
-  - 프로젝트
-    - 프로젝트 생성
-      - 부서별 지정
-    - 프로젝트 조건별 목록 조회
-      - 전체, 미보관, 읽지않음, 부서별보관함
-    - 프로젝트 상세 내용 조회
-      - 글, 유형별, 최근순 정렬
-  - 할일
-    - 할일 등록
-      - 할일 목록 추가
-      - 마감일 지정
-      - 담당자 지정
-    - 할일 수정
-      - 마감일 변경
-      - 체크 여부 변경
-    - 담당자 hover 표시
-    - 체크 여부에 따른 진행도
+  - 공지사항
+    - rownum 최신순 정렬 페이징
+    - 제목, 내용 검색 기능
+    - 관리자 권한만 글 등록, 수정, 삭제 기능 부여
+  - 자주하는 질문
+    - 글 유형별 조회
+    - 제목 드롭다운 내용 출력
+  - qna
+    - 계정, 권한 별 글 등록, 수정, 삭제 기능 부여
+    - 관리자 답글 등록시 목록 화면에 들여쓰기로 출력
 - 이혜림
   - 관리자 페이지
     - 관리자 권한을 가진 사람만 접근 가능하도록 구현
-    - 가입한 회원의 정보 조회
-    - 가입한 회원의 정보 수정
-    - 회원의 주문내역 조회
-    - 회원 탈퇴 요청 조회
-    - 회원 탈퇴 요청 승인
+    - 회원 관리
+      - 가입한 회원의 정보 조회
+      - 가입한 회원의 정보 수정
+    - 주문내역 관리
+      - 회원의 주문내역 조회
+    - 탈퇴요청 관리 
+      - 회원 탈퇴 요청 조회
+      - 회원 탈퇴 요청 승인
   - 북커버 디자인 페이지
     - 기존 CustomT-shirt 오픈소스 재구성
     - 북커버를 적용할 책 정보, 해당 회원 정보 연결
@@ -117,5 +103,79 @@ ___
     - 장바구니 또는 결제하기에 리사이징된 이미지 출력
 ___
 ## 주요기능
+1. **알라딘 OPEN API를 이용한 메인 페이지**
+<p align="center">
+    <img src = "ForREADME/1.png", width="100%">
+</p>
+
+2. **회원가입**
+<p align="center">
+    <img src = "ForREADME/2.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/3.png", width="100%">
+</p>
+
+3. **비밀번호 찾기**
+<p align="center">
+    <img src = "ForREADME/4.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/5.png", width="100%">
+</p>
+
+4. **상품 검색**
+<p align="center">
+    <img src = "ForREADME/6.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/7.png", width="100%">
+</p>
+
+5. **고객센터**
+<p align="center">
+    <img src = "ForREADME/8.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/9.png", width="100%">
+</p>
+
+6. **관리자 페이지**
+<p align="center">
+    <img src = "ForREADME/10.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/11.png", width="100%">
+</p>
+
+7. **북커버 디자인**
+<p align="center">
+    <img src = "ForREADME/13.png", width="100%">
+</p>
+
+8. **이벤트 페이지**
+<p align="center">
+    <img src = "ForREADME/14.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/15.png", width="100%">
+</p>
+
+9. **장바구니**
+<p align="center">
+    <img src = "ForREADME/16.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/17.png", width="100%">
+</p>
+
+10. **결제하기**
+<p align="center">
+    <img src = "ForREADME/18.png", width="100%">
+</p>
+<p align="center">
+    <img src = "ForREADME/19.png", width="100%">
+</p>
+
 ___
 ## Document
