@@ -27,9 +27,9 @@ ___
 |FrontEnd|HTML5, JS, CSS3, JQuery|
 |BackEnd|Java(JDK 1.8), Servlet/JSP|
 |OS|Windows 10, MacOS|
-|Libray&API|알라딘 OPEN API, html2canvas|
+|Library&API|알라딘 OPEN API, html2canvas|
 |IDE|eclipse, VisualStudio|
-|Server|Tomcat(v8.5)|
+|Server|AWS(EC2, Route 53), Tomcat(v8.5), Putty(v0.74), Filezilla(v3.50.0)|
 |Document|Google Drive, KakaoOven, ERDCloud, diagrams.net|
 |CI|Github, Git|
 |DateBase|AWS RDS, Oracle(11g)-SQL Developer|
