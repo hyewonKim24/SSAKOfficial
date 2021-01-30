@@ -150,7 +150,7 @@ ___
 
 **7. 북커버 디자인**
 <p align="center">
-    <img src = "ForREADME/13.png", width="100%">
+    <img src = "ForREADME/12.png", width="100%">
 </p>
 
 **8. 이벤트 페이지**
